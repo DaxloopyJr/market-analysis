@@ -1,0 +1,359 @@
+/**
+ * FILE: src/styles/gov-theme.css
+ * PURPOSE: "Government view" presentation layer for the VIWANDA PORTAL.
+ * SCOPE: CSS only. No API, routing, permission or data logic is touched.
+ * LOADED: last in src/main.jsx, so it refines tokens.css / management.css and the
+ *         per-page CSS without editing every page. Remove this one import to revert.
+ *
+ * Design intent
+ *  - Formal, flat, high-contrast: white panels, thin borders, small radii, light shadows.
+ *  - One memorable device: the Tanzanian flag stripe on top of the header, plus a yellow
+ *    marker on the active menu item. Everything else stays quiet.
+ *  - Easier to use: larger text and touch targets, clearer table rows, visible focus ring.
+ *  - Still works with the personal Light/Dark/accent preferences (all colours via --vw-*).
+ */
+
+/* ------------------------------------------------------------------ tokens */
+:root {
+  --gov-green: #1eb53a;
+  --gov-yellow: #fcd116;
+  --gov-black: #111418;
+  --gov-blue: #00a3dd;
+  --gov-navy: #0b2447;
+  --gov-navy-2: #12305c;
+  --gov-font: "Segoe UI", "Noto Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
+  --gov-radius: 6px;
+  --gov-radius-sm: 4px;
+}
+
+.dashboard-shell {
+  --vw-accent: #0b4f9e;
+  --vw-accent-hover: #083d7c;
+  --vw-accent-subtle: #e8f0fa;
+  --vw-main-background: #eef1f5;
+  --vw-surface: #ffffff;
+  --vw-text: #14233b;
+  --vw-muted: #55677d;
+  --vw-border: #cbd5e1;
+  --vw-table-head: #e9eff6;
+  --vw-shadow: 0 1px 2px rgba(16, 34, 64, .07);
+  --vw-field-border: #7d8ca1;
+  font-family: var(--gov-font);
+  font-size: 15px;
+  background: var(--vw-main-background);
+}
+.dashboard-shell[data-vw-theme="dark"] {
+  --vw-main-background: #0f1b2e;
+  --vw-surface: #172740;
+  --vw-text: #ebf2fc;
+  --vw-muted: #a9bbd1;
+  --vw-border: #3b4d68;
+  --vw-table-head: #22344f;
+  --vw-field-border: #6f84a2;
+  --vw-accent-subtle: #1f3a60;
+}
+.dashboard-shell :is(button, input, select, textarea) { font-family: inherit; }
+
+/* ------------------------------------------------------------- focus + skip */
+.dashboard-shell :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible,
+.login-page :is(a, button, input, select, textarea):focus-visible,
+.landing-page :is(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--gov-yellow);
+  outline-offset: 0;
+  box-shadow: 0 0 0 5px var(--gov-navy);
+}
+.vw-skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 12000;
+  padding: 10px 16px;
+  background: var(--gov-yellow);
+  color: var(--gov-black);
+  font-weight: 700;
+  border-radius: var(--gov-radius-sm);
+  text-decoration: none;
+}
+.vw-skip-link:focus { top: 8px; }
+
+/* ------------------------------------------------------------------ header */
+.dashboard-shell .dashboard-topbar {
+  background: #fff;
+  border-bottom: 1px solid var(--vw-border);
+  box-shadow: 0 1px 0 rgba(16, 34, 64, .04);
+  padding-top: 12px;
+}
+.dashboard-shell .dashboard-topbar::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--gov-green) 0 38%, var(--gov-yellow) 38% 42%,
+    var(--gov-black) 42% 58%, var(--gov-yellow) 58% 62%, var(--gov-blue) 62% 100%);
+}
+.dashboard-shell .portal-topbar-brand-copy strong { color: var(--gov-navy); font-weight: 800; letter-spacing: .01em; }
+.dashboard-shell .portal-topbar-brand-copy small { color: #3f5269; }
+.dashboard-shell .portal-topbar-icon-button,
+.dashboard-shell .portal-topbar-search {
+  border: 1px solid var(--vw-field-border);
+  border-radius: var(--gov-radius-sm);
+  background: #fff;
+  min-height: 40px;
+}
+.dashboard-shell .portal-topbar-icon-button { width: 40px; height: 40px; }
+.dashboard-shell .portal-topbar-icon-button:hover { background: var(--vw-accent-subtle); color: var(--vw-accent); }
+.dashboard-shell .portal-topbar-search { height: 40px; width: 260px; color: #55677d; }
+.dashboard-shell .portal-topbar-search:focus-within { border-color: var(--gov-navy); box-shadow: 0 0 0 3px rgba(252, 209, 22, .65); }
+.dashboard-shell .portal-topbar-avatar { background: var(--gov-navy); border-radius: var(--gov-radius-sm); width: 38px; height: 38px; font-size: 13px; }
+.dashboard-shell button.portal-topbar-profile { border-radius: var(--gov-radius-sm); }
+.dashboard-shell button.portal-topbar-profile:hover { background: var(--vw-accent-subtle); }
+.dashboard-shell .portal-topbar-user-copy strong { font-size: 14px; }
+.dashboard-shell .portal-topbar-user-copy small { color: #4a5d73; }
+.dashboard-shell .portal-profile-popover,
+.dashboard-shell .portal-search-results,
+.dashboard-shell .portal-bell-popover {
+  border: 1px solid var(--vw-border);
+  border-radius: var(--gov-radius);
+  box-shadow: 0 10px 28px rgba(11, 36, 71, .16);
+}
+.dashboard-shell .portal-unread-badge { background: #c4262e; border: 2px solid #fff; }
+
+/* ----------------------------------------------------------------- sidebar */
+.dashboard-shell .dashboard-sidebar {
+  background: var(--gov-navy);
+  border-right: 1px solid rgba(255, 255, 255, .06);
+}
+.dashboard-shell .dashboard-institution-header {
+  align-items: flex-start;
+  padding: 2px 8px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
+}
+.dashboard-shell .dashboard-institution-monogram {
+  border-radius: var(--gov-radius-sm);
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .22);
+  color: #fff;
+}
+.dashboard-shell .dashboard-institution-name {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #fff;
+}
+.dashboard-shell .dashboard-institution-role { white-space: normal; color: #c9d8ec; font-size: 12px; }
+/* Typed in capitals in the markup; shown in plain sentence case for easier reading. */
+.dashboard-shell .dashboard-institution-caption,
+.dashboard-shell .dashboard-sidebar-section-title { text-transform: lowercase; letter-spacing: .02em; font-size: 12px; font-weight: 600; color: #aebfd6; }
+.dashboard-shell .dashboard-institution-caption::first-letter,
+.dashboard-shell .dashboard-sidebar-section-title::first-letter { text-transform: uppercase; }
+.dashboard-shell .dashboard-sidebar-section-title { margin-bottom: 8px; }
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item,
+.dashboard-shell .dashboard-sidebar .dashboard-submenu-link {
+  position: relative;
+  border-radius: var(--gov-radius-sm);
+  color: #e3ecf8;
+}
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item:hover,
+.dashboard-shell .dashboard-sidebar .dashboard-submenu-link:hover { background: rgba(255, 255, 255, .09); color: #fff; }
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item.active,
+.dashboard-shell .dashboard-sidebar .dashboard-submenu-link.active {
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+  box-shadow: none;
+  font-weight: 700;
+}
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item.active::before,
+.dashboard-shell .dashboard-sidebar .dashboard-submenu-link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  bottom: 7px;
+  width: 4px;
+  border-radius: 0 3px 3px 0;
+  background: var(--gov-yellow);
+}
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item.is-current { background: rgba(255, 255, 255, .08); }
+.dashboard-shell .dashboard-nav-children { border-left-color: rgba(255, 255, 255, .22); }
+.dashboard-shell .dashboard-sidebar-bottom { color: #aebfd6; border-top-color: rgba(255, 255, 255, .14); }
+.dashboard-shell .dashboard-sidebar:focus-visible,
+.dashboard-shell .dashboard-sidebar :is(a, button):focus-visible { outline-offset: -3px; box-shadow: none; }
+@media (min-width: 992px) {
+  .dashboard-shell .dashboard-sidebar:not(.is-collapsed) { scrollbar-color: #3c5a86 transparent; }
+}
+
+/* -------------------------------------------------------------- breadcrumb */
+.dashboard-shell .vw-global-breadcrumb {
+  background: #fff;
+  border-bottom: 1px solid var(--vw-border);
+  box-shadow: none;
+  min-height: 42px;
+}
+.dashboard-shell .vw-global-breadcrumb::before { display: none; }
+.dashboard-shell .vw-global-breadcrumb-inner { font-size: 13px; color: var(--vw-muted); }
+.dashboard-shell .vw-global-crumb svg { color: #6b7d93; }
+.dashboard-shell .vw-global-crumb button { color: var(--vw-accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: transparent; }
+.dashboard-shell .vw-global-crumb button:hover { text-decoration-color: currentColor; }
+.dashboard-shell .vw-global-crumb strong { color: var(--vw-text); font-weight: 700; }
+
+/* ------------------------------------------------------------ main content */
+.dashboard-shell .dashboard-content { padding: 26px 32px 36px; }
+.dashboard-shell .dashboard-content :is(h1, .dashboard-page-title) {
+  color: var(--vw-text);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.dashboard-shell .dashboard-content :is(.vad-heading p, .vmi-header p, .vim-page-heading p, .ds-page-header p, .dashboard-page-subtitle) {
+  color: var(--vw-muted);
+  font-size: 14px;
+}
+
+/* Page roots keep one calm background (the shell); no second tinted box behind each page. */
+.dashboard-shell .dashboard-content > :is(main, div, section):not(.vw-page-loading) { background: transparent; }
+
+/* Panels / cards: flat, bordered, small radius. */
+.dashboard-shell .dashboard-content :is(.vim-list-card, .vim-panel, .vim-card, .vrp-card, .ds-panel, .ds-card, .dashboard-card, .vw-management-card, .vmi-panel, .vad-panel) {
+  border: 1px solid var(--vw-border);
+  border-radius: var(--gov-radius);
+  background: var(--vw-surface);
+  box-shadow: var(--vw-shadow);
+}
+.dashboard-shell .dashboard-content :is(.vmi-panel-head, .vad-panel-header) { border-bottom: 1px solid var(--vw-border); }
+.dashboard-shell .dashboard-content :is(.vmi-panel-head h2, .vad-panel h2) { color: var(--vw-text); font-weight: 700; }
+
+/* KPI tiles: white with a coloured left edge instead of pastel gradients. */
+.dashboard-shell .dashboard-content :is(.vmi-kpi, .vad-metric) {
+  background: var(--vw-surface) !important;
+  border: 1px solid var(--vw-border);
+  border-left: 5px solid var(--gov-navy);
+  border-radius: var(--gov-radius);
+  box-shadow: var(--vw-shadow);
+}
+.dashboard-shell .dashboard-content :is(.vmi-kpi:hover, .vad-metric:hover) { transform: none; box-shadow: 0 3px 10px rgba(11, 36, 71, .12); }
+.dashboard-shell .dashboard-content .vmi-kpi::after { display: none; }
+.dashboard-shell .dashboard-content :is(.vmi-tint-mint, .vad-tint-mint) { border-left-color: var(--gov-green); }
+.dashboard-shell .dashboard-content :is(.vmi-tint-orange) { border-left-color: #d98a00; }
+.dashboard-shell .dashboard-content :is(.vmi-tint-cyan, .vad-tint-cyan, .vad-tint-sky) { border-left-color: var(--gov-blue); }
+.dashboard-shell .dashboard-content :is(.vmi-tint-rose) { border-left-color: #c4262e; }
+.dashboard-shell .dashboard-content :is(.vmi-tint-purple, .vad-tint-purple, .vad-tint-lavender) { border-left-color: #5b3fa3; }
+.dashboard-shell .dashboard-content :is(.vmi-kpi-icon, .vad-metric-icon) { border-radius: var(--gov-radius-sm); }
+.dashboard-shell .dashboard-content :is(.vmi-kpi-value, .vad-metric-value) { color: var(--vw-text); font-weight: 800; }
+.dashboard-shell .dashboard-content :is(.vmi-kpi-note, .vad-metric-copy small) { color: var(--vw-muted); }
+
+/* ------------------------------------------------------------------ tables */
+.dashboard-shell .dashboard-content :is(.table, .vim-table, .vrp-table, .ds-table, .vad-table, .vw-management-table) {
+  font-size: 14px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.dashboard-shell .dashboard-content :is(.table, .vim-table, .vrp-table, .ds-table, .vad-table, .vw-management-table) :is(th, td) {
+  border: 0 !important;
+  border-bottom: 1px solid var(--vw-border) !important;
+  padding: 12px 14px;
+}
+.dashboard-shell .dashboard-content :is(.table, .vim-table, .vrp-table, .ds-table, .vad-table, .vw-management-table) thead th {
+  background: var(--vw-table-head) !important;
+  color: var(--vw-text) !important;
+  font-weight: 700;
+  font-size: 13px;
+  border-bottom: 2px solid var(--gov-navy) !important;
+}
+.dashboard-shell .dashboard-content :is(.table, .vim-table, .vrp-table, .ds-table, .vw-management-table) tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--vw-table-head) 38%, var(--vw-surface)); }
+.dashboard-shell .dashboard-content :is(.table, .vim-table, .vrp-table, .ds-table, .vw-management-table) tbody tr:hover td { background: var(--vw-accent-subtle); }
+.dashboard-shell .dashboard-content :is(.vim-table-scroll, .vrp-table-wrap, .ds-table-scroll, .vad-table-scroll) {
+  border-top: 1px solid var(--vw-border);
+}
+.dashboard-shell .dashboard-content :is(.vim-pagination-bar, .vrp-pagination) { color: var(--vw-muted); font-size: 14px; }
+
+/* ---------------------------------------------------------- forms + buttons */
+.dashboard-shell .dashboard-content :is(.form-control, .form-select):not(:disabled) {
+  min-height: 42px;
+  border: 1px solid var(--vw-field-border);
+  border-radius: var(--gov-radius-sm);
+  font-size: 14.5px;
+}
+/* Search boxes: the wrapper carries the border, the input inside stays borderless. */
+.dashboard-shell .dashboard-content :is(.vim-search-field, .ds-search) {
+  min-height: 42px;
+  border: 1px solid var(--vw-field-border);
+  border-radius: var(--gov-radius-sm);
+  background: var(--vw-surface);
+}
+.dashboard-shell .dashboard-content :is(.vim-search-field, .ds-search) input { border: 0; min-height: 0; box-shadow: none; background: transparent; font-size: 14.5px; }
+.dashboard-shell .dashboard-content :is(.vim-search-field, .ds-search):focus-within { border-color: var(--gov-navy); box-shadow: 0 0 0 3px rgba(252, 209, 22, .7); }
+.dashboard-shell .dashboard-content :is(.vim-search-field, .ds-search) input:focus-visible { outline: 0; box-shadow: none; }
+/* Compact dashboard filter pills keep their own frame. */
+.dashboard-shell .dashboard-content .vmi-filters select { min-height: 0; border: 0; box-shadow: none; }
+.dashboard-shell .dashboard-content .vmi-filters :is(label, div) { font-weight: 600; }
+.dashboard-shell .dashboard-content :is(.form-control, .form-select):focus {
+  border-color: var(--gov-navy);
+  box-shadow: 0 0 0 3px rgba(252, 209, 22, .7);
+}
+.dashboard-shell .dashboard-content :is(.form-label, label) { font-weight: 600; font-size: 14px; }
+.dashboard-shell .dashboard-content :is(.btn, .vim-add, .ido-primary-button) {
+  border-radius: var(--gov-radius-sm);
+  min-height: 42px;
+  font-weight: 600;
+  font-size: 14.5px;
+}
+.dashboard-shell .dashboard-content .btn-primary:not(:disabled) { background: var(--gov-navy); border-color: var(--gov-navy); color: #fff; }
+.dashboard-shell .dashboard-content .btn-primary:hover:not(:disabled) { background: var(--gov-navy-2); border-color: var(--gov-navy-2); }
+.dashboard-shell[data-vw-accent="green"] .dashboard-content .btn-primary:not(:disabled) { background: #14703f; border-color: #14703f; }
+.dashboard-shell[data-vw-accent="teal"] .dashboard-content .btn-primary:not(:disabled) { background: #06687a; border-color: #06687a; }
+.dashboard-shell .dashboard-content :is(.btn-outline-secondary, .btn-outline-primary) { border-color: var(--vw-field-border); color: var(--vw-text); background: var(--vw-surface); }
+.dashboard-shell .dashboard-content :is(.btn-outline-secondary, .btn-outline-primary):hover { background: var(--vw-accent-subtle); color: var(--vw-text); }
+.dashboard-shell .dashboard-content :is(button, .btn):disabled { cursor: not-allowed; opacity: .55; }
+.dashboard-shell .vw-actions-trigger { width: 38px; height: 38px; border-radius: var(--gov-radius-sm); border-color: var(--vw-field-border); }
+
+/* ------------------------------------------------------ status + dialogs */
+.dashboard-shell :is(.ido-status-badge, .vim-status, .ds-status, .badge) { border-radius: var(--gov-radius-sm); font-weight: 700; }
+.dashboard-shell .ido-status-badge { font-size: 12.5px; padding: 5px 10px; }
+body :is(.vim-dialog, .vrp-modal, .ds-dialog, .vim-ac-modal, .vim-dg-modal, .vw-management-modal) { border-radius: var(--gov-radius); }
+body .swal2-popup { border-radius: var(--gov-radius); font-family: var(--gov-font); }
+body .swal2-styled.swal2-confirm { background: var(--gov-navy); border-radius: var(--gov-radius-sm); }
+body .swal2-styled.swal2-cancel { border-radius: var(--gov-radius-sm); }
+.dashboard-shell :is(.vw-management-modal > header, .vim-dialog-header) { background: var(--vw-table-head); }
+
+/* ------------------------------------------------------------------ footer */
+.dashboard-shell .dashboard-footer {
+  background: var(--gov-navy);
+  color: #d6e2f2;
+  border-top: 0;
+  padding: 16px 32px;
+  font-size: 13px;
+  align-items: center;
+}
+.dashboard-shell .dashboard-footer strong { color: #fff; font-weight: 700; }
+.dashboard-shell .dashboard-footer .vw-footer-gov { display: flex; align-items: center; gap: 10px; }
+.dashboard-shell .dashboard-footer .vw-footer-flag {
+  width: 28px;
+  height: 18px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--gov-green) 0 38%, var(--gov-yellow) 38% 44%, var(--gov-black) 44% 56%, var(--gov-yellow) 56% 62%, var(--gov-blue) 62% 100%);
+  flex: none;
+}
+
+/* ------------------------------------------------------------------ mobile */
+@media (max-width: 991px) {
+  .dashboard-shell .dashboard-content { padding: 20px 16px 28px; }
+  .dashboard-shell .portal-topbar-search { width: 190px; }
+  .dashboard-shell .vw-global-breadcrumb { top: 0; position: static; }
+}
+@media (max-width: 600px) {
+  /* Header wraps into two rows on phones: let it grow, and let the menu drawer cover it. */
+  .dashboard-shell .dashboard-topbar { height: auto; min-height: 66px; }
+  .dashboard-shell .dashboard-sidebar { top: 0; z-index: 70; padding-top: 18px; max-height: 100vh; }
+  .dashboard-shell .dashboard-sidebar-backdrop { inset: 0; z-index: 65; }
+}
+@media (max-width: 575px) {
+  .dashboard-shell { font-size: 14.5px; }
+  .dashboard-shell .dashboard-content { padding: 16px 12px 24px; }
+  .dashboard-shell .dashboard-footer { padding: 14px 14px; }
+  .dashboard-shell .dashboard-content :is(.vim-table-scroll, .vrp-table-wrap, .ds-table-scroll, .vad-table-scroll) { overflow-x: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-shell * { transition: none !important; animation: none !important; }
+}

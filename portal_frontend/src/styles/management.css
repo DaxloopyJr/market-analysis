@@ -1,0 +1,135 @@
+/**
+ * FILE: src/styles/management.css
+ * GLOBAL MANAGEMENT CONTENT SYSTEM. Loaded once from src/main.jsx.
+ * Shared: page headers, cards, toolbars, inputs, tables, modals, forms, buttons,
+ * wizard steppers, pagination, row actions and page/table loading.
+ * Page-specific geometry and approved modal content stay in feature CSS.
+ * Scope: authenticated main content only; leave Login, Sidebar, Topbar & Footer intact.
+ * Uses src/styles/tokens.css + Profile user preferences (no backend).
+ */
+.dashboard-shell .dashboard-content {background:var(--vw-main-background);color:var(--vw-text);}
+.dashboard-content :where(.vim-list-card,.vim-panel,.vim-card,.vrp-card,.ds-panel,.ds-card,.dashboard-card,.vw-management-card){
+  background:var(--vw-surface);border-color:var(--vw-border);box-shadow:var(--vw-shadow);color:var(--vw-text);
+}
+.dashboard-content :where(.vim-page-heading,.ds-page-header,.vw-management-heading){color:var(--vw-text)}
+.dashboard-content :where(.vim-page-heading h1,.ds-page-header h1,.vw-management-heading h1){color:var(--vw-text)}
+.dashboard-content :where(.vim-pagination-bar,.vrp-pagination,.ds-toolbar,.vim-toolbar,.vim-filter-bar){border-color:var(--vw-border);}
+.dashboard-content :where(.vim-field,.ds-field,.vw-profile-field,.form-label){color:var(--vw-text)}
+.dashboard-content :where(.form-control,.form-select,.vim-search-field input,.ds-search input):not(:disabled){background:var(--vw-surface);color:var(--vw-text);border-color:var(--vw-border);}
+.dashboard-content :where(.form-control,.form-select):focus {border-color:var(--vw-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--vw-accent) 18%,transparent);}
+.dashboard-content :where(.table,.vim-table,.vrp-table,.ds-table){border-collapse:collapse;background:var(--vw-surface);color:var(--vw-text);--bs-table-bg:var(--vw-surface);--bs-table-color:var(--vw-text);--bs-table-border-color:var(--vw-border)}
+.dashboard-content :where(.table,.vim-table,.vrp-table,.ds-table) :where(th,td){border:1px solid var(--vw-border)!important;vertical-align:middle;color:var(--vw-text);}
+.dashboard-content :where(.table,.vim-table,.vrp-table,.ds-table) thead th {background:var(--vw-table-head)!important;color:var(--vw-text)!important;}
+.dashboard-content :where(.table,.vim-table,.vrp-table,.ds-table) tbody tr:hover td{background:var(--vw-accent-subtle);}
+.dashboard-content :where(.btn-primary,.vim-add,.ido-primary-button){--bs-btn-bg:var(--vw-accent);--bs-btn-border-color:var(--vw-accent);--bs-btn-hover-bg:var(--vw-accent-hover);--bs-btn-hover-border-color:var(--vw-accent-hover);}
+.dashboard-content .btn-primary:not(:disabled) {background:var(--vw-accent);border-color:var(--vw-accent);}
+.dashboard-content .btn-primary:hover:not(:disabled) {background:var(--vw-accent-hover);border-color:var(--vw-accent-hover);}
+.dashboard-content :where(.vim-dialog,.ds-dialog,.vim-ac-modal,.vrp-modal){background:var(--vw-surface);color:var(--vw-text);border-color:var(--vw-border);}
+.dashboard-content :where(.vim-dialog-header,.vim-dialog-footer,.ds-modal-footer){border-color:var(--vw-border)}
+/* Existing dialogs render through React portals under body, so scope those separately. */
+.dashboard-shell[data-vw-theme="dark"] :where(.vim-search-field,.vim-pagination-bar,.ds-toolbar) {background:var(--vw-surface);}
+/* Reusable page/card/form utilities for future management modules. */
+.vw-management-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:23px;flex-wrap:wrap}
+.vw-management-heading h1{font-size:25px;font-weight:750;margin:5px 0;color:var(--vw-text)}
+.vw-management-heading p{margin:0;color:var(--vw-muted);font-size:13.5px}
+.vw-breadcrumb{font-size:13px;color:var(--vw-muted)}
+.vw-management-card{border:1px solid var(--vw-border);border-radius:12px;padding:22px;background:var(--vw-surface);box-shadow:var(--vw-shadow);}
+/* Three-dot popup: menu floats in a body portal so it never stretches/clips its row. */
+.vw-actions-holder{display:inline-flex;position:relative;align-items:center;justify-content:center;}
+.vw-actions-trigger{width:34px;height:33px;border:1px solid var(--vw-border,#d3e0ef);background:var(--vw-surface,#fff);color:var(--vw-text,#173456);border-radius:8px;display:grid;place-items:center;cursor:pointer;}
+.vw-actions-trigger:hover,.vw-actions-trigger[aria-expanded="true"]{background:var(--vw-accent-subtle,#eaf2fc);color:var(--vw-accent,#155dbb)}
+.vw-actions-trigger:focus-visible,.vw-actions-popup :is(button,a):focus-visible{outline:3px solid var(--vw-accent,#155dbb);outline-offset:2px;}
+.vw-actions-popup{position:fixed;z-index:11000;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:5px;width:max-content;min-width:0;max-width:calc(100vw - 16px);padding:7px 9px;background:#fff;border:1px solid #d3e0ef;border-radius:10px;box-shadow:0 12px 34px rgba(11,39,80,.22);white-space:nowrap;}
+.vw-actions-popup :is(button,a){display:grid;place-items:center;flex:0 0 auto;min-width:31px;width:32px;height:32px;margin:0!important;padding:5px!important;border:1px solid #d5e1ee!important;border-radius:7px!important;background:#f7faff!important;color:#195ba8!important;cursor:pointer;}
+.vw-actions-popup :is(button,a):hover:not(:disabled){background:#e5f0fe!important;border-color:#93b7df!important;}
+.vw-actions-popup :where(.vim-action-danger,.ds-red-button){color:#d43f4f!important;}
+.vw-actions-popup button:disabled{opacity:.35;cursor:not-allowed;}
+/* Portal loaders are inline, unlike full-screen LoginLoader overlay. */
+.vw-page-loading {position:relative;min-height:290px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--vw-main-background);border-radius:12px;color:var(--vw-muted);}
+.vw-loading-label{font-size:13px;font-weight:600;color:var(--vw-muted,#66788c);text-align:center;}
+.vw-loading-spinner{width:42px;height:42px;border-radius:50%;border:4px solid #dce8f5;border-top-color:var(--vw-accent,#155dbb);animation:viwanda-spin .95s linear infinite;}
+.vw-loading-dots{display:flex;gap:8px;}
+.vw-loading-dots span{width:10px;height:10px;background:var(--vw-accent,#155dbb);border-radius:50%;animation:viwanda-dot-pulse 1s ease-in-out infinite;}
+.vw-loading-dots span:nth-child(2){animation-delay:150ms}.vw-loading-dots span:nth-child(3){animation-delay:300ms}
+.vw-loading-skeleton{width:100%;max-width:900px;margin:auto;display:grid;gap:14px;}
+.vw-skeleton-bar{height:19px;border-radius:7px;background:linear-gradient(90deg,#e9eff7 18%,#f9fcff 50%,#e9eff7 82%);background-size:220% 100%;animation:vw-skeleton-shimmer 1.5s ease-in-out infinite;}
+.vw-skeleton-title{height:30px;width:42%;}.vw-skeleton-subtitle{width:67%;}
+.vw-skeleton-panel{display:grid;gap:12px;background:var(--vw-surface);border:1px solid var(--vw-border);border-radius:11px;padding:20px;}
+.vw-skeleton-panel .vw-skeleton-bar:nth-child(even){width:83%;}
+.vw-table-loading{position:absolute;inset:0;z-index:9;min-height:82px;background:rgba(250,252,255,.90);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:15px;border-radius:7px;}
+.vw-table-loading--progress {min-height:0;justify-content:flex-start;padding:0;background:transparent;pointer-events:none;}
+.vw-table-loading--progress .vw-loading-label{position:absolute;left:-9999px}
+.vw-progress-track{height:4px;width:100%;background:#dbe8f9;overflow:hidden;}
+.vw-progress-track span{display:block;width:36%;height:100%;background:var(--vw-accent);animation:vw-track 1.3s linear infinite;}
+.vw-table-skeleton{width:100%;display:grid;gap:12px;padding:16px;}.vw-table-skeleton .vw-skeleton-bar:nth-child(even){width:87%;}
+.vw-embedded-login-loader{max-width:310px;}.vw-embedded-login-loader .viwanda-login-emblem{width:82px;height:86px;}
+.vw-loader-small .viwanda-login-emblem{width:48px;height:55px;}.vw-loader-small .viwanda-login-spinner{width:34px;height:34px;border-width:3px;margin-top:7px;}.vw-loader-small .viwanda-login-spinner-center{width:12px;height:12px;}.vw-loader-small .viwanda-login-title{font-size:13px;margin-top:6px;}.vw-loader-small .viwanda-login-dots{margin-top:6px}
+@keyframes vw-skeleton-shimmer{to{background-position-x:-220%;}}
+@keyframes vw-track{from{transform:translateX(-120%)}to{transform:translateX(320%)}}
+@media(prefers-reduced-motion:reduce){.vw-skeleton-bar,.vw-loading-spinner,.vw-loading-dots span,.vw-progress-track span{animation:none}}
+/* Dark theme: page module cards, tables and dialogs already present in REV26. */
+.dashboard-shell[data-vw-theme="dark"] :where(.vim-list-card,.ds-step-body,.ds-modal-content,.ds-toolbar,.vim-institutions,.vrp-page,.vw-management-card,.dashboard-card,.vim-table-scroll){background:var(--vw-surface);color:var(--vw-text);border-color:var(--vw-border)}
+.dashboard-shell[data-vw-theme="dark"] .dashboard-content :where(h1,h2,h3,h4,p,strong,small,label,span):not(.badge):not(.vim-status):not(.ds-status){color:inherit;}
+.dashboard-shell[data-vw-theme="dark"] .dashboard-content :where(.table,.vim-table,.ds-table,.vrp-table){--bs-table-bg:var(--vw-surface);--bs-table-color:var(--vw-text);--bs-table-border-color:var(--vw-border)}
+.dashboard-shell[data-vw-theme="dark"] .dashboard-content :where(.btn-outline-secondary,.form-control,.form-select){color:var(--vw-text);border-color:var(--vw-border)}
+@media(max-width:700px){.vw-management-card{padding:15px}.vw-actions-popup{padding:5px;gap:3px}.vw-actions-popup :is(button,a){width:30px;height:30px}}
+/* Overlay position for existing REV26 table wrappers. Loader is mounted only
+   while the page's REAL Laravel fetch state is pending. */
+.dashboard-content :where(.vim-table-scroll,.vrp-table-wrap,.ds-table-scroll){position:relative;}
+/* Limit dark palette overrides to content: global portal header/sidebar keep their approved geometry. */
+/* Preserve existing action meaning/colors while showing icons in ONE row. */
+.vw-actions-popup :is(button,a):is([title*="Edit"],[title*="edit"],[title*="Update"]){color:#158452!important;background:#eff9f3!important;}
+.vw-actions-popup :is(button,a):is([title*="Deactivate"],[title*="Revoke"],[title*="Delete"],[title*="Detach"],.vim-action-danger,.ds-red-button,.vrp-danger-button,.vim-dg-danger,.danger){color:#d23d4c!important;background:#fff3f5!important;}
+.vw-actions-popup :is(button,a):is([title*="Manage"],[title*="Permissions"],[title*="Reporting"]){color:#7058ad!important;background:#f5f1ff!important;}
+.vw-actions-popup :is(button,a):is([title*="Activate"],[title*="Restore"],.vim-action-success){color:#158452!important;background:#eff9f3!important;}
+/* Modals are portaled to document.body: theme them explicitly without rewriting structure. */
+body[data-vw-theme="dark"] :where(.vim-dialog,.vrp-modal,.ds-dialog,.vim-ac-modal,.vim-dg-modal,.swal2-popup){background:#1b2b44!important;color:#ebf2fc!important;border-color:#40516a!important;}
+body[data-vw-theme="dark"] :where(.vim-dialog,.vrp-modal,.ds-dialog,.vim-ac-modal,.vim-dg-modal,.swal2-popup) :where(h2,h3,strong,label,p){color:#ebf2fc;}
+body[data-vw-theme="dark"] :where(.vim-dialog,.vrp-modal,.ds-dialog,.vim-ac-modal,.vim-dg-modal) :where(.form-control,.form-select){background:#1b2b44;color:#ebf2fc;border-color:#40516a;}
+body[data-vw-theme="dark"] .vw-actions-popup{background:#1b2b44;border-color:#40516a;}
+body[data-vw-theme="dark"] .vw-actions-popup :is(button,a){background:#273851!important;border-color:#40516a!important;color:#d5e8ff!important;}
+body[data-vw-theme="dark"] .vw-table-loading{background:rgba(25,41,65,.91);}
+body[data-vw-theme="dark"] .vw-skeleton-bar{background:linear-gradient(90deg,#293c57 18%,#405572 50%,#293c57 82%);background-size:220% 100%;}
+/* Reusable composition primitives. Existing approved feature dialogs retain geometry. */
+.vw-management-page{min-width:0;max-width:100%;}
+.vw-management-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;border-bottom:1px solid var(--vw-border);flex-wrap:wrap;}
+.vw-management-form{display:grid;gap:16px;}
+.vw-management-table-wrap{position:relative;min-width:0;}
+.vw-management-table{width:100%;border-collapse:collapse;}
+.vw-management-table th,.vw-management-table td{border:1px solid var(--vw-border)!important;padding:11px 13px;}
+.vw-management-table thead th{background:var(--vw-table-head);}
+.vw-management-modal-backdrop{position:fixed;inset:0;background:rgba(9,25,49,.53);z-index:7000;display:grid;place-items:center;padding:18px;}
+.vw-management-modal{width:min(600px,100%);max-height:calc(100vh - 36px);overflow:auto;border-radius:13px;background:#fff;border:1px solid #d5e0ec;box-shadow:0 18px 65px rgba(0,0,0,.24);}
+.vw-management-modal-wide{width:min(980px,100%);}
+.vw-management-modal>header,.vw-management-modal>footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #d5e0ec;}
+.vw-management-modal>footer{border-top:1px solid #d5e0ec;border-bottom:none;}
+.vw-management-modal>header h2{font-size:18px;font-weight:700;margin:0;}
+.vw-management-modal>header button{background:transparent;border:0;color:inherit;}
+.vw-management-modal-body{padding:20px 22px;}
+body[data-vw-theme="dark"] .vw-management-modal{background:#1b2b44;color:#ebf2fc;border-color:#40516a;}
+body[data-vw-theme="dark"] .vw-management-modal :where(header,footer){border-color:#40516a;}
+.dashboard-shell[data-vw-theme="dark"] .vw-embedded-login-loader .viwanda-login-title,
+body[data-vw-theme="dark"] .vw-embedded-login-loader .viwanda-login-title{color:#ebf2fc;}
+/* Surface tokens for modal fields rendered through body portals. */
+body[data-vw-theme="dark"] :where(.vim-dialog,.vrp-modal,.ds-dialog,.vim-ac-modal,.vim-dg-modal) .table{--bs-table-bg:#1b2b44;--bs-table-color:#ebf2fc;--bs-table-border-color:#40516a;}
+
+/* Table loaders: occupy only the table wrapper. App chrome never fades. */
+.vw-local-table-loading-host{position:relative;isolation:isolate;min-height:135px;}
+.vw-local-table-loading-host>.vw-table-loading{position:absolute;inset:0;z-index:3;}
+.ao-table-loading-host{overflow:hidden;border-radius:7px;}
+.ao-table-loading-host .ao-table{width:100%;}
+
+/* One in-page loading style (9 Nov 2026): skeleton rows sit under the table header, stale rows are hidden meanwhile. */
+.vw-table-loading--skeleton{position:static;inset:auto;z-index:auto;min-height:0;background:transparent;display:block;padding:0;border-radius:0}
+.vw-table-loading--skeleton .vw-loading-label{position:absolute;left:-9999px}
+.vw-table-loading--skeleton .vw-table-skeleton{display:block;padding:0}
+.vw-sk-row{display:grid;grid-template-columns:4% 24% 12% 16% 14% 10%;gap:3%;align-items:center;padding:16px 12px;border-bottom:1px solid #eef1f6}
+.vw-sk-row .vw-skeleton-bar{height:11px;margin:0}
+.vw-table-skeleton .vw-sk-row .vw-skeleton-bar:nth-child(even){width:auto}
+:has(> .vw-table-loading--skeleton) > table > tbody,:has(> .vw-table-loading--skeleton) > .table > tbody{display:none}
+body[data-vw-theme="dark"] .vw-sk-row{border-bottom-color:#2c3f5c}
+
+/* calm table loader (loading style F, 9 Nov 2026): light veil over rows already shown, one small ring, no text */
+.vw-table-loading--calm{background:rgba(250,252,255,.55);min-height:90px}
+.vw-table-loading--calm .vw-loading-label{position:absolute;left:-9999px}
+body[data-vw-theme="dark"] .vw-table-loading--calm{background:rgba(25,41,65,.55)}

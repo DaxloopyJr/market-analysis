@@ -1,0 +1,174 @@
+/* MDO approved October 24 compact government reference.
+   Scoped styles only. Existing Portal Topbar, Sidebar and other modules unchanged. */
+.mdo-workspace{--mdo-navy:#102a51;--mdo-blue:#0956cd;--mdo-line:#dae5f3;--mdo-grey:#f2f6fc;color:#142a4f;font-size:13.5px;min-height:calc(100vh - 96px)}
+.mdo-workspace *{box-sizing:border-box}
+.mdo-page{padding:4px 0 25px;max-width:1600px;margin:0 auto}
+/* Compact government path bar shared by MDO and MDD; keep content headings small. */
+.mdo-breadcrumb{
+  position:relative;isolation:isolate;display:flex;align-items:center;gap:7px;
+  min-height:37px;margin:0 0 11px;padding:8px 14px;flex-wrap:wrap;
+  border:1px solid #c9dbf2;border-radius:7px;
+  background:linear-gradient(110deg,#eaf3ff 0%,#f6faff 54%,#e7f2ff 100%);
+  box-shadow:0 2px 7px rgba(12,76,156,.05);color:#2d5789;font-size:13px;
+  overflow:hidden;
+}
+.mdo-breadcrumb::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#1259ad 0%,#439af0 36%,#a6d3ff 55%,#1259ad 100%);
+  background-size:200% 100%;animation:mdo-crumb-glide 9s linear infinite;pointer-events:none;
+}
+@keyframes mdo-crumb-glide{to{background-position:200% 0}}
+.mdo-breadcrumb span{position:relative;display:inline-flex;align-items:center;gap:6px}
+.mdo-breadcrumb button{border:0;background:transparent;padding:2px 0;color:#245b9e;font-weight:550}
+.mdo-breadcrumb button:hover{text-decoration:underline;color:#06469c}
+.mdo-breadcrumb strong{color:#113967;font-weight:750}
+.mdo-breadcrumb svg{color:#416e9e}
+@media(prefers-reduced-motion:reduce){.mdo-breadcrumb::before{animation:none}}
+.mdo-surface{position:relative;background:#fff;border:1px solid #e2eaf4;border-radius:9px;box-shadow:0 2px 10px rgba(31,61,103,.035)}
+.mdo-queue,.mdo-overview,.mdo-processed{padding:13px 15px 15px}
+.mdo-toggle{display:flex;border:1px solid var(--mdo-line);border-radius:6px;overflow:hidden;margin-bottom:13px}
+.mdo-toggle button{border:0;background:#fff;padding:12px 14px;flex:1;display:flex;gap:9px;align-items:center;justify-content:center;font-weight:650;color:#162b51}
+.mdo-toggle button+button{border-left:1px solid var(--mdo-line)}
+.mdo-toggle button.selected{background:#0757cd;color:#fff}
+.mdo-source-note{display:flex;align-items:center;gap:7px;background:#f3f8ff;border:1px solid #e1edfa;color:#4b6487;padding:8px 10px;border-radius:6px;font-size:13px}
+.mdo-source-note strong{color:#1d385e}
+.mdo-search{display:flex;align-items:center;gap:8px;background:#f9fbff;border:1px solid #d8e3f1;padding:0 12px;border-radius:6px;width:100%;height:40px;color:#54739e}
+.mdo-search input{border:0;background:none;width:100%;height:100%;min-width:0;color:#173258;outline:0;font-size:13px}
+.mdo-search:focus-within{border-color:#1b68d6;box-shadow:0 0 0 2px rgba(25,99,209,.1)}
+.mdo-org-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.mdo-org{min-height:94px;padding:13px 14px;display:flex;align-items:center;gap:14px;text-align:left;background:#fff;border:1px solid #dbe6f2;border-radius:7px;color:#173054;transition:border-color .14s,box-shadow .14s}
+.mdo-org:hover,.mdo-org:focus-visible{border-color:#0b62d5;box-shadow:0 3px 11px rgba(17,79,158,.13);outline:0}
+.mdo-org>svg:last-child{margin-left:auto;color:#2e4f79;flex:none}
+.mdo-org-logo{width:58px;height:58px;border-radius:8px;background:#eff5fc;border:1px solid #dce7f5;display:flex;align-items:center;justify-content:center;flex:none;color:#235caa;overflow:hidden}
+.mdo-org-logo img{display:block;width:100%;height:100%;object-fit:contain;background:#fff;padding:2px}
+.mdo-org-info{display:flex;flex:1;min-width:0;flex-direction:column;align-items:flex-start;gap:3px}
+.mdo-org-info strong{font-size:14px;font-weight:750;color:#112c52;overflow-wrap:anywhere}
+.mdo-org-info small{font-size:13px;color:#617899}
+.mdo-org-info em{font-size:11.5px;font-style:normal;padding:3px 9px;border-radius:5px;font-weight:700}
+.mdo-pending{background:#ffe4e4;color:#aa1d2b}
+.mdo-complete{background:#def8e6;color:#167a42}
+.mdo-api-note,.mdo-inventory-note{font-size:12.5px;color:#755425;background:#fff9e9;border:1px solid #f3e4bd;border-radius:5px;padding:9px 11px;display:flex;gap:8px;align-items:flex-start;margin:10px 0}
+.mdo-empty{padding:30px 13px;text-align:center;color:#596d88;font-size:13px}
+.mdo-source-head{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+.mdo-source-head>.mdo-org-logo{width:56px;height:56px}
+.mdo-source-title{flex:1;min-width:0}
+.mdo-source-title h1,.mdo-review-heading h1{font-size:18px;font-weight:750;color:#102a4e;margin:0 0 4px}
+.mdo-source-title small{display:block;color:#5a6d87;font-size:12.5px;overflow-wrap:anywhere}
+.mdo-select-compact,.mdo-filter-strip>label:not(.mdo-search){font-size:12.5px;color:#536d8f;display:flex;flex-direction:column;gap:4px}
+.mdo-select-compact select,.mdo-filter-strip select{border:1px solid #d6e1f1;padding:8px 25px 8px 9px;border-radius:5px;color:#1d3e68;background:#fff;min-width:133px;font-size:13px}
+.mdo-status-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.mdo-status-tabs button{border:1px solid #e0e9f5;background:#f3f7fc;border-radius:5px;padding:8px 10px;font-size:12.5px;font-weight:650;color:#365576}
+.mdo-status-tabs button.active{background:var(--mdo-blue);border-color:var(--mdo-blue);color:#fff}
+.mdo-table-wrap{width:100%;overflow-x:auto}
+.mdo-table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid #e0e8f3;color:#1a355b}
+.mdo-table th{background:#edf3fa;color:#25476e;font-weight:750;text-align:left;font-size:12.5px;white-space:nowrap}
+.mdo-table th,.mdo-table td{padding:11px 10px;border-bottom:1px solid #e5edf5;border-right:1px solid #eef2f7;vertical-align:middle}
+.mdo-table td strong{font-weight:700;color:#173158}
+.mdo-table tbody tr:nth-child(even){background:#fcfdff}
+.mdo-table tbody tr:hover{background:#f8fbff}
+.mdo-table-actions{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.mdo-primary-sm,.mdo-secondary-sm{padding:7px 12px;font-size:12.5px;min-width:68px;border-radius:5px;font-weight:650}
+.mdo-primary-sm{color:#fff;background:#0860dc;border:1px solid #0860dc}
+.mdo-secondary-sm{color:#1355a7;background:#ecf4ff;border:1px solid #d2e2f9}
+.mdo-status{font-weight:750;font-size:11.5px;white-space:nowrap;border-radius:5px;padding:6px 9px;display:inline-block;background:#e9eff7;color:#496681}
+.mdo-status.pendingreview,.mdo-status.underreview{background:#fff0c9;color:#976100}
+.mdo-status.returned{background:#ffe1e5;color:#bb273a}
+.mdo-status.reviewed,.mdo-status.approved,.mdo-status.published{background:#dcf7e7;color:#128051}
+.mdo-status.notsubmitted{background:#e5edf4;color:#576c85}
+.mdo-pager{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:15px;font-size:12.5px;color:#5a6e89}
+.mdo-pager div{display:flex;gap:4px}
+.mdo-pager button{min-width:31px;height:31px;padding:0 8px;background:#fff;border:1px solid #d9e5f4;border-radius:5px;color:#365c84}
+.mdo-pager button.active{background:#0956cd;border-color:#0956cd;color:#fff}
+.mdo-pager button:disabled{opacity:.45;cursor:not-allowed}
+.mdo-review-heading{display:flex;align-items:center;gap:13px;padding:15px;margin-bottom:12px}
+.mdo-review-heading>.mdo-org-logo{width:49px;height:49px}
+.mdo-review-heading>div{flex:1;min-width:0}
+.mdo-review-heading h1{font-size:18px}
+.mdo-review-heading p{font-size:12.5px;color:#586d87;margin:2px 0 3px}
+.mdo-review-heading p strong{color:#274b75}
+.mdo-review-heading p span{margin:0 5px}
+.mdo-review-heading small{font-size:11.5px;color:#576e88}
+.mdo-review-tabs{display:flex;border-bottom:1px solid #dae7f6;gap:6px;flex-wrap:wrap;padding:0 8px;margin:0 0 10px;background:#fff;border-radius:6px 6px 0 0}
+.mdo-review-tabs button{padding:12px 15px 10px;background:none;border:0;border-bottom:3px solid transparent;font-weight:700;color:#526e93;font-size:13px}
+.mdo-review-tabs button.active{border-color:#0758ce;color:#0758ce}
+.mdo-review-columns{display:grid;grid-template-columns:minmax(0,2fr) minmax(255px,.94fr);gap:12px;align-items:start}
+.mdo-review-pane{padding:14px;min-height:365px}
+.mdo-data-table th:nth-child(n+2),.mdo-data-table td:nth-child(n+2){text-align:center}
+.mdo-data-table td:first-child{min-width:185px}
+.mdo-data-table th{font-size:12.5px}
+.mdo-data-table td{padding:15px 10px}
+.mdo-current{font-weight:750;color:#173966}
+.mdo-row-note{display:block;color:#586e88;font-size:11.5px;font-weight:400;margin-top:4px}
+.mdo-validation{display:inline-block;font-size:11.5px;font-weight:750;padding:5px 8px;border-radius:5px}
+.mdo-validation.valid{background:#dff7e9;color:#147c49}
+.mdo-validation.changed{background:#fff2ce;color:#8f6605}
+.mdo-validation.missing{background:#ffe8e8;color:#bf263b}
+.mdo-comparison-note{font-size:12.5px;color:#596d87;margin-top:14px}
+.mdo-attention{display:flex;align-items:flex-start;gap:8px;border-radius:6px;background:#fff8e4;color:#a56800;padding:12px;margin-top:14px}
+.mdo-attention strong{font-size:12.5px}
+.mdo-attention p{margin:3px 0 0;font-size:12.5px;color:#795d21}
+.mdo-data-foot{border-top:1px solid #e9eff6;display:flex;align-items:center;gap:6px;color:#566d8a;margin-top:14px;padding-top:12px;font-size:12.5px}
+.mdo-decision{padding:18px 16px 16px;position:sticky;top:85px}
+.mdo-decision h2,.mdo-review-pane h2{font-size:15px;font-weight:750;margin:0 0 8px;color:#13335b}
+.mdo-decision p{color:#5a6e89;font-size:12.5px;margin-bottom:20px}
+.mdo-decision label{font-size:12.5px;font-weight:700;color:#315079;display:block;margin-bottom:7px}
+.mdo-decision textarea{border:1px solid #d9e5f3;background:#f5f8fd;color:#1b385c;border-radius:6px;width:100%;resize:vertical;padding:12px;font-size:13px;min-height:103px;outline:0}
+.mdo-decision textarea:focus{border-color:#1463d0;background:white}
+.mdo-charcount{display:block;text-align:right;font-size:11.5px;color:#596c89;margin-bottom:10px}
+.mdo-deadline input{margin-top:5px;display:block;width:100%;padding:9px;border:1px solid #d7e3f2;border-radius:5px}
+.mdo-decision-buttons{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.mdo-decision-buttons button{display:flex;justify-content:center;align-items:center;gap:9px;width:100%;border:0;border-radius:5px;color:#fff;font-weight:750;font-size:13px;padding:11px}
+.mdo-forward{background:#095bd0}
+.mdo-return{background:#d22126}
+.mdo-decision-buttons button:disabled{opacity:.5}
+.mdo-cancel-return{border:0;background:none;color:#526c8f;font-size:12.5px;margin-top:9px;width:100%}
+.mdo-decision-foot{display:flex;align-items:center;gap:8px;border-top:1px solid #edf1f7;margin-top:16px;padding-top:13px;font-size:11.5px;color:#5a6e85}
+.mdo-back{display:inline-flex;align-items:center;gap:7px;border:1px solid #bed3ec;background:#fff;color:#264c80;border-radius:5px;padding:8px 11px;margin-top:12px;font-weight:650;font-size:12.5px}
+.mdo-review-pane h2.mdo-doc-heading{margin:22px 0 11px}
+.mdo-history-list,.mdo-approval-steps{display:flex;flex-direction:column;gap:10px}
+.mdo-event{display:flex;gap:11px;padding:10px;border:1px solid #e6edf7;border-radius:6px}
+.mdo-event>svg{color:#13965c;flex:none}
+.mdo-event div{flex:1;min-width:0}
+.mdo-event strong{display:block;font-size:13px}
+.mdo-event small{display:block;color:#526c8b;font-size:11.5px;margin-top:3px}
+.mdo-event p{font-size:12.5px;margin:8px 0 0;color:#587294}
+.mdo-files{display:flex;flex-direction:column;gap:7px}
+.mdo-files>div{padding:10px;border:1px solid #e1eaf6;border-radius:6px;display:flex;gap:9px;align-items:center}
+.mdo-files span{flex:1;overflow-wrap:anywhere}
+.mdo-approval-step{display:flex;gap:12px;align-items:center;background:#fafcff;border:1px solid #e8eef7;padding:10px;border-radius:6px}
+.mdo-approval-step>span{display:grid;place-items:center;background:#cedaeb;color:#3e658f;font-weight:750;border-radius:50%;height:25px;width:25px}
+.mdo-approval-step.current>span{background:#0c5ed4;color:#fff}
+.mdo-approval-step strong{display:block;font-size:13px}
+.mdo-approval-step small{display:block;font-size:11.5px;color:#596d89}
+.mdo-muted{color:#586e8a;font-size:12.5px;line-height:1.6}
+.mdo-processed .mdo-filter-strip{display:flex;align-items:end;gap:12px;margin-bottom:15px}
+.mdo-filter-strip .mdo-search{max-width:360px}
+.mdo-filter-strip>label:not(.mdo-search){min-width:146px}
+.mdo-confirmation{display:flex;gap:10px;align-items:center;border:1px solid #bee9d0;background:#effaf3;color:#156844;border-radius:6px;padding:10px;margin-bottom:11px}
+.mdo-confirmation strong{display:block;font-size:13px}
+.mdo-confirmation small{display:block;font-size:12.5px}
+.mdo-error{display:flex;gap:9px;align-items:flex-start;margin-bottom:11px;background:#fff0f0;color:#a22d32;border:1px solid #f3ced0;border-radius:6px;padding:10px 12px;font-size:13px;overflow-wrap:anywhere}
+.mdo-loading{min-height:100px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:#547098}
+@media(max-width:1000px){.mdo-review-columns{grid-template-columns:minmax(0,1fr)}.mdo-decision{position:static}.mdo-org-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.mdo-org-grid{grid-template-columns:1fr}.mdo-source-head{align-items:flex-start;flex-wrap:wrap}.mdo-source-head .mdo-select-compact{width:100%}.mdo-review-heading{flex-wrap:wrap}.mdo-pager{flex-wrap:wrap}.mdo-toggle button{padding:10px 5px;font-size:12.5px}.mdo-status-tabs{gap:5px}.mdo-review-tabs button{font-size:11.5px;padding:10px 7px}.mdo-filter-strip{flex-wrap:wrap}}
+
+.mdo-dimension-details{margin-top:10px;border-top:1px dashed #dfebfa;padding-top:6px;color:#56759a;font-weight:400}
+.mdo-dimension-details summary{font-size:11.5px;color:#105bb6;cursor:pointer;white-space:nowrap}
+.mdo-dimension-category{border-radius:5px;background:#f5f8fe;padding:7px;margin-top:7px}
+.mdo-dimension-category>strong{display:block;font-size:11.5px;color:#1d5088;margin-bottom:5px}
+.mdo-dimension-category>span{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;border-top:1px solid #e6edf7;padding:4px 0}
+.mdo-dimension-category>small{display:block;font-size:11.5px;margin-top:4px}
+.mdo-dim-good{color:#198454}.mdo-dim-bad{color:#b42338}
+/* Round institution pictures (approved 27 Oct 2026). */
+.mdo-org-logo{border-radius:50%;background:#fff}
+.mdo-org-logo img{width:80%;height:80%;padding:0}
+/* Dataset priority (MDO, API #100) */
+.mdo-priority{display:inline-block;font-size:12px;font-weight:700;border-radius:20px;padding:3px 10px;white-space:nowrap}
+.mdo-priority-high{background:#fdeceb;color:#b42318}
+.mdo-priority-medium{background:#fff6d6;color:#8a6a00}
+.mdo-priority-low{background:#e8f1fd;color:#0b5bd3}
+.mdo-priority-none{background:#eef1f6;color:#5b6478}
+.mdo-priority-form{text-align:left;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.mdo-priority-form p{margin:0 0 6px;color:#14213d}.mdo-priority-form p span{color:#5b6478;font-size:13px}
+.mdo-priority-form label{font-weight:600;color:#0a2a5c;margin-top:4px}.mdo-priority-form label b{color:#b42318}
+.mdo-pager div{align-items:center}.mdo-pager .vw-page-size{margin-left:8px}

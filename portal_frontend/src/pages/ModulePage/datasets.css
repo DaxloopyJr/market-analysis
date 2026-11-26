@@ -1,0 +1,290 @@
+/* FILE: src/pages/ModulePage/datasets.css
+ * Approved REV26 Dataset Management reference; local styles only.
+ * Bordered rows and columns match Delegations and Administration tables.
+ * Do not alter global sidebar/topbar/footer or other module's CSS. */
+.ds-page{--ds-ink:#142e55;--ds-border:#cbd8e8;--ds-blue:#075ef7;min-width:0}
+.ds-page .vim-heading{align-items:center}
+.ds-toolbar{padding:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ds-toolbar .vim-search-field{max-width:460px;flex:2 1 220px}
+.ds-toolbar select{max-width:220px;flex:1 1 145px}
+.ds-toolbar .btn{white-space:nowrap}
+.ds-page .vim-table{min-width:1160px}
+.ds-page .vim-table th,.ds-page .vim-table td{border:1px solid #d1deec!important;vertical-align:middle;font-size:13px}
+.ds-page .vim-table th{background:#f1f6fd!important;color:#15375e}
+.ds-page .vim-table td{padding:10px 9px!important}
+.ds-page .vim-table tr:hover td{background:#f9fcff}
+.ds-status{display:inline-block;padding:5px 8px;border-radius:4px;font-weight:700;font-size:12.5px;white-space:nowrap}
+.ds-green{color:#087441;background:#d6f7e2}.ds-yellow{color:#856013;background:#fff1c9}
+.ds-grey{color:#6a7482;background:#eef1f4}.ds-blue{color:#155eae;background:#e4f0ff}
+.ds-priority{color:#bf2631;background:#ffe2e5}
+.ds-row-actions{display:flex;gap:5px;align-items:center;white-space:nowrap}
+.ds-row-actions button{display:grid;place-items:center;width:28px;height:29px;border:1px solid #d9e5f2;border-radius:4px;background:#f1f5fb;color:#1c4778;cursor:pointer}
+.ds-row-actions button:hover{background:#e1edfc}.ds-row-actions .ds-red-button{color:#b82634;background:#ffe9eb}
+.ds-row-actions button:disabled{opacity:.3;cursor:not-allowed}
+.ds-backdrop{z-index:1070}
+.ds-modal{--ds-border:#cbd8e8;width:min(1280px,calc(100vw - 32px))!important;max-width:1280px!important;max-height:94vh;display:flex;flex-direction:column;overflow:hidden;background:#fff;color:#152d52}
+.ds-modal .vim-dialog-header{flex:none;border-bottom:1px solid #e2eaf4;padding:16px 21px}
+.ds-modal .vim-dialog-header h2{font-size:19px}
+.ds-steps{display:flex;flex:none;gap:6px;padding:13px 19px;border-bottom:1px solid #e7edf5;overflow-x:auto}
+.ds-steps button{border:0;border-bottom:3px solid transparent;padding:9px 8px;flex:1;min-width:150px;display:flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;background:transparent;color:#5e6c81;font-weight:650;font-size:13px}
+.ds-steps button.ds-step-active{border-color:#075ef7;color:#0752d4}
+.ds-steps button:disabled{opacity:.5}
+.ds-step-number{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1px solid #bfd1e6;flex:none;font-weight:700}
+.ds-steps button.ds-step-active .ds-step-number{background:#075ef7;color:#fff;border-color:#075ef7}
+.ds-modal-content{min-height:120px;overflow:auto;flex:1}
+.ds-step-body{padding:18px 21px 24px}
+.ds-step-body h3{font-size:18px;margin:0 0 5px;color:#14365c;font-weight:750}
+.ds-step-body h4{font-size:14px;margin:0 0 12px;color:#143b6a;font-weight:720}
+.ds-muted{font-size:13px;color:#576e85;line-height:1.5}
+.ds-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 17px}
+.ds-span2{grid-column:1/-1}.ds-field{min-width:0;display:flex;flex-direction:column;gap:5px}
+.ds-label{font-weight:720;color:#173863;font-size:13px}
+.ds-required{color:#e52c49}
+.ds-field .form-control,.ds-field .form-select{font-size:13px;min-height:36px;border-color:#cad9eb;color:#274869}
+.ds-field .form-control:focus,.ds-field .form-select:focus{border-color:#0d67ee;box-shadow:0 0 0 2px #2975eb28}
+.ds-field textarea.form-control{min-height:72px}
+.ds-field .ds-readonly{background:#f1f5fa;color:#5b6d82}
+.ds-field .ds-multi{min-height:70px}
+.ds-banner{margin:12px 0;padding:10px 12px;display:flex;align-items:flex-start;gap:8px;border-radius:5px;font-size:13px;line-height:1.5;background:#edf5ff;color:#3e5c7d;border:1px solid #d5e5fb}
+.ds-banner svg{flex:none;margin-top:1px}.ds-banner-warning{background:#fff8e9;color:#77582a;border-color:#f5db9b}
+.ds-checks{border:1px solid #e0e9f4;background:#f7faff;border-radius:5px;display:flex;flex-wrap:wrap;gap:11px;padding:9px 11px;font-size:13px}
+.ds-checks label,.ds-toggle{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:#234569;cursor:pointer}
+.ds-checks input,.ds-toggle input{accent-color:#075ef7}
+.ds-tag-box{border:1px solid #c9d9eb;min-height:38px;border-radius:5px;display:flex;flex-wrap:wrap;align-items:center;padding:4px 7px;gap:5px}
+.ds-tag{font-size:12.5px;display:inline-flex;align-items:center;gap:5px;color:#1559b5;border-radius:12px;background:#e9f2ff;padding:4px 7px;font-weight:700}
+.ds-tag button{border:0;background:transparent;color:#295a8c;padding:0 2px;font-size:15px;line-height:1}
+.ds-tag-box input{flex:1;min-width:175px;outline:0;border:0;font-size:13px;padding:4px}
+.ds-consumer-picker{position:relative}
+.ds-suggestions{position:absolute;z-index:10;top:100%;left:0;background:#fff;border:1px solid #cfdcec;box-shadow:0 7px 20px #192f4728;border-radius:5px;width:100%;max-height:185px;overflow:auto}
+.ds-suggestions button{display:block;width:100%;padding:8px 12px;text-align:left;font-size:13px;border:0;background:white;color:#264469}
+.ds-suggestions button:hover{background:#edf5ff}
+.ds-modal-footer{flex:none;border-top:1px solid #e2eaf3;padding:12px 20px;background:#fcfdff;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.ds-modal-footer small{font-size:12.5px;color:#5c6b81}
+.ds-modal .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px}
+.ds-two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ds-ind-layout{display:grid;grid-template-columns:1.12fr .88fr;gap:14px}
+.ds-subcard{padding:16px;background:#f9fbfe;border:1px solid #dce7f5;border-radius:6px;min-width:0}
+.ds-table-scroll{width:100%;overflow-x:auto}
+.ds-table{border-collapse:collapse;margin-bottom:0;min-width:460px;background:#fff}
+.ds-table th,.ds-table td{border:1px solid #ccdcec!important;padding:9px;font-size:13px;vertical-align:middle;color:#23476d}
+.ds-table th{background:#f0f6fd!important;font-weight:750;color:#17395f}
+.ds-table .ds-muted{text-align:center}
+.ds-row-between,.ds-row-end{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.ds-row-end{justify-content:flex-end}
+.ds-dimension-form{border:1px solid #d6e6fa;background:#f1f7ff;padding:12px;border-radius:5px;display:flex;flex-direction:column;gap:9px}
+.ds-option-row{display:flex;gap:8px;align-items:center;margin-bottom:5px}
+.ds-kv{margin:0}.ds-kv div{display:grid;grid-template-columns:40% 1fr;border-bottom:1px solid #e0eaf6;padding:7px 0;gap:8px;font-size:13px}
+.ds-kv dt{color:#5a6d85;font-weight:600}.ds-kv dd{margin:0;color:#274b77;overflow-wrap:anywhere}
+.ds-progress-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #e2eaf4;font-size:13px}
+@media(max-width:900px){.ds-two-col,.ds-ind-layout{grid-template-columns:1fr}.ds-modal{max-height:94vh}.ds-steps button{min-width:142px}.ds-step-body{padding:15px}}
+@media(max-width:540px){.ds-grid{grid-template-columns:1fr}.ds-modal-footer{align-items:flex-start;flex-direction:column}.ds-modal-footer>div{align-self:flex-end}.ds-steps{padding:9px}.ds-modal .vim-dialog-header{padding:11px}.ds-step-body{padding:12px}}
+
+/* NEXT-button validation summary: visible above step controls. */
+.ds-step-message{display:flex;align-items:flex-start;gap:9px;margin:12px 21px 0;padding:11px 14px;border:1px solid #f2cf88;border-radius:6px;background:#fff8e8;color:#7b5421;font-size:13px;line-height:1.5}
+.ds-step-message svg{flex:none}
+
+/* Dataset Add/Edit stepper: check marks reflect confirmed saves, like Submission.
+ * Completed + currently selected stages both retain their respective states.
+ * All selectors are scoped to ds-steps; other workflows remain unchanged. */
+.ds-steps button.ds-step-complete {color:#0d7546;font-weight:750}
+.ds-steps button.ds-step-complete .ds-step-number {
+  border-color:#15945e;background:#e1f8ed;color:#108254;
+}
+.ds-steps button.ds-step-complete.ds-step-active {border-bottom-color:#075ef7;color:#0752d4}
+.ds-steps button.ds-step-complete.ds-step-active .ds-step-number {
+  background:#0d8f58;border-color:#0d8f58;color:#fff;
+}
+.ds-steps .ds-step-number svg {display:block;flex:none}
+.ds-steps button:not(:disabled):focus-visible {outline:2px solid #075ef7;outline-offset:-3px;border-radius:4px}
+
+/* Submission-style connected stepper: green circle + white tick for a saved draft,
+ * blue circle for the current unsaved step, grey for future. Completed takes
+ * precedence when revisiting a saved step. Scope limited to Dataset wizard. */
+.ds-steps{align-items:center;gap:0;background:#fff;border-radius:8px}
+.ds-steps button{position:relative;border-bottom:0!important;justify-content:flex-start;padding:12px 10px;min-width:160px;flex:1 1 auto;overflow:visible}
+.ds-steps button:not(:last-child)::after{content:'';position:absolute;left:calc(100% - 30px);right:-3px;top:50%;height:2px;background:#cee0f5;transform:translateY(-50%);z-index:0;pointer-events:none}
+.ds-steps button .ds-step-title,.ds-steps button .ds-step-number{position:relative;z-index:1}
+.ds-steps .ds-step-number{height:34px;width:34px;border-radius:50%;background:#f4f8ff;border:2px solid #d4e2f3;color:#5d6e85;font-weight:750;font-size:13.5px}
+.ds-steps button.ds-step-active:not(.ds-step-complete) .ds-step-number{background:#1464c9;border-color:#1464c9;color:white;box-shadow:0 0 0 3px #dceafa}
+.ds-steps button.ds-step-complete .ds-step-number,
+.ds-steps button.ds-step-complete.ds-step-active .ds-step-number{background:#13945a;border-color:#13945a;color:#fff;box-shadow:0 0 0 3px #e3f7ec}
+.ds-steps button.ds-step-complete{color:#177649}
+.ds-steps button.ds-step-active:not(.ds-step-complete){color:#1158bf}
+.ds-dimension-options{display:flex;gap:7px;flex-wrap:wrap;padding:10px 0}
+@media(max-width:860px){.ds-steps button{min-width:160px}.ds-steps button:not(:last-child)::after{display:none}}
+
+/* REV26 COMPACT DATASET BUILDER — approved Basic Information visual, scoped to dialog.
+ * Desktop: compact two-column form; mobile: natural single column.
+ * No impact on Sidebar, Topbar, Footer or action menus. */
+.ds-modal{box-shadow:0 24px 70px #0c274d35;border-radius:13px!important;border:1px solid #d9e7f8}
+.ds-modal .vim-dialog-header{background:#fff;padding:13px 22px}
+.ds-modal .vim-dialog-header h2{font-size:19px;color:#0b2c5b;letter-spacing:-.3px}
+.ds-basic-clean{padding:14px 22px 16px;background:linear-gradient(140deg,#fff,#fbfdff)}
+.ds-basic-heading{display:flex;gap:11px;align-items:center;margin:1px 0 12px}
+.ds-basic-heading h3{font-size:17px;font-weight:800;margin:0;color:#082c61}
+.ds-basic-heading p{font-size:13px;color:#556e8f;margin:2px 0 0}
+.ds-section-glyph{height:34px;width:34px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#e7f1ff;color:#0b66ee;border:1px solid #d9e8ff;flex-shrink:0}
+.ds-institution-card{display:flex;align-items:center;gap:13px;padding:11px 14px;margin:0 0 15px;border:1px solid #9fc7fd;border-radius:8px;background:linear-gradient(100deg,#f2f7ff,#fff);min-height:62px}
+.ds-institution-symbol{display:grid;place-items:center;background:#e1eeff;border-radius:9px;width:39px;height:39px;color:#0966db;flex-shrink:0}
+.ds-institution-card>div:nth-child(2){display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.ds-institution-card strong{color:#153a71;font-size:13.5px;overflow-wrap:anywhere}
+.ds-autofill-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:6px;background:#ddf7e9;color:#0b8050;font-weight:750;font-size:12.5px;white-space:nowrap}
+.ds-basic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 20px;align-items:start}
+.ds-basic-clean .ds-label{color:#0b2c5d;font-size:13px;font-weight:760}
+.ds-basic-clean .ds-field .form-control,.ds-basic-clean .ds-field .form-select{font-size:13.5px;min-height:40px;border-radius:7px;border-color:#d0def0;background:#fff}
+.ds-basic-clean .ds-field textarea.form-control{min-height:77px;resize:vertical}
+.ds-basic-clean .ds-field .ds-multi{min-height:77px}
+.ds-basic-spacer{min-height:0}
+.ds-officer-controls{display:flex;align-items:center;gap:12px}
+.ds-officer-controls .form-select{min-width:0;flex:1}
+.ds-self-assign{display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:13px;color:#214b79;cursor:pointer}
+.ds-self-assign input{accent-color:#0766e7}
+.ds-field-note{color:#805d3a;font-size:12.5px}
+.ds-method-frequency{grid-column:1/-1;display:grid;grid-template-columns:minmax(260px,.9fr) minmax(290px,1.1fr);gap:18px;align-items:start}
+.ds-method-frequency-system{grid-template-columns:minmax(230px,.8fr) minmax(230px,1fr) minmax(280px,1.2fr);gap:13px}
+.ds-method-choices,.ds-frequency-choices{display:flex;gap:7px;flex-wrap:wrap;min-height:41px}
+.ds-method-choice,.ds-frequency-choice{border:1px solid #cddcef;border-radius:7px;padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:40px;color:#1b477d;font-weight:650;background:#fff;cursor:pointer;font-size:13px;white-space:nowrap;transition:background-color .12s ease,border-color .12s ease}
+.ds-method-choice{flex:1}
+.ds-frequency-choice{flex:1 1 auto}
+.ds-method-choice input,.ds-frequency-choice input{accent-color:#1267e8;cursor:pointer}
+.ds-method-choice.is-selected,.ds-frequency-choice.is-selected{background:#eaf3ff;border-color:#176ef4;box-shadow:0 0 0 1px #176ef436;color:#0754ce}
+.ds-basic-clean .ds-tag-box{border-radius:7px;background:#fff}
+.ds-step-body:not(.ds-basic-clean) h3{color:#10396d}
+.ds-ind-layout>.ds-subcard,.ds-review-panels>.ds-subcard{background:#fff;border:1px solid #d5e4f4;border-radius:9px;box-shadow:0 2px 12px #193e7309}
+.ds-step-body:not(.ds-basic-clean) .ds-subcard{border-radius:9px}
+.ds-review-intro{display:flex;align-items:center;gap:9px;background:#edf5ff;color:#1258bd;border:1px solid #b5d1fe;border-radius:7px;margin:0 0 12px;padding:11px 13px;font-size:13.5px}
+.ds-review-intro svg{flex-shrink:0}
+.ds-review-clean .ds-two-col{gap:14px}
+.ds-review-clean .ds-review-indicators{background:#fff}
+.ds-review-clean .ds-kv div{grid-template-columns:38% 1fr}
+.ds-modal-footer{border-top:1px solid #e0eaf7;background:#fff}
+@media(max-width:1150px){.ds-method-frequency-system{grid-template-columns:1fr 1fr}.ds-method-frequency-system>.ds-field:last-child{grid-column:1/-1}}
+@media(max-width:760px){.ds-basic-grid,.ds-method-frequency,.ds-method-frequency-system{grid-template-columns:1fr}.ds-method-frequency-system>.ds-field:last-child{grid-column:auto}.ds-basic-spacer{display:none}.ds-basic-clean{padding:13px}.ds-institution-card{flex-wrap:wrap}.ds-officer-controls{flex-wrap:wrap}.ds-officer-controls .form-select{flex:1 1 100%}}
+/* REV26 approved refinements: hide subsector when no children, editable multi-dimension categories. */
+.ds-dimension-manager{border-top:1px solid #d7e4f2;margin-top:6px;padding-top:15px;display:grid;gap:12px}
+.ds-dimension-manager .ds-row-between{flex-wrap:wrap;gap:10px}
+.ds-category-card{border:1px solid #cbdff7;border-radius:10px;background:#f8fbff;padding:13px;display:grid;gap:12px}
+.ds-category-card>.ds-row-between strong{font-size:13px;color:#1c456b;display:flex;gap:8px;align-items:center}
+.ds-category-card .ds-field{margin-bottom:0}
+.ds-dimension-tags{display:flex;gap:5px;flex-wrap:wrap;max-width:260px}
+.ds-dimension-empty{font-size:13px;background:#f5f9fe;color:#596e84;border:1px dashed #bed4ee;border-radius:8px;padding:12px}
+.ds-indicator-config{min-width:0}
+@media(max-width:750px){.ds-category-card .ds-grid{grid-template-columns:1fr}.ds-category-card .ds-span2{grid-column:1}}
+
+/* REV26 editor accessibility: read-only has an actionable explanation; navigation is independent of saving. */
+.ds-edit-lock-notice{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 13px;margin:10px 18px;border:1px solid #e9d9b3;background:#fffaf0;border-radius:8px;color:#785623;font-size:13px}
+.ds-edit-lock-notice>div{display:flex;flex-direction:column;gap:3px}
+.ds-edit-lock-notice strong{font-size:13px;color:#684719}
+.ds-edit-lock-notice .btn{white-space:nowrap;flex:none}
+.ds-steps button:not(:disabled){cursor:pointer}
+@media(max-width:650px){.ds-edit-lock-notice{flex-direction:column;align-items:flex-start}.ds-edit-lock-notice .btn{width:100%}}
+
+/* ===== MODERN DATASET MANAGEMENT (approved mockup 28 Oct 2026) — overrides only ===== */
+.ds-page.mu-page .mu-head{margin-bottom:12px}
+.ds-page .ds-list-card{padding:14px 16px;border-radius:14px;box-shadow:none}
+.ds-page .ds-toolbar.mu-toolbar{padding:0 0 10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ds-page .ds-search{max-width:340px;margin-left:auto}
+.ds-page .ds-refresh{width:40px;padding:0;justify-content:center}
+.ds-page .ds-table.mu-table{min-width:0}
+.ds-page .ds-table.mu-table th,.ds-page .ds-table.mu-table td{border:0!important;border-bottom:1px solid #eef1f6!important;padding:10px 8px;font-size:13px;color:#14213d}
+.ds-page .ds-table.mu-table th{background:#f5f8fc!important;color:#5b6478;font-weight:600}
+.ds-page .ds-code{display:block;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:#5b6478;font-weight:400}
+.ds-freq-list{display:inline-flex;gap:4px;flex-wrap:wrap}
+.ds-freq{font-size:11.5px;border:1px solid #e6eaf2;border-radius:20px;padding:1px 8px;background:#f8fafd;white-space:nowrap}
+.ds-page .ds-status,.ds-modal .ds-status{border-radius:20px;padding:3px 9px;font-weight:600;font-size:11.5px}
+.ds-priority-medium{color:#8a6a00!important;background:#fff6d6!important}
+.ds-priority-low{color:#0f7a2f!important;background:#e5f6ea!important}
+.ds-priority-none{color:#5b6478!important;background:#eef1f6!important}
+.ds-violet{color:#5b4bd6;background:#ede9fe}
+.ds-page .mu-table-foot{display:flex;justify-content:space-between;align-items:center;padding:10px 0 0;border:0;background:transparent}
+.ds-charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+
+/* dialog */
+.ds-modal{border-radius:18px!important;background:#f4f7fb}
+.ds-modal .ds-dialog-head{display:flex;align-items:center;gap:12px;padding:14px 20px}
+.ds-dialog-icon{width:44px;height:44px;border-radius:50%;background:#e8f1fd;color:#0b5bd3;display:grid;place-items:center;flex:none}
+.ds-dialog-titles{min-width:0;flex:1}.ds-dialog-titles h2{margin:0;font-size:17px!important}.ds-dialog-titles p{margin:2px 0 0;font-size:12.5px;color:#5b6478}
+.ds-modal .ds-dialog-head .vim-icon-button{border-radius:50%;width:36px;height:36px}
+.ds-modal .ds-steps{background:#fff;border-radius:0;padding:10px 20px}
+.ds-modal .ds-steps .ds-step-number{width:28px;height:28px;border:0;background:#eef1f6;font-size:12.5px}
+.ds-modal .ds-steps button.ds-step-active:not(.ds-step-complete) .ds-step-number{background:#0b5bd3;box-shadow:0 0 0 4px #e8f1fd}
+.ds-modal .ds-steps button.ds-step-complete .ds-step-number{background:#1eb53a;box-shadow:none}
+.ds-modal .ds-steps button.ds-step-complete{color:#14213d;font-weight:600}
+.ds-modal .ds-steps button:not(:last-child)::after{height:2px;background:#e6eaf2}
+.ds-modal .ds-steps button.ds-step-complete:not(:last-child)::after{background:#1eb53a}
+.ds-modal .ds-step-body{padding:14px 20px 18px}
+.ds-modal .ds-modal-footer{background:#fff}
+.ds-modal .btn{border-radius:20px;height:38px;padding:0 16px;font-weight:600}
+.ds-modal .btn-primary{background:linear-gradient(135deg,#0b5bd3,#0a2a5c);border:0}
+.ds-modal .btn-sm{height:32px;padding:0 12px}
+.ds-modal .form-control,.ds-modal .form-select{border-radius:12px!important;border-color:#e6eaf2;min-height:40px;font-size:13.5px}
+.ds-modal .ds-label{font-weight:700;color:#0a2a5c;font-size:12.5px}
+.ds-modal .ds-edit-lock-notice{border-radius:12px;margin:12px 20px 0;background:#fff8e8;border-color:#f6e5b8}
+.ds-modal .ds-edit-lock-notice .btn{background:#fff}
+.ds-card{background:#fff;border:1px solid #e6eaf2;border-radius:14px;padding:14px 16px;min-width:0}
+.ds-card-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}.ds-card-head h3{margin:0!important;font-size:15px!important;color:#0a2a5c}
+.ds-dot{width:24px;height:24px;border-radius:50%;background:#e8f1fd radial-gradient(circle,#0b5bd3 0 4px,transparent 5px);display:inline-block;flex:none}
+.ds-count{font-size:11.5px;background:#e8f1fd;color:#0b5bd3;border-radius:20px;padding:1px 8px;font-weight:700}
+.ds-unsaved{margin-left:auto;font-size:12px;color:#0b5bd3;font-weight:600}
+
+/* step 1 */
+.ds-basic-split{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:12px;align-items:start}
+.ds-basic-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.ds-basic-clean .ds-basic-heading{margin-bottom:10px}
+.ds-basic-clean .ds-basic-heading h3{font-size:15px;margin:0}
+.ds-basic-clean .ds-basic-heading p{display:none}
+.ds-basic-clean .ds-section-glyph{width:24px;height:24px;border-radius:50%;background:#e8f1fd radial-gradient(circle,#0b5bd3 0 4px,transparent 5px)}
+.ds-basic-clean .ds-section-glyph svg{display:none}
+.ds-basic-clean .ds-institution-card{border-radius:12px;border-color:#d6e6fb;background:#f1f7ff}
+.ds-basic-clean .ds-institution-symbol{border-radius:50%;background:#fff;border:1px solid #e6eaf2;overflow:hidden}
+.ds-basic-clean .ds-institution-symbol img{width:76%;height:76%;object-fit:contain}
+.ds-autofill-tag{border-radius:20px}
+.ds-basic-split .ds-basic-grid > .ds-field:has(textarea),.ds-basic-split .ds-basic-grid > .ds-field:has(.ds-consumer-picker){grid-column:1/-1}
+.ds-basic-side .ds-method-frequency{display:flex;flex-direction:column;gap:10px}
+.ds-basic-side .ds-method-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ds-basic-side .ds-method-choice{border-radius:12px!important;padding:10px 12px!important;display:flex!important;align-items:flex-start!important;gap:8px;min-height:0!important;justify-content:flex-start!important}
+.ds-basic-side .ds-method-choice span b{display:block;color:#0a2a5c}.ds-basic-side .ds-method-choice span small{color:#5b6478;font-size:11.5px;font-weight:400}
+.ds-basic-side .ds-method-choice.is-selected{border:2px solid #0b5bd3!important;background:#f4f8ff!important}
+.ds-basic-side .ds-frequency-choices{display:flex!important;flex-wrap:wrap;gap:6px}
+.ds-basic-side .ds-frequency-choice{border-radius:20px!important;padding:6px 14px!important;min-height:0!important;font-weight:600;font-size:12.5px;display:inline-flex!important;align-items:center;gap:4px;width:auto!important;flex:none!important}
+.ds-basic-side .ds-frequency-choice input{position:absolute;opacity:0;width:1px;height:1px}
+.ds-basic-side .ds-frequency-choice.is-selected{background:#0b5bd3!important;border-color:#0b5bd3!important;color:#fff!important}
+.ds-basic-side .ds-officer-controls{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.ds-tag-box{border-radius:12px!important}.ds-tag{border-radius:20px!important;background:#e8f1fd!important;color:#0b5bd3!important;font-weight:600}
+
+/* step 2 */
+.ds-modal .ds-ind-layout{grid-template-columns:minmax(300px,.8fr) minmax(0,1.5fr);gap:12px}
+.ds-modal .ds-subcard{background:#fff;border:1px solid #e6eaf2;border-radius:14px}
+.ds-modal .ds-subcard h4{display:flex;align-items:center;gap:8px;font-size:15px;color:#0a2a5c}
+.ds-link-btn{color:#0b5bd3!important;font-weight:600;text-decoration:none!important;background:none!important;border:0!important}
+.ds-ind-list{display:flex;flex-direction:column;gap:8px}
+.ds-ind-item{display:flex;align-items:center;gap:10px;border:1px solid #e6eaf2;border-radius:12px;padding:10px 12px;background:#fff;transition:box-shadow .2s}
+.ds-ind-item:hover{box-shadow:0 6px 14px rgba(10,42,92,.08)}
+.ds-ind-item.is-open{border-color:#0b5bd3;background:#f4f8ff;box-shadow:inset 3px 0 0 #0b5bd3}
+.ds-ind-no{width:26px;height:26px;border-radius:50%;background:#e8f1fd;color:#0b5bd3;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none}
+.ds-ind-text{flex:1;min-width:0}.ds-ind-text strong{display:block;font-size:13px;color:#14213d}
+.ds-ind-text .ds-dimension-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.ds-direction{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ds-direction-choice{border:1px solid #e6eaf2;border-radius:12px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;background:#fff;opacity:.85;cursor:not-allowed}
+.ds-direction-choice input{margin-top:3px}
+.ds-direction-choice b{display:block;color:#0a2a5c;font-size:12.5px}.ds-direction-choice small{color:#5b6478;font-size:11.5px}
+.ds-direction-choice.is-selected{border:2px solid #0b5bd3;background:#f4f8ff}
+.ds-modal .ds-dimension-manager{border:1px solid #e6eaf2;border-radius:12px;background:#fbfcfe;padding:12px}
+.ds-modal .ds-category-card{border-radius:12px;background:#fff;border:1px solid #e6eaf2}
+
+/* step 3 */
+.ds-review-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.ds-review-stats>div{background:#fff;border:1px solid #e6eaf2;border-radius:12px;padding:10px 12px;min-width:0}
+.ds-review-stats small{display:block;color:#5b6478;font-size:11.5px}.ds-review-stats b{font-size:15px;color:#0a2a5c;overflow-wrap:anywhere}
+.ds-modal .ds-kv div{border-color:#eef1f6}
+.ds-modal .ds-kv dd{color:#14213d;font-weight:600}
+.ds-modal .ds-subcard .ds-table th,.ds-modal .ds-subcard .ds-table td{border:0!important;border-bottom:1px solid #eef1f6!important;color:#14213d}
+.ds-modal .ds-subcard .ds-table th{background:#f5f8fc!important;color:#5b6478;font-weight:600}
+
+@media(max-width:1000px){.ds-basic-split,.ds-modal .ds-ind-layout,.ds-charts{grid-template-columns:1fr}.ds-review-stats{grid-template-columns:1fr 1fr}.ds-page .ds-search{margin-left:0;max-width:none;flex:1}}
+body[data-vw-theme="dark"] .ds-card,body[data-vw-theme="dark"] .ds-ind-item,body[data-vw-theme="dark"] .ds-review-stats>div,body[data-vw-theme="dark"] .ds-modal .ds-subcard,body[data-vw-theme="dark"] .ds-direction-choice{background:#16253b;border-color:#2b3d58}
+body[data-vw-theme="dark"] .ds-modal{background:#0f1b2d}
+.ds-direction-choice{opacity:1;cursor:pointer}.ds-direction-choice:has(input:disabled){opacity:.85;cursor:not-allowed}
+
+/* 5 Nov 2026: indicator list uses the full width until Add Indicator / Edit opens the form. */
+.ds-ind-layout.is-list-only{grid-template-columns:1fr}

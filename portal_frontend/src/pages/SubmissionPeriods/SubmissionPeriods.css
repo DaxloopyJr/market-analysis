@@ -1,0 +1,28 @@
+/* Scoped to main-content reporting periods; topbar/sidebar/footer unchanged. */
+.viwanda-periods-page{--period-border:#dbe5f2;color:var(--viwanda-text,#19395f)}
+.viwanda-periods-lead{font-size:13.5px;color:#576e86;margin:0 0 18px}
+.viwanda-periods-surface{padding:20px;border:1px solid var(--period-border);border-radius:12px}
+.viwanda-periods-toolbar{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin-bottom:18px}
+.viwanda-periods-toolbar>label{font-size:13px;font-weight:700;display:flex;flex-direction:column;gap:5px;min-width:135px;flex:1}
+.viwanda-periods-buttons{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.viwanda-periods-buttons .btn,.viwanda-periods-modal .btn{display:inline-flex;align-items:center;gap:6px}
+.viwanda-periods-status-note{display:flex;gap:8px;align-items:center;font-size:13px;background:#f0f6fe;border:1px solid #d4e4f6;border-radius:8px;padding:12px;margin:0 0 14px;color:#3c638d}
+.viwanda-periods-table{position:relative}.viwanda-periods-table table{width:100%;border-collapse:collapse;font-size:13px}
+.viwanda-periods-table th,.viwanda-periods-table td{border:1px solid var(--period-border);padding:12px 10px;vertical-align:middle}
+.viwanda-periods-table th{background:#f0f5fb;font-size:12.5px;font-weight:800;color:#294e77;white-space:nowrap}
+.viwanda-periods-table tr.period-is-past{opacity:.49;background:#f5f7fa}
+.viwanda-periods-table tr.period-is-past:hover{opacity:.85}
+.viwanda-periods-pill{display:inline-block;border-radius:20px;font-weight:700;font-size:11.5px;text-transform:capitalize;padding:5px 9px;background:#eff2f5;color:#526579}
+.viwanda-periods-pill.state-available{background:#e3f8ec;color:#087740}.viwanda-periods-pill.state-upcoming{background:#e6f1fc;color:#245a9c}.viwanda-periods-pill.state-past_due{background:#fff0dd;color:#9b6712}
+.viwanda-periods-actions{display:flex;align-items:center;gap:5px;white-space:nowrap}.viwanda-periods-actions button{height:30px;width:30px;display:grid;place-items:center;border:1px solid #cadbf0;background:#f8fbff;border-radius:5px;color:#1c5aa1}.viwanda-periods-actions button.danger{color:#be3344;background:#fff7f8;border-color:#f1c9d0}.viwanda-periods-actions button:disabled{opacity:.35;cursor:not-allowed}
+.viwanda-periods-pagination{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:10px;font-size:13px;color:#546d88}
+.viwanda-periods-pagination>div{display:flex;gap:8px}.viwanda-periods-pagination button{background:#fff;border:1px solid #cddbec;color:#1d5590;border-radius:6px;padding:5px 9px}.viwanda-periods-pagination button:disabled{opacity:.4}
+.viwanda-periods-modal-backdrop{position:fixed;inset:0;display:grid;place-items:center;z-index:1800;background:rgba(5,22,46,.55);padding:15px;overflow:auto}
+.viwanda-periods-modal{background:#fff;color:#1e3b5d;width:min(560px,100%);border-radius:13px;box-shadow:0 22px 70px #11254440;padding:22px;max-height:95vh;overflow:auto}
+.viwanda-periods-modal header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dbe5f2;padding-bottom:14px;margin-bottom:16px}.viwanda-periods-modal header h2{font-size:19px;font-weight:800;margin:0}.viwanda-periods-modal header button{background:transparent;border:0;color:#536e88}
+.viwanda-periods-modal form{display:flex;flex-direction:column;gap:15px}.viwanda-periods-modal p{font-size:13.5px;margin:0;color:#597493}.viwanda-periods-modal label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700}.viwanda-periods-input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.viwanda-periods-modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:10px}
+.viwanda-periods-reminder{border:1px solid #dce7f4;padding:15px;border-radius:8px;background:#f6f9fd;display:flex;flex-direction:column;gap:12px}.viwanda-periods-reminder .viwanda-periods-check{display:flex;flex-direction:row;align-items:center;gap:9px}.viwanda-periods-reminder small{font-size:12.5px;color:#8b6626;display:flex;align-items:start;gap:7px}
+.viwanda-periods-details dl>div{display:grid;grid-template-columns:40% 1fr;border-bottom:1px solid #e3ebf6;padding:10px 0;font-size:13px}.viwanda-periods-details dt{color:#566f8a}.viwanda-periods-details dd{margin:0;font-weight:700}.viwanda-periods-details>button{margin-top:18px}
+@media(max-width:760px){.viwanda-periods-input-row{grid-template-columns:1fr}.viwanda-periods-buttons{width:100%}.viwanda-periods-toolbar>label{min-width:calc(50% - 10px)}}
+/* Read-only global-scope message in Financial Year create dialog. */
+.viwanda-periods-global-note{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#eef6ff;border:1px solid #cee1f8;border-radius:8px;font-size:13px;color:#205b94}

@@ -1,0 +1,121 @@
+/**
+ * FILE: src/pages/ModulePage/referenceData.css
+ * SCOPE: ReferenceData.jsx only. Shared management table and modal styling
+ * are inherited from existing Admin/institutions.css and admin-table-borders.css.
+ * DO NOT alter the approved REV26 layout or modify global CSS in this module.
+ */
+.vim-ref-page .vim-ref-filters {
+  display: grid;
+  grid-template-columns: minmax(230px, 1fr) minmax(170px, 200px) auto;
+  align-items: center;
+  gap: 10px;
+}
+.vim-ref-page .vim-ref-filter-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #d8e2ef;
+  height: 38px;
+  border-radius: 6px;
+  background: white;
+  color: #60738c;
+  padding: 0 10px;
+}
+.vim-ref-page .vim-ref-filter-select select {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 13px;
+  width: 100%;
+  color: #435a72;
+}
+.vim-ref-page .vim-ref-filters > .btn {
+  height: 38px;
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+.vim-ref-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #f8fbfe;
+  border-block: 1px solid #e2e9f2;
+  font-size: 12.5px;
+  color: #5b6e85;
+}
+.vim-ref-info span:first-child { color: #1c4f86; font-weight: 750; letter-spacing: .06em; }
+.vim-ref-page .vim-ref-table { min-width: 920px; }
+.vim-ref-page .vim-ref-actions { white-space: nowrap; }
+.vim-ref-page .vim-ref-actions button { min-width: 30px; }
+.vim-ref-navigation {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.vim-ref-navigation .btn { display: inline-flex; align-items: center; gap: 7px; }
+.vim-ref-navigation-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid #dce6f2;
+  border-radius: 8px;
+  color: #345c82;
+  background: white;
+  font-size: 13px;
+}
+.vim-ref-navigation-type span { color: #5a6d82; }
+.vim-ref-pager {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #60738c;
+  gap: 12px;
+  font-size: 13px;
+  border-top: 1px solid #e2e9f2;
+}
+.vim-ref-pager-buttons { display: inline-flex; gap: 5px; }
+.vim-ref-pager-buttons button { display: inline-flex; align-items: center; justify-content: center; }
+.vim-ref-form-body { padding: 22px 24px; }
+.vim-ref-section-heading { font-size: 16px; font-weight: 700; margin: 0 0 16px; }
+.vim-ref-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.vim-ref-form-grid .vim-field { min-width: 0; }
+.vim-ref-full { grid-column: 1 / -1; }
+.vim-ref-help { font-size: 13px; color: #60738c; line-height: 1.5; margin: 15px 0 0; }
+@media (max-width: 780px) {
+  .vim-ref-page .vim-ref-filters { grid-template-columns: minmax(0, 1fr) 170px; }
+  .vim-ref-page .vim-ref-filters > .btn { grid-column: 1 / -1; justify-self: start; }
+  .vim-ref-form-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .vim-ref-page .vim-ref-filters { grid-template-columns: 1fr; }
+  .vim-ref-page .vim-ref-filters > .btn { grid-column: auto; }
+  .vim-ref-form-body { padding: 15px; }
+}
+
+/* Approved reference-management design: independent Reference Types / Values tabs. */
+.vim-ref-tabs{display:flex;align-items:stretch;gap:8px;margin:7px 0 0;padding:0 14px;border-bottom:1px solid #d6e3f2;background:#fff;border-radius:7px 7px 0 0}
+.vim-ref-tabs button{background:transparent;border:0;border-bottom:3px solid transparent;color:#516b8c;min-height:45px;padding:12px 17px;font-size:13.5px;font-weight:700}
+.vim-ref-tabs button.active{border-bottom-color:#0861ef;color:#085ce7}
+.vim-ref-tabs button:focus-visible{outline:2px solid #0861ef;outline-offset:2px}
+.vim-ref-choose-banner{padding:13px 16px;display:flex;gap:10px;align-items:center;background:#ebf4ff;border:1px solid #d2e4fa;border-radius:6px;color:#244e85;font-size:13px;margin:13px 0}
+.vim-ref-page .vim-ref-table th,.vim-ref-page .vim-ref-table td{border:1px solid #d0deed!important;vertical-align:middle}
+.vim-ref-page .vim-ref-table th{background:#eef5fc!important;color:#153c70;font-size:13px}
+.vim-ref-page .vim-ref-actions button[title="Deactivate"]{background:#fff0f1;border-color:#ffd3d6;color:#c4293b}
+.vim-ref-page .vim-ref-actions button[title="Activate"]{background:#e4f6eb;border-color:#bbebcc;color:#087341}
+
+/* Form field order/width follows approved Reference Management modal reference. */
+@media(min-width:781px){
+  .vim-ref-type-form>.vim-field:nth-child(3){grid-column:1/-1}
+  .vim-ref-type-form>.vim-field:nth-child(4){order:9}
+  .vim-ref-value-form>.vim-field:nth-child(1){grid-column:1/-1}
+  .vim-ref-value-form>.vim-field:nth-child(4){order:9}
+  .vim-ref-value-form>.vim-field:nth-child(5){grid-column:1/-1}
+}

@@ -1,0 +1,234 @@
+/**
+ * FILE: src/styles/viwanda-polish.css
+ * VISUAL POLISH LAYER (27 Oct 2026) — React + Bootstrap 5 + plain CSS only.
+ * Loaded LAST by DashboardLayout (and main.jsx for fonts/login). It does not change
+ * layout, components or behaviour; it refines typography, colour, cards, tables,
+ * forms, badges and charts using the Ministry palette + Tanzania flag colours.
+ * To roll back the look completely, remove the two imports of this file.
+ */
+
+/* ---------- 1. Typography: Inter bundled locally (works offline on gov networks) ---------- */
+@font-face { font-family:"Inter Portal"; font-style:normal; font-display:swap; font-weight:100 900;
+  src:url("../assets/fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:"Inter Portal"; font-style:normal; font-display:swap; font-weight:100 900;
+  src:url("../assets/fonts/inter-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+
+:root {
+  /* Ministry of Industry and Trade */
+  --mit-navy:#0a2a5c; --mit-navy-deep:#061d43; --mit-blue:#0b5bd3; --mit-blue-hover:#094ab0; --mit-blue-soft:#e8f1fd;
+  /* Tanzania flag */
+  --tz-green:#1eb53a; --tz-green-ink:#0f7a2f; --tz-gold:#fcd116; --tz-gold-ink:#8a6a00; --tz-black:#101820; --tz-blue:#00a3dd;
+  --tz-flag-stripe:linear-gradient(90deg,var(--tz-green) 0 42%,var(--tz-gold) 42% 45%,var(--tz-black) 45% 55%,var(--tz-gold) 55% 58%,var(--tz-blue) 58% 100%);
+  /* Readable text scale */
+  --ink-strong:#0d2546; --ink:#1b3556; --ink-soft:#3f5878; --ink-muted:#556c89;
+  --line:#d6e2ef; --line-soft:#e6eef7; --surface:#ffffff; --canvas:#f2f6fb;
+  --radius-card:14px; --shadow-card:0 1px 2px rgba(10,42,92,.05),0 6px 20px rgba(10,42,92,.06);
+  --shadow-hover:0 2px 4px rgba(10,42,92,.06),0 14px 32px rgba(10,42,92,.11);
+  --font-portal:"Inter Portal",Inter,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+}
+html, body, #root, .dashboard-shell, .login-page, button, input, select, textarea, .swal2-popup {
+  font-family:var(--font-portal);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility;
+}
+body { color:var(--ink); }
+
+/* ---------- 2. Shell: canvas, topbar with flag stripe, breadcrumb ---------- */
+.dashboard-shell { background:var(--canvas); color:var(--ink); }
+.dashboard-shell .dashboard-content { font-size:14px; line-height:1.5; }
+.dashboard-shell .portal-topbar, .dashboard-shell .dashboard-topbar {
+  border-bottom:0; box-shadow:0 1px 0 var(--line-soft),0 4px 16px rgba(10,42,92,.05);
+}
+.dashboard-shell .portal-topbar::after, .dashboard-shell .dashboard-topbar::after {
+  content:""; position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--tz-flag-stripe); pointer-events:none;
+}
+.dashboard-shell .portal-topbar-brand-copy strong { color:var(--mit-navy); letter-spacing:.01em; }
+.dashboard-shell .portal-topbar-brand-copy small, .dashboard-shell .portal-topbar-user-copy small { color:var(--ink-muted); }
+.dashboard-shell .portal-topbar-user-copy strong { color:var(--ink-strong); }
+.dashboard-shell .vw-global-breadcrumb { background:linear-gradient(100deg,#eef5ff,#f8fbff 60%,#eef5ff); border-bottom-color:var(--line); }
+.dashboard-shell .vw-global-breadcrumb::before { display:none; }
+.dashboard-shell .vw-global-breadcrumb-inner { font-size:13px; }
+.dashboard-shell .vw-global-crumb button { color:var(--mit-blue); }
+.dashboard-shell .vw-global-crumb strong { color:var(--mit-navy); }
+
+/* ---------- 3. Sidebar: deeper ministry navy, gold active marker ---------- */
+.dashboard-shell .dashboard-sidebar {
+  background:linear-gradient(180deg,#0b2d61 0%,var(--mit-navy-deep) 100%);
+  box-shadow:inset -1px 0 0 rgba(255,255,255,.04);
+}
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item { font-size:14px; color:#cfdcf0; font-weight:500; position:relative; transition:background .18s ease,color .18s ease; }
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item:hover { background:rgba(255,255,255,.07); color:#fff; }
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item.active {
+  background:linear-gradient(90deg,#1565d8,#0d4fb4); color:#fff; font-weight:650;
+  box-shadow:0 6px 16px rgba(0,0,0,.22);
+}
+.dashboard-shell .dashboard-sidebar .dashboard-menu-item.active::before {
+  content:""; position:absolute; left:-15px; top:9px; bottom:9px; width:4px; border-radius:0 4px 4px 0; background:var(--tz-gold);
+}
+.dashboard-shell .dashboard-sidebar .dashboard-submenu-link { font-size:13.5px; color:#c2d3ea; }
+.dashboard-shell .dashboard-sidebar .dashboard-submenu-link.active { background:rgba(255,255,255,.12); color:#fff; box-shadow:inset 3px 0 0 var(--tz-gold); }
+.dashboard-shell .dashboard-sidebar .dashboard-submenu-link:hover { background:rgba(255,255,255,.08); color:#fff; }
+.dashboard-shell .dashboard-sidebar-section-title { color:#8fb0da; font-size:11px; }
+.dashboard-shell .dashboard-institution-caption { color:#9cbbe3; font-size:10.5px; }
+.dashboard-shell .dashboard-institution-name { font-size:14px; font-weight:700; }
+.dashboard-shell .dashboard-institution-role { color:#b7c9e2; font-size:12px; }
+.dashboard-shell .dashboard-institution-monogram { background:linear-gradient(135deg,#1a4f99,#0f366f); color:#fff; border-color:rgba(252,209,22,.45); }
+.dashboard-shell .dashboard-sidebar-bottom { color:#a9c0de; font-size:12px; }
+.dashboard-shell .dashboard-sidebar-bottom-dot { background:var(--tz-green); box-shadow:0 0 0 3px rgba(30,181,58,.18); }
+.dashboard-shell .dashboard-sidebar.is-collapsed .dashboard-submenu-link { color:#2f4b6e; box-shadow:none; }
+.dashboard-shell .dashboard-sidebar.is-collapsed .dashboard-submenu-link.active { color:#0b54bc; background:#e8f0ff; }
+
+/* ---------- 4. Headings and body text ---------- */
+.dashboard-shell .dashboard-content h1 { color:var(--mit-navy); font-weight:800; letter-spacing:-.015em; }
+.dashboard-shell .dashboard-content h2, .dashboard-shell .dashboard-content h3 { color:var(--ink-strong); letter-spacing:-.005em; }
+.dashboard-shell .dashboard-content h4, .dashboard-shell .dashboard-content h5 { color:var(--ink-strong); }
+body .dashboard-shell .dashboard-content small { color:var(--ink-muted); }
+body .dashboard-shell .dashboard-content .text-muted { color:var(--ink-muted)!important; }
+.dashboard-shell .dashboard-page-title { color:var(--mit-navy); font-weight:800; }
+.dashboard-shell .dashboard-page-subtitle { color:var(--ink-soft); font-size:14px; }
+
+/* ---------- 5. Cards / surfaces: clean white, soft shadow, gentle lift ---------- */
+.dashboard-shell :is(.dashboard-card,.viwanda-surface,.mdo-surface,.hod-surface,.ao-card,.md-card,.ihod-panel,
+  .ido-dash-card,.vw-management-card,.vim-list-card,.vim-ps-form-card,.form-card,.dc-card,.ao-list-card,.md-filter-panel,
+  .ido-wizard-panel,.ido-submissions-panel,.vmi-panel,.vrp-panel,.vim-ps-panel,.hod-side-panel,.ds-subcard,.card) {
+  border-color:var(--line-soft); border-radius:var(--radius-card); box-shadow:var(--shadow-card); background-color:var(--surface);
+}
+/* KPI / metric cards (already clickable via InsightModal): smooth lift + brighter value */
+.dashboard-shell :is(.md-kpi,.vmi-kpi,.ihod-card,.ido-kpi,.vad-kpi,.vw-kpi,.insight-card,[class*="kpi-card"]) {
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,border-color .22s ease;
+  box-shadow:var(--shadow-card);
+}
+.dashboard-shell :is(.md-kpi,.vmi-kpi,.ihod-card,.ido-kpi,.vad-kpi,.vw-kpi,.insight-card,[class*="kpi-card"]):hover {
+  transform:translateY(-3px); box-shadow:var(--shadow-hover);
+}
+.dashboard-shell :is(.md-kpi-copy strong,.vmi-kpi-value,[class*="kpi"] strong) { font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+
+/* ---------- 6. Tables: readable size, clear header, zebra + hover ---------- */
+body .dashboard-shell .dashboard-content table { color:var(--ink); }
+body .dashboard-shell .dashboard-content table thead th {
+  font-size:12.5px; font-weight:700; color:#22406a; background:#eef4fb; letter-spacing:.015em;
+  border-bottom:1px solid var(--line); vertical-align:middle;
+}
+body .dashboard-shell .dashboard-content table tbody td,
+body .dashboard-shell .dashboard-content table tbody th { font-size:13.5px; vertical-align:middle; }
+/* Row hover, option C with the soft colour (10 Nov 2026): soft tint, accent bar on the left, lifted shadow.
+   Empty-state and loading rows are left alone; report documents keep their print look. */
+body .dashboard-shell .dashboard-content table tbody tr { transition:background-color .2s ease, box-shadow .2s ease; }
+body .dashboard-shell .dashboard-content table tbody tr > * { transition:background-color .2s ease, box-shadow .2s ease; }
+body .dashboard-shell .dashboard-content table tbody tr:not(.mu-wait-row):has(> td:not([colspan])):hover { position:relative; box-shadow:0 6px 18px rgba(10,42,92,.12); }
+body .dashboard-shell .dashboard-content table tbody tr:not(.mu-wait-row):has(> td:not([colspan])):hover > * { background-color:color-mix(in srgb, var(--vw-accent-subtle,#eaf2fc) 70%, #fff); }
+body .dashboard-shell .dashboard-content table tbody tr:not(.mu-wait-row):has(> td:not([colspan])):hover > :first-child { box-shadow:inset 3px 0 0 var(--vw-accent,#0b5bd3); }
+body .dashboard-shell .dashboard-content .rv-doc table tbody tr:hover { box-shadow:none; position:static; }
+body .dashboard-shell .dashboard-content .rv-doc table tbody tr:hover > * { background-color:inherit; box-shadow:none; }
+body .dashboard-shell .dashboard-content table td strong { color:var(--ink-strong); }
+.dashboard-shell .table-responsive, .dashboard-shell [class*="table-wrap"] { border-radius:12px; }
+
+/* ---------- 7. Forms ---------- */
+body .dashboard-shell .dashboard-content label { color:var(--ink); }
+body .dashboard-shell .dashboard-content :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea) {
+  font-size:14px; color:var(--ink-strong); border-color:#c8d6e7;
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+body .dashboard-shell .dashboard-content :is(input,select,textarea)::placeholder { color:#7489a3; }
+body .dashboard-shell .dashboard-content :is(input:not([type=checkbox]):not([type=radio]),select,textarea):focus {
+  border-color:var(--mit-blue); box-shadow:0 0 0 3px rgba(11,91,211,.15); outline:none;
+}
+.dashboard-shell .form-control, .dashboard-shell .form-select { border-color:#c8d6e7; }
+body .dashboard-shell .dashboard-content select { text-overflow:ellipsis; }
+.dashboard-shell .form-check-input:checked { background-color:var(--mit-blue); border-color:var(--mit-blue); }
+
+/* ---------- 8. Buttons (Bootstrap + portal primaries) ---------- */
+.dashboard-shell .btn { font-weight:600; letter-spacing:.005em; transition:transform .12s ease, box-shadow .15s ease, background-color .15s ease; }
+.dashboard-shell .btn:active { transform:translateY(1px); }
+.dashboard-shell :is(.btn-primary,.ido-primary-button,.hod-btn-primary,.mdo-forward,.vw-btn-primary) {
+  background:linear-gradient(180deg,#1166e0,var(--mit-blue)); border-color:var(--mit-blue); color:#fff;
+  box-shadow:0 4px 12px rgba(11,91,211,.22);
+}
+.dashboard-shell :is(.btn-primary,.ido-primary-button,.hod-btn-primary,.mdo-forward,.vw-btn-primary):hover {
+  background:var(--mit-blue-hover); border-color:var(--mit-blue-hover); color:#fff; box-shadow:0 6px 16px rgba(11,91,211,.3);
+}
+.dashboard-shell :is(.btn-success,.mdd-publish) { background:linear-gradient(180deg,#22b543,#14913a); border-color:#14913a; color:#fff; }
+.dashboard-shell .btn-outline-primary { color:var(--mit-blue); border-color:#9dbff0; }
+.dashboard-shell .btn-outline-primary:hover { background:var(--mit-blue); border-color:var(--mit-blue); color:#fff; }
+
+/* ---------- 9. Status badges: crisper, readable ---------- */
+.dashboard-shell .dashboard-content :is(.badge,[class*="status-badge"],[class$="-status"],.ds-status,.mdo-status,.hod-status,.ao-tag,.md-status) {
+  font-size:12px; font-weight:700; letter-spacing:.01em; border-radius:999px;
+}
+
+/* ---------- 10. Charts (Recharts): readable axes, tooltips ---------- */
+.dashboard-shell .recharts-cartesian-axis-tick-value, .dashboard-shell .recharts-text { fill:#3f5878; font-size:12px; }
+.dashboard-shell .recharts-cartesian-grid line { stroke:#e3ebf5; }
+.dashboard-shell .recharts-legend-item-text { font-size:13px; color:var(--ink)!important; }
+.dashboard-shell .recharts-default-tooltip { border-radius:10px!important; border-color:var(--line)!important; box-shadow:var(--shadow-hover); font-size:13px; }
+
+/* ---------- 11. Modals / dialogs ---------- */
+.dashboard-shell .modal-content { border:0; border-radius:16px; box-shadow:0 24px 60px rgba(6,29,67,.25); }
+.dashboard-shell .modal-header { border-bottom-color:var(--line-soft); }
+.dashboard-shell .modal-title { color:var(--mit-navy); font-weight:750; }
+.swal2-popup { border-radius:16px!important; }
+.swal2-title { color:var(--mit-navy)!important; }
+.swal2-styled.swal2-confirm { background:var(--mit-blue)!important; border-radius:10px!important; font-weight:600!important; }
+
+/* ---------- 12. Footer ---------- */
+.dashboard-shell .dashboard-footer { color:var(--ink-muted); font-size:12.5px; }
+
+/* ---------- 13. Dark theme keeps its own tokens ---------- */
+.dashboard-shell[data-vw-theme="dark"] { --ink-strong:#f1f6fd; --ink:#e3ecf8; --ink-soft:#c3d2e6; --ink-muted:#a9bbd1; --line:#40516a; --line-soft:#33445d; --surface:#1b2b44; --canvas:#111d31; }
+.dashboard-shell[data-vw-theme="dark"] .dashboard-content table thead th { background:#273851; color:#e3ecf8; }
+.dashboard-shell[data-vw-theme="dark"] .dashboard-content table tbody tr:hover > * { background-color:#22344f; }
+body .dashboard-shell[data-vw-theme="dark"] .dashboard-content table tbody tr:not(.mu-wait-row):has(> td:not([colspan])):hover { box-shadow:0 6px 18px rgba(0,0,0,.35); }
+body .dashboard-shell[data-vw-theme="dark"] .dashboard-content table tbody tr:not(.mu-wait-row):has(> td:not([colspan])):hover > * { background-color:#22344f; }
+.dashboard-shell[data-vw-theme="dark"] .dashboard-content h1 { color:#f1f6fd; }
+
+@media (prefers-reduced-motion:reduce) {
+  .dashboard-shell * { transition:none!important; }
+}
+
+/* ---------- 14. Login page (layout unchanged) ---------- */
+.login-page .form-card { border:1px solid #e3ebf5; border-radius:18px; box-shadow:0 2px 4px rgba(10,42,92,.04),0 24px 60px rgba(10,42,92,.12); position:relative; overflow:hidden; }
+.login-page .form-card::before { content:""; position:absolute; left:0; right:0; top:0; height:5px; background:var(--tz-flag-stripe); }
+.login-page .form-card h1, .login-page .form-card h2 { color:var(--mit-navy); letter-spacing:-.02em; }
+.login-page .field input { font-size:15px; color:var(--ink-strong); }
+.login-page .field input:focus { border-color:var(--mit-blue); box-shadow:0 0 0 4px rgba(11,91,211,.14); }
+.login-page .form-submit { background:linear-gradient(180deg,#22b543,#128a37); box-shadow:0 8px 20px rgba(18,138,55,.28); letter-spacing:.01em; transition:transform .15s ease, box-shadow .2s ease, filter .2s ease; }
+.login-page .form-submit:hover:not(:disabled) { transform:translateY(-1px); filter:brightness(1.04); box-shadow:0 12px 26px rgba(18,138,55,.34); }
+.login-page .login-brand h1, .login-page .brand-upper h1 { text-shadow:0 2px 14px rgba(0,0,0,.25); }
+.login-page .brand-rule { background:var(--tz-gold); height:3px; }
+.login-page .brand-benefits span, .login-page .brand-benefits p { color:#e6eefa; }
+
+/* Workspace badge: institution picture from login/me (profile_image_url / profile_image_path), 27 Oct 2026 */
+.dashboard-shell .dashboard-institution-monogram.has-picture { background:#fff; border-radius:50%; padding:3px; overflow:hidden; border-color:rgba(252,209,22,.55); }
+.dashboard-shell .dashboard-institution-monogram.has-picture img { width:100%; height:100%; object-fit:contain; display:block; border-radius:50%; }
+
+/* Labelled select boxes (small label above the value) — one clean box everywhere (28 Oct 2026).
+   Some browsers (e.g. Chrome on Windows) draw a dark native border/box around a select even with
+   border:0; appearance:none removes it and a small chevron is drawn instead. */
+:is(.mu-select,.ia-select,.oc-year,.vmi-filters label) select{
+  -webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;
+  border:0!important;outline:0!important;box-shadow:none!important;border-radius:0!important;
+  background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230a2a5c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0 center!important;
+  padding:0 20px 0 0!important;margin:0!important;height:auto!important;min-height:0!important;width:100%;line-height:1.35;cursor:pointer}
+:is(.mu-select,.ia-select,.oc-year,.vmi-filters label) select::-ms-expand{display:none}
+:is(.mu-select,.ia-select,.oc-year,.vmi-filters label){cursor:pointer;transition:border-color .2s,box-shadow .2s}
+:is(.mu-select,.ia-select,.oc-year,.vmi-filters label):focus-within{border-color:#0b5bd3!important;box-shadow:0 0 0 3px rgba(11,91,211,.12)!important}
+body[data-vw-theme="dark"] :is(.mu-select,.ia-select,.oc-year,.vmi-filters label) select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23dbe7ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")!important}
+
+/* Loading state for buttons that send data (utils/busyButtons.js, 8 Nov 2026) */
+@keyframes vw-busy-spin { to { transform: rotate(360deg); } }
+.vw-busy { cursor: progress !important; pointer-events: none; opacity: .86; white-space: nowrap; }
+.vw-busy > svg, .vw-busy > .lucide { display: none !important; }
+.vw-busy::before { content: ""; display: inline-block; vertical-align: -0.15em; margin-right: 8px; flex: none; box-sizing: border-box; width: 1em; height: 1em; min-width: 14px; min-height: 14px; border-radius: 50%;
+  border: 2px solid currentColor; border-right-color: transparent; animation: vw-busy-spin .7s linear infinite; }
+.vw-actions-trigger.vw-busy::before { width: 17px; height: 17px; margin-right: 0; }
+@media (prefers-reduced-motion: reduce) { .vw-busy::before { animation-duration: 1.6s; } }
+.vw-busy:disabled { opacity: .8; }
+/* Flag progress line on the topbar stripe while API requests run (9 Nov 2026, NetworkLine.jsx). */
+.vw-net-line{position:absolute;left:0;right:0;bottom:0;height:3px;overflow:hidden;pointer-events:none;opacity:0;transition:opacity .3s ease;z-index:2;background:rgba(255,255,255,.72)}
+.vw-net-line.is-on{opacity:1}
+.vw-net-line::before{content:"";position:absolute;top:0;bottom:0;left:0;width:38%;background:linear-gradient(90deg,transparent,#00a3dd 18%,#1eb53a 42%,#fcd116 62%,#0b1f3a 80%,transparent);transform:translateX(-110%)}
+.vw-net-line.is-on::before{animation:vw-net-run 1.25s cubic-bezier(.45,.05,.4,1) infinite}
+@keyframes vw-net-run{to{transform:translateX(290%)}}
+@media (prefers-reduced-motion: reduce){.vw-net-line.is-on::before{animation:none;transform:none;width:100%;opacity:.6}}

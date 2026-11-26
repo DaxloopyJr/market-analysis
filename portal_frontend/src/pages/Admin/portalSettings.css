@@ -1,0 +1,82 @@
+/**
+ * FILE: src/pages/Admin/portalSettings.css
+ * DESIGN: Exact approved Portal Settings layout: categorized list left, contextual form right.
+ * Scoped to .vim-portal-settings only; no global refactoring or side effects.
+ */
+.vim-portal-settings{--ps-border:#dce7f5;--ps-ink:#0c2653;--ps-blue:#0864e9;}
+.vim-ps-layout{display:grid;grid-template-columns:minmax(255px,342px) minmax(0,1fr);gap:12px;align-items:stretch}
+.vim-ps-nav,.vim-ps-panel{background:#fff;border:1px solid var(--ps-border);border-radius:6px;min-width:0}
+.vim-ps-nav{padding:18px 14px 16px;}
+.vim-ps-nav h2{font-size:17px;color:var(--ps-ink);font-weight:750;margin:1px 0 17px;display:flex;gap:10px}
+.vim-ps-blue-dot{color:#116ce6;font-weight:900}
+.vim-ps-search{height:34px;display:flex;align-items:center;gap:9px;border:1px solid #d8e4f4;border-radius:4px;color:#4d6d94;padding:0 10px}
+.vim-ps-search input{border:0;outline:none;min-width:0;width:100%;font-size:13px;color:#183a66}
+.vim-ps-nav-group{margin-top:18px}
+.vim-ps-nav-group h3{font-size:12.5px;font-weight:750;color:#214771;margin:0 4px 7px}
+.vim-ps-nav-items{border:1px solid #dce7f5;border-radius:5px;overflow:hidden}
+.vim-ps-nav-item{width:100%;height:38px;display:flex;align-items:center;gap:11px;padding:0 11px;cursor:pointer;color:#082b60;font-size:13px;background:#fff;border:0;border-bottom:1px solid #e9f0f8;text-align:left}
+.vim-ps-nav-item:last-child{border-bottom:0}
+.vim-ps-nav-item>svg:first-child{color:#214d8f;flex:none}
+.vim-ps-nav-item>span{flex:1}
+.vim-ps-nav-item>svg:last-child{color:#3162a5}
+.vim-ps-nav-item:hover{background:#f3f8ff}
+.vim-ps-nav-item.selected{background:#d5e7ff;color:#004cb7;border-left:3px solid #0062ff;padding-left:8px}
+.vim-ps-nav-item.selected>svg{color:#075fed}
+.vim-ps-panel{min-height:670px;overflow:hidden}
+.vim-ps-header{padding:20px 18px 19px;display:flex;align-items:center;gap:13px;border-bottom:1px solid #e1ebf7;color:#0c2860}
+.vim-ps-header-icon{color:var(--ps-blue);flex:none}
+.vim-ps-header h2{font-size:21px;font-weight:750;margin:0 0 4px}
+.vim-ps-header p{font-size:13px;margin:0;color:#3a679e}
+.vim-ps-form{padding:15px 18px 25px;display:grid;gap:16px}
+.vim-ps-form-card{border:1px solid #e0ebf9;border-radius:6px;overflow:hidden}
+.vim-ps-form-card>h3{font-size:14px;font-weight:750;color:#073584;background:#e8f2fe;margin:0;display:flex;align-items:center;gap:9px;padding:13px 15px}
+.vim-ps-form-card>h3 svg{color:#0364ee}
+.vim-ps-basic-grid{padding:16px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(270px,1fr);gap:24px}
+.vim-ps-inputs,.vim-ps-logo-area{display:grid;gap:13px;align-content:start}
+.vim-portal-settings .vim-ps-form label{display:grid;gap:6px;font-size:13px;font-weight:650;color:#14264b;min-width:0}
+.vim-portal-settings .vim-ps-form label b{color:#ec3944}
+.vim-portal-settings .form-control{font-size:13px;min-height:35px;border-color:#d3e0f0;border-radius:5px;color:#163c72}
+.vim-portal-settings textarea.form-control{resize:vertical}
+.vim-ps-logo-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start}
+.vim-ps-logo-box{height:110px;display:grid;place-items:center;border:1px solid #e1eaf6;border-radius:5px;background:#fff}
+.vim-ps-logo-box img{max-width:100%;max-height:102px;object-fit:contain}
+.vim-ps-logo-buttons{display:grid;gap:12px;padding-top:6px}
+.vim-ps-logo-buttons button{min-width:145px;min-height:34px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;white-space:nowrap}
+.vim-ps-logo-area>small,.vim-ps-footer-grid small{font-size:12.5px;color:#51709b}
+.vim-ps-footer-grid{padding:16px;display:grid;grid-template-columns:1.1fr 1fr;gap:25px}
+.vim-ps-status-area{padding:16px;display:grid;gap:13px;font-size:13px}
+.vim-ps-radio-row{display:flex;gap:30px}
+.vim-ps-radio-row label{display:flex!important;align-items:center;gap:8px;font-size:13px;cursor:pointer}
+.vim-ps-radio-row input{accent-color:#0766f6;width:16px;height:16px}
+.vim-ps-state-note{background:#e8fff2;color:#08702f;border:1px solid #b8ecc8;padding:11px 13px;border-radius:4px;display:flex;align-items:center;gap:9px;font-size:13px}
+.vim-ps-state-note.is-inactive{background:#fff4f4;color:#a32121;border-color:#f4cece}
+.vim-ps-footer-actions{display:flex;justify-content:flex-end;gap:12px;padding:7px 0 0}
+.vim-ps-footer-actions button{display:flex;gap:8px;align-items:center;justify-content:center;min-height:38px;min-width:110px;font-size:13px;font-weight:650}
+.vim-ps-footer-actions .btn-primary{min-width:155px}
+.vim-ps-not-configured{display:grid;justify-items:center;text-align:center;gap:10px;padding:100px 28px;color:#546e8e}
+.vim-ps-not-configured svg{color:#0b65de}
+.vim-ps-not-configured h3{font-size:18px;margin:0;color:#143b73}
+.vim-ps-not-configured p{font-size:13.5px;max-width:500px;line-height:1.65}
+.vim-ps-no-results{font-size:13px;color:#556e8a;padding:12px}
+@media(max-width:1140px){.vim-ps-layout{grid-template-columns:270px minmax(0,1fr)}.vim-ps-basic-grid{grid-template-columns:1fr}.vim-ps-logo-actions{grid-template-columns:minmax(0,225px) 160px}}
+@media(max-width:760px){.vim-ps-layout{grid-template-columns:1fr}.vim-ps-nav{max-height:320px;overflow-y:auto}.vim-ps-panel{min-height:440px}.vim-ps-footer-grid{grid-template-columns:1fr}.vim-ps-basic-grid{gap:18px}}
+@media(max-width:420px){.vim-ps-logo-actions{grid-template-columns:1fr}.vim-ps-logo-buttons{grid-template-columns:1fr 1fr}.vim-ps-logo-buttons button{min-width:0;white-space:normal}}
+
+.vim-ps-logo-empty{font-size:12.5px;color:#526c8d}
+
+.vim-ps-full-width{grid-column:1/-1}
+
+/* System Preferences is a local-only, admin-gated pane inside APPROVED two-panel Portal Settings. */
+.vw-ps-preferences{align-content:start}.vw-ps-preferences .alert{display:flex;gap:8px;align-items:flex-start}
+.vw-ps-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;padding:18px}
+.vw-ps-fields label{display:grid;gap:8px;align-content:start;font-size:13px;font-weight:700}
+.vw-ps-fields .form-select{font-size:13px;min-height:37px}
+.vw-ps-fields small{font-size:12.5px;color:#59749a;line-height:1.5}
+.vw-ps-loader-preview{margin:0 18px 18px;border:1px solid #dce7f5;border-radius:8px;overflow:hidden}
+.vw-ps-preview-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:#f2f7fd;padding:12px}
+.vw-ps-preview-top strong{display:flex;align-items:center;gap:7px;color:#153961;font-size:13px}
+.vw-ps-loader-surface{position:relative;min-height:235px;display:grid;place-items:center;background:var(--vw-main-background,#f6f9fd)}
+.vw-ps-loader-surface .vw-page-loading{width:100%;min-height:235px}
+.vw-ps-loader-surface .vw-table-loading{position:absolute;inset:0}
+.vw-ps-none-label{font-size:13.5px;color:#5a6d85}
+@media(max-width:760px){.vw-ps-fields{grid-template-columns:1fr}}

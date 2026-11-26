@@ -1,0 +1,30 @@
+/**
+ * FILE: src/styles/admin-table-borders.css
+ * GLOBAL ADMIN MANAGEMENT TABLE REFERENCE: Delegations screenshot (bordered grid).
+ * Imported once in main.jsx, scoped to existing Administration table classes.
+ * No impact on Login, public Home, Dashboard charts or non-Admin tables.
+ * Columns, action buttons and API fetching remain owned by each module.
+ */
+.vim-institutions table.table,
+.vrp-page .vrp-table,
+.vim-dialog .table,
+.vrp-backdrop .table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+.vim-institutions table.table th,
+.vim-institutions table.table td,
+.vrp-page .vrp-table th,
+.vrp-page .vrp-table td,
+.vim-dialog .table th,
+.vim-dialog .table td,
+.vrp-backdrop .table th,
+.vrp-backdrop .table td{
+  border:1px solid #d3e0ef!important;
+  vertical-align:middle;
+}
+.vim-institutions table.table thead th,
+.vrp-page .vrp-table thead th{
+  background:#f1f6fc;
+  border-color:#ccdcef!important;
+}

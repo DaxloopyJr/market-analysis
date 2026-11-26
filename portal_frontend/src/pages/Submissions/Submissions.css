@@ -1,0 +1,53 @@
+/* REV19 — IDO submissions: uses workspace-ui.css for common titles/tables/actions. */
+.ido-submissions-page .ido-primary-button {
+  display:inline-flex;align-items:center;gap:9px;border:1px solid #155dbb;
+  border-radius:8px;background:#155dbb;color:#fff;text-decoration:none;
+  min-height:43px;padding:10px 15px;font-size:14px;font-weight:700;
+}
+.ido-submissions-page .ido-primary-button:hover {background:#0c4c9d;color:#fff;}
+.ido-submissions-page .ido-status-tabs {
+  display:flex;gap:6px;padding:0 18px;border-bottom:1px solid #e8edf5;overflow-x:auto;
+}
+.ido-submissions-page .ido-status-tabs button {
+  display:flex;align-items:center;gap:7px;flex:none;padding:16px 13px;
+  border:0;border-bottom:3px solid transparent;background:transparent;
+  color:#51667e;font-size:14px;font-weight:650;
+}
+.ido-submissions-page .ido-status-tabs button.active {border-bottom-color:#155dbb;color:#1153ae;}
+.ido-submissions-page .ido-status-tabs button span {
+  font-size:13px;border-radius:14px;padding:2px 7px;background:#eef2f8;color:#536983;
+}
+.ido-submissions-page .ido-filters-row {display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.ido-submissions-page .ido-search-field,.ido-submissions-page .ido-filter-select {
+  display:flex;align-items:center;gap:9px;min-height:43px;border:1px solid #dce5ef;
+  border-radius:8px;padding:7px 11px;color:#556d83;background:#fff;
+}
+.ido-submissions-page .ido-search-field{flex:1;min-width:210px;}
+.ido-submissions-page .ido-search-field input,
+.ido-submissions-page .ido-filter-select select {
+  border:0;outline:0;color:#243b52;background:transparent;font-size:14px;min-width:0;
+}
+.ido-submissions-page .ido-search-field input {width:100%;}
+.ido-submissions-page .ido-filter-select select {cursor:pointer;}
+.ido-submissions-page .ido-search-field:focus-within,
+.ido-submissions-page .ido-filter-select:focus-within {outline:2px solid #bfd8fa;}
+.ido-submissions-page .ido-submission-details {margin-top:18px;}
+.ido-submissions-page .ido-detail-close {
+  display:grid;place-items:center;width:33px;height:33px;border:1px solid #e0e8f2;
+  border-radius:8px;background:white;color:#526b82;
+}
+.ido-submissions-page .ido-detail-close:hover {background:#f1f6fd;}
+.ido-submissions-page .ido-detail-grid {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
+  padding:19px 22px 22px;
+}
+.ido-submissions-page .ido-detail-grid>div span {display:block;font-size:13.5px;color:#52677f;margin-bottom:5px;}
+.ido-submissions-page .ido-detail-grid>div strong {display:block;color:#243c54;font-size:14px;}
+.ido-submissions-page .ido-return-banner {
+  display:flex;align-items:flex-start;gap:8px;border:1px solid #f4d9d0;
+  border-radius:8px;padding:13px 16px;background:#fff9f5;color:#804c37;font-size:14px;
+}
+@media(max-width:730px){
+  .ido-submissions-page .ido-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;}
+  .ido-submissions-page .ido-status-tabs{padding-left:9px;}
+}

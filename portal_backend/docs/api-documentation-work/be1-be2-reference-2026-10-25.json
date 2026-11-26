@@ -1,0 +1,1237 @@
+{
+  "date": "2026-10-25",
+  "routeCount": 120,
+  "endpointCount": 123,
+  "rows": [
+    {
+      "module": "Health",
+      "method": "GET",
+      "path": "/health",
+      "access": "Public",
+      "desc": "Check API availability. /api/health is an absolute compatibility alias; /health uses the v1 base URL.",
+      "detail": "Response example (selected fields):\n{\n  \"status\": \"success\",\n  \"application\": \"Viwanda Portal\",\n  \"message\": \"Laravel API is working\"\n}",
+      "codes": "200",
+      "headers": "Accept: application/json"
+    },
+    {
+      "module": "Health",
+      "method": "GET",
+      "path": "/api/health",
+      "access": "Public",
+      "desc": "Check API availability. /api/health is an absolute compatibility alias; /health uses the v1 base URL.",
+      "detail": "Response example (selected fields):\n{\n  \"status\": \"success\",\n  \"application\": \"Viwanda Portal\",\n  \"message\": \"Laravel API is working\"\n}",
+      "codes": "200",
+      "headers": "Accept: application/json"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "POST",
+      "path": "/login",
+      "access": "Public",
+      "desc": "Authenticate by email or username and issue a 12-hour Sanctum token.",
+      "detail": "Input example:\n{\n  \"login\": \"ido1@cbe.co.tz\",\n  \"password\": \"Password@123\",\n  \"device\": \"Postman\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"token\": \"<bearer-token>\",\n    \"token_type\": \"Bearer\",\n    \"expires_at\": \"<ISO timestamp>\",\n    \"user\": {\n      \"id\": 1,\n      \"name\": \"Example user\",\n      \"email\": \"ido1@cbe.co.tz\",\n      \"institution_id\": 4,\n      \"department_id\": null,\n      \"institution\": {\n        \"id\": 4,\n        \"name\": \"College of Business Education\",\n        \"code\": \"CBE\"\n      },\n      \"department\": null,\n      \"roles\": [\n        {\n          \"code\": \"IDO\",\n          \"name\": \"Institutional Data Officer\"\n        }\n      ],\n      \"permissions\": [\n        \"submissions.create\",\n        \"submissions.submit\"\n      ],\n      \"delegated_roles\": [],\n      \"last_login_at\": null,\n      \"menu\": []\n    }\n  }\n}\n\nRules: Use login or email (one required); password required; device optional max80. 3 failures lock the account for 30 minutes. Invalid credentials/locked:422; inactive:403. Password shown is for seeded testing accounts only.",
+      "codes": "200 / 403 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "GET",
+      "path": "/me",
+      "access": "Authenticated active user",
+      "desc": "Read current profile, permissions, delegated roles and navigation.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Example user\",\n    \"email\": \"ido1@cbe.co.tz\",\n    \"institution_id\": 4,\n    \"department_id\": null,\n    \"institution\": {\n      \"id\": 4,\n      \"name\": \"College of Business Education\",\n      \"code\": \"CBE\"\n    },\n    \"department\": null,\n    \"roles\": [\n      {\n        \"code\": \"IDO\",\n        \"name\": \"Institutional Data Officer\"\n      }\n    ],\n    \"permissions\": [\n      \"submissions.create\",\n      \"submissions.submit\"\n    ],\n    \"delegated_roles\": [],\n    \"last_login_at\": null,\n    \"menu\": []\n  }\n}\n\nRules: Menu entries do not prove a backend feature is implemented.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "POST",
+      "path": "/logout",
+      "access": "Authenticated active user",
+      "desc": "Revoke the current access token.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"Logged out.\"\n}\n\nRules: ",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "POST",
+      "path": "/change-password",
+      "access": "Authenticated active user",
+      "desc": "Change own password.",
+      "detail": "Input example:\n{\n  \"current_password\": \"<current-password>\",\n  \"password\": \"<new-password>\",\n  \"password_confirmation\": \"<new-password>\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"Password updated.\"\n}\n\nRules: New password min8 and confirmed; current password mismatch:422. Current implementation does not revoke every other token here.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "PUT",
+      "path": "/profile",
+      "access": "Authenticated active user",
+      "desc": "Update own profile.",
+      "detail": "Input example:\n{\n  \"name\": \"Example Officer\",\n  \"username\": \"officer.cbe\",\n  \"email\": \"ido1@cbe.co.tz\",\n  \"phone\": \"+255700000000\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"Profile updated.\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Example user\",\n    \"email\": \"ido1@cbe.co.tz\",\n    \"institution_id\": 4,\n    \"department_id\": null,\n    \"institution\": {\n      \"id\": 4,\n      \"name\": \"College of Business Education\",\n      \"code\": \"CBE\"\n    },\n    \"department\": null,\n    \"roles\": [\n      {\n        \"code\": \"IDO\",\n        \"name\": \"Institutional Data Officer\"\n      }\n    ],\n    \"permissions\": [\n      \"submissions.create\",\n      \"submissions.submit\"\n    ],\n    \"delegated_roles\": [],\n    \"last_login_at\": null,\n    \"menu\": []\n  }\n}\n\nRules: name optional max160; username nullable unique max60; email optional unique email; phone nullable max20. Does not change institution, department or roles.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "POST",
+      "path": "/forgot-password/lookup",
+      "access": "Public",
+      "desc": "Preview masked email or SMS destination without sending.",
+      "detail": "Input example:\n{\n  \"login\": \"ido1@cbe.co.tz\",\n  \"method\": \"email\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"masked_destination\": \"i***@cbe.co.tz\",\n  \"has_destination\": true\n}\n\nRules: login required string; method email/sms. Lookup can return has_destination:false and masked_destination:null. Sending: OTP expires in10 minutes; dev_code is included outside production only. Delivery failure:502; missing SMS number:422. This operation sends a real message if mail/SMS transport is configured.",
+      "codes": "200 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "POST",
+      "path": "/forgot-password",
+      "access": "Public",
+      "desc": "Send a password-reset OTP by email or SMS.",
+      "detail": "Input example:\n{\n  \"login\": \"ido1@cbe.co.tz\",\n  \"method\": \"email\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"If the account exists, a reset code has been sent via email.\",\n  \"masked_destination\": \"i***@cbe.co.tz\"\n}\n\nRules: login required string; method email/sms. Lookup can return has_destination:false and masked_destination:null. Sending: OTP expires in10 minutes; dev_code is included outside production only. Delivery failure:502; missing SMS number:422. This operation sends a real message if mail/SMS transport is configured.",
+      "codes": "200 / 422 / 502",
+      "headers": "Accept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "POST",
+      "path": "/reset-password",
+      "access": "Public",
+      "desc": "Reset password using a six-digit OTP.",
+      "detail": "Input example:\n{\n  \"login\": \"ido1@cbe.co.tz\",\n  \"method\": \"email\",\n  \"code\": \"<six-digit-code>\",\n  \"password\": \"<new-password>\",\n  \"password_confirmation\": \"<new-password>\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"Password reset successfully. Please sign in with your new password.\"\n}\n\nRules: code digits6; password min8 confirmed. Invalid/expired/used code or exhausted attempts:422. On success reset locks and revoke all user tokens.",
+      "codes": "200 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Authentication and profile",
+      "method": "POST",
+      "path": "/activate",
+      "access": "Public",
+      "desc": "Set password using an activation or admin reset-link token.",
+      "detail": "Input example:\n{\n  \"login\": \"ido1@cbe.co.tz\",\n  \"token\": \"<link-token>\",\n  \"password\": \"<new-password>\",\n  \"password_confirmation\": \"<new-password>\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"Password set successfully. You can now sign in.\"\n}\n\nRules: login/token required; password min8 confirmed. Invalid/expired/exhausted link:422. Revokes tokens and clears failed login/lock counters.",
+      "codes": "200 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Administration",
+      "method": "GET",
+      "path": "/institutions",
+      "access": "institutions.manage OR institutions.view.own OR institutions.view.ministry",
+      "desc": "List institutions with active dataset and current-user pending-review counts.",
+      "detail": "Query: search (max160), perPage1–100, page\n\nInput: no request body.\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"current_page\": 1,\n    \"data\": [\n      {\n        \"id\": 4,\n        \"name\": \"Example\",\n        \"code\": \"EX\",\n        \"users_count\": 5,\n        \"active_datasets_count\": 2,\n        \"pending_review_count\": 1\n      }\n    ],\n    \"per_page\": 20,\n    \"total\": 1\n  }\n}\n\nRules: Pagination is nested at data.data, not a counts-only response. Includes zero-count organisations. Institution IA sees own institution. MDO/MDD require active MIT and datasets.view.ministry; pending counts depend on current reviewer and assignment.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "POST",
+      "path": "/institutions",
+      "access": "institutions.manage",
+      "desc": "Create institution.",
+      "detail": "Input example:\n{\n  \"name\": \"Example Institution\",\n  \"code\": \"EX\",\n  \"type\": \"institution\",\n  \"description\": \"Example\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": 10,\n    \"name\": \"Example\",\n    \"code\": \"EX\",\n    \"is_active\": true\n  }\n}\n\nRules: name required max160; code required unique max20. Institution type institution/agency/commission. Department parent_department_id nullable existing department.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "PUT",
+      "path": "/institutions/{institution}",
+      "access": "institutions.manage",
+      "desc": "Update or deactivate institution.",
+      "detail": "Input example:\n{\n  \"name\": \"Example\",\n  \"status\": \"inactive\",\n  \"is_active\": false\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": 10,\n    \"name\": \"Example\",\n    \"status\": \"inactive\",\n    \"is_active\": false\n  }\n}\n\nRules: No DELETE endpoint. Send status and is_active consistently. name max160, description nullable; institution code may change if unique; department update accepts parent_department_id but not code.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "GET",
+      "path": "/departments",
+      "access": "departments.manage OR departments.view",
+      "desc": "List departments with active dataset and current-user pending-review counts.",
+      "detail": "Query: search (max160), perPage1–100, page\n\nInput: no request body.\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"current_page\": 1,\n    \"data\": [\n      {\n        \"id\": 4,\n        \"name\": \"Example\",\n        \"code\": \"EX\",\n        \"users_count\": 5,\n        \"active_datasets_count\": 2,\n        \"pending_review_count\": 1\n      }\n    ],\n    \"per_page\": 20,\n    \"total\": 1\n  }\n}\n\nRules: Pagination is nested at data.data, not a counts-only response. Includes zero-count organisations. Institution IA sees own institution. MDO/MDD require active MIT and datasets.view.ministry; pending counts depend on current reviewer and assignment.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "POST",
+      "path": "/departments",
+      "access": "departments.manage",
+      "desc": "Create department.",
+      "detail": "Input example:\n{\n  \"name\": \"Example Department\",\n  \"code\": \"EX\",\n  \"parent_department_id\": null,\n  \"description\": \"Example\"\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": 10,\n    \"name\": \"Example\",\n    \"code\": \"EX\",\n    \"is_active\": true\n  }\n}\n\nRules: name required max160; code required unique max20. Institution type institution/agency/commission. Department parent_department_id nullable existing department.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "PUT",
+      "path": "/departments/{department}",
+      "access": "departments.manage",
+      "desc": "Update or deactivate department.",
+      "detail": "Input example:\n{\n  \"name\": \"Example\",\n  \"status\": \"inactive\",\n  \"is_active\": false\n}\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": 10,\n    \"name\": \"Example\",\n    \"status\": \"inactive\",\n    \"is_active\": false\n  }\n}\n\nRules: No DELETE endpoint. Send status and is_active consistently. name max160, description nullable; institution code may change if unique; department update accepts parent_department_id but not code.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "GET",
+      "path": "/users",
+      "access": "Route permission plus controller scope. MOA ministry-wide; IA own institution only where allowed. Requires users.manage.ministry OR users.manage.institution.",
+      "desc": "List users and their roles/institution/department.",
+      "detail": "Query: search, role, institution_id, department_id, page\n\nInput: no request body.\n\nResponse (selected fields):\n{status:\"success\", data:{current_page:1,data:[User],per_page:20,total:1}}\n\nRules: Fixed20 per page; passwords and tokens are hidden.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "GET",
+      "path": "/users/{id}",
+      "access": "Route permission plus controller scope. MOA ministry-wide; IA own institution only where allowed. Requires users.manage.ministry OR users.manage.institution.",
+      "desc": "Read one scoped user.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{status:\"success\",data:User with roles, institution, department}\n\nRules: Out-of-scope access is denied; IA cannot administer a ministry-role account.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "POST",
+      "path": "/users",
+      "access": "Route permission plus controller scope. MOA ministry-wide; IA own institution only where allowed. Requires users.manage.ministry OR users.manage.institution.",
+      "desc": "Create user and assign active role IDs.",
+      "detail": "Input example:\n{\n  \"name\": \"Example Data Officer\",\n  \"username\": \"officer.example\",\n  \"email\": \"officer@example.test\",\n  \"phone\": null,\n  \"password\": \"<initial-password>\",\n  \"institution_id\": 4,\n  \"department_id\": null,\n  \"role_ids\": [\n    3\n  ],\n  \"status\": \"active\"\n}\n\nResponse (selected fields):\n{status:\"success\",message:\"User created.\",data:User with roles, institution, department}\n\nRules: name required max160; email required unique; username nullable unique max60; password optional min8; role_ids required nonempty existing active roles. Omit password to issue an activation email. IA institution/department are forced to own institution/null and roles limited to IA,IDO,IHOD,AO,IM without ministry permissions. Never use example role IDs without fetching /roles.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "PUT",
+      "path": "/users/{user}",
+      "access": "Route permission plus controller scope. MOA ministry-wide; IA own institution only where allowed. Requires users.manage.ministry OR users.manage.institution.",
+      "desc": "Update user status, password or role assignments.",
+      "detail": "Input example:\n{\n  \"name\": \"Updated Officer\",\n  \"status\": \"inactive\",\n  \"role_ids\": [\n    3\n  ]\n}\n\nResponse (selected fields):\n{status:\"success\",data:User with roles}\n\nRules: Optional name,username,phone,is_active,status,role_ids,password. status/is_active synchronized. role_ids replaces assignments. This route does not update email, institution_id or department_id.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "POST",
+      "path": "/users/{user}/unlock",
+      "access": "Route permission plus controller scope. MOA ministry-wide; IA own institution only where allowed. Requires users.manage.ministry OR users.manage.institution.",
+      "desc": "Clear failed attempts and lockout.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"Account unlocked.\",\n  \"data\": {\n    \"id\": 7,\n    \"email\": \"ido1@cbe.co.tz\",\n    \"locked_until\": null\n  }\n}\n\nRules: Does not activate an inactive account.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Administration",
+      "method": "POST",
+      "path": "/users/{user}/send-reset-link",
+      "access": "Route permission plus controller scope. MOA ministry-wide; IA own institution only where allowed. Requires users.manage.ministry OR users.manage.institution.",
+      "desc": "Send an account password-reset link.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"Reset link sent to <email>\"\n}\n\nRules: Uses activation endpoint to redeem token. Delivery failure:502. Sends email.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422 / 502",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Roles and permissions",
+      "method": "GET",
+      "path": "/roles",
+      "access": "roles.manage",
+      "desc": "List roles.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{status:\"success\",data:[Role with permissions]}\n\nRules: Not paginated. Permission codes identify capabilities; use numeric IDs for role assignments.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Roles and permissions",
+      "method": "GET",
+      "path": "/permissions",
+      "access": "roles.manage",
+      "desc": "List permissions.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{status:\"success\",data:[Permission]}\n\nRules: Not paginated. Permission codes identify capabilities; use numeric IDs for role assignments.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Roles and permissions",
+      "method": "POST",
+      "path": "/roles",
+      "access": "roles.manage",
+      "desc": "Create an active custom role.",
+      "detail": "Input example:\n{\n  \"code\": \"MADD\",\n  \"name\": \"Ministry Assistant Director\",\n  \"level\": \"ministry\",\n  \"permission_ids\": [\n    1\n  ]\n}\n\nResponse (selected fields):\n{status:\"success\",data:Role with permissions}\n\nRules: code required unique max20; name required max120; level ministry/institution; permission_ids optional array of existing IDs. is_system=false.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Roles and permissions",
+      "method": "PUT",
+      "path": "/roles/{role}",
+      "access": "roles.manage",
+      "desc": "Update role name, description, activation or permissions.",
+      "detail": "Input example:\n{\n  \"name\": \"Ministry Assistant Director\",\n  \"permission_ids\": [\n    1\n  ]\n}\n\nResponse (selected fields):\n{status:\"success\",data:Role with permissions}\n\nRules: name optional max120; description nullable; is_active boolean; permission_ids replaces permissions when supplied. System role deactivation is blocked. Role code/level cannot be changed here.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Delegations",
+      "method": "GET",
+      "path": "/delegations",
+      "access": "roles.manage",
+      "desc": "List delegations.",
+      "detail": "Query: page\n\nInput: no request body.\n\nResponse (selected fields):\n{status:\"success\",data:{current_page:1,data:[Delegation with delegator,delegate,role,department],per_page:20,total:1}}\n\nRules: Fixed20 per page.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Delegations",
+      "method": "POST",
+      "path": "/delegations",
+      "access": "roles.manage",
+      "desc": "Create a time-limited role delegation.",
+      "detail": "Input example:\n{\n  \"delegate_user_id\": 7,\n  \"role_id\": 3,\n  \"department_id\": null,\n  \"effective_from\": \"2026-10-25\",\n  \"effective_to\": \"2026-11-25\"\n}\n\nResponse (selected fields):\n{status:\"success\",data:Delegation with delegate and role}\n\nRules: delegate_user_id and role_id required existing IDs; effective_from required date; effective_to nullable and strictly after start; department optional. Delegator is authenticated actor; cannot delegate to self.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Delegations",
+      "method": "POST",
+      "path": "/delegations/{delegation}/revoke",
+      "access": "roles.manage",
+      "desc": "Revoke delegation without deleting history.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"message\": \"Delegation revoked.\"\n}\n\nRules: ",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Portal settings",
+      "method": "GET",
+      "path": "/portal-settings",
+      "access": "portal_settings.manage",
+      "desc": "Read all portal settings with metadata.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{status:\"success\",data:{portal_name:{id:1,key:\"portal_name\",value:\"Viwanda Portal\",type:\"string\",created_at:null,updated_at:null},logo:{key:\"logo\",value:null,url:null}}}\n\nRules: Returns entries for configured keys, with defaults when not stored.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Portal settings",
+      "method": "GET",
+      "path": "/portal-settings/public",
+      "access": "Public",
+      "desc": "Read public branding, contacts and enabled announcements.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"portal_name\": \"Viwanda Portal\",\n    \"contact_email\": null,\n    \"contact_phone\": null,\n    \"contact_address\": null,\n    \"logo_url\": null,\n    \"announcements_enabled\": true,\n    \"announcements_limit\": 5,\n    \"announcements\": []\n  }\n}\n\nRules: No internal logo storage path exposed. Only active announcements returned when enabled, capped by announcements_limit.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json"
+    },
+    {
+      "module": "Portal settings",
+      "method": "PUT",
+      "path": "/portal-settings",
+      "access": "portal_settings.manage",
+      "desc": "Update settings and optionally upload or remove a logo.",
+      "detail": "Input example:\n{\n  \"settings\": {\n    \"portal_name\": \"Viwanda Portal\",\n    \"contact_email\": \"info@example.test\",\n    \"contact_phone\": \"+255700000000\",\n    \"contact_address\": \"Dodoma\",\n    \"announcements_enabled\": true,\n    \"announcements_limit\": 5,\n    \"announcements\": [\n      {\n        \"title\": \"Reporting window\",\n        \"message\": \"Please submit within the reporting period.\",\n        \"is_active\": true\n      }\n    ]\n  }\n}\n\nResponse (selected fields):\n{status:\"success\",message:\"Settings saved.\",data:settings metadata map}\n\nRules: settings required nonempty object; only listed keys accepted. portal_name max150 no newlines; email RFC max254 nullable; phone max30 with7–15 digits; address max500 nullable; limit1–20; announcements list max20, each title max150,message max2000,is_active boolean. Logo: JPG/JPEG/PNG/WebP <=2048KB and dimensions<=2000x2000; settings.logo=null removes. Multipart: POST to same URL with _method=PUT and settings[logo] file, settings[portal_name], etc.; let client set multipart boundary. Omitted fields retained; announcements array replaces list. Unknown fields rejected.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Dashboard",
+      "method": "GET",
+      "path": "/dashboard",
+      "access": "dashboard.view; ministry analytics or institutional/department scope enforced",
+      "desc": "Read role-scoped dashboard counts, queues, activity, compliance and published data.",
+      "detail": "Query: fy=2026/27, institution_id, department_id\n\nInput: no request body.\n\nResponse (selected fields):\n{status:\"success\",data:{scope:\"ministry\",fy:\"2026/27\",cards:{active_datasets:14,total_submissions:5,pending_approvals:2,awaiting_ministry:2,compliance_rate:50},details:{},trend:[],status_distribution:[],by_institution:[],by_department:[],compliance:{due:4,submitted:2,overdue:2,rate:50,institutions:[],departments:[]},recent_grouped:[],pending_approvals:[],published_data:[],recent_activity:[],obligations:[]}}\n\nRules: fy defaults current financial year; accepts all or consecutive YYYY/YY or YYYY/YYYY. Foreign institution/department filters denied for scoped users. Counts cover full filtered query, while detail lists are bounded. This is dashboard aggregation, not an implemented standalone report/export API.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Search",
+      "method": "GET",
+      "path": "/search",
+      "access": "Authenticated active user; legacy controller scope",
+      "desc": "Search endpoint is registered but currently requires repair.",
+      "detail": "Query: q\n\nInput: no request body.\n\nResponse (selected fields):\nIntended response: {status:\"success\",data:{submissions:{label,route,items:[]},datasets:{label,route,items:[]},users:{label,route,items:[]}}}\n\nRules: q trimmed minimum2 characters. Do not rely on the intended success payload: controller still references legacy Dataset and Submission relations/columns and status->value, while current Submission uses calendar.dataset and string status. Can fail with500. No repair performed as part of this documentation.",
+      "codes": "422 for short q; 500 possible due to known legacy incompatibility",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Reference data",
+      "method": "GET",
+      "path": "/reference-data",
+      "access": "Active authenticated user",
+      "desc": "List reference types such as SECTOR and UNIT.",
+      "detail": "Query: status=active or inactive, perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 5,\n      \"data_type_code\": \"UNIT\",\n      \"data_type_name_en\": \"Unit of Measurement\",\n      \"data_type_name_sw\": \"Kipimo\",\n      \"description_en\": \"Units used to measure indicators.\",\n      \"description_sw\": null,\n      \"status\": \"active\"\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "POST",
+      "path": "/reference-data",
+      "access": "reference_data.manage\nSeeded: MOA Â· IA",
+      "desc": "Create a reference type.",
+      "detail": "Input:\n{\n  \"dataTypeCode\": \"UNIT\",\n  \"dataTypeNameEn\": \"Unit of Measurement\",\n  \"dataTypeNameSw\": \"Kipimo\",\n  \"descriptionEn\": \"Units used to measure indicators.\",\n  \"descriptionSw\": null,\n  \"status\": \"active\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 5,\n    \"data_type_code\": \"UNIT\",\n    \"data_type_name_en\": \"Unit of Measurement\",\n    \"data_type_name_sw\": \"Kipimo\",\n    \"description_en\": \"Units used to measure indicators.\",\n    \"description_sw\": null,\n    \"status\": \"active\"\n  }\n}\n\nRules: Required: dataTypeCode (unique), dataTypeNameEn. Other text nullable. Text max 255. status defaults active; allowed active/inactive.",
+      "codes": "201 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "GET",
+      "path": "/reference-data/{id}",
+      "access": "Active authenticated user",
+      "desc": "Read a reference type.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 5,\n    \"data_type_code\": \"UNIT\",\n    \"data_type_name_en\": \"Unit of Measurement\",\n    \"data_type_name_sw\": \"Kipimo\",\n    \"description_en\": \"Units used to measure indicators.\",\n    \"description_sw\": null,\n    \"status\": \"active\"\n  }\n}",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "PATCH",
+      "path": "/reference-data/{id}",
+      "access": "reference_data.manage\nSeeded: MOA Â· IA",
+      "desc": "Update a reference type.",
+      "detail": "Input:\n{\n  \"descriptionEn\": \"Measurement units used across datasets.\",\n  \"status\": \"active\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 5,\n    \"data_type_code\": \"UNIT\",\n    \"data_type_name_en\": \"Unit of Measurement\",\n    \"data_type_name_sw\": \"Kipimo\",\n    \"description_en\": \"Units used to measure indicators.\",\n    \"description_sw\": null,\n    \"status\": \"active\"\n  }\n}\n\nRules: Optional fields: dataTypeCode, dataTypeNameEn, dataTypeNameSw, descriptionEn, descriptionSw, status. Use camelCase input; output uses snake_case.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "DELETE",
+      "path": "/reference-data/{id}",
+      "access": "reference_data.manage\nSeeded: MOA Â· IA",
+      "desc": "Set the type inactive; preserve it and its history.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 5,\n    \"data_type_code\": \"UNIT\",\n    \"data_type_name_en\": \"Unit of Measurement\",\n    \"data_type_name_sw\": \"Kipimo\",\n    \"description_en\": \"Units used to measure indicators.\",\n    \"description_sw\": null,\n    \"status\": \"inactive\"\n  }\n}\n\nRules: Does not hard-delete or automatically mark every child value inactive.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "GET",
+      "path": "/reference-data/{id}/values",
+      "access": "Active authenticated user",
+      "desc": "List values belonging to one reference type.",
+      "detail": "Query: status=active or inactive, perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 11,\n      \"data_type_id\": 5,\n      \"data_value_code\": \"NUMBER\",\n      \"data_value_name_en\": \"Number\",\n      \"data_value_name_sw\": \"Idadi\",\n      \"parent_id\": null,\n      \"value\": null,\n      \"effective_from\": null,\n      \"effective_to\": null,\n      \"status\": \"active\"\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "POST",
+      "path": "/reference-data/{id}/values",
+      "access": "reference_data.manage\nSeeded: MOA Â· IA",
+      "desc": "Create a value under the type ID in the URL.",
+      "detail": "Input:\n{\n  \"dataValueCode\": \"NUMBER\",\n  \"dataValueNameEn\": \"Number\",\n  \"dataValueNameSw\": \"Idadi\",\n  \"parentId\": null,\n  \"value\": null,\n  \"effectiveFrom\": null,\n  \"effectiveTo\": null,\n  \"status\": \"active\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 11,\n    \"data_type_id\": 5,\n    \"data_value_code\": \"NUMBER\",\n    \"data_value_name_en\": \"Number\",\n    \"data_value_name_sw\": \"Idadi\",\n    \"parent_id\": null,\n    \"value\": null,\n    \"effective_from\": null,\n    \"effective_to\": null,\n    \"status\": \"active\"\n  }\n}\n\nRules: Required: dataValueCode, dataValueNameEn. Code unique within the type. parentId is another reference value ID; value is a nullable string, not an array. Dates YYYY-MM-DD or null; end must not precede start. No dataTypeId needed in body.",
+      "codes": "201 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "GET",
+      "path": "/reference-data/{id}/values/{valueId}",
+      "access": "Active authenticated user",
+      "desc": "Read one value belonging to the specified type.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 11,\n    \"data_type_id\": 5,\n    \"data_value_code\": \"NUMBER\",\n    \"data_value_name_en\": \"Number\",\n    \"data_value_name_sw\": \"Idadi\",\n    \"parent_id\": null,\n    \"value\": null,\n    \"effective_from\": null,\n    \"effective_to\": null,\n    \"status\": \"active\"\n  }\n}",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "PATCH",
+      "path": "/reference-data/{id}/values/{valueId}",
+      "access": "reference_data.manage\nSeeded: MOA Â· IA",
+      "desc": "Update a reference value, hierarchy or validity dates.",
+      "detail": "Input:\n{\n  \"dataValueNameSw\": \"Idadi\",\n  \"parentId\": null,\n  \"effectiveFrom\": \"2026-07-01\",\n  \"effectiveTo\": null\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 11,\n    \"data_type_id\": 5,\n    \"data_value_code\": \"NUMBER\",\n    \"data_value_name_en\": \"Number\",\n    \"data_value_name_sw\": \"Idadi\",\n    \"parent_id\": null,\n    \"value\": null,\n    \"effective_from\": null,\n    \"effective_to\": null,\n    \"status\": \"active\"\n  }\n}\n\nRules: All create fields are optional here. Parent relationships must not create cycles. A value from another URL type returns 404.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Reference data",
+      "method": "DELETE",
+      "path": "/reference-data/{id}/values/{valueId}",
+      "access": "reference_data.manage\nSeeded: MOA Â· IA",
+      "desc": "Set one value inactive without removing history.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 11,\n    \"data_type_id\": 5,\n    \"data_value_code\": \"NUMBER\",\n    \"data_value_name_en\": \"Number\",\n    \"data_value_name_sw\": \"Idadi\",\n    \"parent_id\": null,\n    \"value\": null,\n    \"effective_from\": null,\n    \"effective_to\": null,\n    \"status\": \"inactive\"\n  }\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset definitions",
+      "method": "GET",
+      "path": "/datasets",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. MDO/MDD of active MIT with datasets.view.ministry can read all active datasets.",
+      "desc": "List datasets visible within the user's scope.",
+      "detail": "Query: status=draft / active / inactive, perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 6,\n      \"institutionId\": 2,\n      \"departmentId\": null,\n      \"datasetCode\": \"CBE/2026/0001\",\n      \"datasetName\": \"CBE Staff Establishment\",\n      \"status\": \"draft\",\n      \"collectionMethod\": \"manual\",\n      \"priority\": null,\n      \"frequencies\": [\n        \"annual\",\n        \"quarterly\"\n      ],\n      \"sectorIds\": [\n        9\n      ],\n      \"subsectorIds\": [],\n      \"latestTemplateVersionId\": null\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}\n\nRules: Default page size 20; max 100. Actual response also contains a message.\nCurrent filters also include institutionId and departmentId. MDO/MDD receive active datasets regardless of requested status.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset definitions",
+      "method": "POST",
+      "path": "/datasets",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Create a draft with sectors, source information and consumers in one request.",
+      "detail": "Input:\n{\n  \"institutionId\": 2,\n  \"departmentId\": null,\n  \"datasetName\": \"CBE Staff Establishment\",\n  \"description\": \"Sample staff numbers by category.\",\n  \"collectionMethod\": \"manual\",\n  \"sourceSystemName\": null,\n  \"sourceDescription\": \"Collected by the human resources unit.\",\n  \"frequencies\": [\n    \"annual\",\n    \"quarterly\"\n  ],\n  \"sectors\": [\n    {\n      \"sectorId\": 9,\n      \"subsectorIds\": []\n    }\n  ],\n  \"consumers\": [\n    {\n      \"name\": \"Ministry of Industry and Trade\",\n      \"shortName\": \"MIT\",\n      \"description\": null\n    }\n  ]\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 6,\n    \"institutionId\": 2,\n    \"departmentId\": null,\n    \"datasetCode\": \"CBE/2026/0001\",\n    \"datasetName\": \"CBE Staff Establishment\",\n    \"status\": \"draft\",\n    \"collectionMethod\": \"manual\",\n    \"priority\": null,\n    \"frequencies\": [\n      \"annual\",\n      \"quarterly\"\n    ],\n    \"sectorIds\": [\n      9\n    ],\n    \"subsectorIds\": [],\n    \"latestTemplateVersionId\": null\n  }\n}\n\nRules: Required: institutionId, datasetName, frequencies, sectors. datasetCode and createdBy are generated; do not send. Source method: manual/system/hybrid; system/hybrid require sourceSystemName. A consumer can instead be {\"consumerId\":3}. Only draft status accepted on create.\nCurrent field: responsibleUserId must identify an eligible active IDO (institution) or DDO (department). Changing the officer reassigns pending calendars only; submitted history is preserved. Consumers are descriptive records only in this phase: no login users, grants or access rights are created.",
+      "codes": "201 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset definitions",
+      "method": "GET",
+      "path": "/datasets/{id}",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. MDO/MDD of active MIT with datasets.view.ministry can read active datasets.",
+      "desc": "Read dataset metadata and configured IDs.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 6,\n    \"institutionId\": 2,\n    \"departmentId\": null,\n    \"datasetCode\": \"CBE/2026/0001\",\n    \"datasetName\": \"CBE Staff Establishment\",\n    \"status\": \"draft\",\n    \"collectionMethod\": \"manual\",\n    \"priority\": null,\n    \"frequencies\": [\n      \"annual\",\n      \"quarterly\"\n    ],\n    \"sectorIds\": [\n      9\n    ],\n    \"subsectorIds\": [],\n    \"latestTemplateVersionId\": null\n  }\n}\n\nRules: Full response also includes description, sourceSystemName, sourceDescription, consumers, priorityUpdatedBy/At, createdBy and timestamps.",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset definitions",
+      "method": "PATCH",
+      "path": "/datasets/{id}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Update draft details, source information, consumers or set inactive.",
+      "detail": "Input:\n{\n  \"datasetName\": \"CBE Staff Establishment\",\n  \"description\": \"Staff at the end of the reporting period.\",\n  \"consumers\": [\n    {\n      \"consumerId\": 3\n    }\n  ]\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 6,\n    \"institutionId\": 2,\n    \"departmentId\": null,\n    \"datasetCode\": \"CBE/2026/0001\",\n    \"datasetName\": \"CBE Staff Establishment\",\n    \"status\": \"draft\",\n    \"collectionMethod\": \"manual\",\n    \"priority\": null,\n    \"frequencies\": [\n      \"annual\",\n      \"quarterly\"\n    ],\n    \"sectorIds\": [\n      9\n    ],\n    \"subsectorIds\": [],\n    \"latestTemplateVersionId\": null\n  }\n}\n\nRules: Editable fields also include frequencies, collectionMethod, sourceSystemName, sourceDescription and status (draft/inactive). Active datasets must be reopened before editing configuration; status inactive may be set directly. Institution, department, code and sectors cannot be changed here. consumers: [] clears links; omit to preserve.\nCurrent field: responsibleUserId must identify an eligible active IDO (institution) or DDO (department). Changing the officer reassigns pending calendars only; submitted history is preserved. Consumers are descriptive records only in this phase: no login users, grants or access rights are created.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset definitions",
+      "method": "DELETE",
+      "path": "/datasets/{id}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Deactivate the dataset; retain related records and snapshots.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 6,\n    \"institutionId\": 2,\n    \"departmentId\": null,\n    \"datasetCode\": \"CBE/2026/0001\",\n    \"datasetName\": \"CBE Staff Establishment\",\n    \"status\": \"inactive\",\n    \"collectionMethod\": \"manual\",\n    \"priority\": null,\n    \"frequencies\": [\n      \"annual\",\n      \"quarterly\"\n    ],\n    \"sectorIds\": [\n      9\n    ],\n    \"subsectorIds\": [],\n    \"latestTemplateVersionId\": null\n  }\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset definitions",
+      "method": "GET",
+      "path": "/data-consumers",
+      "access": "MOA Â· IA Â· IDO Â· DDO Â· MDO",
+      "desc": "Search reusable consumer names for dataset forms.",
+      "detail": "Query: search=Ministry, perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 3,\n      \"name\": \"Ministry of Industry and Trade\",\n      \"shortName\": \"MIT\",\n      \"description\": null\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}\n\nRules: Consumers are created inline on dataset POST/PATCH. No standalone consumer POST route.\nPhase scope: consumers record intended data users only. No login or access grant/revoke endpoints. Consumers links managed via dataset POST/PATCH.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset definitions",
+      "method": "GET",
+      "path": "/datasets/eligible-officers",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. Active user required.",
+      "desc": "Find eligible officers before creating a dataset.",
+      "detail": "Query: institutionId (optional; defaults actor institution), departmentId (nullable; role-dependent default).\nResponse: {data:[{id,name,institutionId,departmentId}]}.\nNot paginated; no search/perPage filtering. Active eligible IDO or DDO in the selected owner scope.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Dataset indicators",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/indicators",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "List indicators attached to the dataset.",
+      "detail": "Query: perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 7,\n      \"datasetId\": 6,\n      \"indicatorId\": 8,\n      \"isRequired\": true,\n      \"displayOrder\": 1,\n      \"indicator\": {\n        \"id\": 8,\n        \"indicatorCode\": \"CBE/IND/2026/0001\",\n        \"nameEn\": \"Number of staff\",\n        \"nameSw\": \"Idadi ya watumishi\",\n        \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n        \"descriptionSw\": null,\n        \"dataType\": \"integer\",\n        \"unitId\": 11,\n        \"aggregationRule\": \"none\",\n        \"status\": \"active\",\n        \"createdBy\": 1\n      }\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}\n\nRules: Outer id is the link ID; indicatorId and indicator.id identify the catalogue record.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset indicators",
+      "method": "POST",
+      "path": "/datasets/{datasetId}/indicators",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D\nDraft dataset",
+      "desc": "Create an indicator and attach it, or attach an existing indicator.",
+      "detail": "Input:\n{\n  \"indicator\": {\n    \"nameEn\": \"Number of staff\",\n    \"nameSw\": \"Idadi ya watumishi\",\n    \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n    \"dataType\": \"integer\",\n    \"unitId\": 11,\n    \"aggregationRule\": \"none\"\n  },\n  \"isRequired\": true,\n  \"displayOrder\": 1\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 7,\n    \"datasetId\": 6,\n    \"indicatorId\": 8,\n    \"isRequired\": true,\n    \"displayOrder\": 1,\n    \"indicator\": {\n      \"id\": 8,\n      \"indicatorCode\": \"CBE/IND/2026/0001\",\n      \"nameEn\": \"Number of staff\",\n      \"nameSw\": \"Idadi ya watumishi\",\n      \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n      \"descriptionSw\": null,\n      \"dataType\": \"integer\",\n      \"unitId\": 11,\n      \"aggregationRule\": \"none\",\n      \"status\": \"active\",\n      \"createdBy\": 1\n    }\n  }\n}\n\nRules: Alternative body: {\"indicatorId\":8,\"isRequired\":true,\"displayOrder\":1}. Send exactly one of indicatorId/indicator. Nested indicator must not contain status, indicatorCode or createdBy. New code is generated using dataset institution. displayOrder 1â€“2147483647; isRequired defaults true. Duplicate link: 409.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset indicators",
+      "method": "PATCH",
+      "path": "/datasets/{datasetId}/indicators/{indicatorId}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D\nDraft dataset",
+      "desc": "Change required flag or display order on an existing attachment.",
+      "detail": "Input:\n{\n  \"isRequired\": true,\n  \"displayOrder\": 2\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 7,\n    \"datasetId\": 6,\n    \"indicatorId\": 8,\n    \"isRequired\": true,\n    \"displayOrder\": 2,\n    \"indicator\": {\n      \"id\": 8,\n      \"indicatorCode\": \"CBE/IND/2026/0001\",\n      \"nameEn\": \"Number of staff\",\n      \"nameSw\": \"Idadi ya watumishi\",\n      \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n      \"descriptionSw\": null,\n      \"dataType\": \"integer\",\n      \"unitId\": 11,\n      \"aggregationRule\": \"none\",\n      \"status\": \"active\",\n      \"createdBy\": 1\n    }\n  }\n}\n\nRules: Use catalogue indicator ID (8), not link ID (7). Does not edit indicator definition.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset indicators",
+      "method": "DELETE",
+      "path": "/datasets/{datasetId}/indicators/{indicatorId}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D\nDraft dataset",
+      "desc": "Detach an indicator; keep its catalogue record.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"message\": \"Indicator imeondolewa kwenye dataset.\"\n}\n\nRules: Cannot detach an indicator while dimension assignments still refer to it. Use catalogue indicator ID in URL.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Indicator catalogue",
+      "method": "GET",
+      "path": "/indicators",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C",
+      "desc": "Browse shared indicator definitions.",
+      "detail": "Query: status=active / inactive, dataType, perPage, page\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 8,\n      \"indicatorCode\": \"CBE/IND/2026/0001\",\n      \"nameEn\": \"Number of staff\",\n      \"nameSw\": \"Idadi ya watumishi\",\n      \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n      \"descriptionSw\": null,\n      \"dataType\": \"integer\",\n      \"unitId\": 11,\n      \"aggregationRule\": \"none\",\n      \"status\": \"active\",\n      \"createdBy\": 1\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Indicator catalogue",
+      "method": "POST",
+      "path": "/indicators",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C",
+      "desc": "Create a standalone indicator without a dataset attachment.",
+      "detail": "Input:\n{\n  \"nameEn\": \"Number of staff\",\n  \"nameSw\": \"Idadi ya watumishi\",\n  \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n  \"dataType\": \"integer\",\n  \"unitId\": 11,\n  \"aggregationRule\": \"none\",\n  \"status\": \"active\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 8,\n    \"indicatorCode\": \"CBE/IND/2026/0001\",\n    \"nameEn\": \"Number of staff\",\n    \"nameSw\": \"Idadi ya watumishi\",\n    \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n    \"descriptionSw\": null,\n    \"dataType\": \"integer\",\n    \"unitId\": 11,\n    \"aggregationRule\": \"none\",\n    \"status\": \"active\",\n    \"createdBy\": 1\n  }\n}\n\nRules: Required nameEn, dataType. Optional nameSw, descriptionEn/Sw, unitId, aggregationRule, status. Code auto-generated from creator institution; indicatorCode/createdBy prohibited. Attach it separately with dataset indicatorId.",
+      "codes": "201 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Indicator catalogue",
+      "method": "GET",
+      "path": "/indicators/{id}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C",
+      "desc": "Read one indicator definition.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 8,\n    \"indicatorCode\": \"CBE/IND/2026/0001\",\n    \"nameEn\": \"Number of staff\",\n    \"nameSw\": \"Idadi ya watumishi\",\n    \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n    \"descriptionSw\": null,\n    \"dataType\": \"integer\",\n    \"unitId\": 11,\n    \"aggregationRule\": \"none\",\n    \"status\": \"active\",\n    \"createdBy\": 1\n  }\n}",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Indicator catalogue",
+      "method": "PATCH",
+      "path": "/indicators/{id}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C\nCreator or MOA to edit",
+      "desc": "Edit an indicator definition if no active dataset uses it.",
+      "detail": "Input:\n{\n  \"nameSw\": \"Idadi ya watumishi\",\n  \"unitId\": 11,\n  \"aggregationRule\": \"none\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 8,\n    \"indicatorCode\": \"CBE/IND/2026/0001\",\n    \"nameEn\": \"Number of staff\",\n    \"nameSw\": \"Idadi ya watumishi\",\n    \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n    \"descriptionSw\": null,\n    \"dataType\": \"integer\",\n    \"unitId\": 11,\n    \"aggregationRule\": \"none\",\n    \"status\": \"active\",\n    \"createdBy\": 1\n  }\n}\n\nRules: Create fields optional; code and creator immutable. Catalogue is shared: a change can affect other draft datasets using this record.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Indicator catalogue",
+      "method": "DELETE",
+      "path": "/indicators/{id}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C\nCreator or MOA to edit",
+      "desc": "Set indicator inactive if it is not used by an active dataset.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 8,\n    \"indicatorCode\": \"CBE/IND/2026/0001\",\n    \"nameEn\": \"Number of staff\",\n    \"nameSw\": \"Idadi ya watumishi\",\n    \"descriptionEn\": \"Staff employed at the end of the reporting period.\",\n    \"descriptionSw\": null,\n    \"dataType\": \"integer\",\n    \"unitId\": 11,\n    \"aggregationRule\": \"none\",\n    \"status\": \"inactive\",\n    \"createdBy\": 1\n  }\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset dimensions",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/dimensions",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "List dimension attachments, indicator assignments and manual options.",
+      "detail": "Query: indicatorId=8, perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 2,\n      \"datasetId\": 6,\n      \"dimensionId\": 2,\n      \"isRequired\": true,\n      \"displayOrder\": 1,\n      \"indicatorIds\": [\n        8\n      ],\n      \"dimension\": {\n        \"id\": 2,\n        \"dimensionCode\": \"CBE_STAFF_CATEGORY\",\n        \"nameEn\": \"Staff Category\",\n        \"nameSw\": \"Kundi la Watumishi\",\n        \"dataType\": \"reference\",\n        \"referenceTypeId\": null,\n        \"status\": \"active\",\n        \"options\": [\n          {\n            \"id\": 3,\n            \"code\": \"TEACHING\",\n            \"name_en\": \"Teaching Staff\",\n            \"name_sw\": \"Watumishi wa Kufundisha\"\n          },\n          {\n            \"id\": 4,\n            \"code\": \"ICT\",\n            \"name_en\": \"ICT Staff\",\n            \"name_sw\": \"Watumishi wa TEHAMA\"\n          }\n        ]\n      }\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}\n\nRules: Optional indicatorId must belong to this dataset.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset dimensions",
+      "method": "POST",
+      "path": "/datasets/{datasetId}/dimensions",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D\nDraft dataset",
+      "desc": "Create a dimension with manual options and attach it to selected indicators.",
+      "detail": "Input:\n{\n  \"dimension\": {\n    \"dimensionCode\": \"CBE_STAFF_CATEGORY\",\n    \"nameEn\": \"Staff Category\",\n    \"nameSw\": \"Kundi la Watumishi\",\n    \"dataType\": \"reference\",\n    \"referenceTypeId\": null,\n    \"options\": [\n      {\n        \"code\": \"TEACHING\",\n        \"nameEn\": \"Teaching Staff\",\n        \"nameSw\": \"Watumishi wa Kufundisha\"\n      },\n      {\n        \"code\": \"ICT\",\n        \"nameEn\": \"ICT Staff\",\n        \"nameSw\": \"Watumishi wa TEHAMA\"\n      }\n    ]\n  },\n  \"indicatorIds\": [\n    8\n  ],\n  \"isRequired\": true,\n  \"displayOrder\": 1\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 2,\n    \"datasetId\": 6,\n    \"dimensionId\": 2,\n    \"isRequired\": true,\n    \"displayOrder\": 1,\n    \"indicatorIds\": [\n      8\n    ],\n    \"dimension\": {\n      \"id\": 2,\n      \"dimensionCode\": \"CBE_STAFF_CATEGORY\",\n      \"nameEn\": \"Staff Category\",\n      \"nameSw\": \"Kundi la Watumishi\",\n      \"dataType\": \"reference\",\n      \"referenceTypeId\": null,\n      \"status\": \"active\",\n      \"options\": [\n        {\n          \"id\": 3,\n          \"code\": \"TEACHING\",\n          \"name_en\": \"Teaching Staff\",\n          \"name_sw\": \"Watumishi wa Kufundisha\"\n        },\n        {\n          \"id\": 4,\n          \"code\": \"ICT\",\n          \"name_en\": \"ICT Staff\",\n          \"name_sw\": \"Watumishi wa TEHAMA\"\n        }\n      ]\n    }\n  }\n}\n\nRules: Alternative: dimensionId instead of dimension to reuse a catalogue record. Manual options require dataType reference, referenceTypeId null, and indicatorIds from this dataset. Option code uppercase letters/digits/_/-, max100; nameEn required. Up to1000 options. Duplicate attachment:409.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset dimensions",
+      "method": "PATCH",
+      "path": "/datasets/{datasetId}/dimensions/{dimensionId}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D\nDraft dataset",
+      "desc": "Change dimension attachment's required flag or display order.",
+      "detail": "Input:\n{\n  \"isRequired\": true,\n  \"displayOrder\": 2\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 2,\n    \"datasetId\": 6,\n    \"dimensionId\": 2,\n    \"isRequired\": true,\n    \"displayOrder\": 2,\n    \"indicatorIds\": [\n      8\n    ],\n    \"dimension\": {\n      \"id\": 2,\n      \"dimensionCode\": \"CBE_STAFF_CATEGORY\",\n      \"nameEn\": \"Staff Category\",\n      \"nameSw\": \"Kundi la Watumishi\",\n      \"dataType\": \"reference\",\n      \"referenceTypeId\": null,\n      \"status\": \"active\",\n      \"options\": [\n        {\n          \"id\": 3,\n          \"code\": \"TEACHING\",\n          \"name_en\": \"Teaching Staff\",\n          \"name_sw\": \"Watumishi wa Kufundisha\"\n        },\n        {\n          \"id\": 4,\n          \"code\": \"ICT\",\n          \"name_en\": \"ICT Staff\",\n          \"name_sw\": \"Watumishi wa TEHAMA\"\n        }\n      ]\n    }\n  }\n}\n\nRules: URL uses catalogue dimensionId. Body accepts only isRequired/displayOrder; cannot change indicatorIds, dimensionId or definition here.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset dimensions",
+      "method": "DELETE",
+      "path": "/datasets/{datasetId}/dimensions/{dimensionId}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D\nDraft dataset",
+      "desc": "Detach a dimension while preserving its catalogue definition.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"message\": \"Dimension imeondolewa kwenye dataset.\"\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dimension catalogue",
+      "method": "GET",
+      "path": "/dimensions",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C",
+      "desc": "Browse shared dimension definitions.",
+      "detail": "Query: status=active / inactive, perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 2,\n      \"dimensionCode\": \"CBE_STAFF_CATEGORY\",\n      \"nameEn\": \"Staff Category\",\n      \"nameSw\": \"Kundi la Watumishi\",\n      \"dataType\": \"reference\",\n      \"referenceTypeId\": null,\n      \"status\": \"active\",\n      \"options\": [\n        {\n          \"id\": 3,\n          \"code\": \"TEACHING\",\n          \"name_en\": \"Teaching Staff\",\n          \"name_sw\": \"Watumishi wa Kufundisha\"\n        },\n        {\n          \"id\": 4,\n          \"code\": \"ICT\",\n          \"name_en\": \"ICT Staff\",\n          \"name_sw\": \"Watumishi wa TEHAMA\"\n        }\n      ]\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dimension catalogue",
+      "method": "GET",
+      "path": "/dimensions/{id}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C",
+      "desc": "Read a dimension and its options.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 2,\n    \"dimensionCode\": \"CBE_STAFF_CATEGORY\",\n    \"nameEn\": \"Staff Category\",\n    \"nameSw\": \"Kundi la Watumishi\",\n    \"dataType\": \"reference\",\n    \"referenceTypeId\": null,\n    \"status\": \"active\",\n    \"options\": [\n      {\n        \"id\": 3,\n        \"code\": \"TEACHING\",\n        \"name_en\": \"Teaching Staff\",\n        \"name_sw\": \"Watumishi wa Kufundisha\"\n      },\n      {\n        \"id\": 4,\n        \"code\": \"ICT\",\n        \"name_en\": \"ICT Staff\",\n        \"name_sw\": \"Watumishi wa TEHAMA\"\n      }\n    ]\n  }\n}\n\nRules: Full catalogue response also includes createdBy. There is no standalone POST /dimensions.",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dimension catalogue",
+      "method": "PATCH",
+      "path": "/dimensions/{id}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C\nCreator or MOA to edit",
+      "desc": "Edit dimension metadata if no active dataset uses it.",
+      "detail": "Input:\n{\n  \"nameEn\": \"Staff Category\",\n  \"nameSw\": \"Kundi la Watumishi\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 2,\n    \"dimensionCode\": \"CBE_STAFF_CATEGORY\",\n    \"nameEn\": \"Staff Category\",\n    \"nameSw\": \"Kundi la Watumishi\",\n    \"dataType\": \"reference\",\n    \"referenceTypeId\": null,\n    \"status\": \"active\",\n    \"options\": [\n      {\n        \"id\": 3,\n        \"code\": \"TEACHING\",\n        \"name_en\": \"Teaching Staff\",\n        \"name_sw\": \"Watumishi wa Kufundisha\"\n      },\n      {\n        \"id\": 4,\n        \"code\": \"ICT\",\n        \"name_en\": \"ICT Staff\",\n        \"name_sw\": \"Watumishi wa TEHAMA\"\n      }\n    ]\n  }\n}\n\nRules: Optional nameEn/nameSw/dataType/referenceTypeId/status. dimensionCode/createdBy prohibited; options must be omitted. A manual-options dimension cannot change its dataType or referenceTypeId.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Dimension catalogue",
+      "method": "DELETE",
+      "path": "/dimensions/{id}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nCatalogue scope C\nCreator or MOA to edit",
+      "desc": "Set a dimension inactive if no active dataset uses it.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 2,\n    \"dimensionCode\": \"CBE_STAFF_CATEGORY\",\n    \"nameEn\": \"Staff Category\",\n    \"nameSw\": \"Kundi la Watumishi\",\n    \"dataType\": \"reference\",\n    \"referenceTypeId\": null,\n    \"status\": \"inactive\",\n    \"options\": [\n      {\n        \"id\": 3,\n        \"code\": \"TEACHING\",\n        \"name_en\": \"Teaching Staff\",\n        \"name_sw\": \"Watumishi wa Kufundisha\"\n      },\n      {\n        \"id\": 4,\n        \"code\": \"ICT\",\n        \"name_en\": \"ICT Staff\",\n        \"name_sw\": \"Watumishi wa TEHAMA\"\n      }\n    ]\n  }\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Activation and versions",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/configuration-progress",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Check wizard completion and activation blockers.",
+      "detail": "Input: no request body. Response: {data:configuration progress}. Reports configuration completeness and canActivate. Targets and reporting calendar are not prerequisites for master activation; validation errors describe missing or invalid configuration.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Activation and versions",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/sectors",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Read sectors chosen during dataset creation.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": [\n    {\n      \"sectorId\": 9,\n      \"sectorCode\": \"TRADE\",\n      \"nameEn\": \"Trade Sector\",\n      \"nameSw\": \"Sekta ya Biashara\",\n      \"subsectors\": []\n    }\n  ]\n}\n\nRules: No standalone sector update endpoint. POST /datasets supplies sectors.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Activation and versions",
+      "method": "POST",
+      "path": "/datasets/{datasetId}/activate",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D\nDraft dataset",
+      "desc": "Validate the configuration, activate dataset and create an immutable template snapshot.",
+      "detail": "Input: no request body.\nResponse: {data:TemplateVersion}, using snake_case including id,dataset_definition_id,version_number,template_format,template_content,effective_from,created_by.\nRules: requires draft dataset, valid details/sectors/frequencies, active indicators and valid dimensions. No reporting calendar or targets required for master activation. Snapshot describes the form, not a reporting year. Activation migrates only never-submitted drafts/calendars/compatible versioned targets. Old form and values are archived atomically before incompatible/dropped fields are removed from current rows. Migration increments revision. Submitted, under-review, returned, approved and published submissions keep their template/data. A returned submission is already-submitted history, not an untouched draft. Use GET submission template, not live master, to render review screens.",
+      "codes": "201 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Activation and versions",
+      "method": "POST",
+      "path": "/datasets/{datasetId}/draft",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Reopen a dataset for configuration changes; preserve historical versions.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"datasetId\": 6,\n    \"status\": \"draft\"\n  }\n}\n\nRules: Already-draft calls remain draft. Reactivation creates a new version.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Activation and versions",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/template-versions",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "List immutable template version metadata.",
+      "detail": "Query: perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 2,\n      \"dataset_definition_id\": 6,\n      \"version_number\": 1,\n      \"template_format\": \"json\",\n      \"effective_from\": \"2026-10-20\",\n      \"created_by\": 1\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}\n\nRules: List excludes template_content; GET the specific version for the complete snapshot.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Activation and versions",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/template-versions/{versionId}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Read a specific full snapshot belonging to this dataset.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 2,\n    \"dataset_definition_id\": 6,\n    \"version_number\": 1,\n    \"template_format\": \"json\",\n    \"template_content\": {\n      \"schemaVersion\": 2,\n      \"datasetId\": 6\n    },\n    \"created_by\": 1\n  }\n}\n\nRules: Raw model serialization uses snake_case; template_content includes configuration arrays. No update/delete version endpoint.",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset reporting calendar",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/reporting-calendar",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Read reporting assignments, deadlines and reminder settings.",
+      "detail": "Query: page=1 (fixed page size 20)\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 5,\n      \"datasetId\": 6,\n      \"reportingPeriodId\": 7,\n      \"periodLabel\": \"2026/2027 Q1\",\n      \"reportingYear\": \"2026/2027\",\n      \"periodType\": \"quarterly\",\n      \"responsibleUserId\": 7,\n      \"deadlineDays\": 0,\n      \"deadline\": \"2026-09-30\",\n      \"reminderDays\": [\n        10\n      ],\n      \"remindersEnabled\": true,\n      \"submittedAt\": null\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}\nGlobal reporting-period dates/deadline govern actual entry; calendar snapshot also exposes linked template and eligibility metadata.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset reporting calendar",
+      "method": "PUT",
+      "path": "/datasets/{datasetId}/reporting-calendar",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. Active user required.",
+      "desc": "Create or update one or several period assignments.",
+      "detail": "Input example:\n{\n  \"reportingPeriodIds\": [\n    46,\n    47\n  ],\n  \"responsibleUserId\": 7,\n  \"deadlineDays\": 7,\n  \"reminderDays\": [\n    7,\n    1\n  ],\n  \"remindersEnabled\": true\n}\n\nResponse (selected fields):\n{data:[Calendar,...]} for reportingPeriodIds; {data:Calendar} for reportingPeriodId.\n\nRules: Send exactly one of reportingPeriodId or reportingPeriodIds (distinct list1–366). responsibleUserId required eligible active officer; deadlineDays0–365 required for compatibility; shared period controls actual deadline. Cannot send deadline or submittedAt. Submitted assignments protected. reminders max10 distinct0–365; omitted defaults apply.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset reporting calendar",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/assignees",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. Active user required.",
+      "desc": "List eligible officers for an existing dataset.",
+      "detail": "Query: search max255, perPage1–100, page\n\nInput: no request body.\n\nResponse (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 7,\n      \"name\": \"Example Officer\",\n      \"email\": \"ido1@cbe.co.tz\",\n      \"username\": \"sample_ido1_inst4\"\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}\n\nRules: Active direct or delegated IDO/DDO; institution and department match dataset; no credentials exposed.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Dataset reporting calendar",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/reporting-settings",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. Active user required.",
+      "desc": "Read dataset reminder/reporting settings.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{data:reporting_settings object or null}\n\nRules: Settings do not replace the shared reporting-period dates/deadlines.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Dataset reporting calendar",
+      "method": "PUT",
+      "path": "/datasets/{datasetId}/reporting-settings",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. Active user required.",
+      "desc": "Update reminders and optionally responsible officer.",
+      "detail": "Input example:\n{\n  \"responsibleUserId\": 7,\n  \"reminderDays\": [\n    7,\n    1\n  ],\n  \"remindersEnabled\": true\n}\n\nResponse (selected fields):\n{data:{responsibleUserId:7,reminderDays:[7,1],remindersEnabled:true}}\n\nRules: reminderDays required array max10 distinct integers0–365; remindersEnabled required boolean; responsibleUserId optional active eligible officer. Legacy optional yearType financial/calendar,yearStartMonth1–12,deadlineDays0–365 are not authoritative over global periods. Officer change reassigns pending eligible calendars, preserving submitted history.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset reporting calendar",
+      "method": "POST",
+      "path": "/datasets/{datasetId}/reporting-years",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. Active user required.",
+      "desc": "Prepare calendars for the selected reporting year and frequency.",
+      "detail": "Input example:\n{\n  \"startYear\": 2026,\n  \"frequency\": \"quarterly\"\n}\n\nResponse (selected fields):\n{data:[{reportingPeriodId,periodNumber,label,entryStatus,canEnterData,calendar,...}]}\n\nRules: startYear2000–2100; frequency annual/quarterly/monthly/semiannual/weekly/daily must be enabled. Select existing shared periods; no dataset edit needed for a new year. Can create/reuse calendars; context rejects unavailable/submitted periods with422 and requires assigned officer or MOA. Templates and targets come from selected period/version.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset reporting calendar",
+      "method": "POST",
+      "path": "/datasets/{datasetId}/submission-context",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. Active user required.",
+      "desc": "Resolve an enterable period, calendar and template before creating/resuming a draft.",
+      "detail": "Input example:\n{\n  \"startYear\": 2026,\n  \"frequency\": \"quarterly\",\n  \"periodNumber\": 2\n}\n\nResponse (selected fields):\n{data:{reportingCalendarId,datasetId,reportingPeriod:{...},calendar:{...},templateVersionId,template:{...},submittedAt:null,targets:[]}}\n\nRules: startYear2000–2100; frequency annual/quarterly/monthly/semiannual/weekly/daily must be enabled. Select existing shared periods; no dataset edit needed for a new year. periodNumber required for nonannual, prohibited for annual. Can create/reuse calendars; context rejects unavailable/submitted periods with422 and requires assigned officer or MOA. Templates and targets come from selected period/version.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Dataset reporting calendar",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/submission-status",
+      "access": "MOA all; IA/IDO own institution; DDO own institution and department. Active user required.",
+      "desc": "Check eligibility immediately when a dataset and period are selected.",
+      "detail": "Query: startYear=2026&frequency=quarterly&periodNumber=2\n\nInput: no request body.\n\nResponse (selected fields):\n{data:{datasetId,reportingPeriodId,periodLabel,reportingCalendarId,templateVersionId,entryStatus,canEnterData,submissionId,submissionStatus,reference,revision,correctionDeadline,reason,action}}\n\nRules: startYear2000–2100; frequency annual/quarterly/monthly/semiannual/weekly/daily must be enabled. Select existing shared periods; no dataset edit needed for a new year. periodNumber required for nonannual, prohibited for annual. Read-only: no calendar/draft creation. action=start/resume/view/blocked; entryStatus=available/upcoming/overdue/closed/submitted/returned. Respect canEnterData and show reason.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "GET",
+      "path": "/reporting-periods",
+      "access": "Active MOA/IA/IDO/DDO/MDO OR submission_periods.view OR submission_periods.configure",
+      "desc": "List shared reporting periods.",
+      "detail": "Query: parentId, periodType, status=open/closed, perPage1–100, page\n\nInput: no request body.\n\nResponse (selected fields):\nLaravel root paginator of ReportingPeriod.\n\nRules: institutionId prohibited. Responses include institutionId:null, parentId, periodCode,label,periodType,yearType,quarter,periodNumber,startDate,endDate,deadline,status,automaticStatus,isOpen,createdBy plus entryStatus,canEnterData,reason. Automatic status derived using Africa/Dar_es_Salaam.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "POST",
+      "path": "/reporting-periods",
+      "access": "MOA only",
+      "desc": "Create a shared annual or child reporting period.",
+      "detail": "Input example:\n{\n  \"periodType\": \"annual\",\n  \"yearType\": \"financial\",\n  \"startDate\": \"2026-07-01\",\n  \"endDate\": \"2027-06-30\",\n  \"deadlineDays\": 7\n}\n\nResponse (selected fields):\n201 {data:ReportingPeriod}\n\nRules: institutionId,createdBy,status prohibited. Annual requires yearType and full12-month dates starting first day; calendar years start January. Child requires parentId: quarterly uses quarter1–4; monthly/semiannual/weekly/daily use periodNumber. Annual-only fields prohibited for child. Exactly one deadline or deadlineDays0–365. Duplicate/overlap409.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "GET",
+      "path": "/reporting-periods/{id}",
+      "access": "Active MOA/IA/IDO/DDO/MDO OR submission_periods.view OR submission_periods.configure",
+      "desc": "Read period dates and entry status.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{data:ReportingPeriod}\n\nRules: Response fields described in list endpoint. status and entryStatus differ: entryStatus explains eligibility.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "PATCH",
+      "path": "/reporting-periods/{id}",
+      "access": "MOA only",
+      "desc": "Update deadline or manually close/reopen a period.",
+      "detail": "Input example:\n{\n  \"deadline\": \"2027-01-07\",\n  \"status\": \"open\"\n}\n\nResponse (selected fields):\n{data:ReportingPeriod}\n\nRules: Only deadline/status editable. Closing disables automatic status; open restores automatic scheduling and does not bypass date gates. Manual parent closure blocks children; automatic parent expiry alone does not block a valid child/correction window.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "DELETE",
+      "path": "/reporting-periods/{id}",
+      "access": "MOA only",
+      "desc": "Manually close a shared reporting period.",
+      "detail": "Input: no request body.\n\nResponse (selected fields):\n{data:ReportingPeriod with status closed}\n\nRules: Soft business closure, not database deletion.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "POST",
+      "path": "/reporting-periods/{id}/quarters",
+      "access": "MOA only",
+      "desc": "Generate Q1 through Q4 under a shared annual period.",
+      "detail": "Input example:\n{\n  \"deadlineDays\": 7\n}\n\nResponse (selected fields):\n{data:[ReportingPeriod,ReportingPeriod,ReportingPeriod,ReportingPeriod]}\n\nRules: Parent ID is annual period. Existing quarter records reused; supplied deadlineDays required0–365.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "POST",
+      "path": "/reporting-periods/{id}/months",
+      "access": "MOA only",
+      "desc": "Generate child periods under a shared annual reporting year.",
+      "detail": "Input example:\n{\n  \"deadlineDays\": 7\n}\n\nResponse (selected fields):\n{data:[ReportingPeriod,...]}\n\nRules: deadlineDays required integer0–365. Counts depend on frequency: months12,semiannual2,weeks up to53,days365/366. Existing child identities reused. Parent must satisfy shared-year validation; dates computed by backend.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "POST",
+      "path": "/reporting-periods/{id}/semiannual",
+      "access": "MOA only",
+      "desc": "Generate child periods under a shared annual reporting year.",
+      "detail": "Input example:\n{\n  \"deadlineDays\": 7\n}\n\nResponse (selected fields):\n{data:[ReportingPeriod,...]}\n\nRules: deadlineDays required integer0–365. Counts depend on frequency: months12,semiannual2,weeks up to53,days365/366. Existing child identities reused. Parent must satisfy shared-year validation; dates computed by backend.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "POST",
+      "path": "/reporting-periods/{id}/weeks",
+      "access": "MOA only",
+      "desc": "Generate child periods under a shared annual reporting year.",
+      "detail": "Input example:\n{\n  \"deadlineDays\": 7\n}\n\nResponse (selected fields):\n{data:[ReportingPeriod,...]}\n\nRules: deadlineDays required integer0–365. Counts depend on frequency: months12,semiannual2,weeks up to53,days365/366. Existing child identities reused. Parent must satisfy shared-year validation; dates computed by backend.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Reporting periods",
+      "method": "POST",
+      "path": "/reporting-periods/{id}/days",
+      "access": "MOA only",
+      "desc": "Generate child periods under a shared annual reporting year.",
+      "detail": "Input example:\n{\n  \"deadlineDays\": 7\n}\n\nResponse (selected fields):\n{data:[ReportingPeriod,...]}\n\nRules: deadlineDays required integer0–365. Counts depend on frequency: months12,semiannual2,weeks up to53,days365/366. Existing child identities reused. Parent must satisfy shared-year validation; dates computed by backend.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Accept: application/json\nAuthorization: Bearer {token}\nContent-Type: application/json"
+    },
+    {
+      "module": "Indicator targets",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/targets",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "List targets by indicator, period, scope or status.",
+      "detail": "Query: indicatorId, reportingPeriodId, targetScope=total / dimensions, status=active / inactive, perPage, page\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"datasetId\": 6,\n      \"indicatorId\": 8,\n      \"reportingPeriodId\": 7,\n      \"templateVersionId\": null,\n      \"phase\": \"draft\",\n      \"targetScope\": \"dimensions\",\n      \"dimensionValues\": [\n        {\n          \"dimensionId\": 2,\n          \"value\": 4\n        }\n      ],\n      \"targetValue\": \"20.000000\",\n      \"notes\": \"Target ya watumishi wa TEHAMA mwisho wa Q1.\",\n      \"status\": \"active\",\n      \"createdBy\": 1\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Indicator targets",
+      "method": "POST",
+      "path": "/datasets/{datasetId}/targets",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Create a numeric target for one period and one dimension combination.",
+      "detail": "Input:\n{\n  \"indicatorId\": 8,\n  \"reportingPeriodId\": 7,\n  \"targetScope\": \"dimensions\",\n  \"dimensionValues\": [\n    {\n      \"dimensionId\": 2,\n      \"value\": 4\n    }\n  ],\n  \"targetValue\": \"20\",\n  \"notes\": \"Target ya watumishi wa TEHAMA mwisho wa Q1.\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 4,\n    \"datasetId\": 6,\n    \"indicatorId\": 8,\n    \"reportingPeriodId\": 7,\n    \"templateVersionId\": null,\n    \"phase\": \"draft\",\n    \"targetScope\": \"dimensions\",\n    \"dimensionValues\": [\n      {\n        \"dimensionId\": 2,\n        \"value\": 4\n      }\n    ],\n    \"targetValue\": \"20.000000\",\n    \"notes\": \"Target ya watumishi wa TEHAMA mwisho wa Q1.\",\n    \"status\": \"active\",\n    \"createdBy\": 1\n  }\n}\n\nRules: indicatorId,reportingPeriodId,targetValue numeric string required. targetScope defaults total; total requires empty dimensionValues; dimensions scope requires linked valid dimension values and all required dimensions. Only integer/decimal indicators; up to18 digits before decimal and6 after; negative numbers are accepted. Draft uses current configuration with null templateVersionId. Active defaults to calendar-pinned template, otherwise latest; explicit version must match any calendar pin. Calendar need not exist. Period must be global or own institution and not manually closed; frequency must match. Unique dataset/indicator/period/dimension identity returns409 even if old target is inactive: update existing target instead.\nTargets are optional; actual values need not equal targets. No annual-to-quarter autoallocation, sum-of-targets enforcement or automatic annual copying. Current service does not lock target edits simply because a submission exists/submitted. Draft unversioned targets require explicit edit/revalidation to bind after activation.",
+      "codes": "201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Indicator targets",
+      "method": "GET",
+      "path": "/datasets/{datasetId}/targets/{targetId}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Read one target belonging to the dataset.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 4,\n    \"datasetId\": 6,\n    \"indicatorId\": 8,\n    \"reportingPeriodId\": 7,\n    \"templateVersionId\": null,\n    \"phase\": \"draft\",\n    \"targetScope\": \"dimensions\",\n    \"dimensionValues\": [\n      {\n        \"dimensionId\": 2,\n        \"value\": 4\n      }\n    ],\n    \"targetValue\": \"20.000000\",\n    \"notes\": \"Target ya watumishi wa TEHAMA mwisho wa Q1.\",\n    \"status\": \"active\",\n    \"createdBy\": 1\n  }\n}",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Indicator targets",
+      "method": "PATCH",
+      "path": "/datasets/{datasetId}/targets/{targetId}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Update target value, notes or active/inactive status.",
+      "detail": "Input:\n{\n  \"targetValue\": \"25\",\n  \"notes\": \"Revised staffing target.\",\n  \"status\": \"active\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 4,\n    \"datasetId\": 6,\n    \"indicatorId\": 8,\n    \"reportingPeriodId\": 7,\n    \"templateVersionId\": null,\n    \"phase\": \"draft\",\n    \"targetScope\": \"dimensions\",\n    \"dimensionValues\": [\n      {\n        \"dimensionId\": 2,\n        \"value\": 4\n      }\n    ],\n    \"targetValue\": \"25.000000\",\n    \"notes\": \"Revised staffing target.\",\n    \"status\": \"active\",\n    \"createdBy\": 1\n  }\n}\n\nRules: Indicator, period, template version, targetScope and dimensionValues are immutable. Versioned targets cannot be edited while dataset is reopened as draft. Period and configuration validation applies.\nTargets are optional; actual values need not equal targets. No annual-to-quarter autoallocation, sum-of-targets enforcement or automatic annual copying. Current service does not lock target edits simply because a submission exists/submitted. Draft unversioned targets require explicit edit/revalidation to bind after activation.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Indicator targets",
+      "method": "DELETE",
+      "path": "/datasets/{datasetId}/targets/{targetId}",
+      "access": "MOA Â· IA Â· IDO Â· DDO\nDataset scope D",
+      "desc": "Set a target inactive and retain its history.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 4,\n    \"datasetId\": 6,\n    \"indicatorId\": 8,\n    \"reportingPeriodId\": 7,\n    \"templateVersionId\": null,\n    \"phase\": \"draft\",\n    \"targetScope\": \"dimensions\",\n    \"dimensionValues\": [\n      {\n        \"dimensionId\": 2,\n        \"value\": 4\n      }\n    ],\n    \"targetValue\": \"20.000000\",\n    \"notes\": \"Target ya watumishi wa TEHAMA mwisho wa Q1.\",\n    \"status\": \"inactive\",\n    \"createdBy\": 1\n  }\n}\n\nRules: Uses the same update service and its version/state checks.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Dataset priority",
+      "method": "PATCH",
+      "path": "/datasets/{datasetId}/priority",
+      "access": "MDO only\nSame department for department datasets",
+      "desc": "Change an already initialized priority with an audit reason.",
+      "detail": "Input:\n{\n  \"priority\": \"high\",\n  \"reason\": \"Updated ministry reporting priorities.\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"datasetId\": 6,\n    \"priority\": \"high\",\n    \"priorityUpdatedBy\": 12,\n    \"priorityUpdatedAt\": \"2026-10-20T12:00:00+03:00\"\n  }\n}\n\nRules: priority: low/medium/high; reason required, max 2000. Cannot set the first priority through this route (422). Initial assignment is reserved for the service's duringReview method; submission integration is a separate step.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Workflow configuration",
+      "method": "GET",
+      "path": "/approval-circles",
+      "access": "MOA: shared ministry\nIA: own institution\nWorkflow scope W\napproval_circle.manage.ministry or approval_circle.manage.institution",
+      "desc": "List workflow versions in the administrator's scope.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Ministry Data Approval\",\n      \"institution_id\": null,\n      \"department_id\": null,\n      \"scope_key\": \"global\",\n      \"version_number\": 1,\n      \"status\": \"draft\",\n      \"is_active\": false\n    }\n  ]\n}\n\nRules: Not paginated. Each item also includes steps. MOA sees global ministry versions; IA sees only its institution versions.",
+      "codes": "200 / 401 / 403",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Workflow configuration",
+      "method": "POST",
+      "path": "/approval-circles",
+      "access": "MOA: shared ministry\nIA: own institution\nWorkflow scope W\napproval_circle.manage.ministry or approval_circle.manage.institution",
+      "desc": "Create a new draft workflow. The example is for MOA.",
+      "detail": "Input:\n{\n  \"name\": \"Ministry review and publication\",\n  \"steps\": [\n    {\n      \"step_name\": \"M&E review\",\n      \"required_role_code\": \"MDO\",\n      \"action\": \"review\",\n      \"level\": \"ministry\",\n      \"can_return\": true\n    },\n    {\n      \"step_name\": \"Publication\",\n      \"required_role_code\": \"MDD\",\n      \"action\": \"publish\",\n      \"level\": \"ministry\",\n      \"can_return\": true\n    }\n  ]\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Ministry Data Approval\",\n    \"institution_id\": null,\n    \"department_id\": null,\n    \"scope_key\": \"global\",\n    \"version_number\": 1,\n    \"status\": \"draft\",\n    \"is_active\": false\n  }\n}\n\nRules: Response also contains all steps. name max120; steps 1-30. Sequence follows array order. Omit institution_id, department_id and scope_key (prohibited). Active role must match level. assigned_user_id is optional for institution steps; non-null ministry assignees are prohibited. can_return defaults true. See institution example after the table.",
+      "codes": "201 / 401 / 403 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Workflow configuration",
+      "method": "GET",
+      "path": "/approval-circles/{id}",
+      "access": "MOA: shared ministry\nIA: own institution\nWorkflow scope W",
+      "desc": "Read one scoped workflow with its ordered steps.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Ministry Data Approval\",\n    \"institution_id\": null,\n    \"department_id\": null,\n    \"scope_key\": \"global\",\n    \"version_number\": 1,\n    \"status\": \"draft\",\n    \"is_active\": false,\n    \"steps\": [\n      {\n        \"id\": 1,\n        \"approval_circle_id\": 1,\n        \"sequence\": 1,\n        \"step_name\": \"Ministry Review\",\n        \"required_role_code\": \"MDO\",\n        \"action\": \"review\",\n        \"level\": \"ministry\",\n        \"can_return\": true,\n        \"assigned_user_id\": null\n      }\n    ]\n  }\n}\n\nRules: Steps shown here are an excerpt; the default ministry example has two. Out-of-scope ID returns 404.",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Workflow configuration",
+      "method": "PUT",
+      "path": "/approval-circles/{id}",
+      "access": "MOA: shared ministry\nIA: own institution\nWorkflow scope W",
+      "desc": "Replace draft workflow name and complete step list.",
+      "detail": "Input:\n{\n  \"name\": \"Ministry review and publication\",\n  \"steps\": [\n    {\n      \"step_name\": \"M&E review\",\n      \"required_role_code\": \"MDO\",\n      \"action\": \"review\",\n      \"level\": \"ministry\",\n      \"can_return\": true\n    },\n    {\n      \"step_name\": \"Publication\",\n      \"required_role_code\": \"MDD\",\n      \"action\": \"publish\",\n      \"level\": \"ministry\",\n      \"can_return\": true\n    }\n  ]\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Ministry Data Approval\",\n    \"institution_id\": null,\n    \"department_id\": null,\n    \"scope_key\": \"global\",\n    \"version_number\": 1,\n    \"status\": \"draft\",\n    \"is_active\": false\n  }\n}\n\nRules: Both name and steps are required. Response includes replacement steps. Active or retired version:409; clone first. Replacing steps recreates their IDs; refresh after saving. Institution steps cannot publish.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Workflow configuration",
+      "method": "PUT",
+      "path": "/approval-circle-steps/{step}",
+      "access": "MOA: shared ministry\nIA: own institution\nWorkflow scope W\napproval_circle.manage.ministry or approval_circle.manage.institution",
+      "desc": "Update one step in a draft workflow.",
+      "detail": "Input:\n{\n  \"step_name\": \"Ministry Review\",\n  \"can_return\": true\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Ministry Data Approval\",\n    \"institution_id\": null,\n    \"department_id\": null,\n    \"scope_key\": \"global\",\n    \"version_number\": 1,\n    \"status\": \"draft\",\n    \"is_active\": false\n  }\n}\n\nRules: Optional fields: step_name, required_role_code, assigned_user_id, action, level, can_return. Returns the WHOLE circle with steps. All step rows are recreated by the current implementation: refresh IDs. No sequence field; reorder through PUT circle.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Workflow configuration",
+      "method": "POST",
+      "path": "/approval-circles/{id}/activate",
+      "access": "MOA: shared ministry\nIA: own institution\nWorkflow scope W",
+      "desc": "Activate a draft and retire the previous active version in the same scope.",
+      "detail": "Input: none. Response: {data:ApprovalCircle with all steps}, status active,is_active true.\nRules: only draft activates; previous active version in same scope retires. Institution must end approve, no publish. Ministry requires at least2 steps, exactly one final publish, and preceding review or approve; separate approve is optional. Ordering review before approve before publish. Default MDO review -> MDD publish. Current pending reviewer finishes assigned step; forward transition selects active version without rerunning completed stages. Role+action identifies stages across versions; ambiguous repeated pairs on version change return409. Existing history records remain. Legacy null-stage workflows retain old path.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Workflow configuration",
+      "method": "POST",
+      "path": "/approval-circles/{id}/clone",
+      "access": "MOA: shared ministry\nIA: own institution\nWorkflow scope W",
+      "desc": "Copy a scoped workflow into the next draft version for editing.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 2,\n    \"name\": \"Ministry Data Approval\",\n    \"institution_id\": null,\n    \"department_id\": null,\n    \"scope_key\": \"global\",\n    \"version_number\": 2,\n    \"status\": \"draft\",\n    \"is_active\": false\n  }\n}\n\nRules: Response includes copied steps with new IDs. Activate separately. For old institution workflows, clone omits the obsolete publication step only from the new draft; original stays unchanged. Role and assignee validation still applies.",
+      "codes": "201 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "GET",
+      "path": "/submissions",
+      "access": "MOA / own IA / assignee / eligible reviewer\nSubmission scope S",
+      "desc": "List submissions visible to the signed-in user.",
+      "detail": "Query: status, datasetId, reportingPeriodId, perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"datasetId\": 2,\n      \"status\": \"draft\",\n      \"revision\": 0\n    }\n  ],\n  \"per_page\": 20,\n  \"total\": 1\n}\n\nRules: Items contain the submission snapshot described below. status: draft/submitted/under_review/returned/approved/published. perPage 1-100. Ministry reviewers see institution data only after handoff; pinned ministry version alone does not grant visibility.",
+      "codes": "200 / 401 / 403 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "POST",
+      "path": "/submissions",
+      "access": "Assigned active IDO / DDO\nSubmission scope S",
+      "desc": "Open a draft for one calendar, or return the existing submission for that calendar.",
+      "detail": "Input:\n{\n  \"reportingCalendarId\": 9\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"reportingCalendarId\": 9,\n    \"datasetId\": 2,\n    \"reportingPeriodId\": 46,\n    \"periodLabel\": \"2026/2027 Q2\",\n    \"templateVersionId\": 9,\n    \"workflowVersionId\": null,\n    \"ministryWorkflowVersionId\": null,\n    \"workflowStage\": null,\n    \"status\": \"draft\",\n    \"revision\": 0,\n    \"attempt\": 0,\n    \"currentStep\": null,\n    \"allowedActions\": [\n      \"save\",\n      \"submit\"\n    ],\n    \"deadline\": \"2027-01-07\",\n    \"correctionDeadline\": null,\n    \"values\": [],\n    \"submittedAt\": null,\n    \"publishedAt\": null\n  }\n}\n\nRules: 201 new, 200 existing. Calendar/template links are set server-side. A new draft requires an active dataset/institution, global open period and parent, and valid entry window. No duplicate submission per calendar. reference also appears in response.",
+      "codes": "200 / 201 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "GET",
+      "path": "/submissions/{id}",
+      "access": "MOA / own IA / assignee / eligible reviewer\nSubmission scope S",
+      "desc": "Read a submission, its frozen form, targets and action history.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"status\": \"draft\",\n    \"revision\": 0,\n    \"values\": [],\n    \"targets\": [],\n    \"history\": [],\n    \"submittedVersions\": []\n  }\n}\n\nRules: Also returns all snapshot fields and template (immutable template_content). targets are active matches for dataset, period and template version. history contains recorded actions; submittedVersions contains immutable values per submit attempt. Nested history/revision models use snake_case. See snapshot field guide below.",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "PUT",
+      "path": "/submissions/{id}/values",
+      "access": "Assigned active IDO / DDO\nSubmission scope S",
+      "desc": "Save the full replacement set of draft or returned values.",
+      "detail": "Input example:\n{\n  \"expectedRevision\": 0,\n  \"values\": [\n    {\n      \"indicatorId\": 8,\n      \"value\": \"20\",\n      \"remarks\": \"Period-end staff\",\n      \"breakdowns\": [\n        {\n          \"dimensionId\": 2,\n          \"optionId\": 3,\n          \"value\": \"12\"\n        },\n        {\n          \"dimensionId\": 2,\n          \"optionId\": 4,\n          \"value\": \"8\"\n        }\n      ]\n    }\n  ]\n}\nResponse: {data:SubmissionSnapshot}, revision increments.\nRules: PUT replaces all draft/returned rows; [] clears rows. values must be a list of objects, max10000, never a string. Each row indicatorId and value (nullable in draft); optional remarks max10000. breakdowns list max10000 uses dimensionId,optionId,value; dimensionValues max100 uses dimensionId,value for cross-tab coordinates. Do not mix summary breakdowns and cross-tab rows for one indicator. Validate IDs against submission template. Numeric decimals sent as strings (not floating point), max18 digits before decimal and6 places. Draft may save incomplete values. On submit each required/filled breakdown dimension must contain its options and sum independently to indicator total. Entirely omitted optional dimension is valid. Do not sum Staff Category plus Gender: both describe the same total. Empty previous-period values are not zero. Negative numeric values are accepted by backend. Stale expectedRevision:409; entry/correction-window violations:422.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "POST",
+      "path": "/submissions/{id}/submit",
+      "access": "Assigned active IDO / DDO\nSubmission scope S",
+      "desc": "Validate draft or returned data, record an attempt and begin its approval path.",
+      "detail": "Input:\n{\n  \"expectedRevision\": 1\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"status\": \"submitted\",\n    \"revision\": 2,\n    \"attempt\": 1,\n    \"workflowVersionId\": 2,\n    \"ministryWorkflowVersionId\": 1,\n    \"workflowStage\": \"institution\",\n    \"currentStep\": {\n      \"sequence\": 1,\n      \"required_role_code\": \"IHOD\",\n      \"action\": \"review\"\n    },\n    \"allowedActions\": []\n  }\n}\n\nRules: assigned eligible officer only; all required values/dimensions validated, at least one row. Targets not mandatory. Initial institution submit resolves both active versions; department starts ministry. Each later forward transition resolves current active version without going backward. Resubmit creates another immutable values attempt and restarts the last selected initial path. No eligible reviewer:409 with rollback. Record calendar submittedAt. expectedRevision is current data.revision, not workflow/template version or attempt.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "POST",
+      "path": "/submissions/{id}/review",
+      "access": "Current configured reviewer\nSubmission scope S; no self-review",
+      "desc": "Complete the pending review and move to the next configured step.",
+      "detail": "Input:\n{\n  \"expectedRevision\": 2,\n  \"comments\": \"Taarifa zimehakikiwa.\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"status\": \"under_review\",\n    \"revision\": 3,\n    \"workflowStage\": \"institution\",\n    \"currentStep\": {\n      \"sequence\": 2,\n      \"required_role_code\": \"AO\",\n      \"action\": \"approve\"\n    }\n  }\n}\n\nRules: Current step action must be review. comments optional, max10000. correctionDeadline prohibited. Missing next recipient:409 and transaction rolled back. Response currentStep is the next step, not the completed one.\nDefault ministry MDO review moves directly to MDD publish. The stored status becomes approved to mean ready for publication; no separate approval action is required. For MDD token allowedActions becomes [publish,return].",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "POST",
+      "path": "/submissions/{id}/approve",
+      "access": "Current configured reviewer\nSubmission scope S; no self-review",
+      "desc": "Approve the pending step; final institution approval automatically hands off to ministry.",
+      "detail": "Input:\n{\n  \"expectedRevision\": 3,\n  \"comments\": \"Nimeidhinisha taarifa za taasisi.\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"status\": \"under_review\",\n    \"revision\": 4,\n    \"workflowStage\": \"ministry\",\n    \"currentStep\": {\n      \"sequence\": 1,\n      \"required_role_code\": \"MDO\",\n      \"action\": \"review\"\n    }\n  }\n}\n\nRules: Example is AO handing off to MDO. No separate handoff request. Final ministry approval before publish sets status approved. Current step action must be approve; comments optional; correctionDeadline prohibited. Missing next reviewer:409.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "POST",
+      "path": "/submissions/{id}/return",
+      "access": "Current configured reviewer\nSubmission scope S; no self-review\nCurrent step can_return=true",
+      "desc": "Return data to its assigned officer with a reason and correction deadline.",
+      "detail": "Input:\n{\n  \"expectedRevision\": 4,\n  \"comments\": \"Hakiki idadi na urekebishe taarifa.\",\n  \"correctionDeadline\": \"2026-10-30\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"status\": \"returned\",\n    \"revision\": 5,\n    \"workflowStage\": \"ministry\",\n    \"currentStep\": null,\n    \"correctionDeadline\": \"2026-10-30\",\n    \"allowedActions\": []\n  }\n}\n\nRules: current eligible reviewer with can_return=true; comments nonblank max10000, correctionDeadline required YYYY-MM-DD today or later Africa/Dar_es_Salaam. Returns to responsible officer, not previous reviewer. Eligible officer sees save/submit within correction window. Manual period or parent closure blocks correction; automatic expiry alone may allow valid correction deadline. Returned template/data retained. Resubmit restarts last selected path; forward transitions then use active workflow.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "POST",
+      "path": "/submissions/{id}/publish",
+      "access": "Current configured reviewer\nSubmission scope S; no self-review",
+      "desc": "Complete the pending ministry publication step after approval.",
+      "detail": "Input:\n{\n  \"expectedRevision\": 6,\n  \"comments\": \"Taarifa zimeidhinishwa kuchapishwa.\"\n}\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"status\": \"published\",\n    \"revision\": 7,\n    \"workflowStage\": \"ministry\",\n    \"currentStep\": null,\n    \"publishedAt\": \"2026-10-22T15:00:00+03:00\",\n    \"allowedActions\": []\n  }\n}\n\nRules: Example assumes uninterrupted path without return. Requires approved status and publish step. Records publishedAt; locks changes. Does not itself implement sector aggregates or a public dashboard. New institution workflows cannot publish; legacy null-stage submissions retain their original path.\nDefault MDD can publish or return only. approved status may have been reached by MDO review -> publish, not necessarily an approve event. Workflow notifications are in-app only; this action does not send a workflow email.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "PATCH",
+      "path": "/submissions/{id}/values",
+      "access": "Current assigned/eligible IHOD at institution review; not creator/responsible officer",
+      "desc": "Correct submitted values without returning the submission.",
+      "detail": "Input:\n{\n  \"expectedRevision\": 3,\n  \"reason\": \"Corrected a transcription error\",\n  \"values\": [\n    {\n      \"indicatorId\": 8,\n      \"value\": \"20\",\n      \"remarks\": \"Corrected total\",\n      \"breakdowns\": [\n        {\n          \"dimensionId\": 2,\n          \"optionId\": 3,\n          \"value\": \"12\"\n        },\n        {\n          \"dimensionId\": 2,\n          \"optionId\": 4,\n          \"value\": \"8\"\n        }\n      ]\n    }\n  ]\n}\nResponse: {data:SubmissionSnapshot} with revision incremented; same workflow step and status.\nRules: reason required nonblank max10000; only submitted/under_review, institution IHOD review step. Changes existing rows only; complete replacement for each corrected row including breakdowns. Validates resulting submission completeness. Audit preserves changes and reason; responsible officer receives in-app notification.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Submissions",
+      "method": "GET",
+      "path": "/submissions/{id}/template-archives",
+      "access": "Same visibility as GET submission",
+      "desc": "Read archived draft form/value snapshots.",
+      "detail": "Query: perPage1–100 default20,page.\nResponse: Laravel root paginator with archive records: id,dataset_definition_id,reporting_period_id,submission_id,from_template_version_id,to_template_version_id,archived_by,snapshot,reason,created_at,updated_at. snapshot is decoded JSON containing old template,values,submission and targets.\nRules: period/dataset scoped through readable submission. No restore/delete API; archives may predate draft creation.",
+      "codes": "200 / 401 / 403 / 404 / 409 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json\nContent-Type: application/json"
+    },
+    {
+      "module": "Audit events",
+      "method": "GET",
+      "path": "/audit-events",
+      "access": "audit.readAll gate\nRequires audit_logs.view.ministry",
+      "desc": "List immutable audit history.",
+      "detail": "Query: eventType, actorType, entityType, entityId, userId, requestId, startDate, endDate, perPage, page\n\nResponse example (selected fields):\n{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"userId\": 1,\n      \"actorType\": \"user\",\n      \"eventType\": \"create_dataset\",\n      \"entityType\": \"dataset_definition\",\n      \"entityId\": \"6\",\n      \"requestId\": null,\n      \"oldValues\": null,\n      \"newValues\": {},\n      \"reason\": null\n    }\n  ],\n  \"links\": {},\n  \"meta\": {\n    \"current_page\": 1,\n    \"per_page\": 20,\n    \"total\": 1\n  }\n}\n\nRules: Dates: YYYY-MM-DD; endDate >= startDate. requestId: UUID. perPage 1â€“100; default 20. Response also includes ipAddress and createdAt.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Audit events",
+      "method": "GET",
+      "path": "/audit-events/{id}",
+      "access": "audit.readAll gate\nRequires audit_logs.view.ministry",
+      "desc": "Read one audit record.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"userId\": 1,\n    \"actorType\": \"user\",\n    \"eventType\": \"create_dataset\",\n    \"entityType\": \"dataset_definition\",\n    \"entityId\": \"6\",\n    \"requestId\": null,\n    \"oldValues\": null,\n    \"newValues\": {},\n    \"reason\": null\n  }\n}",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Notifications",
+      "method": "GET",
+      "path": "/notifications",
+      "access": "Active authenticated user\nOwn notifications only",
+      "desc": "List notifications belonging to the token owner.",
+      "detail": "Query: isRead=0 or 1, perPage=20, page=1\n\nResponse example (selected fields):\n{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"auditEventId\": 12,\n      \"type\": \"DatasetReminder\",\n      \"message\": \"Dataset reporting reminder\",\n      \"isRead\": false,\n      \"createdAt\": \"2026-09-20T09:00:00+03:00\",\n      \"sentAt\": null\n    }\n  ],\n  \"links\": {},\n  \"meta\": {\n    \"current_page\": 1,\n    \"total\": 1\n  }\n}\n\nRules: perPage 1â€“100. No cross-user listing.",
+      "codes": "200 / 401 / 403 / 404 / 422",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Notifications",
+      "method": "GET",
+      "path": "/notifications/unread-count",
+      "access": "Active authenticated user",
+      "desc": "Count the token owner's unread notifications.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"unreadCount\": 1\n  }\n}",
+      "codes": "200 / 401 / 403",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Notifications",
+      "method": "GET",
+      "path": "/notifications/{id}",
+      "access": "Active authenticated user\nOwn notification",
+      "desc": "Read one notification without marking it read.",
+      "detail": "Response example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"auditEventId\": 12,\n    \"type\": \"DatasetReminder\",\n    \"message\": \"Dataset reporting reminder\",\n    \"isRead\": false,\n    \"createdAt\": \"2026-09-20T09:00:00+03:00\",\n    \"sentAt\": null\n  }\n}",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    },
+    {
+      "module": "Notifications",
+      "method": "PATCH",
+      "path": "/notifications/{id}/read",
+      "access": "Active authenticated user\nOwn notification",
+      "desc": "Mark a notification as read; repeated calls keep it read.",
+      "detail": "Input: no request body.\n\nResponse example (selected fields):\n{\n  \"data\": {\n    \"id\": 1,\n    \"auditEventId\": 12,\n    \"type\": \"DatasetReminder\",\n    \"message\": \"Dataset reporting reminder\",\n    \"isRead\": true,\n    \"createdAt\": \"2026-09-20T09:00:00+03:00\",\n    \"sentAt\": null\n  }\n}",
+      "codes": "200 / 401 / 403 / 404",
+      "headers": "Authorization: Bearer {token}\nAccept: application/json"
+    }
+  ]
+}

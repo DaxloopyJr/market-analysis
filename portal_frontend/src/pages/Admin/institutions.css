@@ -1,0 +1,616 @@
+/*
+ * FILE: src/pages/Admin/institutions.css
+ * MODULE FLOW: Institutions.jsx -> scoped .vim-* styles only.
+ * Does not override Topbar, Sidebar, Footer, Login, AdminDashboard or global CSS.
+ */
+.vim-institutions {
+  --vim-blue: #1268d6;
+  --vim-ink: #142a48;
+  --vim-muted: #60738c;
+  --vim-border: #e2e9f2;
+  color: var(--vim-ink);
+  padding: 18px 20px 28px;
+  background: #f4f7fb;
+  min-height: 100%;
+}
+
+.vim-institutions *,
+.vim-dialog * {
+  box-sizing: border-box;
+}
+
+.vim-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.vim-breadcrumb {
+  color: #316ba9;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.vim-heading h1 {
+  margin: 0 0 5px;
+  font-weight: 750;
+  font-size: clamp(22px, 2.4vw, 28px);
+  letter-spacing: -.025em;
+}
+
+.vim-heading p {
+  margin: 0;
+  color: var(--vim-muted);
+  font-size: 13.5px;
+}
+
+.vim-institutions .btn-primary,
+.vim-dialog .btn-primary {
+  --bs-btn-bg: #1268d6;
+  --bs-btn-border-color: #1268d6;
+  --bs-btn-hover-bg: #0d54b0;
+  --bs-btn-hover-border-color: #0d54b0;
+}
+
+.vim-add,
+.vim-dialog .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 13.5px;
+  font-weight: 600;
+  min-height: 38px;
+}
+
+.vim-list-card {
+  background: #fff;
+  border: 1px solid var(--vim-border);
+  border-radius: 10px;
+  box-shadow: 0 3px 16px rgba(13, 42, 76, .045);
+  overflow: hidden;
+}
+
+.vim-filters {
+  padding: 16px 16px 12px;
+}
+
+.vim-filter-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 2fr) repeat(3, minmax(112px, 1fr)) auto auto;
+  gap: 9px;
+  align-items: center;
+}
+
+.vim-filter-form select,
+.vim-search-field {
+  height: 38px;
+  border: 1px solid #d8e2ef;
+  background: #fff;
+  border-radius: 6px;
+  color: #435a72;
+  min-width: 0;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.vim-filter-form select:focus,
+.vim-search-field:focus-within {
+  outline: 2px solid #9ec9fa;
+  outline-offset: 1px;
+}
+
+.vim-search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vim-search-field svg {
+  flex: none;
+  color: #506f8f;
+}
+
+.vim-search-field input {
+  min-width: 0;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: inherit;
+}
+
+.vim-filter-form .btn {
+  min-height: 38px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.vim-demo-note {
+  background: #f0f6ff;
+  border-top: 1px solid #e5eef9;
+  border-bottom: 1px solid #e5eef9;
+  color: #405f83;
+  font-size: 13px;
+  padding: 10px 16px;
+}
+
+.vim-table-scroll {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.vim-table {
+  min-width: 940px;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+.vim-institutions .vim-table thead th {
+  background: #f3f6fb;
+  font-size: 12.5px;
+  color: #3f5670;
+  font-weight: 700;
+  border-bottom: 1px solid var(--vim-border);
+  white-space: nowrap;
+  padding: 13px 11px;
+}
+
+.vim-institutions .vim-table tbody td {
+  font-size: 13px;
+  color: #314761;
+  border-color: #eef2f8;
+  padding: 12px 11px;
+}
+
+.vim-institutions .vim-table tbody td strong {
+  font-weight: 650;
+  color: #233d60;
+}
+
+.vim-table tbody tr:hover {
+  background: #f8fbff;
+}
+
+.vim-email {
+  white-space: nowrap;
+  color: #1765ad !important;
+}
+
+.vim-status {
+  display: inline-block;
+  text-transform: capitalize;
+  border-radius: 5px;
+  padding: 4px 9px;
+  font-size: 12.5px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.vim-status-active {
+  color: #157643;
+  background: #d9f6e4;
+}
+
+.vim-status-inactive {
+  color: #bb3044;
+  background: #ffe4e8;
+}
+
+.vim-row-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.vim-row-actions button,
+.vim-icon-button {
+  border: 1px solid #e0e8f4;
+  background: #f2f6fb;
+  color: #15568d;
+  width: 31px;
+  height: 31px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.vim-row-actions button:hover,
+.vim-icon-button:hover {
+  background: #e6f0ff;
+  border-color: #b6d4f7;
+}
+
+.vim-row-actions .vim-action-danger {
+  color: #d54552;
+  background: #fff0f0;
+}
+
+.vim-row-actions .vim-action-success {
+  color: #138850;
+  background: #e9f8f0;
+}
+
+.vim-empty {
+  text-align: center;
+  padding: 36px 12px !important;
+  color: #5e6c80 !important;
+}
+
+.vim-pagination-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--vim-muted);
+  border-top: 1px solid var(--vim-border);
+}
+
+.vim-pagination-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.vim-pagination-controls button {
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  color: #4b6582;
+  border-radius: 6px;
+  border: 1px solid #dce7f5;
+  background: #fff;
+}
+
+.vim-pagination-controls button.active {
+  color: #fff;
+  background: var(--vim-blue);
+  border-color: var(--vim-blue);
+}
+
+.vim-pagination-controls button:disabled {
+  opacity: .45;
+}
+
+.vim-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: grid;
+  place-items: center;
+  background: rgba(5, 20, 45, .57);
+  padding: 18px;
+}
+
+.vim-dialog {
+  max-height: min(90vh, 850px);
+  overflow-y: auto;
+  background: white;
+  border-radius: 12px;
+  width: min(100%, 600px);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, .25);
+}
+
+.vim-dialog-wide {
+  width: min(100%, 850px);
+}
+
+.vim-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--vim-border);
+}
+
+.vim-dialog-header h2 {
+  font-size: 17px;
+  font-weight: 750;
+  margin: 0;
+}
+
+.vim-dialog-header .vim-icon-button {
+  flex: none;
+  background: transparent;
+}
+
+.vim-dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  padding: 15px 22px;
+  border-top: 1px solid var(--vim-border);
+}
+
+.vim-detail-heading {
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vim-detail-heading > div {
+  display: grid;
+  gap: 3px;
+  flex: 1;
+}
+
+.vim-detail-heading strong {
+  font-size: 16px;
+}
+
+.vim-detail-heading small {
+  font-size: 13px;
+  color: var(--vim-muted);
+}
+
+.vim-detail-symbol {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #156dd5;
+  background: #e0f0ff;
+  height: 52px;
+  width: 52px;
+  flex: none;
+}
+
+.vim-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 22px;
+  gap: 22px;
+  border-bottom: 1px solid var(--vim-border);
+}
+
+.vim-tabs button {
+  padding: 10px 2px;
+  border: none;
+  background: transparent;
+  color: #5c718e;
+  font-size: 13px;
+  border-bottom: 2px solid transparent;
+}
+
+.vim-tabs button.active {
+  color: var(--vim-blue);
+  border-bottom-color: var(--vim-blue);
+  font-weight: 700;
+}
+
+.vim-details-list {
+  display: grid;
+  padding: 16px 22px 26px;
+  gap: 13px;
+}
+
+.vim-detail-row {
+  display: grid;
+  grid-template-columns: minmax(125px, 30%) 1fr;
+  gap: 12px;
+  font-size: 13.5px;
+  align-items: start;
+}
+
+.vim-detail-row > span {
+  color: #5c6e83;
+}
+
+.vim-detail-row > strong {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.vim-wizard {
+  display: grid;
+  grid-template-columns: 215px minmax(0, 1fr);
+}
+
+.vim-steps {
+  grid-row: 1 / span 2;
+  padding: 16px 10px;
+  border-right: 1px solid var(--vim-border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fbfcff;
+}
+
+.vim-steps button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: left;
+  background: transparent;
+  color: #5a6c84;
+}
+
+.vim-steps button span {
+  display: grid;
+  place-items: center;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: #e6edf5;
+  font-weight: 700;
+  flex: none;
+}
+
+.vim-steps button.active {
+  background: #eaf3ff;
+  color: #1268d6;
+  font-weight: 750;
+}
+
+.vim-steps button.active span {
+  color: white;
+  background: #1268d6;
+}
+
+.vim-steps button:disabled {
+  cursor: default;
+  opacity: .65;
+}
+
+.vim-wizard-main {
+  padding: 22px;
+  min-height: 285px;
+}
+
+.vim-wizard-main h3 {
+  font-size: 15px;
+  font-weight: 750;
+  margin-bottom: 18px;
+}
+
+.vim-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 15px;
+}
+
+.vim-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  font-size: 13px;
+  color: #4d6480;
+}
+
+.vim-field > span {
+  font-weight: 650;
+}
+
+.vim-field b {
+  color: #dc3545;
+}
+
+.vim-field input,
+.vim-field select,
+.vim-field textarea {
+  color: #233d59;
+  font-size: 13.5px;
+  min-width: 0;
+}
+
+.vim-field-full {
+  grid-column: 1 / -1;
+}
+
+.vim-wizard-footer {
+  grid-column: 2;
+}
+
+/* SweetAlert2 sits above the institution form overlay. */
+.swal2-container {
+  z-index: 1200 !important;
+}
+
+@media (max-width: 1200px) {
+  .vim-filter-form {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .vim-institutions {
+    padding: 14px 10px;
+  }
+
+  .vim-filter-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vim-search-field {
+    grid-column: 1 / -1;
+  }
+
+  .vim-wizard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vim-steps {
+    grid-row: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--vim-border);
+  }
+
+  .vim-steps button {
+    flex: none;
+  }
+
+  .vim-wizard-footer {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 470px) {
+  .vim-filter-form,
+  .vim-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vim-dialog-backdrop {
+    padding: 8px;
+  }
+
+  .vim-dialog-header,
+  .vim-wizard-main,
+  .vim-dialog-footer {
+    padding: 14px;
+  }
+
+  .vim-detail-row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
+
+/* Institution logo: maintain the existing management table and wizard design. */
+.vim-table-logo,.vim-logo-preview {
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+  color: #5b789b;
+  background: #f3f7fc;
+  border: 1px solid #dce7f2;
+  border-radius: 8px;
+}
+.vim-table-logo {width: 43px;height: 43px;}
+.vim-table-logo img,.vim-logo-preview img,.vim-logo-detail img {
+  display: block;width: 100%;height: 100%;object-fit: contain;
+}
+.vim-logo-detail {overflow: hidden;}
+.vim-logo-upload {display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:5px;}
+.vim-logo-preview {width:76px;height:76px;flex-shrink:0;}
+.vim-logo-input-wrap {display:flex;flex-direction:column;align-items:flex-start;gap:5px;}
+.vim-logo-input-wrap input[type=file] {position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;}
+.vim-logo-input-wrap label {cursor:pointer;display:inline-flex;align-items:center;gap:7px;}
+.vim-logo-input-wrap small {color:#637891;font-size:12.5px;}
+.vim-logo-input-wrap .text-danger {color:#c83346;}
+.vim-logo-filename {overflow-wrap:anywhere;max-width:310px;}
+
+/* Round institution pictures everywhere (approved 27 Oct 2026). */
+.vim-table-logo,.vim-logo-preview,.vim-logo-detail {border-radius:50%;background:#fff;}
+.vim-table-logo img,.vim-logo-preview img,.vim-logo-detail img {width:80%;height:80%;margin:auto;}
+.vim-logo-remove {font-weight:600;text-decoration:none;}

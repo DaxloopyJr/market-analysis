@@ -1,0 +1,68 @@
+/**
+ * FILE: src/pages/Admin/ministryDepartments.css
+ * Department-specific overrides only. Common table, actions and modal styles
+ * remain in institutions.css. Global CSS refactoring is NOT part of this change.
+ */
+.vim-departments .vim-filter-form {
+  grid-template-columns: minmax(210px, 1fr) minmax(155px, .4fr) auto auto auto;
+}
+.vim-ministry-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid #dce6f2;
+  background: #fff;
+  color: #194574;
+  font-size: 13px;
+  border-radius: 8px;
+}
+.vim-ministry-identity svg { color: #1268d6; flex: none; }
+.vim-department-count { display: inline-flex; align-items: center; gap: 5px; }
+.vim-department-structure { display: grid; gap: 12px; }
+.vim-department-structure h3 { margin: 0; }
+.vim-department-structure p { font-size: 13px; color: #5b6d84; margin: 0 0 6px; }
+.vim-department-review { padding: 0; }
+@media (max-width: 1100px) {
+  .vim-departments .vim-filter-form { grid-template-columns: 1fr 1fr auto auto; }
+  .vim-departments .vim-filter-form .vim-add { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 690px) {
+  .vim-departments .vim-filter-form { grid-template-columns: 1fr 1fr; }
+  .vim-departments .vim-filter-form .vim-search-field { grid-column: 1 / -1; }
+}
+
+/* Approved reference: three-stage department wizard, not Review & Save wizard. */
+.vim-dept-wizard { grid-template-columns: 205px minmax(0, 1fr); }
+.vim-dept-wizard .vim-steps { padding: 15px 9px; gap: 4px; }
+.vim-dept-wizard .vim-steps button { padding: 10px 8px; font-size: 13px; }
+.vim-dept-wizard .vim-steps button.complete { color: #2f698b; }
+.vim-dept-wizard .vim-steps button.complete span { background: #0b80e9; color: white; }
+.vim-dept-wizard .vim-wizard-main { padding: 22px 23px; min-height: 365px; }
+.vim-dept-section-title { display: flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 750; margin: 0 0 16px; }
+.vim-dept-title-icon { color: #1568d3; font-size: 22px; line-height: 1; }
+.vim-dept-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 13px; max-width: 550px; }
+.vim-dept-fields .vim-field { gap: 5px; }
+.vim-dept-fields .vim-field > span { color: #294461; }
+.vim-dept-icon-field { display: flex; align-items: flex-end; gap: 9px; }
+.vim-dept-icon-field > svg { width: 18px; height: 35px; flex: none; color: #1764bd; }
+.vim-dept-icon-field > .vim-field { flex: 1; }
+.vim-dept-contract-note { display: flex; align-items: flex-start; gap: 7px; background: #f0f6ff; border: 1px solid #d7e6fc; color: #476482; border-radius: 6px; padding: 10px; font-size: 12.5px; margin: 6px 0 0; }
+.vim-dept-contract-note > svg { flex: none; }
+.vim-dept-wizard .vim-wizard-footer { justify-content: flex-end; }
+.vim-reference-confirm { display: grid; grid-template-columns: 67px minmax(0, 1fr); padding: 24px 24px 0; gap: 15px; }
+.vim-reference-confirm-icon { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; }
+.vim-reference-confirm-icon.positive { background: #dcf9ea; color: #04a95c; }
+.vim-reference-confirm-icon.negative { background: #fff0f0; color: #ed3a43; }
+.vim-reference-confirm-body { display: grid; gap: 7px; font-size: 13.5px; }
+.vim-reference-confirm-body > b { font-size: 13.5px; }
+.vim-reference-confirm-body > p { margin: 0 0 12px; color: #5c7697; font-size: 13px; }
+.vim-reference-confirm > footer { grid-column: 1 / -1; margin: 10px -24px 0; }
+@media (max-width: 720px) {
+  .vim-dept-wizard { grid-template-columns: 1fr; }
+  .vim-dept-wizard .vim-wizard-main { min-height: 300px; padding: 15px; }
+  .vim-reference-confirm { padding: 16px 16px 0; grid-template-columns: 45px 1fr; gap: 9px; }
+  .vim-reference-confirm-icon { width: 42px; height: 42px; }
+  .vim-reference-confirm > footer { margin: 6px -16px 0; }
+}
+/* Supervised institutions (9 Nov 2026) */

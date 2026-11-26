@@ -1,0 +1,90 @@
+/**
+ * FILE: src/i18n/dictionary.js
+ * Portal words in English (default) and Kiswahili, 9 Nov 2026 – phase 1: menu, top bar, breadcrumbs.
+ * Keys are the English text the portal (or Laravel /me menu) already uses, so a label missing here
+ * simply stays in English. Report documents keep their own SW | EN switch.
+ */
+export const SW = {
+  // Menu (Laravel /me labels and frontend labels)
+  'Dashboard': 'Dashibodi',
+  'Submissions': 'Uwasilishaji',
+  'My Submissions': 'Taarifa Zangu',
+  'New Submission': 'Wasilisha Taarifa Mpya',
+  'Pending Review': 'Zinazosubiri Mapitio',
+  'Reviewed': 'Zilizopitiwa',
+  'Pending Approval': 'Zinazosubiri Idhini',
+  'Published': 'Zilizochapishwa',
+  'Returned': 'Zilizorejeshwa',
+  'Ministry Review Queue': 'Foleni ya Mapitio ya Wizara',
+  'Reviewed Submissions': 'Taarifa Zilizopitiwa',
+  'Returned to Institutions': 'Zilizorejeshwa kwa Taasisi',
+  'Institution Submissions': 'Taarifa za Taasisi',
+  'Submission Monitoring': 'Ufuatiliaji wa Uwasilishaji',
+  'Approval Queue': 'Foleni ya Idhini',
+  'Published Submissions': 'Taarifa Zilizochapishwa',
+  'Dataset Management': 'Usimamizi wa Seti za Data',
+  'Datasets': 'Seti za Data',
+  'Reference Data': 'Data za Rejea',
+  'Submission Periods': 'Vipindi vya Uwasilishaji',
+  'Strategic Plans': 'Mipango Mkakati',
+  'National Indicators': 'Namba Kuu za Kitaifa',
+  'Administration': 'Utawala',
+  'Institutions': 'Taasisi',
+  'Ministry Departments': 'Idara za Wizara',
+  'Departments & Units': 'Idara na Vitengo',
+  'Institutional Admins': 'Wasimamizi wa Taasisi',
+  'Institution Admins': 'Wasimamizi wa Taasisi',
+  'Users': 'Watumiaji',
+  'Roles & Permissions': 'Majukumu na Ruhusa',
+  'Roles and Permissions': 'Majukumu na Ruhusa',
+  'Portal Settings': 'Mipangilio ya Portal',
+  'Approval Circle': 'Mzunguko wa Idhini',
+  'Delegations': 'Kukasimu Madaraka',
+  'Analytics': 'Uchambuzi',
+  'Institution Analytics': 'Uchambuzi wa Taasisi',
+  'Department Analytics': 'Uchambuzi wa Idara',
+  'Reports': 'Ripoti',
+  'Audit Logs': 'Kumbukumbu za Ukaguzi',
+  'Notifications': 'Arifa',
+  'Sector Overview': 'Hali ya Sekta',
+  'My Profile': 'Wasifu Wangu',
+  'Profile': 'Wasifu',
+  // Shell
+  'YOUR WORKSPACE': 'ENEO LAKO LA KAZI',
+  'NAVIGATION': 'MENYU',
+  'Secure Ministry Portal': 'Portal Salama ya Wizara',
+  'Find a page...': 'Tafuta ukurasa...',
+  'Theme': 'Mandhari',
+  'Light': 'Mwanga',
+  'Dark': 'Giza',
+  'Same as computer': 'Kufuata kompyuta',
+  'Find a page or report...': 'Tafuta ukurasa au ripoti...',
+  'Open menu': 'Fungua menyu',
+  'Close menu': 'Funga menyu',
+  'No matching accessible pages': 'Hakuna ukurasa unaolingana',
+  'Sign out': 'Toka',
+  'Logout': 'Toka',
+  'Log out': 'Toka',
+  'Ministry of Industry and Trade': 'Wizara ya Viwanda na Biashara',
+  // Role names as Laravel sends them
+  'Ministry Executive': 'Kiongozi wa Wizara',
+  'Ministry Overall Admin': 'Msimamizi Mkuu wa Mfumo',
+  'Ministry Data Officer': 'Afisa Data wa Wizara',
+  'Ministry Department Director': 'Mkurugenzi wa Data wa Wizara',
+  'Departmental Data Officer': 'Afisa Data wa Idara',
+  'Institutional Data Officer': 'Afisa Data wa Taasisi',
+  'Institutional Admin': 'Msimamizi wa Taasisi',
+  'Institutional Head of Department': 'Mkuu wa Idara (Taasisi)',
+  'Accounting Officer': 'Afisa Masuuli',
+  'Other Ministry Users': 'Watumiaji Wengine wa Wizara',
+  'Institutional Users': 'Watumiaji wa Taasisi',
+  'Ministry Auditor': 'Mkaguzi wa Wizara',
+  'Institution Auditor': 'Mkaguzi wa Taasisi',
+  'Preview / Read Only': 'Kusoma Tu',
+};
+
+/** English → Kiswahili when the user chose Kiswahili; anything unknown stays as it is. */
+export function translate(text, lang) {
+  if (lang !== 'sw' || typeof text !== 'string') return text;
+  return SW[text] ?? SW[text.trim()] ?? text;
+}

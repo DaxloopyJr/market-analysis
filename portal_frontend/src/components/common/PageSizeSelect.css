@@ -1,0 +1,12 @@
+.vw-page-size{display:inline-flex;align-items:center;gap:8px;border:1px solid #e6eaf2;border-radius:10px;padding:4px 10px;background:#fff;margin:0;font-size:12.5px;color:#5b6478;white-space:nowrap;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.vw-page-size:focus-within{border-color:#0b5bd3;box-shadow:0 0 0 3px rgba(11,91,211,.12)}
+.vw-page-size select{-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;border:0!important;outline:0!important;box-shadow:none!important;border-radius:0!important;
+  background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230a2a5c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0 center!important;
+  padding:0 18px 0 0!important;margin:0!important;min-height:0!important;height:auto!important;width:auto!important;font-size:13.5px;font-weight:700;color:#0a2a5c;cursor:pointer}
+.vw-page-size select:disabled{opacity:.6;cursor:not-allowed}
+.vw-table-footer-tools{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
+body[data-vw-theme="dark"] .vw-page-size{background:#16253b;border-color:#2b3d58;color:#a7b4c8}
+body[data-vw-theme="dark"] .vw-page-size select{color:#dbe7ff}
+.vim-dg-pager>div,.vim-ac-v2-pager,.dc-footer>div,.vim-pagination-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.vi-notifications-pagination>div,.vim-ref-pager-buttons{display:flex;align-items:center;gap:8px}
+.viwanda-periods-pagination>div{display:flex;align-items:center;gap:8px}

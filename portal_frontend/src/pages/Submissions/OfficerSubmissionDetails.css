@@ -1,0 +1,37 @@
+/* Read-only submission details; global layout is unaffected. */
+.officer-details{margin-top:18px;padding:18px!important;}
+.officer-details-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:16px}
+.officer-details-head h2{font-size:19px;font-weight:750;margin:0 0 5px;color:#10244a}
+.officer-details-head p{color:#64748b;font-size:13.5px;margin:0}
+.officer-details-head button{background:#fff;border:1px solid #d8e1ed;border-radius:7px;padding:7px;color:#244267}
+.officer-details-tabs{display:flex;gap:8px;border-bottom:1px solid #d9e4f1;margin-bottom:18px;overflow-x:auto}
+.officer-details-tabs button{white-space:nowrap;display:flex;gap:8px;align-items:center;border:0;border-bottom:3px solid transparent;background:transparent;color:#476083;font-size:13.5px;font-weight:650;padding:12px 14px}
+.officer-details-tabs button.active{color:#075ff3;border-bottom-color:#075ff3}
+.officer-detail-section{padding:4px 2px 16px}
+.officer-detail-section h3{display:flex;gap:9px;align-items:center;font-size:17px;color:#13315d;margin-bottom:17px}
+.officer-detail-section h4{font-size:15px;margin:20px 0 10px;color:#13315d}
+.officer-detail-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;border:1px solid #dce7f3;background:#f8fbff;padding:17px;border-radius:9px}
+.officer-detail-facts>div{display:flex;flex-direction:column;gap:5px;min-width:0}
+.officer-detail-facts small{color:#5c6e83}.officer-detail-facts strong{color:#173455;font-size:13.5px;overflow-wrap:anywhere}
+.officer-indicator-table{font-size:13.5px}.officer-indicator-table thead th{background:#ecf3fa;color:#17375f}
+.officer-breakdown{padding:7px 10px;background:#f3f7fc;border-radius:6px;margin-top:10px;font-weight:400}
+.officer-breakdown div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}.officer-breakdown span{color:#50677f}
+.officer-detail-note{display:flex;align-items:center;gap:8px;color:#946200;font-size:13px;margin-top:12px}
+.officer-details .mdo-surface{box-shadow:none}
+@media(max-width:750px){.officer-detail-facts{grid-template-columns:1fr 1fr}}@media(max-width:500px){.officer-detail-facts{grid-template-columns:1fr}}
+
+/* Full-page details (approved 28 Oct 2026) */
+.officer-details-page .mu-head{margin-bottom:12px}
+.officer-details-page .hod-summary-card{margin-bottom:12px}
+.officer-details-page .officer-details{margin:0;padding:0!important}
+.officer-details-page .officer-detail-section{padding:14px 16px}
+.officer-details-page .officer-indicator-table{font-size:13px;margin:0}
+.officer-details-page .officer-indicator-table thead th{background:#f5f8fc;color:#5b6478;font-weight:600;border:0}
+.officer-details-page .officer-indicator-table td{vertical-align:middle;border-color:#eef1f6}
+.officer-details-page .officer-breakdown{border-radius:10px}
+.officer-info{margin:0;font-size:12.5px}
+.officer-info>div{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid #eef1f6}
+.officer-info>div:last-child{border:0}
+.officer-info dt{color:#5b6478;font-weight:400}.officer-info dd{margin:0;text-align:right;font-weight:600;color:#14213d}
+.officer-info dd small{display:block;font-weight:400;color:#5b6478}
+body[data-vw-theme="dark"] .officer-info dd{color:#e6edf7}

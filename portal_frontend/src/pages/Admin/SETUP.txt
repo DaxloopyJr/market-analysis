@@ -1,0 +1,33 @@
+VIWANDA PORTAL - AUDIT TRAIL PDF + EXCEL EXPORT
+
+1) Project folder (Windows PowerShell):
+   cd C:\MOIT\ViwandaPortal\portal_frontend
+
+2) Install libraries in the existing React/Vite project:
+   npm install jspdf jspdf-autotable exceljs
+
+3) Copy these files into src/pages/Admin/:
+   - AuditTrail.jsx          (replace existing file, after keeping a backup)
+   - auditTrail.css          (replace existing file, after keeping a backup)
+   - auditReportExport.js    (new file)
+
+4) Ensure App.jsx maps moduleId === "audit" to <AuditTrail />.
+   moduleRoutes.js already contains: { path: "audit-logs", moduleId: "audit" }
+
+5) Run npm run dev and visit:
+   http://localhost:5173/dashboard/audit-logs
+
+6) Choose search and/or event/entity filters, click Search, then export.
+   PDF: landscaped, paginated report of the CURRENT visible rows.
+   Excel: XLSX workbook with Report Summary and Audit Events sheets.
+
+SECURITY / SCOPE
+- Exports include the current displayed page only, not every database record.
+- Search and dropdown filters work on downloaded/current page only.
+- Exports contain actor/user ID, event type, entity type/ID, IP, timestamps, request ID.
+- Old/new JSON values are intentionally not exported.
+- Your Laravel backend MUST enforce permissions and institution scope for GET /audit-events
+  and redact sensitive values before sending records to the frontend.
+- This code does not introduce an export API endpoint; whole-history reports would need
+  a secured backend export endpoint with server-side filters, pagination-independent queries,
+  and export-specific authorization.

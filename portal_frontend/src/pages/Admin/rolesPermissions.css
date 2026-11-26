@@ -1,0 +1,442 @@
+/*
+ * FILE: src/pages/Admin/rolesPermissions.css
+ * SCOPE: RolesPermissions.jsx only. No changes to REV26 global layout,
+ * Topbar, Sidebar, Login, Logout, or other Admin modules.
+ */
+.vrp-page {
+  --vrp-ink: #142c4d;
+  --vrp-border: #dce6f1;
+  --vrp-blue: #1268d6;
+  color: var(--vrp-ink);
+  padding: 18px 20px 28px;
+  background: #f4f7fb;
+  min-height: 100%;
+}
+
+.vrp-page *,
+.vrp-backdrop * {
+  box-sizing: border-box;
+}
+
+.vrp-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.vrp-heading h1 {
+  font-size: clamp(22px, 2.4vw, 28px);
+  margin: 3px 0 5px;
+  font-weight: 750;
+}
+
+.vrp-heading p,
+.vrp-breadcrumb {
+  color: #5a718f;
+  font-size: 13.5px;
+  margin: 0;
+}
+
+.vrp-breadcrumb {
+  color: #2263a8;
+  font-size: 13px;
+}
+
+.vrp-page .btn,
+.vrp-backdrop .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 13.5px;
+  font-weight: 600;
+  min-height: 37px;
+}
+
+.vrp-page .btn-primary,
+.vrp-backdrop .btn-primary {
+  --bs-btn-bg: #1268d6;
+  --bs-btn-border-color: #1268d6;
+  --bs-btn-hover-bg: #0d56b6;
+  --bs-btn-hover-border-color: #0d56b6;
+}
+
+.vrp-panel {
+  border: 1px solid var(--vrp-border);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 14px rgba(18, 50, 84, .045);
+  overflow: hidden;
+}
+
+.vrp-filters {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(125px, 170px) minmax(125px, 170px) auto;
+  gap: 10px;
+  padding: 16px;
+}
+
+.vrp-search-box {
+  height: 38px;
+  border: 1px solid #d6e2f0;
+  background: #fff;
+  border-radius: 6px;
+  padding: 0 11px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #586d86;
+  min-width: 0;
+}
+
+.vrp-search-box input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #263e5c;
+  width: 100%;
+  font-size: 13.5px;
+}
+
+.vrp-filters .form-select {
+  min-width: 0;
+  height: 38px;
+  font-size: 13.5px;
+  color: #45607d;
+}
+
+.vrp-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.vrp-table {
+  margin: 0;
+  min-width: 780px;
+  vertical-align: middle;
+}
+
+.vrp-table thead th {
+  font-size: 13px;
+  color: #395473;
+  white-space: nowrap;
+  background: #f4f7fb;
+  padding: 13px 15px;
+}
+
+.vrp-table tbody td {
+  font-size: 13.5px;
+  color: #38516d;
+  padding: 12px 15px;
+  border-color: #eef2f7;
+}
+
+.vrp-table tbody strong { color: #1d395b; }
+
+.vrp-kind,
+.vrp-status {
+  font-size: 12.5px;
+  font-weight: 650;
+  border-radius: 5px;
+  padding: 4px 9px;
+  white-space: nowrap;
+  background: #edf3fa;
+  color: #3e5a7a;
+}
+
+.vrp-system { color: #6649a5; background: #f0e9ff; }
+.vrp-active { color: #147440; background: #daf6e5; }
+.vrp-inactive { color: #b72f46; background: #ffe2e7; }
+
+.vrp-actions { display: flex; justify-content: flex-end; gap: 6px; }
+
+.vrp-actions button,
+.vrp-dialog-header button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #dce5ef;
+  background: #f2f6fb;
+  color: #145d9e;
+  cursor: pointer;
+}
+
+.vrp-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.vrp-actions .vrp-danger-button { color: #c2354d; background: #fff3f5; }
+.vrp-actions .vrp-success-button { color: #188251; background: #eafaf0; }
+.vrp-actions button:hover:enabled { border-color: #a6c9f3; }
+
+.vrp-empty-row { text-align: center; padding: 40px 16px !important; color: #5b6c81 !important; }
+.vrp-table-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #5a6d85;
+  border-top: 1px solid #e8edf4;
+}
+
+.vrp-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 29, 51, .57);
+  padding: 22px;
+}
+
+.vrp-dialog {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  width: min(100%, 650px);
+  max-height: min(90vh, 920px);
+  box-shadow: 0 22px 70px rgba(3, 18, 35, .28);
+  overflow: hidden;
+}
+
+.vrp-dialog-wide { width: min(100%, 880px); }
+
+.vrp-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 22px;
+  border-bottom: 1px solid #e2eaf4;
+}
+
+.vrp-dialog-header h2 { font-size: 18px; font-weight: 700; margin: 0; }
+.vrp-dialog-header button { width: 30px; height: 30px; }
+.vrp-dialog-body { overflow-y: auto; min-height: 0; padding: 20px 22px; }
+.vrp-editor { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.vrp-editor .vrp-dialog-body { overflow-y: auto; }
+
+.vrp-profile { display: flex; gap: 14px; align-items: center; padding-bottom: 18px; }
+.vrp-profile h3 { font-size: 17px; margin: 0 0 3px; }
+.vrp-profile p { font-size: 13.5px; margin: 0; color: #5f7692; }
+.vrp-profile .vrp-status { margin-left: auto; }
+.vrp-profile-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: #e6f2ff;
+  color: #176ad2;
+  border-radius: 12px;
+  flex: none;
+}
+
+.vrp-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  border: 1px solid #e4ebf4;
+  border-radius: 9px;
+  padding: 17px;
+}
+
+.vrp-detail-grid > div { display: flex; flex-direction: column; gap: 5px; }
+.vrp-detail-grid span { font-size: 13px; color: #5e6d80; }
+.vrp-detail-grid strong { font-size: 13.5px; color: #253e5f; overflow-wrap: anywhere; }
+.vrp-full { grid-column: 1 / -1; }
+.vrp-section-title { font-size: 15px; margin: 22px 0 12px; font-weight: 700; }
+
+.vrp-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.vrp-form-grid label { display: flex; flex-direction: column; gap: 6px; }
+.vrp-form-grid label span { font-size: 13px; font-weight: 650; color: #3b536e; }
+.vrp-form-grid label span b { color: #d2384e; }
+.vrp-form-grid input,
+.vrp-form-grid textarea,
+.vrp-form-grid select { font-size: 13.5px; }
+
+.vrp-permissions-head { display: flex; align-items: center; justify-content: space-between; margin: 25px 0 12px; }
+.vrp-permissions-head h3 { margin: 0; font-size: 15px; font-weight: 750; }
+.vrp-permissions-head p { font-size: 13px; color: #5d6b80; margin: 4px 0 0; }
+.vrp-selected-count { font-size: 13px; font-weight: 600; color: #1762b5; background: #eaf3ff; padding: 7px 10px; border-radius: 18px; }
+.vrp-empty { font-size: 13.5px; color: #5b6e86; padding: 15px 0; }
+
+.vrp-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  padding: 15px 22px;
+  border-top: 1px solid #e2eaf4;
+  background: #fafcff;
+}
+
+.vrp-dialog-body .vrp-dialog-footer { margin: 20px -22px -20px; }
+
+@media (max-width: 850px) {
+  .vrp-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vrp-filters .vrp-search-box { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+  .vrp-page { padding: 12px; }
+  .vrp-filters { grid-template-columns: 1fr; }
+  .vrp-filters .vrp-search-box { grid-column: auto; }
+  .vrp-dialog { max-height: 94vh; }
+  .vrp-backdrop { padding: 10px; }
+  .vrp-dialog-body { padding: 14px; }
+  .vrp-form-grid,
+  .vrp-detail-grid { grid-template-columns: 1fr; }
+  .vrp-full { grid-column: auto; }
+  .vrp-dialog-header,
+  .vrp-dialog-footer { padding: 13px 15px; }
+}
+
+
+/* REV26 Grouped Permission Tree — matches approved Roles modal reference.
+   Applies ONLY to Roles & Permissions; existing portal layout is unchanged. */
+.vrp-tree {
+  border: 1px solid #e0e8f3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  margin: 10px 0 4px;
+}
+
+.vrp-tree-group + .vrp-tree-group {
+  border-top: 1px solid #e8edf5;
+}
+
+.vrp-tree-group-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 39px;
+  padding: 5px 10px;
+  background: #f7faff;
+}
+
+.vrp-tree-expander {
+  border: 0;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #517096;
+  background: transparent;
+  cursor: pointer;
+}
+
+.vrp-tree-expander:disabled {
+  opacity: .6;
+  cursor: default;
+}
+
+.vrp-tree-module-label,
+.vrp-tree-leaf {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.vrp-tree-module-label {
+  flex: 1;
+  min-width: 0;
+  color: #173c68;
+  font-size: 13.5px;
+}
+
+.vrp-tree-module-label strong {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.vrp-tree input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  accent-color: #136ad8;
+  margin: 0;
+}
+
+.vrp-tree input[type="checkbox"]:disabled {
+  opacity: .85;
+  cursor: default;
+}
+
+.vrp-tree-count {
+  color: #5278a1;
+  background: #e8f1ff;
+  border-radius: 11px;
+  padding: 2px 8px;
+  font-size: 12.5px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.vrp-tree-children {
+  padding: 2px 12px 10px 48px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.vrp-tree-leaf {
+  padding: 5px 0;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #395777;
+}
+
+.vrp-tree-leaf:hover {
+  color: #1268d6;
+}
+
+.vrp-tree-leaf span {
+  overflow-wrap: anywhere;
+}
+
+.vrp-tree-hint {
+  color: #586e88;
+  font-size: 13px;
+  margin: 8px 0 3px;
+}
+
+.vrp-manager-role {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid #dce8f7;
+  background: #edf5ff;
+  color: #1762b4;
+  border-radius: 7px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.vrp-manager-role > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vrp-manager-role strong { font-size: 13.5px; }
+.vrp-manager-role span { font-size: 12.5px; color: #4f6e92; }
+
+.vrp-dialog .vrp-editor .vrp-tree {
+  max-height: 34vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 600px) {
+  .vrp-tree-children { padding-left: 30px; }
+  .vrp-tree-group-head { padding: 7px; }
+  .vrp-dialog-footer { flex-wrap: wrap; }
+}

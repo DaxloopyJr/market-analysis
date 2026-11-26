@@ -1,0 +1,1037 @@
+[
+  {
+    "key": "FCC-01",
+    "owner": "FCC",
+    "source": "FCC_Data_Requirements_for_Data_Warehouse.docx",
+    "name": "Enforcement Actions (Provisional Findings, Compliance Orders, Settlements)",
+    "description": "Number of enforcement actions taken by FCC against anti-competitive conduct and consumer protection violations, comprising provisional findings issued, Final finding, compliance orders issued, and settlements reached with parties under investigation.",
+    "sourceFrequency": "Quarterly and annually",
+    "frequency": "quarterly",
+    "priority": "high",
+    "campus": false,
+    "indicators": [
+      {
+        "name": "Enforcement Actions (Provisional Findings, Compliance Orders, Settlements)",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      }
+    ],
+    "sourceRows": [
+      [
+        "Data Name",
+        "Enforcement Actions (Provisional Findings, Compliance Orders, Settlements)"
+      ],
+      [
+        "Data Description",
+        "Number of enforcement actions taken by FCC against anti-competitive conduct and consumer protection violations, comprising provisional findings issued, Final finding, compliance orders issued, and settlements reached with parties under investigation."
+      ],
+      [
+        "Type (Input/Output)",
+        "Output"
+      ],
+      [
+        "Source (Institution/Department)",
+        "Fair Competition Commission (FCC)"
+      ],
+      [
+        "Consumer (Institution/Department))",
+        "Respondents, Formal complainants and third parties ()"
+      ],
+      [
+        "Frequency (Daily/Weekly, Quarterly, Annually, etc)",
+        "Quarterly and annually"
+      ],
+      [
+        "Priority (Low, Medium, High)",
+        "High"
+      ],
+      [
+        "Source System(s)",
+        "FCC case/enforcement management register"
+      ],
+      [
+        "Columns",
+        "Column1",
+        "Column2",
+        "Column3",
+        "Column4",
+        "Column5",
+        "Column6"
+      ],
+      [
+        "",
+        "Enforcement action type",
+        "2021/22",
+        "2022/23",
+        "2023/24",
+        "2024/25",
+        "2025/26"
+      ],
+      [
+        "Sample Data",
+        "Sample Data 1",
+        "Sample Data 2",
+        "Sample Data 3",
+        "Sample Data 4",
+        "Sample Data 5",
+        "Sample Data 6"
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  {
+    "key": "FCC-02",
+    "owner": "FCC",
+    "source": "FCC_Data_Requirements_for_Data_Warehouse.docx",
+    "name": "Complaints Investigated by Market (%)",
+    "description": "Proportion of received complaints that were investigated, disaggregated by market/sector (e.g., telecommunications, financial services, manufacturing, retail), expressed as a percentage of total complaints received per market.",
+    "sourceFrequency": "Quarterly and annually",
+    "frequency": "quarterly",
+    "priority": "high",
+    "campus": false,
+    "indicators": [
+      {
+        "name": "Complaints Investigated by Market (%)",
+        "type": "decimal",
+        "aggregation": "average",
+        "samples": []
+      }
+    ],
+    "sourceRows": [
+      [
+        "Data Name",
+        "Complaints Investigated by Market (%)"
+      ],
+      [
+        "Data Description",
+        "Proportion of received complaints that were investigated, disaggregated by market/sector (e.g., telecommunications, financial services, manufacturing, retail), expressed as a percentage of total complaints received per market."
+      ],
+      [
+        "Type (Input/Output)",
+        "Output"
+      ],
+      [
+        "Source (Institution/Department)",
+        "Fair Competition Commission (FCC) - Directorate of Restrictive Trade Practices"
+      ],
+      [
+        "Consumer (Institution/Department))",
+        "Business communities, Consumers, consumer societies, service providers, manufacturers parliament and courts,"
+      ],
+      [
+        "Frequency (Daily/Weekly, Quarterly, Annually, etc)",
+        "Quarterly and annually"
+      ],
+      [
+        "Priority (Low, Medium, High)",
+        "High"
+      ],
+      [
+        "Source System(s)",
+        "FCC consumer complaints database"
+      ],
+      [
+        "Columns",
+        "Column1",
+        "Column2",
+        "Column3",
+        "Column4",
+        "Column5",
+        "Column6"
+      ],
+      [
+        "",
+        "Market/Sector (%)",
+        "2021/22",
+        "2022/23",
+        "2023/24",
+        "2024/25",
+        "2025/26"
+      ],
+      [
+        "Sample Data",
+        "Sample Data 1",
+        "Sample Data 2",
+        "Sample Data 3",
+        "Sample Data 4",
+        "Sample Data 5",
+        "Sample Data 6"
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  {
+    "key": "FCC-03",
+    "owner": "FCC",
+    "source": "FCC_Data_Requirements_for_Data_Warehouse.docx",
+    "name": "Complaints Resolved",
+    "description": "Total number of consumer and market-conduct complaints lodged with FCC that were resolved within the reporting period.",
+    "sourceFrequency": "Quarterly and annually",
+    "frequency": "quarterly",
+    "priority": "high",
+    "campus": false,
+    "indicators": [
+      {
+        "name": "Complaints Resolved",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      }
+    ],
+    "sourceRows": [
+      [
+        "Data Name",
+        "Complaints Resolved"
+      ],
+      [
+        "Data Description",
+        "Total number of consumer and market-conduct complaints lodged with FCC that were resolved within the reporting period."
+      ],
+      [
+        "Type (Input/Output)",
+        "Output"
+      ],
+      [
+        "Source (Institution/Department)",
+        "Fair Competition Commission (FCC) - Directorate of Restrictive Trade Practices"
+      ],
+      [
+        "Consumer (Institution/Department))",
+        "Business communities, Consumers, consumer societies, service providers, manufacturers parliament and courts."
+      ],
+      [
+        "Frequency (Daily/Weekly, Quarterly, Annually, etc)",
+        "Quarterly and annually"
+      ],
+      [
+        "Priority (Low, Medium, High)",
+        "High"
+      ],
+      [
+        "Source System(s)",
+        "FCC consumer complaints database"
+      ],
+      [
+        "Columns",
+        "Column1",
+        "Column2",
+        "Column3",
+        "Column4",
+        "Column5",
+        "Column6"
+      ],
+      [
+        "",
+        "Complaints resolved",
+        "2021/22",
+        "2022/23",
+        "2023/24",
+        "2024/25",
+        "2025/26"
+      ],
+      [
+        "Sample Data",
+        "Sample Data 1",
+        "Sample Data 2",
+        "Sample Data 3",
+        "Sample Data 4",
+        "Sample Data 5",
+        "Sample Data 6"
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  {
+    "key": "TANTRADE-01",
+    "owner": "TANTRADE",
+    "source": "TANTRADE DATA WAREHOUSE.doc",
+    "name": "Market Access and Entry information",
+    "description": "Trade promotion activities coordinated to enhance market access and entry of Tanzania products in local, regional and international market to broaden exports growth",
+    "sourceFrequency": "Monthly, Quarterly and annually",
+    "frequency": "quarterly",
+    "priority": "high",
+    "campus": false,
+    "indicators": [
+      {
+        "name": "Number of trade promotion events coordinated (Incoming/Outgoing)",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of Trade promotion permits issued",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of Companies participated",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of SMEs participated",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of MoU/Contracts signed",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Value of MoU/Contracts signed",
+        "type": "decimal",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of MoU/Contract implemented",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Value of business deals generated (TZS)",
+        "type": "decimal",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Value of business deals utilized",
+        "type": "decimal",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of new export markets entered (new country/product pairs)",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Total export value of Tanzanian goods & services as a result of opportunities shared",
+        "type": "decimal",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Export Value of Manufactured/Value-Added Products",
+        "type": "decimal",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of Job opportunities created",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      }
+    ],
+    "sourceCells": [
+      "Market Access and Entry information",
+      "",
+      "Data Description",
+      "Trade promotion activities coordinated to enhance market access and entry of Tanzania products in local, regional and international market to broaden exports growth",
+      "",
+      "Type (Input/Output)",
+      "Input",
+      "",
+      "Source (Institution/Department)",
+      "TanTrade",
+      "",
+      "Consumer (Institution / Department))",
+      "MIT,TR&NBS",
+      "",
+      "Frequency (Daily/Weekly, Quarterly, Annually, etc)",
+      "Monthly, Quarterly and annually",
+      "",
+      "Priority (Low, Medium, High)",
+      "High",
+      "",
+      "Source System(s)",
+      "",
+      "",
+      "Columns",
+      "Column1",
+      "Colum2",
+      "Column3",
+      "Column4",
+      "Column5",
+      "Column6",
+      "",
+      "",
+      "Indicator",
+      "2024/2025",
+      "2025/2026",
+      "",
+      "",
+      "",
+      "",
+      "Sample Data",
+      "",
+      "Sample Data 1",
+      "Sample Data 2",
+      "",
+      "",
+      "",
+      "",
+      "A: Trade promotion activities coordinated to enhance market access and entry (Technical advisory, Trade fair, Expo, Matchmaking & Forum)",
+      "Number of trade promotion events coordinated (Incoming/Outgoing)",
+      "13",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of Trade promotion permits issued",
+      "",
+      "25",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of Companies participated",
+      "420",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of SMEs participated",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of MoU/Contracts signed",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Value of MoU/Contracts signed",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of MoU/Contract implemented",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Value of business deals generated (TZS)",
+      "24.26 bn",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Value of business deals utilized",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of new export markets entered (new country/product pairs)",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Total export value of Tanzanian goods & services as a result of opportunities shared",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Export Value of Manufactured/Value-Added Products",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of Job opportunities created",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "key": "TANTRADE-02",
+    "owner": "TANTRADE",
+    "source": "TANTRADE DATA WAREHOUSE.doc",
+    "name": "Access to Trade and Market information",
+    "description": "To provide SMEs with up-to-date/timely and reliable trade data on market flows, product price, tariffs, non-tariff measures, certification standards, and export potential to create an enabling, transparent and predictable business environment and enhance their visibility and access to global trade opportunities",
+    "sourceFrequency": "Weekly, Quarterly and annually",
+    "frequency": "quarterly",
+    "priority": "high",
+    "campus": false,
+    "indicators": [
+      {
+        "name": "Number of companies accessing trade information (Digital Platform Uptime & Active Users)",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of SMEs accessing trade information (Digital Platform Uptime & Active Users)",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of trade procedures/ business processes documented",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of exporters registered in database",
+        "type": "integer",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Number of importers registered in database",
+        "type": "integer",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Trade data and market intelligence reports published",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of trade inquiries received and utilized",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Value of business leads generated",
+        "type": "decimal",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Product prices collected, analysed and disseminated",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      }
+    ],
+    "sourceCells": [
+      "Access to Trade and Market information",
+      "",
+      "Data Description",
+      "To provide SMEs with up-to-date/timely and reliable trade data on market flows, product price, tariffs, non-tariff measures, certification standards, and export potential to create an enabling, transparent and predictable business environment and enhance their visibility and access to global trade opportunities",
+      "",
+      "Type (Input/Output)",
+      "Input",
+      "",
+      "Source (Institution/Department)",
+      "TanTrade",
+      "",
+      "Consumer (Institution / Department))",
+      "MIT&TR",
+      "",
+      "Frequency (Daily/Weekly, Quarterly, Annually, etc)",
+      "Weekly, Quarterly and annually",
+      "",
+      "Priority (Low, Medium, High)",
+      "High",
+      "",
+      "Source System(s)",
+      "",
+      "",
+      "Columns",
+      "Column1",
+      "Colum2",
+      "Column3",
+      "Column4",
+      "Column5",
+      "Column6",
+      "",
+      "",
+      "Indicator",
+      "2024/2025",
+      "2025/2026",
+      "",
+      "",
+      "",
+      "",
+      "Sample Data",
+      "",
+      "Sample Data 1",
+      "Sample Data 2",
+      "",
+      "",
+      "",
+      "",
+      "B: Access to trade information services (Trade Portal, WTPF,ITMIS)",
+      "Number of companies accessing trade information (Digital Platform Uptime & Active Users)",
+      "120,000",
+      "147,996",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of SMEs accessing trade information (Digital Platform Uptime & Active Users)",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of trade procedures/ business processes documented",
+      "50",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of exporters registered in database",
+      "11,098",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of importers registered in database",
+      "9,238",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Trade data and market intelligence reports published",
+      "50",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of trade inquiries received and utilized",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Value of business leads generated",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Product prices collected, analysed and disseminated",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "key": "TANTRADE-03",
+    "owner": "TANTRADE",
+    "source": "TANTRADE DATA WAREHOUSE.doc",
+    "name": "Trade Development and Facilitation service Data",
+    "description": "Capacity Building and business related services provided to SMEs to trade competitively in local and international markets",
+    "sourceFrequency": "Quarterly and annually",
+    "frequency": "quarterly",
+    "priority": "high",
+    "campus": false,
+    "indicators": [
+      {
+        "name": "Number of SMEs trained",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of Exporters/Potential Exporters Trained (Exporter Readiness Programme)",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "New-to-Export SMEs On boarded (first-time exporters)",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Women- and Youth-Led Enterprises Supported",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Made in Tanzania Mark Adoption Rate (companies/products using the national mark)",
+        "type": "decimal",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Non-Tariff Barriers (NTBs) Identified and Resolved",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Cross-Border & Informal Traders Formalised (Utilization of STR)",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Number of PPD meetings coordinated",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      },
+      {
+        "name": "Resolution of PPD meetings implemented",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      }
+    ],
+    "sourceCells": [
+      "Trade Development and Facilitation service Data",
+      "",
+      "Data Description",
+      "Capacity Building and business related services provided to SMEs to trade competitively in local and international markets",
+      "",
+      "Type (Input/Output)",
+      "Input",
+      "",
+      "Source (Institution/Department)",
+      "TanTrade",
+      "",
+      "Consumer (Institution / Department))",
+      "MIT&TR",
+      "",
+      "Frequency (Daily/Weekly, Quarterly, Annually, etc)",
+      "Quarterly and annually",
+      "",
+      "Priority (Low, Medium, High)",
+      "High",
+      "",
+      "Source System(s)",
+      "",
+      "",
+      "Columns",
+      "Column1",
+      "Colum2",
+      "Column3",
+      "Column4",
+      "Column5",
+      "Column6",
+      "",
+      "",
+      "Indicator",
+      "2024/2025",
+      "2025/2026",
+      "",
+      "",
+      "",
+      "",
+      "Sample Data",
+      "",
+      "Sample Data 1",
+      "Sample Data 2",
+      "",
+      "",
+      "",
+      "",
+      "C: Business Development support (BDS) Services provided to SMEs to strengthen trade competitiveness (Training, Advisory, Coaching and Branding/Made in Tanzania)",
+      "Number of SMEs trained",
+      "585",
+      "2,614",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of Exporters/Potential Exporters Trained (Exporter Readiness Programme)",
+      "246",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "New-to-Export SMEs On boarded (first-time exporters)",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Women- and Youth-Led Enterprises Supported",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Made in Tanzania Mark Adoption Rate (companies/products using the national mark)",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Non-Tariff Barriers (NTBs) Identified and Resolved",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Cross-Border & Informal Traders Formalised (Utilization of STR)",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Number of PPD meetings coordinated",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Resolution of PPD meetings implemented",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "key": "MEU-BUSINESS",
+    "owner": "MIT",
+    "source": "MonitoringEvaluationSeeder.php (synthetic financial-year testing series)",
+    "name": "Trade sector performance",
+    "description": "Synthetic financial-year sector indicators; not official calendar-year economic statistics.",
+    "sourceFrequency": "Annual",
+    "frequency": "annual",
+    "priority": "high",
+    "campus": false,
+    "sector": "BUSINESS",
+    "indicators": [
+      {
+        "name": "Trade and repair activities share of GDP",
+        "type": "decimal",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Trade and repair activities real growth rate",
+        "type": "decimal",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Goods exports value (USD million)",
+        "type": "decimal",
+        "aggregation": "sum",
+        "samples": []
+      }
+    ]
+  },
+  {
+    "key": "MEU-VIWANDA",
+    "owner": "MIT",
+    "source": "MonitoringEvaluationSeeder.php (synthetic financial-year testing series)",
+    "name": "Industry sector performance",
+    "description": "Synthetic financial-year sector indicators; not official calendar-year economic statistics.",
+    "sourceFrequency": "Annual",
+    "frequency": "annual",
+    "priority": "high",
+    "campus": false,
+    "sector": "VIWANDA",
+    "indicators": [
+      {
+        "name": "Manufacturing share of GDP",
+        "type": "decimal",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Manufacturing real growth rate",
+        "type": "decimal",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "Persons employed in manufacturing",
+        "type": "integer",
+        "aggregation": "latest",
+        "samples": []
+      },
+      {
+        "name": "New manufacturing establishments",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      }
+    ]
+  },
+  {
+    "key": "ICT-01",
+    "owner": "MIT",
+    "department": "ICT",
+    "source": "Synthetic ICT testing fixture",
+    "name": "ICT Infrastructure Availability",
+    "description": "Synthetic ICT department testing data.",
+    "sourceFrequency": "Quarterly",
+    "frequency": "quarterly",
+    "priority": "medium",
+    "campus": false,
+    "indicators": [
+      {
+        "name": "System availability rate",
+        "type": "decimal",
+        "aggregation": "average",
+        "samples": []
+      }
+    ]
+  },
+  {
+    "key": "ICT-02",
+    "owner": "MIT",
+    "department": "ICT",
+    "source": "Synthetic ICT testing fixture",
+    "name": "ICT Support Services",
+    "description": "Synthetic ICT department testing data.",
+    "sourceFrequency": "Quarterly",
+    "frequency": "quarterly",
+    "priority": "medium",
+    "campus": false,
+    "indicators": [
+      {
+        "name": "Support requests resolved",
+        "type": "integer",
+        "aggregation": "sum",
+        "samples": []
+      }
+    ]
+  }
+]

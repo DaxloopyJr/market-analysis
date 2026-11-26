@@ -1,0 +1,42 @@
+/**
+ * FILE: src/styles/tokens.css
+ * Scope: authenticated DashboardLayout only (no Login or public Home changes).
+ * FLOW: Profile AppearancePreferences -> AppearanceContext -> data-vw-theme/accent -> tokens.
+ * Theme applies to MAIN CONTENT. Status badge colors remain semantic.
+ */
+.dashboard-shell {
+  --vw-accent: #155dbb;
+  --vw-accent-hover: #0c4d9b;
+  --vw-accent-subtle: #eaf2fc;
+  --vw-main-background: #f4f7fb;
+  --vw-surface: #ffffff;
+  --vw-text: #173456;
+  --vw-muted: #637a94;
+  --vw-border: #d3e0ef;
+  --vw-table-head: #f1f6fc;
+  --vw-shadow: 0 5px 22px rgba(11, 49, 100, .06);
+}
+.dashboard-shell[data-vw-accent="green"], .vw-profile-preview-surface[data-vw-accent="green"] {
+  --vw-accent: #168452; --vw-accent-hover: #10683e; --vw-accent-subtle: #e7f6ee;
+}
+.dashboard-shell[data-vw-accent="teal"], .vw-profile-preview-surface[data-vw-accent="teal"] {
+  --vw-accent: #087e91; --vw-accent-hover: #065d6d; --vw-accent-subtle: #e6f5f7;
+}
+.dashboard-shell[data-vw-theme="dark"], .vw-profile-preview-surface[data-vw-theme="dark"] {
+  --vw-main-background: #111d31;
+  --vw-surface: #1b2b44;
+  --vw-text: #ebf2fc;
+  --vw-muted: #a9bbd1;
+  --vw-border: #40516a;
+  --vw-table-head: #273851;
+  --vw-shadow: 0 5px 24px rgba(0, 0, 0, .19);
+  --vw-accent-subtle: #243d60;
+  color-scheme: dark;
+}
+.dashboard-shell[data-vw-theme="dark"] { background: var(--vw-main-background); }
+.dashboard-shell[data-vw-theme="dark"] .dashboard-content { color: var(--vw-text); }
+/* Keep official emblem/nav layout unchanged; topbar/footer get matching surfaces only. */
+.dashboard-shell[data-vw-theme="dark"] .dashboard-topbar,
+.dashboard-shell[data-vw-theme="dark"] .dashboard-footer { background: #17253c; color: var(--vw-text); border-color: var(--vw-border); }
+.dashboard-shell[data-vw-theme="dark"] .portal-topbar-brand-copy strong,
+.dashboard-shell[data-vw-theme="dark"] .portal-topbar-user-copy strong { color: var(--vw-text); }

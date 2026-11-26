@@ -1,0 +1,122 @@
+/**
+ * FILE: src/pages/Admin/auditTrail.css
+ * Audit-only additions. Table, heading, buttons, pagination and modal base
+ * inherit from institutions.css just like MinistryDepartments.jsx.
+ * Do not modify ministryDepartments.css.
+ */
+.vim-audit-trail .vim-filter-form {
+  grid-template-columns: minmax(225px, 1fr) minmax(155px, .4fr) minmax(155px, .4fr) auto auto auto;
+}
+.vim-audit-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid #dce6f2;
+  background: #fff;
+  color: #194574;
+  font-size: 12px;
+  border-radius: 8px;
+}
+.vim-audit-identity svg { color: #1268d6; flex: none; }
+.vim-audit-table { min-width: 1060px; }
+/* Loader is centred within the table body, not above the table. */
+.vim-audit-table .vim-audit-loading-cell { height: 260px; padding: 0 !important; }
+.vim-audit-loading-state {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #56718f;
+  font-size: 13px;
+  font-weight: 600;
+}
+.vim-audit-loading-state .spinner-border { width: 2.5rem; height: 2.5rem; }
+.vim-audit-table tbody td { vertical-align: middle; }
+.vim-audit-table .vim-row-actions { justify-content: flex-end; }
+.vim-audit-actor, .vim-audit-date { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.vim-audit-actor svg, .vim-audit-date svg { color: #577b9c; flex: none; }
+.vim-audit-entity-id { display: block; color: #74869c; margin-top: 3px; font-size: 11px; }
+.vim-audit-mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; }
+.vim-audit-badge { display: inline-flex; align-items: center; max-width: 260px; padding: 6px 10px; border-radius: 6px; font-size: 11px; line-height: 1.35; font-weight: 700; overflow-wrap: anywhere; }
+.vim-audit-success { color: #097443; background: #dcf8e7; }
+.vim-audit-danger { color: #bb3b44; background: #ffebec; }
+.vim-audit-warning { color: #93610e; background: #fff1d3; }
+.vim-audit-info { color: #1466bd; background: #e7f2ff; }
+.vim-audit-neutral { color: #4c6078; background: #edf2f8; }
+.vim-audit-dialog { max-width: 970px; }
+.vim-audit-dialog .vim-detail-heading { margin-bottom: 0; }
+.vim-audit-detail-body { padding: 20px 24px; max-height: min(66vh, 640px); overflow-y: auto; }
+.vim-audit-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.vim-audit-info-item { border: 1px solid #e3ebf5; background: #f8fbff; border-radius: 7px; padding: 10px 12px; min-width: 0; }
+.vim-audit-info-item small { display: block; color: #667d99; margin-bottom: 4px; font-size: 11px; }
+.vim-audit-info-item strong { display: block; font-size: 12px; color: #1e3e62; font-weight: 600; overflow-wrap: anywhere; }
+.vim-audit-reason { margin-top: 14px; padding: 11px 13px; background: #f0f6ff; border: 1px solid #d7e6fc; border-radius: 6px; color: #284a71; font-size: 12px; }
+.vim-audit-reason p { margin: 5px 0 0; overflow-wrap: anywhere; }
+.vim-audit-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 12px; border-bottom: 1px solid #dce6f2; }
+.vim-audit-tabs button { border: none; background: transparent; color: #607991; font-size: 12px; padding: 10px 12px; border-bottom: 2px solid transparent; }
+.vim-audit-tabs button.active { color: #1268d6; border-bottom-color: #1268d6; font-weight: 700; }
+.vim-audit-diff-scroll { border: 1px solid #dce6f2; border-radius: 7px; overflow-x: auto; }
+.vim-audit-diff-table { font-size: 12px; min-width: 560px; }
+.vim-audit-diff-table th { background: #f0f5fc; color: #294461; }
+.vim-audit-diff-table th, .vim-audit-diff-table td { padding: 10px 12px; border-color: #dce6f2; }
+.vim-audit-diff-table td:first-child { min-width: 130px; }
+.vim-audit-diff-table td.vim-audit-before { background: #fff7f7; width: 40%; }
+.vim-audit-diff-table td.vim-audit-after { background: #f3fff7; width: 40%; }
+.vim-audit-diff-table pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+.vim-audit-no-changes { padding: 22px 12px; text-align: center; color: #68819a; font-size: 12px; }
+.vim-audit-json-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.vim-audit-json-grid h3 { font-size: 13px; font-weight: 700; color: #26476c; }
+.vim-audit-json-grid pre { min-height: 120px; max-height: 310px; overflow: auto; padding: 12px; border: 1px solid #dce6f2; border-radius: 7px; color: #344d66; background: #f8fbff; font-size: 11px; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 1200px) {
+  .vim-audit-trail .vim-filter-form { grid-template-columns: 1fr 1fr auto auto; }
+  .vim-audit-trail .vim-filter-form .vim-search-field { grid-column: span 2; }
+  .vim-audit-trail .vim-filter-form .vim-add { justify-self: start; }
+}
+@media (max-width: 720px) {
+  .vim-audit-trail .vim-filter-form { grid-template-columns: 1fr 1fr; }
+  .vim-audit-trail .vim-filter-form .vim-search-field { grid-column: 1 / -1; }
+  .vim-audit-trail .vim-filter-form .vim-add { grid-column: 1 / -1; }
+  .vim-audit-identity { margin-top: 10px; }
+  .vim-audit-info-grid, .vim-audit-json-grid { grid-template-columns: 1fr; }
+  .vim-audit-detail-body { padding: 14px; }
+}
+
+/* Report export actions are separate from the search grid; no layout changes to shared pages. */
+.vim-audit-export-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: 15px 18px;
+  border-bottom: 1px solid #e3ebf5;
+  background: #fbfdff;
+}
+.vim-audit-export-description { display: flex; flex-direction: column; gap: 3px; min-width: 220px; }
+.vim-audit-export-description strong { color: #133e6b; font-size: 14px; font-weight: 700; }
+.vim-audit-export-description small { color: #607b98; font-size: 12px; }
+.vim-audit-export-buttons { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+.vim-audit-export-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 15px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.vim-audit-export-pdf { background: #fff; border: 1px solid #b53d47; color: #a8323d; }
+.vim-audit-export-pdf:hover:not(:disabled) { color: #fff; background: #ad3440; border-color: #ad3440; }
+.vim-audit-export-excel { background: #fff; border: 1px solid #18805d; color: #126b4d; }
+.vim-audit-export-excel:hover:not(:disabled) { color: #fff; background: #147554; border-color: #147554; }
+.vim-audit-export-buttons .btn:disabled { cursor: not-allowed; opacity: .5; }
+@media (max-width: 540px) {
+  .vim-audit-export-toolbar { align-items: stretch; padding: 14px; }
+  .vim-audit-export-buttons { width: 100%; }
+  .vim-audit-export-buttons .btn { flex: 1; }
+}

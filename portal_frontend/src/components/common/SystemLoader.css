@@ -1,0 +1,62 @@
+
+/*
+ * FILE: src/components/common/SystemLoader.css
+ * Reusable Loader for Viwanda Portal
+ */
+
+/* Loader inside table */
+.vim-system-loader-cell {
+  padding: 0 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Main loader */
+.vim-system-loader {
+  width: 100%;
+  min-height: 260px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+  margin: 0 auto;
+
+  color: #56718f;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Spinner */
+.vim-system-loader .spinner-border {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-width: 3px;
+  color: #1268d6 !important;
+}
+
+/* Compact loader for modals */
+.vim-system-loader--compact {
+  min-height: 120px;
+}
+
+.vim-system-loader--compact .spinner-border {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .vim-system-loader {
+    min-height: 180px;
+    font-size: 12px;
+  }
+
+  .vim-system-loader .spinner-border {
+    width: 2rem;
+    height: 2rem;
+  }
+}

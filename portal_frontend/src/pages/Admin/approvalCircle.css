@@ -1,0 +1,251 @@
+/** FILE: src/pages/Admin/approvalCircle.css
+ * Approved Approval Circle REFERENCE: single page, list LEFT and form/detail/status RIGHT.
+ * This file is scoped; existing global CSS and other modules stay unchanged.
+ */
+.vim-approval-circle{--ac-border:#dee9f6;--ac-blue:#0868ed;--ac-ink:#0c2b60}
+.vim-ac-layout{display:grid;grid-template-columns:minmax(275px,36%) minmax(0,1fr);gap:12px;align-items:stretch}
+.vim-ac-list,.vim-ac-panel{background:white;border:1px solid var(--ac-border);border-radius:6px;min-width:0;min-height:670px}
+.vim-ac-list{padding:16px 14px}
+.vim-ac-list-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}
+.vim-ac-list-title h2{font-size:17px;color:var(--ac-ink);font-weight:750;margin:0}
+.vim-ac-list-title button{display:flex;align-items:center;gap:7px;font-size:13px;white-space:nowrap;min-height:36px}
+.vim-ac-search{height:40px;display:flex;align-items:center;gap:8px;padding:0 10px;border:1px solid #d8e5f5;border-radius:5px;color:#486eaa;margin-bottom:12px}
+.vim-ac-search input{flex:1;min-width:0;outline:0;border:0;font-size:13px;color:#224977}
+.vim-ac-search-form{display:flex;gap:5px;margin:-5px 0 10px}
+.vim-ac-search-form button{font-size:12.5px;padding:4px 10px;display:flex;align-items:center;gap:5px}
+.vim-ac-items{border:1px solid #e2eaf5;border-radius:4px;overflow:hidden}
+.vim-ac-item{display:flex;width:100%;align-items:center;gap:9px;text-align:left;background:white;border:0;border-bottom:1px solid #e6edf7;padding:13px 11px;cursor:pointer;color:#0c2b60}
+.vim-ac-item:last-child{border-bottom:0}
+.vim-ac-item>span:first-child{flex:1;min-width:0;display:grid;gap:6px}
+.vim-ac-item strong{font-weight:750;font-size:13px}
+.vim-ac-item small{font-size:12.5px;color:#476fa9}
+.vim-ac-item>.vim-status{font-size:11.5px;padding:4px 6px}
+.vim-ac-item>svg{color:#2159a0;flex:none}
+.vim-ac-item:hover{background:#f2f7ff}
+.vim-ac-item.selected{border-left:3px solid #0763f0;padding-left:8px;background:#dcebff}
+.vim-ac-empty{padding:24px 11px;font-size:13px;line-height:1.55;color:#576c86;text-align:center;border:1px dashed #d2e1f1;border-radius:4px;margin:10px 0}
+.vim-ac-pagination{display:flex;justify-content:center;gap:12px;align-items:center;margin-top:16px;color:#446487;font-size:13px}
+.vim-ac-pagination button{border:1px solid var(--ac-border);background:#fff;border-radius:4px;display:grid;place-items:center;width:28px;height:28px}
+.vim-ac-header{min-height:90px;padding:22px 23px 17px;border-bottom:1px solid #e0e9f5;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.vim-ac-header h2{font-size:21px;color:var(--ac-ink);font-weight:750;margin:0 0 5px}
+.vim-ac-header p{font-size:13px;color:#456c9f;margin:0}
+.vim-ac-header .vim-status{font-size:13px;padding:7px 15px}
+.vim-ac-editor{padding:16px 18px;}
+.vim-ac-steps{display:flex;align-items:center;gap:0;margin:3px 0 20px}
+.vim-ac-steps button{display:flex;align-items:center;justify-content:center;gap:7px;flex:1;border:0;border-bottom:2px solid #d5e3f3;padding:14px 8px;background:#fff;color:#496e9a;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer}
+.vim-ac-steps button span{display:grid;place-items:center;width:24px;height:24px;flex:none;border-radius:50%;border:1px solid #a9c1df;background:#f7faff;color:#173d6e;font-weight:750}
+.vim-ac-steps button.selected{border-color:#0869ff;color:#065ae3}
+.vim-ac-steps button.selected span{color:white;background:#0566f5;border-color:#0566f5}
+.vim-ac-steps button.finished span{color:#fff;background:#0cbf69;border-color:#0cbf69}
+.vim-ac-work-area{min-height:450px;display:flex;flex-direction:column}
+.vim-ac-section{border:1px solid #e1ecf8;border-radius:5px;flex:1;min-width:0;overflow:hidden}
+.vim-ac-section>h3{display:flex;align-items:center;gap:9px;background:#e9f3ff;padding:13px 14px;margin:0;color:#073377;font-size:14px;font-weight:750}
+.vim-ac-section>h3>svg{color:#0465ec}
+.vim-ac-section>h3>button{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:12.5px}
+.vim-ac-form-fields{display:grid;gap:17px;padding:18px 20px 23px}
+.vim-ac-form-fields>label,.vim-ac-additional>label,.vim-ac-change-status>label,.vim-ac-level-inputs>label{display:grid;gap:6px;color:#0a2c60;font-size:13px;font-weight:650}
+.vim-ac-form-fields b,.vim-ac-status-input b{color:#e3424e}
+.vim-approval-circle .form-control,.vim-approval-circle .form-select{font-size:13px;border:1px solid #cfe0f5;color:#194578;border-radius:5px;min-height:37px}
+.vim-approval-circle textarea.form-control{resize:vertical}
+.vim-ac-status-input{display:grid;gap:9px;font-size:13px;color:#0b2c61}
+.vim-ac-status-input>div{display:flex;align-items:center;gap:34px}
+.vim-ac-status-input label{display:flex;align-items:center;gap:9px;cursor:pointer;font-size:13px}
+.vim-ac-status-input input{width:16px;height:16px;accent-color:#0865f5}
+.vim-ac-footer{display:flex;justify-content:flex-end;gap:10px;padding:16px 2px 0;margin-top:auto}
+.vim-ac-footer .btn{min-width:118px;min-height:36px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:13px}
+.vim-ac-table-wrap{overflow:auto;margin:12px 12px 4px}
+.vim-ac-level-table{min-width:495px;font-size:12.5px}
+.vim-ac-level-table thead th{font-size:12.5px;background:#f0f5fc;color:#163a72;padding:12px 9px;white-space:nowrap}
+.vim-ac-level-table tbody td{padding:12px 9px;vertical-align:middle;color:#22497e}
+.vim-ac-table-empty{text-align:center;color:#576e88!important;padding:28px!important}
+.vim-ac-row-actions{display:flex;gap:7px}
+.vim-ac-row-actions button{width:28px;height:27px;display:grid;place-items:center;border-radius:4px;border:1px solid #dfebfa;background:#f3f7fc;color:#0a55ae}
+.vim-ac-row-actions button.danger{background:#eb1d35;color:white;border-color:#eb1d35}
+.vim-ac-level-editor{margin:12px;padding:15px;border:1px solid #bdd8fc;background:#f8fbff;border-radius:5px}
+.vim-ac-level-editor h4{font-size:13.5px;color:#073778;margin:0 0 12px}
+.vim-ac-level-inputs{display:grid;gap:11px}
+.vim-ac-buttons{display:flex;justify-content:flex-end;gap:9px;margin-top:12px}
+.vim-ac-buttons .btn{font-size:12.5px}
+.vim-ac-additional{padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vim-ac-additional .vim-ac-full{grid-column:1/-1}
+.vim-ac-options-help{font-size:12.5px;color:#587595;padding:0 18px 12px;margin:0}
+.vim-ac-details{padding:15px 18px 24px;display:grid;gap:16px}
+.vim-ac-details>section{border:1px solid #dfebf8;border-radius:5px;overflow:hidden}
+.vim-ac-details h3{background:#e9f3ff;display:flex;align-items:center;gap:8px;color:#0b3a83;font-size:14px;font-weight:750;padding:13px 15px;margin:0}
+.vim-ac-details h3>svg{color:#0567f3}
+.vim-ac-details-grid{padding:14px 17px;display:grid;gap:11px}
+.vim-ac-details-grid>div{display:grid;grid-template-columns:155px minmax(0,1fr);gap:12px;font-size:13px}
+.vim-ac-details-grid span{color:#5a769d}
+.vim-ac-details-grid strong{color:#11315c;font-weight:650;overflow-wrap:anywhere}
+.vim-ac-detail-level{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #e9eef7;padding:11px 15px;font-size:13px}
+.vim-ac-detail-level span,.vim-ac-muted{color:#5a6e88;font-size:13px}
+.vim-ac-muted{padding:12px}
+.vim-ac-change-status{padding:21px;display:grid;gap:17px}
+.vim-ac-warning{background:#ffe7e9;color:#c91d30;border:1px solid #ffd3d6;padding:15px;display:flex;gap:12px;align-items:flex-start;border-radius:4px;font-size:13px}
+.vim-ac-warning>svg{flex:none}
+.vim-ac-warning p{margin:6px 0 0;font-size:13px}
+.vim-ac-status-summary{display:grid;gap:11px}
+.vim-ac-status-summary>div{display:grid;grid-template-columns:160px minmax(0,1fr);gap:10px;font-size:13px;color:#576c89}
+.vim-ac-status-summary strong{color:#0a336c}
+.vim-ac-change-status footer{padding-top:20px}
+@media(max-width:1100px){.vim-ac-layout{grid-template-columns:290px minmax(0,1fr)}.vim-ac-steps button{font-size:11.5px;padding:11px 4px}.vim-ac-steps button span{width:20px;height:20px}.vim-ac-header{padding:18px}}
+@media(max-width:760px){.vim-ac-layout{grid-template-columns:1fr}.vim-ac-list,.vim-ac-panel{min-height:0}.vim-ac-list{max-height:330px;overflow-y:auto}.vim-ac-work-area{min-height:360px}}
+@media(max-width:500px){.vim-ac-steps{flex-direction:column;align-items:stretch}.vim-ac-steps button{justify-content:flex-start;gap:12px}.vim-ac-additional{grid-template-columns:1fr}.vim-ac-details-grid>div,.vim-ac-status-summary>div{grid-template-columns:1fr;gap:3px}}
+
+/* Approved Step 3 chip-style multiselection controls. */
+.vim-ac-scope{display:grid;gap:7px;position:relative;min-width:0}
+.vim-ac-scope>label{color:#0a2c60;font-size:13px;font-weight:650}
+.vim-ac-scope-trigger{display:flex;align-items:center;justify-content:space-between;gap:7px;border:1px solid #cfe0f5;border-radius:5px;background:white;min-height:37px;width:100%;padding:6px 9px;color:#315e95;text-align:left;font-size:13px}
+.vim-ac-scope-trigger>svg{transform:rotate(90deg);flex:none}
+.vim-ac-scope-trigger>svg.expanded{transform:rotate(-90deg)}
+.vim-ac-chips{display:flex;flex:1;gap:5px;flex-wrap:wrap}
+.vim-ac-chip{border:1px solid #d4e5fb;border-radius:3px;background:#e7f1ff;color:#1c4d89;font-size:12.5px;padding:3px 7px}
+.vim-ac-scope-placeholder{font-size:13px;color:#526d90}
+.vim-ac-scope-options{position:absolute;z-index:5;top:100%;left:0;right:0;background:#fff;box-shadow:0 7px 23px rgba(20,59,104,.15);border:1px solid #b9d1ee;border-radius:4px;max-height:220px;overflow-y:auto;padding:8px}
+.vim-ac-scope-options label{display:flex;align-items:center;gap:9px;padding:8px 5px;cursor:pointer;font-size:13px;font-weight:500}
+.vim-ac-scope-options label:hover{background:#f0f6ff}
+.vim-ac-scope-options input{accent-color:#0865f5}
+.vim-ac-scope-options p{font-size:12.5px;color:#596c8b;margin:7px}
+.vim-ac-scope-all,.vim-ac-scope-close{font-size:12.5px;border:0;background:#e9f3ff;color:#1255a3;border-radius:3px;padding:6px 9px;width:100%;text-align:left}
+.vim-ac-scope-close{margin-top:5px;text-align:center}
+
+/* APPROVAL CIRCLE UI/UX v2 — 23 Oct 2026
+ * User-approved layout reference: searchable full-width version table, details
+ * with an ordered workflow timeline, and compact right-side create/edit drawer.
+ * Scoped CSS only. Dashboard, datasets, submissions and global toast unchanged.
+ */
+.vim-ac-v2{--ac-v2-blue:#0569ef;--ac-v2-dark:#102e59;--ac-v2-border:#e0e8f4;--ac-v2-muted:#667e9f;color:var(--ac-v2-dark);padding:0 2px 22px}
+.vim-ac-v2-page-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 14px}
+.vim-ac-v2-page-heading .vim-breadcrumb{color:#576d89;font-size:13px;margin-bottom:12px}
+.vim-ac-v2-page-heading h1{margin:0 0 5px;font-size:26px;letter-spacing:-.5px;font-weight:800;color:#102c54}
+.vim-ac-v2-page-heading p{margin:0;color:#5c6c83;font-size:13.5px}
+.vim-ac-v2-create{display:inline-flex;gap:7px;align-items:center;justify-content:center;font-weight:650;white-space:nowrap;padding:10px 17px}
+.vim-ac-v2-workflows,.vim-ac-v2-detail{background:#fff;border:1px solid #e6ecf5;border-radius:12px;box-shadow:0 5px 18px rgba(24,60,103,.04);min-width:0}
+.vim-ac-v2-workflows{padding:15px 16px;margin-bottom:14px}
+.vim-ac-v2-toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:15px;flex-wrap:wrap}
+.vim-ac-v2-filter-tabs{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.vim-ac-v2-filter-tabs button{display:inline-flex;align-items:center;gap:7px;background:#f7f9fd;border:1px solid #e7ecf4;border-radius:7px;color:#1e385e;font-size:13px;font-weight:650;padding:10px 12px;min-height:38px;white-space:nowrap}
+.vim-ac-v2-filter-tabs button.active{color:#0562da;border-color:#1871ef;background:#eef5ff;box-shadow:inset 0 0 0 1px rgba(24,113,239,.08)}
+.vim-ac-v2-count{background:#fff;border:1px solid #edf0f7;min-width:23px;height:23px;border-radius:9px;display:inline-grid;place-items:center;font-size:12.5px}
+.vim-ac-v2-dot{width:8px;height:8px;border-radius:50%;background:#8895a9}
+.vim-ac-v2-dot.active{background:#17aa73}.vim-ac-v2-dot.draft{background:#edba34}.vim-ac-v2-dot.retired{background:#8e9bad}
+.vim-ac-v2-tools{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.vim-ac-v2-search{display:flex;align-items:center;gap:8px;border:1px solid #d8e2ef;border-radius:7px;height:39px;padding:0 12px;color:#5d6d83;min-width:180px}
+.vim-ac-v2-search input{border:none;outline:none;color:#163d6f;font-size:13px;min-width:0;flex:1;width:160px}
+.vim-ac-v2-tools .form-select{border:1px solid #d8e2ef;border-radius:7px;color:#244567;min-width:139px;min-height:39px;font-size:13px}
+.vim-ac-v2-table-scroll{max-width:100%;overflow-x:auto;border:1px solid #e7edf6;border-radius:9px}
+.vim-ac-v2-table{width:100%;border-collapse:collapse;font-size:13px;min-width:795px;color:#213b62}
+.vim-ac-v2-table thead{background:#f2f6fc}.vim-ac-v2-table th{color:#19375f;font-weight:750;white-space:nowrap;padding:12px 12px;font-size:12.5px;text-align:left}
+.vim-ac-v2-table td{vertical-align:middle;border-top:1px solid #eaf0f6;padding:11px 12px}
+.vim-ac-v2-table tbody tr:hover{background:#fafcff}.vim-ac-v2-table tbody tr.selected{box-shadow:inset 3px 0 0 #126bf0;background:#f9fcff}
+.vim-ac-v2-table td small{display:block;color:#5c6e86;font-size:12.5px;margin-top:3px}
+.vim-ac-v2-workflow-link{background:none;border:0;padding:0;text-align:left;font-weight:750;font-size:13px;color:#14305c}
+.vim-ac-v2-workflow-link:hover{text-decoration:underline;color:#075ed4}
+.vim-ac-v2-badge{padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+.vim-ac-v2-badge.active{color:#08753e;background:#daf8e8}.vim-ac-v2-badge.draft{color:#976b0d;background:#fff0bc}.vim-ac-v2-badge.retired{color:#65748b;background:#e7eaf0}
+.vim-ac-v2-scope{display:inline-block;padding:5px 9px;background:#f2eefe;color:#6742b7;font-weight:650;border-radius:8px;white-space:nowrap;font-size:12.5px}
+.vim-ac-v2-scope.ministry{background:#e8f2ff;color:#0862d5}
+.vim-ac-v2-boolean{display:inline-flex;gap:6px;align-items:center;font-size:12.5px}.vim-ac-v2-boolean.yes{color:#0b8f5e}.vim-ac-v2-boolean.no{color:#5d6d83}
+.vim-ac-v2-boolean svg,.vim-ac-v2-boolean.no span{border-radius:50%;color:#fff;background:#16a66b;padding:2px;width:15px;height:15px}.vim-ac-v2-boolean.no span{background:#8d9bab;display:grid;place-items:center;font-weight:700}
+.vim-ac-v2-date{white-space:nowrap;color:#3e597a;font-size:12.5px}
+.vim-ac-v2-actions{display:flex;gap:6px;align-items:center}
+.vim-ac-v2-actions button,.vim-ac-v2-flow-row>button{display:grid;place-items:center;border:1px solid #e0e8f4;background:#fff;color:#0b61c9;border-radius:6px;width:31px;height:31px;padding:0;flex:none}
+.vim-ac-v2-actions button:hover:not(:disabled),.vim-ac-v2-flow-row>button:hover:not(:disabled){background:#eaf3ff}
+.vim-ac-v2-actions button:disabled,.vim-ac-v2-flow-row>button:disabled{opacity:.35;cursor:not-allowed}
+.vim-ac-v2-empty{text-align:center;padding:25px!important;color:#5a6d85}
+.vim-ac-v2-pager{display:flex;align-items:center;justify-content:center;gap:13px;padding-top:11px;font-size:13px;color:#5a7294}
+.vim-ac-v2-pager button{border:1px solid #dbe4ef;border-radius:6px;background:white;width:28px;height:27px;display:grid;place-items:center}
+.vim-ac-v2-pager button:disabled{opacity:.4}
+.vim-ac-v2-detail{padding:0 0 18px;min-height:255px}
+.vim-ac-v2-detail-header{display:flex;justify-content:space-between;align-items:center;gap:17px;padding:18px 20px 12px;flex-wrap:wrap}
+.vim-ac-v2-detail-identity{display:flex;align-items:center;gap:14px;min-width:0}
+.vim-ac-v2-detail-icon{width:50px;height:50px;display:grid;place-items:center;background:linear-gradient(140deg,#1d5696,#0b315e);color:white;border-radius:10px;flex:none}
+.vim-ac-v2-detail-name{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.vim-ac-v2-detail-name h2{font-size:18px;font-weight:800;margin:0;color:#102e5a}
+.vim-ac-v2-version{font-size:12.5px;background:#f1f4f9;color:#5a6d84;border-radius:7px;padding:5px 9px}
+.vim-ac-v2-detail-identity p{margin:5px 0 0;color:#5d6d88;font-size:13px}
+.vim-ac-v2-detail-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.vim-ac-v2-detail-actions small{color:#5b6b86;margin-right:4px;font-size:12.5px}
+.vim-ac-v2-detail-actions .btn{font-size:13px;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.vim-ac-v2-detail-tabs{display:flex;gap:5px;padding:0 20px;border-bottom:1px solid #e6edf5}
+.vim-ac-v2-detail-tabs button{padding:13px 17px;color:#496385;border:none;border-bottom:2px solid transparent;background:none;font-size:13px;font-weight:600}
+.vim-ac-v2-detail-tabs button.active{color:#0862d1;border-color:#0670f5}
+.vim-ac-v2-timeline{padding:16px 22px 4px;max-width:920px}
+.vim-ac-v2-timeline-item{position:relative;display:flex;gap:20px;align-items:flex-start;padding-bottom:14px}
+.vim-ac-v2-timeline-item:not(:last-child):before{content:"";position:absolute;width:2px;top:27px;bottom:-10px;left:15px;background:#c8defb}
+.vim-ac-v2-step-number{position:relative;z-index:1;display:grid;place-items:center;border-radius:50%;width:31px;height:31px;color:#fff;background:#0866dd;font-size:13.5px;font-weight:750;flex:none}
+.vim-ac-v2-step-body{display:flex;align-items:center;gap:13px;padding:12px 13px;border:1px solid #e4eaf3;border-radius:9px;width:100%;min-width:0;box-shadow:0 2px 7px rgba(40,75,126,.035)}
+.vim-ac-v2-step-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:8px;background:#eaf4ff;color:#0865d7;flex:none}
+.vim-ac-v2-timeline-item:nth-child(2) .vim-ac-v2-step-icon{background:#e4f7ed;color:#11834e}
+.vim-ac-v2-step-title{min-width:0;flex:1}
+.vim-ac-v2-step-title strong{font-size:13.5px;color:#15305a}
+.vim-ac-v2-step-title small{display:block;font-size:12.5px;color:#5c6d83;margin-top:4px}
+.vim-ac-v2-step-tags{display:inline-flex;flex-wrap:wrap;gap:5px;margin-left:10px}
+.vim-ac-v2-step-tags span{background:#edf4ff;border-radius:6px;font-size:11.5px;font-weight:650;color:#3573ba;padding:4px 8px}
+.vim-ac-v2-step-tags span:not(:first-child){background:#f2f4f8;color:#5c6e87;font-weight:500}
+.vim-ac-v2-return-pill{font-size:12.5px;color:#5b6e86;background:#f2f4f7;padding:5px 10px;border-radius:16px;white-space:nowrap}
+.vim-ac-v2-return-pill.allowed{background:#e4f8ee;color:#15804b}
+.vim-ac-v2-metadata{padding:20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.vim-ac-v2-metadata>div{border:1px solid #e6edf6;border-radius:8px;padding:13px;display:grid;gap:7px;font-size:13px}
+.vim-ac-v2-metadata span:first-child{color:#5a6c86}.vim-ac-v2-versions{padding:16px 20px;display:grid;gap:8px}
+.vim-ac-v2-versions button{display:flex;align-items:center;flex-wrap:wrap;gap:10px;background:#fff;border:1px solid #e1eaf5;border-radius:8px;padding:12px;text-align:left}
+.vim-ac-v2-versions button:hover{background:#f5f9ff}.vim-ac-v2-versions small{color:#5a6d86;font-size:12.5px;margin-left:auto}
+.vim-ac-v2-empty-detail{min-height:245px;display:grid;align-content:center;justify-items:center;gap:7px;color:#5f7898;text-align:center}
+.vim-ac-v2-empty-detail p{font-size:13px;color:#5b6c83;margin:0}
+.vim-ac-v2-drawer{position:sticky;top:16px;min-width:0;width:100%;margin:0;max-height:calc(100dvh - 32px);align-self:start;border:1px solid #dbe6f3;border-radius:12px;box-shadow:0 4px 18px rgba(10,32,65,.10);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.vim-ac-v2-drawer>header{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #ecf1f7;padding:17px 19px 13px}
+.vim-ac-v2-drawer>header h2{font-size:17px;font-weight:750;margin:0 0 6px;color:#153363}
+.vim-ac-v2-drawer>header p{font-size:12.5px;line-height:1.45;margin:0;color:#596d87}
+.vim-ac-v2-close{background:none;border:0;font-size:25px;color:#607695;line-height:1;padding:0 4px}
+.vim-ac-v2-drawer-scroll{padding:17px 19px;min-height:100px;overflow:auto;overscroll-behavior:contain}
+.vim-ac-v2-basics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.vim-ac-v2-basics label{display:grid;gap:7px;font-size:13px;font-weight:700;color:#193763;min-width:0}
+.vim-ac-v2-basics b{color:#d93645}.vim-ac-v2-basics .form-control{width:100%;min-width:0}
+.vim-ac-v2-readonly{display:flex;align-items:center;min-height:37px;background:#f3f7fd;border:1px solid #dfebfa;border-radius:6px;font-weight:600;font-size:12.5px;padding:9px;color:#44678d}
+.vim-ac-v2-drawer-section-title{background:#f4f7fc;padding:12px;border-radius:7px;margin-bottom:9px}
+.vim-ac-v2-drawer-section-title h3{margin:0;font-size:13px;font-weight:800;color:#173964}
+.vim-ac-v2-drawer-section-title h3 span{border-radius:20px;padding:2px 7px;background:#e1ecfc;margin-left:7px}
+.vim-ac-v2-drawer-section-title p{font-size:12.5px;color:#5a6e8a;margin:5px 0 0}
+.vim-ac-v2-flow-list{display:grid;gap:7px}
+.vim-ac-v2-flow-row{display:flex;align-items:center;gap:7px;padding:8px 7px;border:1px solid #e7edf5;border-radius:7px}
+.vim-ac-v2-flow-number{background:#e4f2ff;color:#2375cf;font-weight:750;display:grid;place-items:center;border-radius:50%;width:24px;height:24px;flex:none;font-size:12.5px}
+.vim-ac-v2-flow-main{min-width:0;flex:1;display:grid;gap:4px}
+.vim-ac-v2-flow-main strong{color:#163964;font-size:13px;overflow-wrap:anywhere}
+.vim-ac-v2-flow-main small{font-size:11.5px;color:#566e86;overflow-wrap:anywhere}
+.vim-ac-v2-flow-row>button{width:24px;height:25px;border:0;background:none;color:#5477a7}
+.vim-ac-v2-flow-row>button.danger{color:#c62e47}
+.vim-ac-v2-flow-empty{text-align:center;font-size:13px;padding:17px;background:#f8fbff;border-radius:7px;color:#5a6d85}
+.vim-ac-v2-add-level{border:1px solid #cde3fd;background:#e6f3ff;color:#0b66d2;display:flex;align-items:center;gap:7px;border-radius:7px;padding:8px 12px;font-size:13px;font-weight:700;margin:11px 0}
+.vim-ac-v2-inline-warning{font-size:12.5px;color:#936421;display:flex;gap:7px;align-items:flex-start;padding:8px;background:#fff7e8;border-radius:7px}
+.vim-ac-v2-help{font-size:12.5px;color:#576d88;background:#f7f9fc;border-radius:6px;padding:10px;line-height:1.5;margin:9px 0 0}
+.vim-ac-v2-drawer>footer{display:flex;gap:9px;justify-content:flex-end;border-top:1px solid #e6edf6;padding:13px 17px}
+.vim-ac-v2-drawer>footer .btn{font-size:13px;min-width:97px}
+.vim-ac-v2-drawer .vim-ac-level-editor{margin:10px 0;background:#f7fbff;max-height:360px;overflow-y:auto;border-radius:7px}
+.vim-ac-v2-drawer .vim-ac-level-inputs{grid-template-columns:1fr 1fr}
+.vim-ac-v2-activation{position:relative;background:#fff;max-width:420px;width:calc(100% - 40px);margin:auto;padding:25px;border-radius:13px;box-shadow:0 12px 40px rgba(10,33,65,.20)}
+.vim-ac-v2-activation h2{font-size:18px;color:#16365e;margin-top:10px}
+.vim-ac-v2-activation p{font-size:13.5px;line-height:1.55;color:#586d87}
+.vim-ac-v2-activation-actions{display:flex;gap:10px;justify-content:flex-end}
+@media(max-width:1100px){.vim-ac-v2-detail-actions small{width:100%}.vim-ac-v2-timeline{max-width:100%}}
+@media(max-width:760px){.vim-ac-v2-page-heading h1{font-size:22px}.vim-ac-v2-workflows{padding:12px}.vim-ac-v2-toolbar{align-items:stretch}.vim-ac-v2-detail-header{padding:16px}.vim-ac-v2-timeline{padding:13px}.vim-ac-v2-step-tags{display:flex;margin:6px 0 0}.vim-ac-v2-basics,.vim-ac-v2-metadata{grid-template-columns:1fr}.vim-ac-v2-drawer{position:relative;top:auto;max-height:none;border-radius:10px}.vim-ac-v2-drawer-scroll{overflow:visible}.vim-ac-v2-drawer .vim-ac-level-inputs{grid-template-columns:1fr}}
+@media(max-width:500px){.vim-ac-v2-page-heading{align-items:flex-start;flex-direction:column}.vim-ac-v2-detail-identity{align-items:flex-start}.vim-ac-v2-step-body{flex-wrap:wrap}.vim-ac-v2-return-pill{margin-left:auto}.vim-ac-v2-flow-row{flex-wrap:wrap}.vim-ac-v2-flow-main{flex-basis:60%}.vim-ac-v2-detail-tabs button{padding:11px 8px;font-size:12.5px}}
+.vim-ac-v2-return-setting{display:flex;gap:9px;align-items:center;color:#365b82;font-size:13px;margin-top:10px}
+.vim-ac-v2-return-setting input{accent-color:#0769e9;width:15px;height:15px}
+
+/* UI v2 side-panel correction — 23 Oct 2026.
+   Create/Edit is an IN-PAGE panel to the right of selected workflow details.
+   No fixed overlay, backdrop, centered modal, or aria-modal; other page content stays usable. */
+.vim-ac-v2-lower{display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:16px;margin-top:12px;min-width:0}
+.vim-ac-v2-lower.editor-open{grid-template-columns:minmax(0,1fr) minmax(365px,465px)}
+.vim-ac-v2-lower>.vim-ac-v2-detail{min-width:0}
+.vim-ac-v2-lower>.vim-ac-v2-drawer{min-width:0;grid-column:2}
+.vim-ac-v2-lower.editor-open .vim-ac-v2-timeline{max-width:100%;padding-right:12px;padding-left:12px}
+.vim-ac-v2-lower.editor-open .vim-ac-v2-timeline-item{gap:9px}
+.vim-ac-v2-lower.editor-open .vim-ac-v2-step-body{gap:8px;padding:11px}
+.vim-ac-v2-lower.editor-open .vim-ac-v2-step-icon{width:34px;height:34px}
+@media(max-width:1050px){
+  .vim-ac-v2-lower.editor-open{grid-template-columns:minmax(0,1fr)}
+  .vim-ac-v2-lower>.vim-ac-v2-drawer{grid-column:1;grid-row:1;position:relative;top:auto;max-height:none}
+  .vim-ac-v2-lower>.vim-ac-v2-drawer .vim-ac-v2-drawer-scroll{overflow:visible}
+  .vim-ac-v2-lower>.vim-ac-v2-detail{grid-column:1}
+}

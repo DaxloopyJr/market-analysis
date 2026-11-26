@@ -1,0 +1,643 @@
+/* VIWANDA REV15 — Data Entry UI approved-reference alignment.
+ * Design is intentionally scoped to .ido-data-entry-page; core dashboard,
+ * Login, Topbar and Sidebar remain untouched.
+ * Edit this file to change the wizard lines, spacing, colors and table.
+ */
+.ido-data-entry-page { --wizard-navy:#133560; --wizard-blue:#145fc5; --wizard-muted:#879bb7; --wizard-border:#dfe8f3; }
+.ido-data-entry-page .ido-wizard-progress {
+  display:flex;
+  align-items:center;
+  width:100%;
+  gap:0;
+  padding:20px 28px;
+  background:#fff;
+  border:1px solid var(--wizard-border);
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 8px 27px rgba(29,62,105,.035);
+}
+.ido-data-entry-page .ido-progress-unit { display:flex; align-items:center; min-width:0; flex:1 1 auto; }
+.ido-data-entry-page .ido-progress-unit:last-child { flex:0 0 auto; }
+.ido-data-entry-page .ido-progress-item {display:flex;align-items:center;gap:10px;flex:0 0 auto;color:#546e8c;white-space:nowrap;}
+.ido-data-entry-page .ido-progress-number {display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid #dbe6f2;background:#f6f9fd;color:#546e91;font-size:13px;font-weight:800;flex-shrink:0;position:relative;z-index:1;}
+.ido-data-entry-page .ido-progress-label {font-size:12.5px;font-weight:800;color:inherit;}
+.ido-data-entry-page .ido-progress-item.active {color:#155fc3;}
+.ido-data-entry-page .ido-progress-item.active .ido-progress-number {color:white;background:#1765cd;border-color:#1765cd;box-shadow:0 0 0 3px #e6f0ff;}
+.ido-data-entry-page .ido-progress-item.completed {color:#3b7664;}
+.ido-data-entry-page .ido-progress-item.completed .ido-progress-number {background:#e7f8f0;border-color:#b9e8d5;color:#159668;}
+.ido-data-entry-page .ido-progress-connector {height:1px;min-width:15px;flex:1 1 auto;background:#dbe5f1;margin:0 30px;}
+.ido-data-entry-page .ido-progress-connector.completed {background:#a7d9c6;}
+
+.ido-wizard-columns {display:grid;grid-template-columns:minmax(0,1.92fr) minmax(265px,.94fr);align-items:start;gap:18px;}
+.ido-wizard-panel,.ido-wizard-aside-card {background:#fff;border:1px solid var(--wizard-border,#dfe8f3);border-radius:12px;box-shadow:0 7px 24px rgba(20,48,80,.035);}
+.ido-wizard-panel {min-width:0;display:flex;flex-direction:column;min-height:565px;}
+.ido-wizard-body {padding:28px 29px 24px;flex:1;}
+.ido-step-heading {margin-bottom:27px;}
+.ido-step-heading>span {display:block;font-size:11.5px;letter-spacing:.12em;font-weight:850;color:#1764c8;margin:0 0 9px;}
+.ido-step-heading h2 {font-size:21px;letter-spacing:-.03em;font-weight:850;color:#153560;margin:0 0 7px;}
+.ido-step-heading p {font-size:13px;color:#546d90;margin:0;line-height:1.5;}
+.ido-form-field {display:flex;flex-direction:column;gap:8px;margin-bottom:20px;min-width:0;}
+.ido-form-field label {font-size:13px;font-weight:750;color:#456181;}
+.ido-form-field b,.ido-required-mark{color:#eb5265;font-weight:800;}
+.ido-form-field select,.ido-form-field input:not([type=file]),.ido-form-field textarea,.ido-locked-field {
+  border:1px solid #d8e5f4;
+  border-radius:8px;
+  padding:11px 13px;
+  min-height:45px;
+  color:#385a83;
+  font-size:13.5px;
+  background:#fff;
+  outline:0;
+  width:100%;
+}
+.ido-form-field select:focus,.ido-form-field input:focus,.ido-form-field textarea:focus,.ido-indicator-input:focus{border-color:#4589df;box-shadow:0 0 0 3px #e5f1ff;outline:0;}
+.ido-form-field select:disabled{background:#f6f8fb;color:#566d8e;}
+.ido-form-field>small {color:#506d90;font-size:12.5px;}
+.ido-locked-field{background:#f2f5f9;border-color:#dee7f2;color:#546d8e;font-size:13px;font-weight:750;display:flex;align-items:center;gap:12px;}
+.ido-locked-field svg{color:#446ea7;flex-shrink:0;}
+.ido-field-wide {width:100%;}
+.ido-two-inputs {display:grid;grid-template-columns:1fr 1fr;gap:15px;}
+.ido-information-box {border:1px solid #d7e9fd;background:#f1f7ff;color:#436c9c;border-radius:10px;padding:15px 17px;display:flex;align-items:flex-start;gap:11px;margin-top:12px;font-size:12.5px;line-height:1.55;}
+.ido-information-box>svg{color:#2478d2;flex-shrink:0;margin-top:2px;}
+.ido-information-box strong {display:block;font-size:12.5px;color:#315c8e;margin-bottom:4px;}
+.ido-information-box span {display:block;color:#4b6d91;margin-top:3px;}
+
+/* Step 2: approved full-width horizontal submission-method selectors. */
+.ido-submission-methods {display:flex;flex-direction:column;gap:15px;}
+.ido-submission-method {display:flex;align-items:center;text-align:left;gap:15px;width:100%;padding:19px 18px;border:1px solid #dbe6f2;border-radius:11px;background:#fff;color:#284e7d;min-height:76px;transition:border-color .16s ease, background .16s ease;}
+.ido-submission-method:hover:not(:disabled){border-color:#77aff1;background:#f9fbff;}
+.ido-submission-method.selected {border-color:#8dbbff;background:#f3f8ff;box-shadow:inset 0 0 0 1px #d8e8ff;}
+.ido-submission-method:disabled {opacity:.52;cursor:not-allowed;}
+.ido-method-icon {display:grid;place-items:center;height:43px;width:43px;flex-shrink:0;color:#1a6ac8;background:#e8f1fb;border-radius:10px;}
+.ido-method-copy {flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;}
+.ido-method-copy strong {font-size:13.5px;color:#284c79;}
+.ido-method-copy small {font-size:12.5px;color:#4f6d91;line-height:1.45;}
+.ido-method-check {display:grid;place-items:center;border-radius:50%;height:21px;width:21px;border:1px solid #dce7f5;background:#ecf2f9;color:#fff;flex-shrink:0;}
+.ido-submission-method.selected .ido-method-check{background:#1765c9;border-color:#1765c9;}
+
+/* Step 3: dynamic indicator table aligned to approved visual reference. */
+.ido-dataset-banner {display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f1f7ff;border:1px solid #dceafd;border-radius:9px;padding:15px 16px;margin-bottom:18px;}
+.ido-dataset-banner strong {display:block;font-size:13px;color:#284a76;}
+.ido-dataset-banner small {display:block;font-size:11.5px;color:#4f6d91;margin-top:5px;}
+.ido-dataset-banner>span {font-size:11.5px;padding:5px 9px;background:#e4edf9;color:#556e91;border-radius:30px;font-weight:750;}
+.ido-indicator-table-wrap {margin-bottom:15px;}
+.ido-indicator-table{border-collapse:collapse;width:100%;table-layout:fixed;min-width:570px;font-size:13px;}
+.ido-indicator-table thead th {color:#516c8f;text-transform:uppercase;letter-spacing:.035em;font-size:11.5px;text-align:left;border-bottom:1px solid #dee7f2;padding:0 12px 12px;}
+.ido-indicator-table thead th:first-child{padding-left:0;width:49%;}
+.ido-indicator-table thead th:nth-child(2){width:25%;}
+.ido-indicator-table thead th:nth-child(3){width:26%;}
+.ido-indicator-table tbody th,.ido-indicator-table tbody td{border-bottom:1px solid #e8eef5;padding:13px 12px;vertical-align:middle;color:#385980;text-align:left;}
+.ido-indicator-table tbody th {padding-left:0;font-weight:600;}
+.ido-indicator-table tbody th label{display:block;font-size:13px;font-weight:800;color:#36577c;margin:0 0 4px;}
+.ido-indicator-table tbody th small {display:block;font-size:11.5px;color:#546e92;font-weight:500;margin-top:3px;}
+.ido-previous-value {display:flex;align-items:center;padding:0 12px;min-height:40px;border:1px solid #dce5f2;border-radius:8px;background:#f2f5fa;color:#546e8d;font-size:13px;}
+.ido-indicator-input {display:block;width:100%;min-height:40px;border:1px solid #d6e3f1;border-radius:8px;background:white;color:#365983;padding:9px 12px;outline:0;font-size:13px;}
+.ido-indicator-input.is-invalid{border-color:#ef6a7f;background:#fff9fa;}
+.ido-indicator-error{font-size:11.5px;color:#c84661;margin-top:5px;display:block;}
+.ido-validation-message {display:flex;align-items:center;gap:10px;border:1px solid #f9dfb8;border-radius:9px;padding:14px 13px;font-size:12.5px;line-height:1.5;color:#b47b2f;background:#fff8ec;margin-top:17px;}
+.ido-validation-message svg{flex-shrink:0;}
+.ido-validation-message.success {background:#effaf5;border-color:#c9ebdd;color:#27805e;}
+.ido-upload-workspace{border:1px dashed #99c1ec;border-radius:11px;background:#f7fbff;padding:34px 20px;text-align:center;color:#446f9e;display:flex;align-items:center;flex-direction:column;gap:12px;}
+.ido-upload-workspace h3{font-size:15px;font-weight:800;color:#315778;margin:0;}
+.ido-upload-workspace p{font-size:13px;line-height:1.5;color:#586e88;margin:0;max-width:360px;}
+.ido-upload-workspace input{font-size:13px;max-width:100%;}
+.ido-upload-workspace small {font-size:12.5px;color:#396e9f;}
+.ido-upload-warning{display:flex;gap:8px;align-items:start;font-size:12.5px;line-height:1.5;text-align:left;color:#ae7320;background:#fffbf3;padding:12px;border:1px solid #ffebbf;border-radius:8px;}
+.ido-upload-warning svg{flex-shrink:0;}
+.ido-review-summary{display:grid;grid-template-columns:1fr 1fr;gap:15px;border:1px solid #dfe8f2;border-radius:10px;padding:17px;margin-bottom:20px;}
+.ido-review-summary small{display:block;font-size:11.5px;color:#546f8c;margin-bottom:6px;}
+.ido-review-summary strong{font-size:13px;color:#32587f;}
+.ido-review-file{font-size:13px;color:#566d88;}
+.ido-wizard-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e6edf5;padding:17px 28px;flex-wrap:wrap;margin-top:auto;}
+.ido-wizard-action-right{display:flex;gap:11px;flex-wrap:wrap;}
+.ido-outline-button,.ido-secondary-button {display:inline-flex;align-items:center;gap:9px;border:1px solid #d7e4f1;border-radius:9px;font-size:13px;font-weight:750;padding:11px 15px;text-decoration:none;color:#4a6b92;background:#fff;}
+.ido-secondary-button{background:#edf5ff;border-color:#e0eaf8;color:#3566a1;}
+.ido-outline-button:hover,.ido-secondary-button:hover{background:#eaf3ff;color:#1959af;}
+.ido-wizard-actions button:disabled{opacity:.55;cursor:not-allowed;}
+.ido-wizard-success{max-width:470px;margin:30px auto;text-align:center;color:#19996a;}
+.ido-wizard-success h2{font-size:22px;font-weight:800;margin:15px 0;color:#1b3b62;}
+.ido-wizard-success p{font-size:13px;line-height:1.65;color:#546d89;}
+.ido-wizard-success .btn{display:inline-flex;align-items:center;gap:7px;margin-top:15px;}
+.ido-wizard-feedback {display:flex;align-items:start;gap:12px;border:1px solid #ffd7dc;border-radius:9px;background:#fff0f2;color:#bd3e57;padding:13px 15px;margin-bottom:22px;font-size:13px;}
+.ido-wizard-feedback svg{flex-shrink:0;}
+.ido-wizard-feedback p{margin:5px 0 0;line-height:1.5;}
+.ido-wizard-alert{font-size:13px;padding:12px 15px;}
+
+/* Submission Guide + Approval Circle, side-by-side with data entry. */
+.ido-wizard-aside{display:flex;flex-direction:column;gap:17px;min-width:0;}
+.ido-wizard-aside-card{padding:22px 21px;}
+.ido-wizard-aside-card h3{font-size:15px;font-weight:850;color:#203e63;margin:0 0 19px;}
+.ido-aside-heading{display:flex;align-items:start;justify-content:space-between;}
+.ido-aside-heading svg{color:#1c6bcc;background:#edf5ff;border-radius:6px;padding:3px;box-sizing:content-box;}
+.ido-guide-list,.ido-approval-list{list-style:none;margin:0;padding:0;}
+.ido-guide-list li{display:flex;gap:13px;align-items:flex-start;margin:0 0 20px;}
+.ido-guide-list li:last-child{margin-bottom:0;}
+.ido-guide-number{display:grid;place-items:center;flex-shrink:0;width:25px;height:25px;border-radius:50%;background:#eaf3ff;color:#1764c6;font-size:12.5px;font-weight:850;}
+.ido-guide-list strong,.ido-approval-list strong{font-size:13px;font-weight:800;color:#426084;display:block;line-height:1.4;}
+.ido-guide-list small,.ido-approval-list small{display:block;font-size:11.5px;line-height:1.5;color:#556d8b;margin-top:4px;}
+.ido-approval-list li{display:flex;gap:16px;align-items:flex-start;position:relative;min-height:57px;}
+.ido-approval-list li:not(:last-child):before{content:"";position:absolute;left:7px;top:19px;bottom:-4px;width:1px;background:#dbe7f4;}
+.ido-approval-circle{position:relative;z-index:1;width:15px;height:15px;border:2px solid #c6d8ee;background:white;border-radius:50%;flex-shrink:0;margin-top:2px;}
+.ido-approval-list li.current .ido-approval-circle{border-color:#1aa478;box-shadow:inset 0 0 0 3px white;background:#1aa478;}
+.ido-aside-note{color:#536c8a;font-size:11.5px;line-height:1.55;margin:10px 0 0;}
+.ido-wizard-loading{padding:24px;background:white;border-radius:12px;}
+
+@media(max-width:1320px){
+ .ido-wizard-columns{grid-template-columns:minmax(0,1.55fr) minmax(245px,.9fr);}
+ .ido-data-entry-page .ido-progress-connector{margin:0 14px;}
+ .ido-data-entry-page .ido-wizard-progress{padding:17px;}
+ .ido-data-entry-page .ido-progress-label{font-size:11.5px;}
+}
+@media(max-width:1050px){
+ .ido-wizard-columns{grid-template-columns:1fr;}
+ .ido-wizard-aside{display:grid;grid-template-columns:1fr 1fr;}
+}
+@media(max-width:730px){
+ .ido-data-entry-page .ido-progress-item{flex-direction:column;gap:5px;}
+ .ido-data-entry-page .ido-progress-unit{flex:1;justify-content:center;position:relative;}
+ .ido-data-entry-page .ido-progress-unit:last-child{flex:1;}
+ .ido-data-entry-page .ido-progress-connector{position:absolute;top:15px;left:calc(50% + 27px);right:calc(-50% + 27px);min-width:0;margin:0;}
+ .ido-data-entry-page .ido-progress-label{font-size:10.5px;text-align:center;white-space:normal;line-height:1.3;}
+ .ido-data-entry-page .ido-wizard-progress{padding:14px 8px;gap:0;}
+ .ido-wizard-aside{grid-template-columns:1fr;}
+ .ido-wizard-body{padding:21px 15px;}
+ .ido-two-inputs,.ido-review-summary{grid-template-columns:1fr;gap:0;}
+ .ido-indicator-table{min-width:580px;}
+ .ido-wizard-actions{padding:14px 15px;}
+ .ido-submission-method{padding:13px;gap:10px;}
+ .ido-method-icon{width:36px;height:36px;}
+}
+@media(prefers-reduced-motion:reduce){.ido-submission-method{transition:none;}}
+
+/* REV17 — Option A (Balanced Professional). Maintains full-width REV16 layout.
+ * Modify sizes/colors here; do not add styles inline to DataEntry.jsx.
+ */
+.ido-data-entry-page {--wizard-ink:#213146; --wizard-muted:#52677c; color:var(--wizard-ink);}
+.ido-data-entry-page .ido-wizard-columns {display:block; width:100%;}
+.ido-data-entry-page .ido-wizard-panel {min-height:500px;width:100%;}
+.ido-data-entry-page .ido-wizard-body {padding:28px 35px 30px;}
+.ido-data-entry-page .ido-wizard-actions {padding:17px 35px;}
+.ido-data-entry-page .ido-wizard-progress {padding:19px 25px;}
+.ido-data-entry-page .ido-progress-unit {min-width:0;}
+.ido-data-entry-page .ido-progress-item {gap:10px;}
+.ido-data-entry-page .ido-progress-number {
+  height:34px; width:34px; font-size:13.5px; border:2px solid #dce6f2;
+  background:#f5f8fc; color:#586d84; font-weight:750;
+}
+.ido-data-entry-page .ido-progress-label {font-size:13.5px; font-weight:650;color:#61758c;}
+.ido-data-entry-page .ido-progress-item.active .ido-progress-number {
+  background:#1965c5;border-color:#1965c5;color:#fff;box-shadow:0 0 0 3px #e8f1ff;
+}
+.ido-data-entry-page .ido-progress-item.active .ido-progress-label {color:#154f9d;font-weight:750;}
+.ido-data-entry-page .ido-progress-item.completed .ido-progress-number {
+  background:#1a9d67; border-color:#1a9d67;color:#fff;box-shadow:0 0 0 3px #e9f7ef;
+}
+.ido-data-entry-page .ido-progress-item.completed .ido-progress-label {color:#17694d;font-weight:750;}
+.ido-data-entry-page .ido-progress-connector {height:2px;background:#d8e4f0;margin:0 17px;min-width:8px;}
+.ido-data-entry-page .ido-progress-connector.completed {background:#6cc29c;}
+.ido-data-entry-page .ido-heading-row h1 {font-size:28px;color:#1a2e48;}
+.ido-data-entry-page .ido-heading-row p {font-size:14px;color:#4d6177;}
+.ido-data-entry-page .ido-breadcrumb {font-size:13px;color:#52677e;}
+.ido-data-entry-page .ido-step-heading h2 {font-size:21px;color:#183451;}
+.ido-data-entry-page .ido-step-heading p {font-size:14px;color:#4e6176;}
+.ido-data-entry-page .ido-step-heading>span {font-size:13px;}
+.ido-data-entry-page .ido-form-field label {font-size:14px;color:#23384f;}
+.ido-data-entry-page .ido-form-field select,.ido-data-entry-page .ido-locked-field {font-size:15px;min-height:45px;}
+.ido-data-entry-page .ido-form-field small {font-size:13px;color:#52667d;}
+.ido-data-entry-page .ido-information-box {font-size:13.5px;}
+.ido-data-entry-page .ido-information-box span {font-size:13.5px;color:#4d6279;}
+.ido-data-entry-page .ido-method-copy strong {font-size:16px;color:#24384f;}
+.ido-data-entry-page .ido-method-copy small {font-size:13.5px;color:#53677d;}
+.ido-data-entry-page .ido-indicator-table thead th {font-size:13.5px;color:#465a72;}
+.ido-data-entry-page .ido-indicator-table tbody th label {font-size:15px;color:#26364c;}
+.ido-data-entry-page .ido-indicator-table tbody th small {font-size:13px;color:#5a6d80;}
+.ido-data-entry-page .ido-indicator-input,.ido-data-entry-page .ido-previous-value {font-size:15px;min-height:44px;}
+.ido-data-entry-page .ido-validation-message {font-size:13.5px;}
+.ido-data-entry-page .ido-wizard-success p {font-size:14px;color:#45596e;}
+.ido-data-entry-page .ido-wizard-feedback {font-size:13.5px;}
+.ido-data-entry-page .ido-wizard-alert {font-size:14px;}
+.ido-data-entry-page .ido-button-spinner {animation:ido-button-spin .85s linear infinite;}
+@keyframes ido-button-spin {to{transform:rotate(360deg)}}
+@media(max-width:1100px){
+ .ido-data-entry-page .ido-progress-connector{margin:0 9px;}
+ .ido-data-entry-page .ido-progress-label{font-size:13px;}
+}
+@media(max-width:730px){
+ .ido-data-entry-page .ido-wizard-body {padding:22px 17px;}
+ .ido-data-entry-page .ido-wizard-actions {padding:16px 17px;}
+ .ido-data-entry-page .ido-wizard-progress {padding:16px 8px;}
+ .ido-data-entry-page .ido-progress-unit {flex:1;position:relative;justify-content:center;}
+ .ido-data-entry-page .ido-progress-unit:last-child{flex:1;}
+ .ido-data-entry-page .ido-progress-item{flex-direction:column;gap:7px;white-space:normal;}
+ .ido-data-entry-page .ido-progress-label{font-size:12.5px;text-align:center;line-height:1.35;}
+ .ido-data-entry-page .ido-progress-connector{position:absolute;top:16px;left:calc(50% + 25px);right:calc(-50% + 25px);margin:0;min-width:0;}
+ .ido-data-entry-page .ido-progress-number{height:33px;width:33px;}
+}
+@media(prefers-reduced-motion:reduce){.ido-data-entry-page .ido-button-spinner{animation:none;}}
+
+/* REV19 — no duplicated step subtitle or decorative eyebrow.
+ * Typography/colour follow shared Option A; operational notes & errors remain visible.
+ */
+.ido-data-entry-page .ido-step-heading{margin-bottom:21px;}
+.ido-data-entry-page .ido-step-heading h2{margin:0;font-size:20px;font-weight:750;color:#193450;}
+.ido-data-entry-page .ido-wizard-body{color:#2a4059;}
+.ido-data-entry-page .ido-indicator-table.viwanda-table tbody th{padding-left:16px;}
+.ido-data-entry-page .ido-indicator-table.viwanda-table thead th:first-child{padding-left:16px;}
+.ido-data-entry-page .ido-indicator-table.viwanda-table thead th{padding:13px 16px;}
+.ido-data-entry-page .ido-indicator-table.viwanda-table tbody td{padding:12px 16px;}
+.ido-data-entry-page .ido-indicator-table.viwanda-table tbody th label{font-size:14px;}
+.ido-data-entry-page .ido-method-copy small{font-size:13.5px;color:#4b6078;}
+/* Selection and deadlines use verified reporting period values, no second submission page. */
+.ido-period-note{display:flex;gap:9px;align-items:center;font-size:13px;color:#3d6996;background:#edf5ff;border:1px solid #d6e7fa;border-radius:8px;padding:12px;margin:4px 0 15px}
+/* Approved existing New Submission design: checklist on left, inputs on right. */
+.ido-indicator-split{display:grid;grid-template-columns:minmax(180px,.78fr) minmax(0,1.36fr);gap:15px;min-height:260px;margin-bottom:15px}
+.ido-indicator-picker,.ido-indicator-editor{border:1px solid #dce7f3;border-radius:10px;padding:16px;background:white;min-width:0}
+.ido-indicator-picker h3,.ido-indicator-editor>h3{font-size:13.5px;color:#22496f;font-weight:800;margin:0 0 13px;padding-bottom:10px;border-bottom:1px solid #e2edf7}
+.ido-indicator-picker h3 small{font-weight:500;color:#586f84}
+.ido-picker-row{border:1px solid #e5edf7;padding:11px;border-radius:7px;margin:0 0 8px;display:flex;align-items:start;gap:8px;font-size:13px;cursor:pointer}
+.ido-picker-row input{margin-top:2px;accent-color:#175cc2;flex-shrink:0}.ido-picker-row>span{flex:1}.ido-picker-row small{display:block;color:#566e88;margin-top:3px}.ido-picker-row b{color:#d44c65}
+.ido-picker-row.is-faded{opacity:.5;background:#f3f6fa}.ido-picker-row.is-checked{background:#eff6ff;border-color:#94bae9;opacity:1}.ido-picker-row svg{color:#238c5a}
+.ido-indicator-edit-card{border:1px solid #e5edf5;background:#fcfdff;border-radius:8px;padding:15px;margin:0 0 12px}.ido-indicator-edit-card h4{font-size:13.5px;margin:0 0 9px;font-weight:750}.ido-indicator-edit-card>p,.ido-editor-empty{font-size:13px;color:#566d84}.ido-indicator-edit-card .ido-form-field{margin-bottom:0}.ido-indicator-edit-card .ido-previous-value{min-height:40px}
+@media(max-width:880px){.ido-indicator-split{grid-template-columns:1fr}}
+/* Multi-selection inside APPROVED Step 1; each dataset remains its own Laravel draft. */
+.ido-dataset-multi{border:1px solid #dbe6f2;border-radius:9px;padding:10px;max-height:200px;overflow-y:auto;background:#fbfdff;display:flex;flex-direction:column;gap:6px}
+.ido-dataset-multi>label{display:flex;align-items:center;gap:10px;padding:10px 11px;font-size:13px;border:1px solid #e4ebf4;border-radius:7px;cursor:pointer;background:#fff;margin:0}
+.ido-dataset-multi>label.selected{background:#edf5ff;border-color:#9ec4ef}.ido-dataset-multi input{flex-shrink:0;accent-color:#1964b8}.ido-dataset-multi>label span{display:flex;flex-direction:column;gap:3px}.ido-dataset-multi small{color:#368159;font-size:11.5px}
+
+/* REV26 • New Submission Step 1 • Approved multi-frequency period cards.
+ * Scope ONLY DataEntry. Dataset Management, Sidebar, Topbar and Steps 2-5 are unchanged.
+ */
+.ido-data-entry-page .ido-period-step .ido-step-heading p{font-size:13.5px;color:#637b96;margin:5px 0 0;}
+.ido-data-entry-page .ido-period-workspace{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(250px,.85fr);gap:17px;align-items:start;margin-top:7px;}
+.ido-data-entry-page .ido-period-primary,.ido-data-entry-page .ido-period-sidebar{min-width:0;}
+.ido-data-entry-page .ido-period-sidebar{display:grid;gap:14px;}
+.ido-data-entry-page .ido-period-sidebar-card{border:1px solid #dce7f3;background:#fff;border-radius:10px;padding:17px 16px;box-shadow:0 4px 14px rgba(19,60,100,.025);}
+.ido-data-entry-page .ido-period-side-title{display:flex;gap:9px;align-items:center;margin-bottom:17px;color:#1c66c0;}
+.ido-data-entry-page .ido-period-side-title h3{color:#193a60;font-size:14px;font-weight:800;margin:0;}
+.ido-data-entry-page .ido-side-dataset-name{display:block;font-size:13.5px;color:#213d60;margin-bottom:13px;overflow-wrap:anywhere;}
+.ido-data-entry-page .ido-side-dataset-meta{display:flex;align-items:flex-start;gap:9px;color:#536c89;font-size:13px;margin:11px 0;line-height:1.4;}
+.ido-data-entry-page .ido-side-dataset-meta svg{flex-shrink:0;color:#1464c4;}
+.ido-data-entry-page .ido-side-description{font-size:13px;color:#556d83;line-height:1.5;margin:12px 0 0;}
+.ido-data-entry-page .ido-side-summary{margin:0;display:grid;gap:12px;}
+.ido-data-entry-page .ido-side-summary>div{display:flex;align-items:start;justify-content:space-between;gap:10px;border-bottom:1px solid #eef2f7;padding-bottom:9px;}
+.ido-data-entry-page .ido-side-summary>div:last-child{border-bottom:0;padding-bottom:0;}
+.ido-data-entry-page .ido-side-summary dt{color:#586f86;font-size:12.5px;font-weight:500;}
+.ido-data-entry-page .ido-side-summary dd{margin:0;font-size:12.5px;font-weight:750;color:#27486d;text-align:right;overflow-wrap:anywhere;}
+.ido-data-entry-page .ido-period-security-note{display:flex;align-items:flex-start;gap:9px;border:1px solid #d5e5fa;border-radius:9px;padding:12px 13px;color:#4a719c;background:#eff6ff;font-size:12.5px;line-height:1.5;}
+.ido-data-entry-page .ido-period-security-note svg{flex-shrink:0;margin-top:1px;}
+.ido-data-entry-page .ido-period-top-filters{gap:13px;margin:0 0 6px;}
+.ido-data-entry-page .ido-period-top-filters .ido-form-field{margin-bottom:15px;}
+.ido-data-entry-page .ido-period-section-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;}
+.ido-data-entry-page .ido-period-section-heading h3{font-size:14px;line-height:1.4;color:#1d3a5b;font-weight:800;margin:0;}
+.ido-data-entry-page .ido-period-section-heading p{font-size:12.5px;line-height:1.5;color:#556c86;margin:4px 0 0;}
+.ido-data-entry-page .ido-frequency-section{margin:5px 0 21px;}
+.ido-data-entry-page .ido-frequency-options{display:flex;flex-wrap:wrap;gap:8px;}
+.ido-data-entry-page .ido-frequency-choice{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #d7e4f2;border-radius:8px;background:#fff;color:#385875;min-height:39px;padding:9px 13px;font-size:13px;font-weight:700;transition:background .16s,border-color .16s;}
+.ido-data-entry-page .ido-frequency-choice:hover:not(:disabled){border-color:#6ea9e7;background:#f3f8ff;}
+.ido-data-entry-page .ido-frequency-choice.is-selected{border-color:#1769d1;background:#eaf3ff;box-shadow:inset 0 0 0 1px #1769d1;color:#175cb1;}
+.ido-data-entry-page .ido-frequency-choice:disabled{cursor:default;opacity:.9;}
+.ido-data-entry-page .ido-frequency-choice:focus-visible,.ido-data-entry-page .ido-period-card:focus-visible{outline:3px solid #85b7f1;outline-offset:3px;}
+.ido-data-entry-page .ido-frequency-help{font-size:12.5px;color:#586d82;display:block;margin-top:7px;}
+.ido-data-entry-page .ido-frequency-single{display:flex;align-items:center;gap:5px;color:#566e88;font-size:12.5px;font-weight:650;}
+.ido-data-entry-page .ido-period-count{border-radius:20px;background:#e7f7ed;color:#237b54;padding:5px 9px;font-size:11.5px;font-weight:800;white-space:nowrap;}
+.ido-data-entry-page .ido-period-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+.ido-data-entry-page .ido-period-card{width:100%;min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:9px;text-align:left;background:#fff;border:1px solid #d8e5f3;border-radius:9px;padding:14px;min-height:137px;color:#36516f;transition:border-color .16s,background .16s,box-shadow .16s;}
+.ido-data-entry-page .ido-period-card:hover{border-color:#6ba8e7;background:#f8fbff;}
+.ido-data-entry-page .ido-period-card.is-selected{border:2px solid #1765cc;padding:13px;background:#f0f6ff;box-shadow:0 2px 9px rgba(27,97,187,.08);}
+.ido-data-entry-page .ido-period-card-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;}
+.ido-data-entry-page .ido-period-card-head strong{font-size:13px;color:#203c5d;font-weight:800;min-width:0;overflow-wrap:anywhere;}
+.ido-data-entry-page .ido-period-card-status{border-radius:5px;background:#dff4e6;color:#277d52;padding:4px 6px;font-size:11.5px;font-weight:800;flex-shrink:0;}
+.ido-data-entry-page .ido-period-card-dates{font-size:12.5px;color:#576d86;line-height:1.4;}
+.ido-data-entry-page .ido-period-card-due{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;color:#285278;line-height:1.3;}
+.ido-data-entry-page .ido-period-card-due svg{color:#1766c4;flex-shrink:0;}
+.ido-data-entry-page .ido-period-card-choice{font-size:12.5px;color:#1868ca;font-weight:750;margin-top:auto;display:flex;align-items:center;gap:6px;}
+.ido-data-entry-page .ido-period-empty{padding:18px 16px;border:1px dashed #cadaed;border-radius:9px;color:#566e89;background:#f8fbff;font-size:13px;line-height:1.6;}
+.ido-data-entry-page .ido-selected-period{border:1px solid #b7d6fb;border-radius:9px;background:#f0f7ff;padding:15px;margin-top:14px;}
+.ido-data-entry-page .ido-selected-period h3{display:flex;align-items:center;gap:8px;color:#21446b;font-size:13.5px;font-weight:800;margin:0 0 12px;}
+.ido-data-entry-page .ido-selected-period h3 svg{color:#17a063;}
+.ido-data-entry-page .ido-selected-period-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+.ido-data-entry-page .ido-selected-period-fields>div{background:#fff;border:1px solid #deebfb;border-radius:7px;padding:9px 10px;min-width:0;}
+.ido-data-entry-page .ido-selected-period-fields small{display:block;font-size:11.5px;color:#576c83;margin-bottom:5px;}
+.ido-data-entry-page .ido-selected-period-fields strong{font-size:12.5px;color:#224971;overflow-wrap:anywhere;}
+.ido-data-entry-page .ido-selected-period p{font-size:12.5px;color:#2168b7;display:flex;gap:8px;align-items:flex-start;margin:12px 0 0;line-height:1.5;}
+.ido-data-entry-page .ido-selected-period p svg{flex-shrink:0;margin-top:1px;}
+.ido-data-entry-page .ido-period-deadline-caveat{display:block;color:#806429;line-height:1.5;font-size:12.5px;margin-top:8px;}
+@media(max-width:1180px){.ido-data-entry-page .ido-period-workspace{grid-template-columns:minmax(0,1fr) minmax(220px,.6fr);}}
+@media(max-width:980px){.ido-data-entry-page .ido-period-workspace{grid-template-columns:1fr;}.ido-data-entry-page .ido-period-sidebar{grid-template-columns:repeat(2,minmax(0,1fr));}.ido-data-entry-page .ido-period-security-note{grid-column:1/-1;}}
+@media(max-width:690px){.ido-data-entry-page .ido-period-card-grid{grid-template-columns:1fr;}.ido-data-entry-page .ido-period-sidebar{grid-template-columns:1fr;}.ido-data-entry-page .ido-period-top-filters{grid-template-columns:1fr;}}
+@media(prefers-reduced-motion:reduce){.ido-data-entry-page .ido-frequency-choice,.ido-data-entry-page .ido-period-card{transition:none;}}
+/* REV26 | Approved Data Entry Step 1 reference — isolated to the first wizard step. */
+.ido-data-entry-page .ido-wizard-columns.ido-step-one-page{grid-template-columns:minmax(0,1fr)}
+.ido-data-entry-page .ido-step-one-page>.ido-wizard-aside{display:none}
+.ido-data-entry-page .ido-step-one-page .ido-wizard-body{padding:20px 22px 16px}
+.ido-data-entry-page .ido-approved-step-one .ido-step-heading{margin-bottom:15px}
+.ido-data-entry-page .ido-approved-step-one .ido-step-heading h2{display:flex;align-items:center;gap:12px;font-size:20px}
+.ido-data-entry-page .ido-heading-number{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:34px;height:34px;color:#fff;background:#086bf1;border-radius:50%;font-size:16px}
+.ido-data-entry-page .ido-approved-period-layout{display:grid;grid-template-columns:minmax(0,2.35fr) minmax(240px,.85fr);gap:17px;align-items:stretch}
+.ido-data-entry-page .ido-approved-main-card,.ido-data-entry-page .ido-approved-summary{border:1px solid #dce6f3;border-radius:10px;background:#fff;padding:18px;min-width:0}
+.ido-data-entry-page .ido-approved-main-card .ido-form-field{gap:5px;margin-bottom:14px}
+.ido-data-entry-page .ido-approved-main-card .ido-form-field label{color:#153b63;font-size:13px}
+.ido-data-entry-page .ido-approved-main-card .ido-form-field>small{font-size:12.5px;color:#556d89}
+.ido-data-entry-page .ido-approved-main-card .ido-form-field select{min-height:42px}
+.ido-data-entry-page .ido-approved-main-card .ido-locked-field{min-height:42px;background:#f2f6fa;color:#315272}
+.ido-data-entry-page .ido-picker-wrap{position:relative}
+.ido-data-entry-page .ido-dataset-picker-toggle{width:100%;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;padding:6px 10px;border:1px solid #bbd5f4;background:#fff;border-radius:7px;color:#31618f;cursor:pointer}
+.ido-data-entry-page .ido-dataset-picker-toggle.is-open{border-color:#3188fa;box-shadow:0 0 0 2px #e4f2ff}
+.ido-data-entry-page .ido-dataset-picker-chips{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.ido-data-entry-page .ido-dataset-placeholder{color:#576d86;font-size:13px}
+.ido-data-entry-page .ido-dataset-chip{display:inline-flex;gap:10px;align-items:center;border:1px solid #b6d4ff;border-radius:17px;padding:4px 9px;color:#0761cc;background:#eaf4ff;font-weight:700;font-size:12.5px;max-width:100%}
+.ido-data-entry-page .ido-dataset-chip>span{color:#125ac3;cursor:pointer;font-size:15px;line-height:1}
+.ido-data-entry-page .ido-dataset-picker-menu{position:relative;border:1px solid #cbdbea;border-radius:8px;margin-top:6px;padding:9px;background:#fff;box-shadow:0 7px 13px rgba(24,61,112,.08);z-index:2}
+.ido-data-entry-page .ido-dataset-picker-search{display:flex;align-items:center;gap:9px;border:1px solid #d7e2ef;border-radius:7px;padding:4px 9px;color:#4b739d}
+.ido-data-entry-page .ido-dataset-picker-search input{width:100%;min-width:0;border:0;outline:0;padding:6px 1px;font-size:13px;color:#233c60;background:transparent}
+.ido-data-entry-page .ido-dataset-picker-list{max-height:210px;overflow-y:auto;padding-top:6px}
+.ido-data-entry-page .ido-dataset-picker-item{display:flex!important;gap:10px;align-items:flex-start;padding:9px 11px;border-radius:6px;margin:0;cursor:pointer}
+.ido-data-entry-page .ido-dataset-picker-item.is-selected{background:#e7f2ff}
+.ido-data-entry-page .ido-dataset-picker-item:hover{background:#f2f7fd}
+.ido-data-entry-page .ido-dataset-picker-item>input{flex-shrink:0;width:17px;height:17px;accent-color:#116be6;margin-top:2px}
+.ido-data-entry-page .ido-dataset-picker-item>span{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ido-data-entry-page .ido-dataset-picker-item strong{font-size:13px;color:#123967;font-weight:750}
+.ido-data-entry-page .ido-dataset-picker-item small{color:#586d86;font-size:12.5px;line-height:1.4;font-weight:400}
+.ido-data-entry-page .ido-picker-done{margin:9px 0 0 3px}
+.ido-data-entry-page .ido-approved-filter-row{margin-top:13px}
+.ido-data-entry-page .ido-approved-main-card .ido-frequency-section{margin:0 0 15px}
+.ido-data-entry-page .ido-approved-main-card .ido-frequency-options{gap:8px}
+.ido-data-entry-page .ido-approved-main-card .ido-frequency-choice{min-width:98px;min-height:34px;padding:7px 15px;box-shadow:none}
+.ido-data-entry-page .ido-approved-main-card .ido-frequency-choice:disabled{opacity:.45;background:#f3f6fa;color:#596e87}
+.ido-data-entry-page .ido-approved-main-card .ido-frequency-choice.is-selected{border-color:#1771ef;color:#086cf1;background:#ecf5ff}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card{min-height:116px;padding:12px;gap:9px;border-color:#d2e1ef}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card.is-selected{padding:11px;border-color:#0875f9;background:#e9f4ff}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card:disabled{cursor:not-allowed;opacity:1}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card.is-closed{background:#fdfdfd}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card.is-upcoming{background:#f9fbff}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card-head strong{font-size:16px;color:#173457}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card-status{border-radius:16px;padding:4px 9px;font-size:11.5px}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card.is-closed .ido-period-card-status{color:#c83438;background:#ffe8e9}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card.is-upcoming .ido-period-card-status{color:#1666c8;background:#e3f0ff}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card.is-unavailable .ido-period-card-status{color:#626b79;background:#edf1f4}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card-dates{font-size:12.5px}
+.ido-data-entry-page .ido-approved-main-card .ido-period-card-choice{margin-top:auto;color:#176df4}
+.ido-data-entry-page .ido-period-radio{width:16px;height:16px;border:1.5px solid #9bacc5;border-radius:50%;display:inline-block}
+.ido-data-entry-page .ido-approved-summary{padding:20px 17px}
+.ido-data-entry-page .ido-approved-summary-head{display:flex;gap:10px;align-items:center;justify-content:space-between;border-bottom:1px solid #e4edf7;padding-bottom:14px}
+.ido-data-entry-page .ido-approved-summary-head h3{font-size:13.5px;font-weight:800;color:#193452;display:flex;align-items:center;gap:8px;margin:0}
+.ido-data-entry-page .ido-approved-summary-head h3 svg{color:#136cdd}
+.ido-data-entry-page .ido-summary-open{font-size:11.5px;padding:5px 12px;background:#d7f7e5;border-radius:20px;color:#217949;font-weight:800}
+.ido-data-entry-page .ido-approved-selected-name{display:flex;gap:11px;align-items:flex-start;border-bottom:1px solid #e4edf7;padding:19px 0}
+.ido-data-entry-page .ido-approved-selected-name>svg{flex-shrink:0;color:#176df4}
+.ido-data-entry-page .ido-approved-selected-name strong{display:block;color:#1e3d65;font-size:13.5px}
+.ido-data-entry-page .ido-approved-selected-name small{display:block;color:#596e89;margin-top:6px;font-size:12.5px;line-height:1.45}
+.ido-data-entry-page .ido-approved-summary-details{margin:16px 0 0;display:grid;gap:20px}
+.ido-data-entry-page .ido-approved-summary-details>div{display:flex;align-items:flex-start;gap:15px;color:#587293;font-size:12.5px}
+.ido-data-entry-page .ido-approved-summary-details svg{color:#1366c7;flex-shrink:0}
+.ido-data-entry-page .ido-approved-summary-details strong{display:block;margin-top:6px;color:#17365a;font-size:13px;overflow-wrap:anywhere}
+.ido-data-entry-page .ido-remarks-field{margin:13px 0 0!important}
+.ido-data-entry-page .ido-remarks-field textarea{min-height:76px}
+.ido-data-entry-page .ido-dimension-entry{border:1px solid #d4e3f5;border-radius:9px;padding:12px;margin-top:12px}
+.ido-data-entry-page .ido-dimension-entry legend{float:none;font-size:13px;font-weight:750;color:#244e7a;width:auto;padding:0 6px;margin:0 0 5px}
+.ido-data-entry-page .ido-dimension-option-values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.ido-data-entry-page .ido-dimension-option-values label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:#4b7196}
+.ido-data-entry-page .ido-dimension-option-values input{width:100%;min-width:0;border:1px solid #d7e3f0;border-radius:7px;padding:8px;font-size:13px}
+@media(max-width:1100px){.ido-data-entry-page .ido-approved-period-layout{grid-template-columns:1fr}.ido-data-entry-page .ido-approved-summary{display:block}}
+@media(max-width:740px){.ido-data-entry-page .ido-approved-main-card .ido-period-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ido-data-entry-page .ido-approved-filter-row{grid-template-columns:1fr}}
+@media(max-width:460px){.ido-data-entry-page .ido-approved-main-card .ido-period-card-grid{grid-template-columns:1fr}.ido-data-entry-page .ido-dimension-option-values{grid-template-columns:1fr}}
+
+.ido-data-entry-page .ido-dataset-scope-note{display:block;color:#556f88;font-size:12.5px;margin:6px 0 12px}
+.ido-data-entry-page .ido-review-breakdown{margin-top:8px;padding:7px;border:1px solid #e4eef8;border-radius:7px;background:#f7fbff}
+.ido-data-entry-page .ido-review-breakdown b{display:block;color:#416b94;font-size:12.5px;margin-bottom:5px}
+.ido-data-entry-page .ido-review-breakdown small{display:block;font-size:11.5px;line-height:1.45;color:#587898}
+
+/* REV26 Review redesign — only Step 4 of New Submission.
+   Three fixed, useful columns; unit stays with indicator; dimension details
+   use compact inline rows rather than tall nested cards. No forced min-width. */
+.ido-data-entry-page .ido-review-table-wrap{width:100%;min-width:0;max-width:100%;border:1px solid #dfe8f2;border-radius:10px;overflow:hidden;margin:0 0 15px;}
+.ido-data-entry-page .ido-review-table{width:100%;min-width:0;table-layout:fixed;margin:0;border-collapse:collapse;}
+.ido-data-entry-page .ido-review-indicator-col{width:25%;}
+.ido-data-entry-page .ido-review-value-col{width:27%;}
+.ido-data-entry-page .ido-review-target-col{width:12%;}
+.ido-data-entry-page .ido-review-performance-col{width:16%;}
+.ido-data-entry-page .ido-review-remarks-col{width:20%;}
+.ido-data-entry-page .ido-review-table.viwanda-table thead th{font-size:13px;font-weight:800;padding:12px 14px;white-space:normal;color:#395a7c;background:#f1f6fc;}
+.ido-data-entry-page .ido-review-table.viwanda-table tbody th,.ido-data-entry-page .ido-review-table.viwanda-table tbody td{padding:12px 14px;text-align:left;vertical-align:top;font-size:13.5px;line-height:1.5;min-width:0;overflow-wrap:anywhere;word-break:normal;}
+.ido-data-entry-page .ido-review-table.viwanda-table tbody th{font-weight:600;}
+.ido-data-entry-page .ido-review-table tbody th .ido-review-index{display:inline-grid;place-items:center;margin-right:8px;width:22px;height:22px;border-radius:6px;background:#ecf4ff;color:#2768bd;font-size:12.5px;vertical-align:top;}
+.ido-data-entry-page .ido-review-indicator-label{display:inline-flex;flex-direction:column;gap:3px;max-width:calc(100% - 37px);}
+.ido-data-entry-page .ido-review-table tbody th .ido-review-indicator-label strong{font-size:13.5px;font-weight:750;color:#213e61;overflow-wrap:anywhere;}
+.ido-data-entry-page .ido-review-indicator-label small{font-size:12.5px;font-weight:500;color:#586e87;}
+.ido-data-entry-page .ido-review-number{display:block;font-weight:800;font-size:15px;color:#173c67;line-height:1.35;}
+.ido-data-entry-page .ido-review-dimensions{margin-top:7px;display:grid;gap:6px;}
+.ido-data-entry-page .ido-review-dimension-row{display:flex;flex-wrap:wrap;gap:5px 9px;align-items:baseline;min-width:0;}
+.ido-data-entry-page .ido-review-dimension-name{font-size:12.5px;font-weight:750;color:#315d90;white-space:normal;}
+.ido-data-entry-page .ido-review-dimension-options{display:flex;flex-wrap:wrap;gap:4px 10px;min-width:0;}
+.ido-data-entry-page .ido-review-dimension-item{font-size:12.5px;color:#55718e;white-space:normal;}
+.ido-data-entry-page .ido-review-dimension-item b{font-weight:750;color:#20496f;}
+.ido-data-entry-page .ido-review-remarks{color:#52677f;white-space:pre-wrap;overflow-wrap:anywhere;}
+.ido-data-entry-page .ido-review-summary{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 17px;padding:13px 16px;margin-bottom:14px;}
+.ido-data-entry-page .ido-review-summary>div{min-width:0;}
+.ido-data-entry-page .ido-review-summary small{margin-bottom:3px;font-size:12.5px;}
+.ido-data-entry-page .ido-review-summary strong{font-size:13px;overflow-wrap:anywhere;}
+@media(max-width:760px){
+ .ido-data-entry-page .ido-review-summary{grid-template-columns:repeat(2,minmax(0,1fr));}
+ .ido-data-entry-page .ido-review-table colgroup,.ido-data-entry-page .ido-review-table thead{display:none;}
+ .ido-data-entry-page .ido-review-table tbody,.ido-data-entry-page .ido-review-table tr,.ido-data-entry-page .ido-review-table tbody th,.ido-data-entry-page .ido-review-table tbody td{display:block;width:100%;}
+ .ido-data-entry-page .ido-review-table tbody tr{padding:12px 14px;border-bottom:1px solid #e8eef5;}
+ .ido-data-entry-page .ido-review-table tbody tr:last-child{border:0;}
+ .ido-data-entry-page .ido-review-table.viwanda-table tbody th,.ido-data-entry-page .ido-review-table.viwanda-table tbody td{padding:5px 0;border:0;}
+ .ido-data-entry-page .ido-review-table tbody td:before{content:attr(data-label);display:block;color:#576d88;font-weight:700;font-size:11.5px;margin-bottom:3px;}
+ .ido-data-entry-page .ido-review-dimension-row{gap:4px 9px;}
+}
+@media(max-width:430px){.ido-data-entry-page .ido-review-summary{grid-template-columns:1fr 1fr;gap:9px;}}
+
+/* Live breakdown validation without altering approved Data Entry layout. */
+.ido-dimension-summary{display:block;margin-top:7px;color:#087c4a;font-size:13px;font-weight:650;}
+
+/* ===== MODERN DATA ENTRY (approved mockup 28 Oct 2026) — scoped to .de-modern, overrides only ===== */
+.de-modern{--de-navy:#0a2a5c;--de-blue:#0b5bd3;--de-soft:#e8f1fd;--de-line:#e6eaf2;--de-muted:#5b6478}
+.de-modern .mu-head{margin-bottom:12px;padding:16px 20px}
+.de-modern .mu-head-tools{gap:10px}
+.de-modern .de-back-link{color:var(--de-navy)}
+/* stepper card: green done, blue current with halo */
+.ido-data-entry-page.de-modern .ido-wizard-progress{border-radius:14px;border-color:var(--de-line);padding:16px 22px;margin-bottom:12px;box-shadow:none}
+.ido-data-entry-page.de-modern .ido-progress-number{width:30px;height:30px;background:#eef1f6;border:0;color:var(--de-muted)}
+.ido-data-entry-page.de-modern .ido-progress-label{font-weight:600;font-size:13px;color:var(--de-muted)}
+.ido-data-entry-page.de-modern .ido-progress-item.completed .ido-progress-number{background:#1eb53a;color:#fff}
+.ido-data-entry-page.de-modern .ido-progress-item.completed .ido-progress-label{color:var(--mu-ink,#14213d)}
+.ido-data-entry-page.de-modern .ido-progress-item.active .ido-progress-number{background:var(--de-blue);color:#fff;box-shadow:0 0 0 4px var(--de-soft)}
+.ido-data-entry-page.de-modern .ido-progress-item.active .ido-progress-label{color:var(--de-blue);font-weight:700}
+.ido-data-entry-page.de-modern .ido-progress-connector{height:2px;background:#e6eaf2;margin:0 14px}
+.ido-data-entry-page.de-modern .ido-progress-connector.completed{background:#1eb53a}
+/* panel */
+.de-modern .ido-wizard-columns{display:block}
+.de-modern .ido-wizard-panel{border-radius:14px;border-color:var(--de-line);box-shadow:none;min-height:0;background:transparent;border:0}
+.de-modern .ido-wizard-body{padding:0}
+.de-modern .ido-step-heading{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.de-modern .ido-step-heading h2{font-size:15.5px;margin:0;display:flex;align-items:center;gap:10px;color:var(--de-navy);letter-spacing:0}
+.de-modern .ido-step-heading h2:before{content:"";width:24px;height:24px;border-radius:50%;background:var(--de-soft) radial-gradient(circle,var(--de-blue) 0 4px,transparent 5px);flex:none}
+.de-modern .ido-step-heading .ido-heading-number{display:none}
+.de-modern .ido-step-heading p{display:none}
+.de-modern .ido-wizard-actions{background:#fff;border:1px solid var(--de-line);border-radius:14px;padding:12px 16px;margin-top:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.de-modern .ido-wizard-action-right{display:flex;gap:8px;flex-wrap:wrap}
+.de-modern .ido-wizard-actions .btn{border-radius:20px;height:40px;padding:0 16px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.de-modern .ido-wizard-actions .ido-primary-button{background:linear-gradient(135deg,#0b5bd3,#0a2a5c);border:0;color:#fff}
+.de-modern .ido-wizard-feedback{border-radius:14px;margin-bottom:12px}
+
+/* STEP 1 */
+.de-modern .ido-approved-period-layout{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(280px,1fr);gap:12px;align-items:start}
+.de-modern .ido-approved-main-card{background:#fff;border:1px solid var(--de-line);border-radius:14px;padding:18px}
+.de-modern .ido-form-field label,.de-modern .ido-period-section-heading h3{font-size:12.5px;font-weight:700;color:var(--de-navy)}
+.de-modern .ido-form-field select,.de-modern .ido-dataset-picker-toggle{border-radius:12px;min-height:42px;border-color:var(--de-line);font-weight:600;color:var(--mu-ink,#14213d)}
+.de-modern .ido-dataset-chip{background:var(--de-soft);color:var(--de-blue);border-radius:20px;border:0;font-weight:600}
+.de-modern .ido-frequency-options{display:inline-flex;gap:4px;background:#f3f6fb;border-radius:22px;padding:4px}
+.de-modern .ido-frequency-choice{border:0!important;background:transparent!important;border-radius:18px!important;padding:7px 18px!important;font-weight:600;color:var(--de-muted);min-height:0!important;box-shadow:none!important}
+.de-modern .ido-frequency-choice.is-selected{background:#fff!important;color:var(--de-blue)!important;box-shadow:0 2px 6px rgba(10,42,92,.12)!important}
+.de-modern .ido-frequency-choice:disabled{opacity:.45}
+.de-modern .ido-period-section-heading p{font-size:12px;color:var(--de-muted)}
+.ido-data-entry-page.de-modern .ido-period-card-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.ido-data-entry-page.de-modern .ido-period-card{border-radius:14px;border:1px solid var(--de-line);min-height:104px;padding:12px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.ido-data-entry-page.de-modern .ido-period-card:not(:disabled):hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(10,42,92,.1)}
+.ido-data-entry-page.de-modern .ido-period-card.is-selected{border:2px solid var(--de-blue);padding:11px;background:#f4f8ff;box-shadow:0 10px 22px rgba(11,91,211,.15);transform:translateY(-3px)}
+.ido-data-entry-page.de-modern .ido-period-card:disabled{opacity:.6}
+.ido-data-entry-page.de-modern .ido-period-card-head strong{font-size:16px;color:var(--de-navy)}
+.ido-data-entry-page.de-modern .ido-period-card-status{border-radius:20px;padding:3px 9px;font-weight:600}
+.ido-data-entry-page.de-modern .ido-period-card.is-closed .ido-period-card-status,.ido-data-entry-page.de-modern .ido-period-card.is-unavailable .ido-period-card-status{background:#fdeceb;color:#b42318}
+.ido-data-entry-page.de-modern .ido-period-card.is-upcoming .ido-period-card-status{background:var(--de-soft);color:var(--de-blue)}
+.ido-data-entry-page.de-modern .ido-period-card-choice{align-self:flex-end;color:var(--de-blue)}
+.de-modern .de-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.ido-data-entry-page.de-modern .ido-approved-summary{background:linear-gradient(160deg,#0a2a5c,#0b5bd3);color:#fff;border:0;border-radius:14px;padding:16px;box-shadow:none}
+.de-modern .ido-approved-summary *{color:inherit}
+.de-modern .ido-approved-summary-head{display:flex;justify-content:space-between;align-items:center;border:0;padding:0;margin-bottom:6px}
+.de-modern .ido-approved-summary-head h3{font-size:14.5px;margin:0;display:flex;gap:8px;align-items:center}
+.de-modern .ido-summary-open{background:#e5f6ea!important;color:#0f7a2f!important;border-radius:20px;padding:2px 10px;font-size:12px;font-weight:600}
+.de-modern .ido-approved-selected-name,.de-modern .ido-approved-summary-details>div{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.14);margin:0}
+.de-modern .ido-approved-selected-name>svg,.de-modern .ido-approved-summary-details svg{width:30px;height:30px;padding:7px;border-radius:50%;background:rgba(255,255,255,.14);flex:none}
+.de-modern .ido-approved-selected-name small,.de-modern .ido-approved-summary-details span{font-size:12px;opacity:.85}
+.de-modern .ido-approved-summary-details strong,.de-modern .ido-approved-selected-name strong{display:block;font-size:13.5px;opacity:1}
+.de-modern .ido-approved-summary-details{margin:0}
+.de-modern .de-ind-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--de-line);font-size:13px}
+.de-modern .de-ind-row:last-child{border:0}
+.de-modern .de-ind-row b{margin-left:auto;color:var(--de-navy);font-weight:600;font-size:12.5px}.de-modern .de-ind-row b.is-opt{color:var(--de-muted);font-weight:400}
+.de-modern .de-dot{width:9px;height:9px;border-radius:50%;background:#9aa4b6;flex:none}.de-modern .de-dot.is-req{background:var(--de-blue)}
+
+/* STEP 2 (method) */
+.de-modern .ido-submission-methods{flex-direction:row;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#fff;border:1px solid var(--de-line);border-radius:14px;padding:16px}
+.de-modern .ido-submission-method{border-radius:14px;padding:18px;min-height:96px;transition:transform .2s,box-shadow .2s}
+.de-modern .ido-submission-method.selected{border:2px solid var(--de-blue);background:#f4f8ff;box-shadow:0 10px 22px rgba(11,91,211,.15);transform:translateY(-3px)}
+.de-modern .ido-method-icon{border-radius:50%;width:46px;height:46px}
+
+/* STEP 3 (values) */
+.de-modern .de-kpis .mu-kpi{cursor:default}
+.de-modern .ido-indicator-split{display:grid;grid-template-columns:300px minmax(0,1fr);gap:12px;align-items:start}
+.de-modern .ido-indicator-picker,.de-modern .ido-indicator-editor{background:#fff;border:1px solid var(--de-line);border-radius:14px;padding:14px 16px}
+.de-modern .ido-indicator-picker h3,.de-modern .ido-indicator-editor>h3{font-size:14.5px;color:var(--de-navy);font-weight:700;border:0;padding:0;margin:0 0 10px}
+.de-modern .ido-picker-row{display:flex;gap:10px;align-items:center;border:1px solid var(--de-line);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:#fff;opacity:1;cursor:pointer;transition:box-shadow .2s}
+.de-modern .ido-picker-row:hover{box-shadow:0 6px 14px rgba(10,42,92,.08)}
+.de-modern .ido-picker-row.is-checked{border-color:var(--de-blue);background:#f4f8ff;box-shadow:inset 3px 0 0 var(--de-blue)}
+.de-modern .ido-picker-row input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.de-modern .ido-picker-row span small{display:block;color:var(--de-muted);font-size:11.5px;font-weight:400}
+.de-modern .de-ind-state{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:11.5px;font-weight:700;background:#eef1f6;color:var(--de-muted);flex:none}
+.de-modern .de-ind-state.is-done{background:#1eb53a;color:#fff}.de-modern .de-ind-state.is-req{background:#fff6d6;color:#8a6a00}
+.de-modern .ido-indicator-edit-card{border:1px solid var(--de-line);border-radius:12px;padding:14px;margin-bottom:10px;background:#fff}
+.de-modern .ido-indicator-edit-card h4{font-size:14.5px;color:var(--de-navy)}
+.de-modern .ido-indicator-edit-card .ido-two-inputs{gap:12px}
+.de-modern .ido-previous-value,.de-modern .ido-indicator-input{border-radius:12px!important}
+.de-modern .ido-indicator-edit-card .ido-indicator-input:not(textarea){min-height:44px;font-size:16px;font-weight:700;color:var(--de-navy)}
+.de-modern .ido-indicator-edit-card .ido-indicator-input:focus{border:2px solid var(--de-blue);box-shadow:0 0 0 4px var(--de-soft)}
+.de-modern .ido-target-field{border-radius:12px;border:1px solid var(--de-line);background:#fbfcfe;padding:12px}
+.de-modern .ido-target-locked{border-radius:10px}
+.de-modern .ido-remarks-field textarea{border-radius:12px}
+.de-modern .ido-dimension-entry{border:1px dashed #cfd8e6;border-radius:12px;padding:12px}
+.de-modern .ido-dimension-entry legend{font-size:13px;color:var(--de-navy);font-weight:700;padding:0 6px;width:auto;float:none}
+.de-modern .ido-dimension-option-values input{border-radius:10px}
+.de-modern .ido-dimension-summary{color:#0f7a2f;background:#e5f6ea;border-radius:20px;padding:2px 9px;display:inline-block;margin-top:6px;font-weight:600}
+
+/* STEP 4 (review) */
+.de-modern .de-review-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(280px,1fr);gap:12px;align-items:start}
+.de-modern .ido-review-table-wrap{background:#fff;border:1px solid var(--de-line);border-radius:14px;padding:12px 14px;margin:0}
+.de-modern .de-review-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.de-modern .de-ready{border:1px solid #d3efdc;background:#effaf3;border-radius:14px;padding:16px}
+.de-modern .de-ready.is-warn{border-color:#f6e5b8;background:#fff8e8}
+.de-modern .de-ready h3{margin:0 0 8px;font-size:15px;color:var(--de-navy);font-weight:700}
+.de-modern .de-checks{list-style:none;margin:0 0 10px;padding:0}
+.de-modern .de-checks li{display:flex;gap:8px;align-items:center;font-size:12.5px;padding:4px 0}
+.de-modern .de-checks li:before{content:"✓";width:18px;height:18px;border-radius:50%;background:#1eb53a;color:#fff;display:grid;place-items:center;font-size:10px;flex:none}
+.de-modern .de-checks li.warn:before{content:"!";background:#e0b400}
+.de-modern .de-ready .dl-mini{margin:0 0 6px;font-size:12.5px}
+.de-modern .de-ready .dl-mini>div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
+.de-modern .de-ready .dl-mini dt{color:var(--de-muted);font-weight:400}.de-modern .de-ready .dl-mini dd{margin:0;font-weight:600;text-align:right}
+.de-modern .de-ready .ido-wizard-actions{background:transparent;border:0;padding:8px 0 0;margin:0}
+.de-modern .de-ready .ido-wizard-actions .ido-primary-button{background:linear-gradient(135deg,#1eb53a,#0f7a2f)}
+.de-modern .de-ready .ido-wizard-action-right{justify-content:flex-end}
+
+/* STEP 5 */
+.de-modern .ido-wizard-success{background:#fff;border:1px solid var(--de-line);border-radius:14px;padding:34px;text-align:center}
+.de-modern .ido-wizard-success>svg{color:#0f7a2f;background:#e5f6ea;border-radius:50%;padding:10px;width:70px;height:70px;box-shadow:0 0 0 8px #f1faf3}
+.de-modern .ido-wizard-success .btn{border-radius:20px}
+
+@media (max-width:1100px){
+  .de-modern .ido-approved-period-layout,.de-modern .de-review-grid,.de-modern .ido-indicator-split{grid-template-columns:1fr}
+  .de-modern .de-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .de-modern .de-kpis,.de-modern .ido-submission-methods{grid-template-columns:1fr}
+  .ido-data-entry-page.de-modern .ido-progress-label{display:none}
+}
+body[data-vw-theme="dark"] .de-modern .ido-approved-main-card,body[data-vw-theme="dark"] .de-modern .ido-indicator-picker,body[data-vw-theme="dark"] .de-modern .ido-indicator-editor,
+body[data-vw-theme="dark"] .de-modern .ido-wizard-actions,body[data-vw-theme="dark"] .de-modern .ido-review-table-wrap,body[data-vw-theme="dark"] .de-modern .ido-wizard-success,
+body[data-vw-theme="dark"] .de-modern .ido-submission-methods,body[data-vw-theme="dark"] .de-modern .ido-indicator-edit-card,body[data-vw-theme="dark"] .de-modern .ido-picker-row{background:#16253b;border-color:#2b3d58}
+body[data-vw-theme="dark"] .de-modern .de-ready{background:#14301f;border-color:#21503a}
+.ido-data-entry-page.de-modern .ido-approved-summary :is(h3,strong,small,span,svg,dt,dd,div){color:#fff!important}
+.ido-data-entry-page.de-modern .ido-approved-summary small,.ido-data-entry-page.de-modern .ido-approved-summary-details span{color:rgba(255,255,255,.8)!important}
+.ido-data-entry-page.de-modern .ido-approved-summary .ido-summary-open{color:#0f7a2f!important}
+.de-modern .de-review-grid{grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr)}
+.ido-data-entry-page.de-modern .ido-review-table .ido-review-indicator-col{width:27%}
+.ido-data-entry-page.de-modern .ido-review-table .ido-review-value-col{width:22%}
+.ido-data-entry-page.de-modern .ido-review-table .ido-review-target-col{width:12%}
+.ido-data-entry-page.de-modern .ido-review-table .ido-review-performance-col{width:25%}
+.ido-data-entry-page.de-modern .ido-review-table .ido-review-remarks-col{width:14%}
+.de-modern .ido-review-table .tp-band{white-space:nowrap}
+.de-modern .de-ready .ido-wizard-actions{flex-direction:row;align-items:center}
+.de-modern .de-ready .ido-wizard-actions .btn{padding:0 12px;white-space:nowrap}
+.de-modern .ido-review-table .tp-bar-meta b{white-space:nowrap}.de-modern .ido-review-table .tp-bar-meta{gap:6px;flex-wrap:wrap}
+.ido-data-entry-page.de-modern .ido-approved-summary-details>div{min-height:0;height:auto}.ido-data-entry-page.de-modern .ido-approved-summary-details{gap:0;display:block}
+
+/* ===== Annual strategic objective in step 1 (approved mockup obj-*.png, 29 Oct 2026) ===== */
+.ido-objective-section{margin-top:22px;padding-top:18px;border-top:1px dashed #dfe6f0}
+.ido-objective-section h3{font-size:15px;font-weight:700;color:#0a2a5c;margin:0 0 3px}.ido-objective-section h3 b{color:#d92d20}
+.ido-objective-section>p{font-size:13px;color:#5b6478;margin:0 0 10px}
+.ido-objective-dropdown{position:relative}
+.ido-objective-select{width:100%;display:flex;align-items:center;gap:10px;min-height:52px;border:1px solid #cfd9e6;border-radius:12px;padding:8px 14px;background:#fff;font-size:14.5px;color:#1c2433;text-align:left;transition:border-color .2s,box-shadow .2s}
+.ido-objective-select:hover{border-color:#9db8dd}
+.ido-objective-select.is-open,.ido-objective-select:focus-visible{border-color:#0b5bd3;box-shadow:0 0 0 4px #e8f1fd;outline:0}
+.ido-objective-select.is-locked{background:#f7f9fc;color:#5b6478;cursor:default}
+.ido-objective-code{display:inline-grid;place-items:center;min-width:30px;height:30px;padding:0 6px;border-radius:15px;background:#0a2a5c;color:#fff;font-weight:800;font-size:12.5px;flex:none}
+.ido-objective-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ido-objective-placeholder{flex:1;color:#9aa4b6}
+.ido-objective-chevron{margin-left:auto;color:#5b6478;flex:none}
+.ido-objective-list{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);list-style:none;margin:0;padding:0;background:#fff;border:1px solid #cfd9e6;border-radius:12px;box-shadow:0 12px 28px rgba(10,42,92,.14);max-height:320px;overflow:auto}
+.ido-objective-list li+li{border-top:1px solid #eef1f6}
+.ido-objective-list button{width:100%;display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border:0;background:#fff;text-align:left;font-size:13.5px}
+.ido-objective-list button:hover,.ido-objective-list button.is-active{background:#f1f7ff}
+.ido-objective-list b{display:block;color:#0a2a5c;font-weight:650}.ido-objective-list small{color:#5b6478;font-size:12px}
+.ido-objective-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.ido-objective-meta span{font-size:12px;font-weight:600;border-radius:12px;padding:4px 10px;background:#eef1f6;color:#5b6478}
+.ido-objective-meta .is-blue{background:#e8f1fd;color:#0b5bd3}.ido-objective-meta .is-green{background:#e5f6ea;color:#0f7a2f}.ido-objective-meta .is-amber{background:#fff6d6;color:#a86a00}
+.ido-objective-note{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;border-radius:12px;padding:9px 12px;margin-top:10px}
+.ido-objective-note svg{flex:none;margin-top:1px}
+.ido-objective-note.info{background:#f1f7ff;border:1px solid #d6e6fb;color:#0a2a5c}
+.ido-objective-note.warn{background:#fff8e8;border:1px solid #f6e5b8;color:#7a4b00}
+.ido-objective-retry{border:0;background:none;padding:0;margin-left:6px;color:#0b5bd3;font-weight:700;text-decoration:underline}
+
+/* ===== One report per dataset + period (29 Oct 2026) ===== */
+.ido-period-card.is-existing-locked{background:#f3faf5;border-color:#cdebd6;cursor:pointer;opacity:1}
+.ido-period-card.is-existing-locked .ido-period-card-status{background:#e5f6ea;color:#0f7a2f;display:inline-flex;align-items:center;gap:4px}
+.ido-period-card.is-existing-locked .ido-period-card-choice{color:#0f7a2f}
+.ido-period-card.is-existing-draft{background:#fffaf0;border-color:#f6e5b8;cursor:pointer;opacity:1}
+.ido-period-card.is-existing-draft .ido-period-card-status{background:#fff6d6;color:#a86a00}
+.ido-period-card.is-existing-returned{background:#fff5f4;border-color:#f8d9d6;cursor:pointer;opacity:1}
+.ido-period-card.is-existing-returned .ido-period-card-status{background:#fdeceb;color:#b42318}
+.ido-period-card[class*="is-existing-"]:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px rgba(10,42,92,.10)}
+.ido-period-card-ref{display:block;font-size:11.5px;font-weight:650;color:#5b6478;margin-top:4px}
+/* Budget + implementation notes on Review (step 4). */
+.de-review-performance{margin-top:16px}
+.de-review-performance .bp-summary{margin:0}

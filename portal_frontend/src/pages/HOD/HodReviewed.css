@@ -1,0 +1,44 @@
+/* Approved HOD Reviewed Submissions table — same VIWANDA table/action styling.
+ * All selectors are scoped; Pending Review and HOD Review Details are untouched.
+ */
+.hod-reviewed-workspace .hod-reviewed-card{background:#fff;border:1px solid #dde7f3;border-radius:12px;overflow:hidden;box-shadow:0 3px 13px #1637590a}
+.hod-reviewed-workspace .hod-reviewed-titlebar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 22px;border-bottom:1px solid #e8eef6}
+.hod-reviewed-workspace .hod-reviewed-heading{display:flex;align-items:center;gap:16px;min-width:0}
+.hod-reviewed-workspace .hod-reviewed-heading>svg{color:#1464da;flex-shrink:0}
+.hod-reviewed-workspace .hod-reviewed-heading h1{font-size:22px;color:#102c53;font-weight:800;margin:0 0 4px}
+.hod-reviewed-workspace .hod-reviewed-heading p{font-size:13px;color:#596d85;margin:0}
+.hod-reviewed-workspace .hod-reviewed-titlebar>.btn,.hod-reviewed-workspace .hod-reviewed-filters>.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}
+.hod-reviewed-workspace .hod-reviewed-filters{margin:16px 18px 4px;padding:14px;background:#f7faff;border:1px solid #e2ebf6;border-radius:8px;display:grid;grid-template-columns:repeat(4,minmax(120px,1fr)) auto auto;gap:11px;align-items:end}
+.hod-reviewed-workspace .hod-reviewed-filters label{display:grid;gap:7px;min-width:0;color:#23415f;font-weight:600;font-size:12.5px}
+.hod-reviewed-workspace .hod-reviewed-filters .form-select{min-height:36px;font-weight:400}
+.hod-reviewed-workspace .hod-reviewed-filters>.btn{height:36px;padding:0 12px}
+.hod-reviewed-workspace .hod-reviewed-searchline{display:flex;align-items:center;gap:9px;padding:9px 18px 14px;color:#566c86;font-size:12.5px}
+.hod-reviewed-workspace .hod-reviewed-searchline input{max-width:350px}
+.hod-reviewed-workspace .hod-reviewed-table{margin:0;min-width:850px}
+.hod-reviewed-workspace .hod-reviewed-table th{font-size:12.5px;color:#213b5d;background:#f1f6fc;white-space:nowrap;font-weight:750;padding:13px 10px;border-bottom:1px solid #dfe9f4}
+.hod-reviewed-workspace .hod-reviewed-table td{font-size:12.5px;color:#244060;padding:11px 10px;border-color:#eaf0f6;vertical-align:middle}
+.hod-reviewed-workspace .hod-reviewed-table td strong{color:#12355e}
+.hod-reviewed-workspace .hod-reviewed-table th:last-child,.hod-reviewed-workspace .hod-reviewed-table td:last-child{text-align:center;width:76px}
+.hod-reviewed-workspace .hod-reviewed-badge{display:inline-block;padding:5px 10px;border-radius:18px;font-weight:750;font-size:11.5px;white-space:nowrap}
+.hod-reviewed-workspace .hod-reviewed-status-success{color:#08734b;background:#def8e9}
+.hod-reviewed-workspace .hod-reviewed-status-returned{color:#a86808;background:#fff0d2}
+.hod-reviewed-workspace .hod-reviewed-status-other{color:#2652a6;background:#e4f0ff}
+.hod-reviewed-workspace .hod-reviewed-empty{text-align:center;color:#5b6d81!important;padding:35px!important}
+.hod-reviewed-workspace .hod-reviewed-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;color:#566c86;font-size:12.5px;flex-wrap:wrap}
+.hod-reviewed-workspace .hod-reviewed-pages{display:flex;gap:5px;align-items:center}
+.hod-reviewed-workspace .hod-reviewed-pages button{border:1px solid #d9e5f3;background:#fff;color:#1b4979;border-radius:5px;min-width:31px;height:32px}
+.hod-reviewed-workspace .hod-reviewed-pages button.active{background:#1265df;color:white;border-color:#1265df}
+.hod-reviewed-workspace .hod-reviewed-pages button:disabled{opacity:.4}
+.hod-reviewed-workspace .hod-reviewed-modal-overlay{position:fixed;inset:0;background:#081c35a3;z-index:10990;display:grid;place-items:center;padding:16px}
+.hod-reviewed-workspace .hod-reviewed-modal{max-width:490px;width:100%;max-height:85vh;overflow-y:auto;background:#fff;border-radius:12px;box-shadow:0 20px 60px #04182f45}
+.hod-reviewed-workspace .hod-reviewed-modal-title{display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid #e1eaf4}
+.hod-reviewed-workspace .hod-reviewed-modal-title h2{margin:0;font-size:16px;font-weight:800}
+.hod-reviewed-workspace .hod-reviewed-modal-title button{border:0;background:transparent;color:#43617e}
+.hod-reviewed-workspace .hod-reviewed-event-list{padding:14px 20px;display:grid;gap:12px}
+.hod-reviewed-workspace .hod-reviewed-event-list>div{border-left:2px solid #3383dd;padding-left:13px;display:grid;gap:3px}
+.hod-reviewed-workspace .hod-reviewed-event-list span,.hod-reviewed-workspace .hod-reviewed-event-list small{color:#5d6e85}
+.hod-reviewed-workspace .hod-reviewed-event-list p{margin:3px 0 0;background:#f4f8fd;padding:9px;border-radius:6px}
+.hod-reviewed-workspace .hod-reviewed-no-events{padding:15px 20px;color:#576c85}
+.hod-reviewed-workspace .hod-reviewed-modal-foot{border-top:1px solid #e1eaf4;padding:13px 18px;display:flex;justify-content:end}
+@media(max-width:1250px){.hod-reviewed-workspace .hod-reviewed-filters{grid-template-columns:repeat(2,minmax(130px,1fr)) auto auto}}
+@media(max-width:640px){.hod-reviewed-workspace .hod-reviewed-filters{grid-template-columns:repeat(2,minmax(110px,1fr))}.hod-reviewed-workspace .hod-reviewed-filters>.btn{width:100%}.hod-reviewed-workspace .hod-reviewed-titlebar{padding:15px}.hod-reviewed-workspace .hod-reviewed-heading h1{font-size:19px}}

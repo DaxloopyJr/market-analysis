@@ -1,0 +1,60 @@
+/** FILE: src/pages/Admin/users.css - Users.jsx only; existing Topbar/Sidebar styles untouched. */
+.vim-users .vim-filter-form { flex-wrap: wrap; }
+.vim-users .vim-row-actions { gap: 5px; flex-wrap: nowrap; }
+.vim-user-role-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 680px) { .vim-user-role-grid { grid-template-columns: 1fr; } }
+
+.vim-user-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 12px; margin: 14px 0; }
+.vim-user-summary-card { display: flex; flex-direction: column; gap: 5px; border-radius: 9px; border: 1px solid #d9e4f2; background: #fff; padding: 16px; text-align: left; color: #13335a; }
+.vim-user-summary-card strong { font-size: 22px; }
+.vim-user-summary-card span { text-transform: capitalize; color: #546b85; font-size: 13px; }
+.vim-user-summary-card:hover { border-color: #1268d6; background: #f5f9ff; }
+
+/* Institution/Ministry affiliation selector – scoped to User Management only. */
+.vim-users .vim-affiliation-block {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #dce6f2;
+  border-radius: 9px;
+  background: #f8fbff;
+}
+.vim-users .vim-affiliation-block h3 {
+  font-size: 14px;
+  color: #12365e;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.vim-users .vim-affiliation-fixed {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+  gap: 8px 15px;
+  font-size: 13.5px;
+}
+.vim-users .vim-affiliation-fixed small { grid-column: 1 / -1; }
+@media (max-width: 680px) {
+  .vim-users .vim-affiliation-fixed { grid-template-columns: 1fr; }
+}
+
+/* Admin-managed sign-in MFA (UserMfaPanel) */
+.vim-mfa-na{color:#9aa4b6}
+.vim-mfa-panel{display:flex;flex-direction:column;gap:12px}
+.vim-mfa-current{display:flex;justify-content:space-between;align-items:center;background:#f7f9fc;border:1px solid #e6ebf3;border-radius:14px;padding:10px 14px;font-size:13px}
+.vim-mfa-current span{color:#5b6478}.vim-mfa-current strong{color:#5b6478}.vim-mfa-current strong.on{color:#0f7a2f}
+.vim-mfa-help{margin:0;font-size:13px;color:#5b6478}
+.vim-mfa-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.vim-mfa-option{display:flex;gap:10px;align-items:flex-start;border:1px solid #e6ebf3;border-radius:14px;padding:11px 12px;cursor:pointer;transition:transform .15s,border-color .15s;margin:0}
+.vim-mfa-option:hover{transform:translateY(-1px)}
+.vim-mfa-option input{position:absolute;opacity:0;pointer-events:none}
+.vim-mfa-option.selected{border:2px solid #0b5bd3;background:#f6faff}
+.vim-mfa-option.disabled{opacity:.5;cursor:not-allowed;transform:none}
+.vim-mfa-option b{display:block;font-size:13px;color:#0a2a5c}.vim-mfa-option small{display:block;font-size:11.5px;color:#5b6478;word-break:break-all}
+.vim-mfa-icon{width:32px;height:32px;border-radius:50%;background:#e8f1fd;color:#0b5bd3;display:grid;place-items:center;flex:none}
+@media(max-width:640px){.vim-mfa-options{grid-template-columns:minmax(0,1fr)}}
+.vim-mfa-password{display:flex;flex-direction:column;gap:6px;margin:0;font-size:13px;font-weight:700;color:#0a2a5c}
+.vim-mfa-password b{color:#d92d20}.vim-mfa-password small{display:block;font-weight:500;color:#5b6478;font-size:12px}
+.vim-mfa-password-field{display:flex;align-items:center;gap:8px;border:1px solid #dfe6f0;border-radius:12px;background:#f8fafd;padding:0 6px 0 12px;height:44px;color:#7a8396}
+.vim-mfa-password-field:focus-within{border-color:#0b5bd3;background:#fff;box-shadow:0 0 0 4px #e8f1fd}
+.vim-mfa-password-field input{flex:1;min-width:0;border:0;background:none;outline:0;font-size:14px;color:#1c2433;font-weight:500}
+.vim-mfa-password-field button{border:0;background:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#5b6478}
+.vim-mfa-create{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:650;color:#0a2a5c;margin:0}
+.vim-mfa-create small{font-weight:500;color:#5b6478;font-size:12px}

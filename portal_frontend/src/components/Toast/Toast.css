@@ -1,0 +1,218 @@
+/* VIWANDA compact top-right SweetAlert2 notifications.
+ * Only the toast container is constrained; confirmation dialogs are untouched.
+ * The previous .swal2-top-end CSS left the full-viewport Swal container in
+ * place and allowed overly wide, tall error panels to dominate the right side.
+ */
+body .swal2-container.viwanda-swal-toast-container {
+  position: fixed !important;
+  top: 14px !important;
+  right: 14px !important;
+  bottom: auto !important;
+  left: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  width: min(326px, calc(100vw - 28px)) !important;
+  min-width: 0 !important;
+  max-width: calc(100vw - 28px) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  pointer-events: none;
+  z-index: 14000 !important;
+}
+
+body .swal2-container.viwanda-swal-toast-container .swal2-popup.viwanda-swal-toast {
+  box-sizing: border-box;
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 25px minmax(0, 1fr);
+  column-gap: 9px;
+  row-gap: 2px;
+  align-items: start;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  max-height: 150px;
+  margin: 0 !important;
+  padding: 11px 29px 11px 11px !important;
+  overflow: hidden;
+  border: 1px solid #e1e8f0;
+  border-left: 3px solid #1678c3;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 6px 19px rgba(15, 35, 63, .15);
+  color: #203550;
+  font-family: inherit;
+  text-align: left;
+  pointer-events: auto;
+}
+
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-success { border-left-color: #198754; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-warning { border-left-color: #cc9223; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error   { border-left-color: #d04450; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-info    { border-left-color: #1678c3; }
+
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon {
+  box-sizing: border-box;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 23px;
+  min-width: 23px;
+  height: 23px;
+  margin: 1px 0 0;
+  border-width: 2px;
+  font-size: 12.5px;
+}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-title {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 13.5px !important;
+  line-height: 1.3 !important;
+  font-weight: 700;
+  color: #203550;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-message,
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .swal2-html-container {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  width: auto !important;
+  max-width: 100%;
+  margin: 2px 0 0 !important;
+  padding: 0 !important;
+  font-size: 12.5px !important;
+  line-height: 1.4 !important;
+  color: #51647c;
+  text-align: left;
+  white-space: normal;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .swal2-close {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 24px;
+  height: 24px;
+  font-size: 18px;
+  line-height: 1;
+  border-radius: 4px;
+  color: #7d8ca1;
+}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .swal2-close:hover {
+  background: #f1f5f9;
+  color: #203550;
+}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-details {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: start;
+  border: 0;
+  background: none;
+  padding: 2px 0 0;
+  color: #1262aa;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-details:focus-visible {
+  outline: 2px solid #267de0;
+  outline-offset: 2px;
+}
+@media (max-width: 420px) {
+  body .swal2-container.viwanda-swal-toast-container {
+    top: 10px !important;
+    right: 10px !important;
+    width: min(300px, calc(100vw - 20px)) !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Toast icons (28 Oct 2026): SweetAlert's built-in success/error icons are drawn for ~80px and
+ * break when shrunk (cut tick / bent cross). Hide their inner parts and draw a crisp 23px SVG. */
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon{border:0!important;background:center/23px 23px no-repeat;animation:none!important;overflow:visible}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon > *{display:none!important}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon::before,
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon::after{display:none!important;content:none!important}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-success{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23e7f6ec' stroke='%23198754' stroke-width='1.6'/%3E%3Cpath d='M7 12.4l3.2 3.2L17 8.8' fill='none' stroke='%23198754' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-error{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23fdecee' stroke='%23d04450' stroke-width='1.6'/%3E%3Cpath d='M8.5 8.5l7 7M15.5 8.5l-7 7' fill='none' stroke='%23d04450' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E")}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-warning{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23fff6e0' stroke='%23cc9223' stroke-width='1.6'/%3E%3Cpath d='M12 6.8v6.4' stroke='%23cc9223' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='16.9' r='1.3' fill='%23cc9223'/%3E%3C/svg%3E")}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-info{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23e8f2fb' stroke='%231678c3' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='7.4' r='1.3' fill='%231678c3'/%3E%3Cpath d='M12 10.8v6.2' stroke='%231678c3' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E")}
+
+/* ── Toast look matched to the confirmation dialogs (styles/dialogs.css), 8 Nov 2026 ──
+ * Same colours, same tinted icon badges and glyphs, soft card + accent bar, time bar at the bottom. */
+body .swal2-container.viwanda-swal-toast-container { width: min(352px, calc(100vw - 28px)) !important; top: 16px !important; right: 16px !important; gap: 10px; }
+body .swal2-container.viwanda-swal-toast-container .swal2-popup.viwanda-swal-toast {
+  --t-accent: #0b5bd3; --t-tint: #e8f1fd;
+  grid-template-columns: 38px minmax(0, 1fr); column-gap: 12px; row-gap: 3px; max-height: 170px;
+  padding: 13px 38px 15px 14px !important; border: 0; border-radius: 14px;
+  box-shadow: 0 14px 34px rgba(6, 29, 67, .18), 0 0 0 1px rgba(10, 42, 92, .08);
+}
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-success { --t-accent: #168452; --t-tint: #e6f5ec; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-warning { --t-accent: #e0a020; --t-tint: #fff3df; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error   { --t-accent: #d23c48; --t-tint: #fdecee; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-info    { --t-accent: #0b5bd3; --t-tint: #e8f1fd; }
+
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon {
+  width: 38px !important; min-width: 38px; height: 38px !important; margin: 0 !important; border-radius: 11px !important;
+  background-color: var(--t-tint) !important; background-size: 21px 21px !important; grid-row: 1 / span 3; align-self: start; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-success { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23168452' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8.5'/%3E%3C/svg%3E"); }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-error { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d23c48' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E"); }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-warning { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c77f0a' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.3 4.2 2.6 17.6A2 2 0 0 0 4.3 20.6h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z'/%3E%3Cpath d='M12 9.5v4'/%3E%3Ccircle cx='12' cy='16.8' r='.6' fill='%23c77f0a'/%3E%3C/svg%3E"); }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-info { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b5bd3' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 10.5v7'/%3E%3Ccircle cx='12' cy='6.6' r='1' fill='%230b5bd3'/%3E%3C/svg%3E"); }
+
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-title { font-size: 14px !important; font-weight: 750; color: #0a2a5c; padding-top: 1px !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-message,
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .swal2-html-container { font-size: 13px !important; line-height: 1.45 !important; color: #5b6b82; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .swal2-close { top: 9px; right: 9px; width: 26px; height: 26px; border-radius: 8px; font-size: 20px; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-details {
+  margin-top: 7px; padding: 4px 11px; border-radius: 999px; background: var(--t-tint); color: var(--t-accent);
+  text-decoration: none; font-size: 12px; font-weight: 700; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-details:hover { filter: brightness(.96); }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-warning .viwanda-swal-toast-details { color: #9a6106; }
+/* time left before the notification closes */
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .swal2-timer-progress-bar-container { position: absolute; left: 0 !important; right: 0 !important; width: 100% !important; bottom: 0; height: 3px; border-radius: 0 0 14px 14px; overflow: hidden; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .swal2-timer-progress-bar { height: 3px; background: var(--t-accent); opacity: .7; }
+
+body[data-vw-theme="dark"] .swal2-container.viwanda-swal-toast-container .swal2-popup.viwanda-swal-toast { background: #1b2b44; box-shadow: 0 14px 34px rgba(0, 0, 0, .4), 0 0 0 1px #2a3d5c; }
+body[data-vw-theme="dark"] .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast .viwanda-swal-toast-title { color: #ebf2fc; }
+body[data-vw-theme="dark"] .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast :is(.viwanda-swal-toast-message, .swal2-html-container) { color: #b8c7dc; }
+/* Icons: solid colour circle with a white mark (option B, approved 8 Nov 2026) */
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon { background-color: transparent !important; background-size: 34px 34px !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-success { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23168452'/%3E%3Cpath d='M7 12.4l3.4 3.4L17.2 9' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-error { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23d23c48'/%3E%3Cpath d='M8.5 8.5l7 7M15.5 8.5l-7 7' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-warning { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23e0a020'/%3E%3Cpath d='M12 6.8v6.6' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='17' r='1.4' fill='%23fff'/%3E%3C/svg%3E") !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast > .swal2-icon.swal2-info { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%230b5bd3'/%3E%3Ccircle cx='12' cy='7.2' r='1.4' fill='%23fff'/%3E%3Cpath d='M12 10.8v6.4' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") !important; }
+/* Error toasts: solid red card (approved 8 Nov 2026) */
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error { background: #d23c48 !important; box-shadow: 0 14px 34px rgba(160, 30, 45, .35) !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error .viwanda-swal-toast-title { color: #fff !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error :is(.viwanda-swal-toast-message, .swal2-html-container) { color: rgba(255,255,255,.92) !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error > .swal2-icon.swal2-error { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23fff'/%3E%3Cpath d='M8.5 8.5l7 7M15.5 8.5l-7 7' stroke='%23d23c48' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error .swal2-close { color: rgba(255,255,255,.85) !important; } body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error .swal2-close:hover { background: rgba(255,255,255,.15) !important; color: #fff !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error .viwanda-swal-toast-details { background: rgba(255,255,255,.18) !important; color: #fff !important; }
+body .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error .swal2-timer-progress-bar { background: #fff !important; opacity: .6 !important; }
+body[data-vw-theme="dark"] .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error { background: #b8323e !important; }
+body[data-vw-theme="dark"] .swal2-container.viwanda-swal-toast-container .viwanda-swal-toast.swal2-icon-error > .swal2-icon { background-color: transparent !important; }

@@ -1,0 +1,403 @@
+.vp-profile-page {
+  display: grid;
+  gap: 16px;
+}
+
+.vp-profile-heading h1 {
+  margin: 4px 0 4px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #15355b;
+}
+
+.vp-profile-heading p {
+  margin: 0;
+  color: #6b7d93;
+  font-size: 14px;
+}
+
+.vp-profile-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7d93;
+  font-size: 13px;
+}
+
+.vp-profile-hero,
+.vp-card,
+.vp-profile-tabs {
+  background: #fff;
+  border: 1px solid #dce6f2;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(19, 62, 116, 0.06);
+}
+
+.vp-profile-hero {
+  padding: 18px;
+  display: grid;
+  gap: 16px;
+}
+
+.vp-profile-user-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.vp-profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e8f1ff;
+  color: #0c4ea2;
+  font-weight: 800;
+  font-size: 26px;
+  flex: none;
+}
+
+.vp-profile-user-info {
+  display: grid;
+  gap: 8px;
+  flex: 1;
+  min-width: 260px;
+}
+
+.vp-profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.vp-profile-name-row h2 {
+  margin: 0;
+  color: #142f57;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.vp-profile-meta {
+  display: grid;
+  gap: 8px;
+  color: #324e72;
+  font-size: 14px;
+}
+
+.vp-profile-meta > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vp-profile-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.vp-profile-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vp-profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.vp-profile-badge.active {
+  background: #ddf7e7;
+  color: #167b41;
+}
+
+.vp-profile-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.vp-stat-card {
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vp-stat-card strong {
+  display: block;
+  font-size: 24px;
+  color: #15355b;
+  line-height: 1.1;
+}
+
+.vp-stat-card span {
+  color: #60758f;
+  font-size: 13px;
+}
+
+.vp-stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.vp-stat-card.blue {
+  background: #edf5ff;
+}
+.vp-stat-card.blue .vp-stat-icon {
+  background: #d8e8ff;
+  color: #2168d8;
+}
+
+.vp-stat-card.purple {
+  background: #f3efff;
+}
+.vp-stat-card.purple .vp-stat-icon {
+  background: #e4dcff;
+  color: #6a4dd8;
+}
+
+.vp-stat-card.green {
+  background: #edf9f2;
+}
+.vp-stat-card.green .vp-stat-icon {
+  background: #d9f1e3;
+  color: #189456;
+}
+
+.vp-stat-card.orange {
+  background: #fff5e9;
+}
+.vp-stat-card.orange .vp-stat-icon {
+  background: #ffe7c7;
+  color: #e38a18;
+}
+
+.vp-profile-tabs {
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.vp-profile-tabs button {
+  border: 0;
+  background: transparent;
+  padding: 14px 16px;
+  color: #55708f;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 3px solid transparent;
+}
+
+.vp-profile-tabs button.active {
+  color: #1268d6;
+  border-bottom-color: #1268d6;
+}
+
+.vp-profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+  gap: 16px;
+}
+
+.vp-card {
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.vp-card-large {
+  min-width: 0;
+}
+
+.vp-card-title,
+.vp-card-header-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vp-card-title {
+  justify-content: flex-start;
+  color: #163a63;
+}
+
+.vp-card-title h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.vp-details-table {
+  display: grid;
+  border-top: 1px solid #e6eef7;
+}
+
+.vp-detail-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid #edf2f8;
+}
+
+.vp-detail-row span {
+  color: #5f7390;
+  font-size: 13px;
+}
+
+.vp-detail-row strong {
+  color: #16365e;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.vp-permission-search {
+  max-width: 280px;
+}
+
+.vp-chip-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-height: 290px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.vp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #edf4ff;
+  color: #24508e;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.vp-chip.small {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.vp-activity-list {
+  display: grid;
+  gap: 14px;
+}
+
+.vp-activity-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #1f446f;
+}
+
+.vp-activity-row > div {
+  display: grid;
+  gap: 3px;
+}
+
+.vp-activity-row strong {
+  font-size: 14px;
+}
+
+.vp-activity-row span,
+.vp-activity-row small {
+  color: #67809c;
+  font-size: 13px;
+}
+
+.vp-role-list,
+.vp-menu-list {
+  display: grid;
+  gap: 12px;
+}
+
+.vp-role-card,
+.vp-menu-item {
+  border: 1px solid #e3ebf5;
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.vp-role-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vp-role-card strong,
+.vp-menu-item strong {
+  display: block;
+  color: #173862;
+}
+
+.vp-role-card span,
+.vp-menu-item span {
+  color: #69829f;
+  font-size: 13px;
+}
+
+.vp-menu-children {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1100px) {
+  .vp-profile-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vp-profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .vp-profile-actions {
+    justify-content: flex-start;
+  }
+
+  .vp-profile-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .vp-detail-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .vp-card-header-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vp-permission-search {
+    max-width: none;
+  }
+}

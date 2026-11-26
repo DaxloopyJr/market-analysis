@@ -1,0 +1,70 @@
+/* Printable M&E report (screen preview = A4 sheets; print = browser "Save as PDF"). */
+.mer-page{--mer-navy:#0a2a5c;display:flex;flex-direction:column;align-items:center;gap:18px;padding-bottom:20px}
+.mer-toolbar{position:sticky;top:8px;z-index:5;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(6px);border:1px solid #e3e9f2;border-radius:24px;padding:8px 12px;box-shadow:0 8px 24px rgba(10,42,92,.08);max-width:100%}
+.mer-toolbar .mer-print{background:#0b5bd3;color:#fff;border-color:#0b5bd3}
+.mer-toolbar .mer-on{background:#fff4dc;border-color:#f0d58c}
+.mer-lang{display:flex;border:1px solid #e3e9f2;border-radius:20px;overflow:hidden;height:40px}
+.mer-lang button{border:0;background:#fff;padding:0 14px;font-weight:600;font-size:13px;color:#5b6478}
+.mer-lang button.on{background:var(--mer-navy);color:#fff}
+.mer-hint{margin:0;font-size:12.5px;color:#7a4b00;background:#fffaeb;border:1px solid #f6e5b8;border-radius:10px;padding:8px 12px;max-width:794px}
+.me-doc{display:flex;flex-direction:column;gap:18px;align-items:center;width:100%}
+.mer-sheet{width:794px;max-width:100%;min-height:1123px;background:#fff;color:#111;box-shadow:0 10px 30px rgba(10,42,92,.16);border-radius:4px;
+  padding:64px 68px 56px;font-family:'Times New Roman',Georgia,serif;font-size:13.5px;line-height:1.55}
+.mer-sheet.mer-msg{min-height:0;font-family:inherit;color:#5b6478;text-align:center}
+.mer-sheet h1{font-size:21px;color:var(--mer-navy);margin:26px 0 6px;line-height:1.3}
+.mer-sheet h2{font-size:16px;color:var(--mer-navy);margin:18px 0 8px}
+.mer-sheet h2:first-child{margin-top:0}
+.mer-sheet h3{font-size:14px;color:var(--mer-navy);margin:14px 0 6px}
+.mer-sheet p{margin:0 0 9px;text-align:justify}
+.mer-sheet ul{margin:0 0 8px;padding-left:20px}.mer-sheet li{margin-bottom:4px}
+.mer-cover{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.mer-cover h4{margin:2px 0;font-size:14px;letter-spacing:.05em}
+.mer-emblem{width:110px;height:110px;object-fit:contain;margin-bottom:12px}
+.mer-flag{width:100%;height:8px;margin:20px 0;background:linear-gradient(90deg,#1eb53a 0 35%,#fcd116 35% 40%,#000 40% 60%,#fcd116 60% 65%,#00a3dd 65%)}
+.mer-logo{width:96px;height:96px;object-fit:contain;border-radius:50%}
+.mer-initials{display:grid;place-items:center;background:var(--mer-navy);color:#fff;font:800 22px Arial,sans-serif}
+.mer-org{font-size:15px!important;margin:16px 0 0!important;letter-spacing:.03em;color:#111!important}
+.mer-period{font-size:15px;text-align:center!important}
+.mer-meta{margin-top:60px!important;color:#555;font-size:12px;text-align:center!important}
+.mer-cap{font-style:italic;font-size:12px;margin:10px 0 4px!important}
+.mer-small{font-size:11.5px;color:#555}
+.mer-table{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:8px}
+.mer-table th,.mer-table td{border:1px solid #9aa4b6;padding:3px 6px;vertical-align:top}
+.mer-table th{background:#dfe6f0;text-align:center;font-weight:700}
+.mer-table td.n{text-align:right;font-variant-numeric:tabular-nums}
+.mer-table.mer-narrow{width:auto;min-width:60%}
+.mer-total td{font-weight:700;background:#f1f4f9}
+.mer-tone.is-green{background:#d9f2e2}.mer-tone.is-amber{background:#fff1c9}.mer-tone.is-red{background:#fbd9d6}
+.mer-neg{color:#b42318}
+.mer-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.mer-src{color:#666;font-size:11px}
+.mer-fig{display:flex;align-items:flex-end;gap:14px;height:170px;border-left:1px solid #888;border-bottom:1px solid #888;padding:20px 14px 0;margin:4px 0 26px}
+.mer-fig-col{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
+.mer-fig-col i{display:block;width:70%;min-height:2px}
+.mer-fig-val{font-size:10.5px;margin-bottom:2px}
+.mer-fig-lbl{position:absolute;bottom:-20px;font-size:11px}
+.mer-figures{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:6px 0 10px}
+.mer-figures div{border:1px solid #c9d2df;padding:8px}.mer-figures small{display:block;font-size:11px;color:#555}.mer-figures b{font-size:14px;color:var(--mer-navy)}
+.mer-pre{white-space:pre-line}
+.mer-edit{width:100%;border:2px dashed #e0a100;border-radius:6px;padding:8px;font:inherit;background:#fffdf5;margin-bottom:8px;resize:vertical}
+.mer-rf{font-size:10px}.mer-rf td,.mer-rf th{padding:2px 4px}
+@media screen and (max-width:860px){.mer-sheet{padding:28px 20px;min-height:0}.mer-figures{grid-template-columns:repeat(2,1fr)}}
+
+@page{size:A4;margin:14mm 14mm 16mm}
+@media print{
+  body.me-print-mode .dashboard-shell>:not(.dashboard-workspace),
+  body.me-print-mode .dashboard-workspace>:not(.dashboard-main-column),
+  body.me-print-mode .dashboard-main-column>:not(main),
+  body.me-print-mode .mer-toolbar,body.me-print-mode .mer-hint{display:none!important}
+  body.me-print-mode,body.me-print-mode .dashboard-shell,body.me-print-mode .dashboard-workspace,body.me-print-mode .dashboard-main-column,body.me-print-mode main{
+    background:#fff!important;margin:0!important;padding:0!important;width:auto!important;min-height:0!important;height:auto!important;overflow:visible!important;display:block!important;box-shadow:none!important}
+  body.me-print-mode .mer-page{display:block;padding:0}
+  body.me-print-mode .me-doc{display:block}
+  body.me-print-mode .mer-sheet{width:auto;min-height:0;box-shadow:none;border-radius:0;padding:0;break-after:page;page-break-after:always}
+  body.me-print-mode .mer-sheet:last-child{break-after:auto;page-break-after:auto}
+  body.me-print-mode .mer-cover{min-height:250mm}
+  body.me-print-mode .mer-table tr{break-inside:avoid}
+  body.me-print-mode .mer-sheet h2,body.me-print-mode .mer-sheet h3{break-after:avoid}
+  body.me-print-mode *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

@@ -1,0 +1,44 @@
+/**
+ * FILE: src/pages/Admin/delegations.css
+ * Delegations-specific layout only. Shared bordered Admin table CSS is in
+ * src/styles/admin-table-borders.css, loaded once by main.jsx.
+ */
+.vim-delegations .vim-dg-filters{display:grid;grid-template-columns:minmax(200px,2.5fr) repeat(3,minmax(125px,1fr)) auto;gap:10px;align-items:center;padding:15px}
+.vim-delegations .vim-dg-filters .form-select{font-size:13px;min-height:38px}
+.vim-delegations .vim-dg-filters .btn{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:13px;min-height:38px}
+.vim-dg-table{min-width:950px}
+.vim-dg-table small{display:block;margin-top:3px;font-size:12.5px;color:#5f7692}
+.vim-dg-state{display:inline-block;padding:4px 10px;border-radius:4px;font-size:13px;background:#e8edf2;color:#43556d;text-transform:capitalize;font-weight:600}
+.vim-dg-state.active{background:#d5f7df;color:#0d8434}.vim-dg-state.revoked,.vim-dg-state.expired{background:#ffe0e3;color:#b82834}
+.vim-dg-danger{color:#dc3545!important;background:#fff1f2!important}
+.vim-dg-pager{padding:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#274b7e;font-size:13px}
+.vim-dg-pager>div{display:flex;gap:7px;align-items:center}
+.vim-dg-pager button,.vim-dg-current-page{border:1px solid #d7e5f6;border-radius:4px;min-width:32px;min-height:32px;display:grid;place-items:center;background:#fff;color:#1359b5}
+.vim-dg-current-page{background:#0964ea;color:#fff}
+.vim-dg-modal{max-width:min(96vw,790px)}
+.vim-dg-steps{display:flex;justify-content:space-around;gap:4px;border-bottom:1px solid #e0eaf8;padding:14px}
+.vim-dg-steps button{background:transparent;border:0;color:#52729a;font-size:12.5px;padding:7px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.vim-dg-steps button span{height:23px;width:23px;border-radius:50%;border:1px solid #b9cfe9;display:grid;place-items:center}
+.vim-dg-steps button.selected,.vim-dg-steps button.completed{color:#0868ec;font-weight:700}
+.vim-dg-steps button.selected span,.vim-dg-steps button.completed span{background:#0868ec;color:#fff;border-color:#0868ec}
+.vim-dg-modal-body{padding:17px 20px;display:grid;gap:14px;font-size:13px;max-height:min(63vh,650px);overflow-y:auto}
+.vim-dg-modal-body label{display:grid;gap:6px;font-weight:650;color:#122f59}
+.vim-dg-modal-body label small{font-weight:400;color:#586d85}
+.vim-dg-modal-body .form-control,.vim-dg-modal-body .form-select{font-size:13px;min-height:35px}
+.vim-dg-fields{display:grid;gap:13px}
+.vim-dg-field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vim-dg-fields h3{font-size:14px;background:#eef5ff;padding:11px;margin:0}
+.vim-dg-permissions{border:1px solid #d8e5f5;border-radius:5px;max-height:240px;overflow-y:auto;padding:12px;display:grid;gap:9px}
+.vim-dg-permission-group{display:grid;gap:6px}.vim-dg-permission-group label{margin-left:20px;font-weight:400;display:flex;align-items:center;gap:8px}
+.vim-dg-modal .vim-dialog-footer{display:flex;justify-content:flex-end;gap:12px;padding:14px 20px;border-top:1px solid #e5ecf5}
+.vim-dg-modal .vim-dialog-footer .btn{min-width:115px}
+.vim-dg-details{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:20px}
+.vim-dg-details section{border:1px solid #d9e5f4;border-radius:5px;padding:12px;min-width:0}
+.vim-dg-details h3{font-size:13.5px;font-weight:750;color:#1350a2}
+.vim-dg-details section>div{display:grid;grid-template-columns:120px 1fr;gap:9px;font-size:13px;margin-top:9px}
+.vim-dg-details span{color:#5d6e84}.vim-dg-details strong{color:#133a72;overflow-wrap:anywhere}
+.vim-dg-warning{background:#ffe7ea;color:#bd1b2b;padding:14px;border:1px solid #ffbdc5;display:flex;gap:10px;border-radius:5px}
+.vim-dg-warning p{margin:5px 0 0}.vim-dg-revoke-info{display:grid;grid-template-columns:125px 1fr;gap:9px}
+.vim-dg-revoke-info dt{color:#566c88}.vim-dg-revoke-info dd{color:#153a70;font-weight:650;margin:0}
+@media(max-width:1200px){.vim-delegations .vim-dg-filters{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.vim-delegations .vim-dg-filters{grid-template-columns:1fr}.vim-dg-field-grid,.vim-dg-details{grid-template-columns:1fr}.vim-dg-steps{overflow-x:auto;justify-content:flex-start}}

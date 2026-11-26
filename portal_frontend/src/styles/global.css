@@ -1,0 +1,53 @@
+:root {
+  font-family:Inter,'Segoe UI',Arial,sans-serif;
+  color:#0d2048;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+}
+
+button,input,select {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+button:focus-visible,input:focus-visible,select:focus-visible {
+  outline:3px solid #77abf5;
+  outline-offset:3px;
+}
+
+.wave {
+  position:absolute;
+  inset:0;
+  clip-path:polygon(0% 12%,15% 25%,36% 58%,63% 87%,100% 100%,0 100%);
+}
+
+.wave.green {
+  background:#008e48;
+  transform:translateY(-18px);
+}
+
+.wave.yellow {
+  background:#ffdc00;
+  transform:translateY(4px);
+}
+
+.wave.blue {
+  background:linear-gradient(110deg,#0087ed,#0050a6);
+  transform:translateY(24px);
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}

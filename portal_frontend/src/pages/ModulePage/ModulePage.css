@@ -1,0 +1,18 @@
+/* REV19 — role previews share the same header/panel primitives. */
+.viwanda-module-preview .viwanda-actions-list {
+  display:flex;flex-direction:column;gap:11px;padding:0 20px 20px;
+}
+.viwanda-module-preview .viwanda-action-row {
+  display:flex;align-items:center;gap:12px;padding:14px;
+  border:1px solid #e6edf5;border-radius:9px;background:#f9fbfe;
+}
+.viwanda-module-preview .viwanda-action-row svg {color:#218a62;flex:none;}
+.viwanda-module-preview .viwanda-action-row strong {color:#263e58;font-size:14px;font-weight:650;}
+.viwanda-module-preview .viwanda-module-grid {padding:0 20px 20px;}
+.viwanda-module-preview .viwanda-module-tile {
+  min-height:62px;display:flex;align-items:center;justify-content:space-between;
+  gap:11px;border:1px solid #e2eaf3;border-radius:9px;padding:14px 16px;
+  text-decoration:none;background:#fcfdff;color:#29435f;font-size:14px;
+}
+.viwanda-module-preview .viwanda-module-tile strong{font-weight:650;}
+.viwanda-module-preview .viwanda-module-tile:hover{color:#1458b1;border-color:#accaf0;background:#f2f7ff;}

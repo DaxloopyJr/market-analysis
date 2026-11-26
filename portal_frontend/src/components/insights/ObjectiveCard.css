@@ -1,0 +1,12 @@
+.obj-card{display:flex;gap:12px;align-items:center;margin-top:12px;background:linear-gradient(90deg,#f1f7ff,#fff);border:1px solid #d6e6fb;border-radius:16px;padding:12px 14px}
+.obj-card-code{display:inline-grid;place-items:center;min-width:42px;height:42px;padding:0 8px;border-radius:21px;background:#0a2a5c;color:#fff;font-weight:800;font-size:15px;flex:none}
+.obj-card-text{min-width:0;flex:1}
+.obj-card-text small{display:block;font-size:11.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#0b5bd3}
+.obj-card-text b{display:block;font-size:14px;color:#0a2a5c;line-height:1.35;white-space:pre-line}
+.obj-card-text span{display:block;font-size:12px;color:#5b6478;margin-top:2px}
+.obj-card-state{flex:none;font-size:11.5px;font-weight:700;border-radius:12px;padding:4px 10px;background:#fff6d6;color:#a86a00}
+.obj-card-state.is-locked{background:#e5f6ea;color:#0f7a2f}
+@media(max-width:640px){.obj-card{flex-wrap:wrap}.obj-card-state{margin-left:54px}}
+body[data-vw-theme="dark"] .obj-card{background:#16253b;border-color:#2b3d58}
+body[data-vw-theme="dark"] .obj-card-text b{color:#e6edf7}
+.mu-head + .obj-card,.obj-card{margin:0 0 12px}

@@ -1,0 +1,39 @@
+/* Audit Logs (approved 28 Oct 2026) */
+.au-date input{border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;padding:0!important;font-size:14px;font-weight:600;color:var(--mu-navy);min-width:128px;font:inherit;font-weight:600}
+.au-date:focus-within{border-color:#0b5bd3!important;box-shadow:0 0 0 3px rgba(11,91,211,.12)!important}
+.au-who{display:flex;gap:9px;align-items:center;min-width:0}
+.au-who b{display:block;font-size:13px;color:var(--mu-ink)}.au-who small{display:block;font-size:11.5px;color:var(--mu-muted)}
+.au-av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:10.5px;font-weight:800;color:#fff;background:var(--mu-navy);flex:none}
+.au-av.sys{background:#eef1f6;color:var(--mu-muted)}
+.au-mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:var(--mu-muted);word-break:break-all}
+.au-hint{font-size:12px;color:var(--mu-amber-ink);margin:-4px 0 8px}
+.au-bars div{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--mu-line);font-size:12.5px}
+.au-bars div:last-child{border-bottom:0}.au-bars span{flex:1;min-width:0}
+.au-bars em{width:100px;height:7px;background:#eef1f6;border-radius:9px;overflow:hidden;flex:none}.au-bars u{display:block;height:100%;border-radius:9px;text-decoration:none}
+.au-bars b{min-width:22px;text-align:right;color:var(--mu-navy)}
+.au-tone-blue{background:#0b5bd3}.au-tone-green{background:#0f7a2f}.au-tone-amber{background:#a86a00}.au-tone-red{background:#b42318}.au-tone-violet{background:#5b4bd6}.au-tone-grey{background:#9aa4b6}
+.au-overlay{position:fixed;inset:0;background:rgba(6,29,67,.45);display:flex;justify-content:flex-end;z-index:1080;animation:au-fade .2s ease}
+.au-drawer{width:min(520px,100%);height:100%;background:#fff;box-shadow:-12px 0 30px rgba(10,42,92,.2);padding:18px 20px;overflow:auto;animation:au-slide .25s ease;color:var(--mu-ink,#14213d)}
+.au-drawer-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.au-drawer-head h2{margin:0;font-size:17px;color:#0a2a5c;font-weight:800}.au-drawer-head p{margin:2px 0 0;font-size:12.5px;color:#5b6478;display:flex;gap:4px;align-items:baseline;flex-wrap:wrap}
+.au-drawer-head .mu-date small{display:inline;margin-left:4px}
+.au-close{margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid #e6eaf2;background:#fff;display:grid;place-items:center;flex:none}
+.au-block{border:1px solid #e6eaf2;border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.au-block h3{margin:0 0 8px;font-size:13px;color:#0a2a5c;font-weight:700}
+.au-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.au-chip{font-size:11.5px;border:1px solid #e6eaf2;border-radius:20px;padding:2px 9px;background:#f8fafd}
+.au-dl{display:grid;grid-template-columns:110px 1fr;gap:6px 10px;font-size:12.5px;margin:0}.au-dl dt{color:#5b6478;font-weight:400}.au-dl dd{margin:0}
+.au-reason{background:#fbfaf3;border:1px solid #efe6c4;border-radius:10px;padding:10px 12px;font-size:12.5px;white-space:pre-wrap}
+.au-diff{width:100%;border-collapse:collapse;font-size:12.5px}.au-diff th{background:#f5f8fc;color:#5b6478;font-weight:600;text-align:left;padding:7px 8px}
+.au-diff td{padding:7px 8px;border-top:1px solid #e6eaf2;word-break:break-word}.au-old{color:#b42318;background:#fff5f4}.au-new{color:#0f7a2f;background:#f3fbf5}
+.au-raw-toggle{border:0;background:none;color:#0b5bd3;font-size:12px;padding:8px 0 0;font-weight:600}
+.au-raw{background:#0f1b33;color:#dbe7ff;border-radius:10px;padding:10px;font-size:11px;max-height:280px;overflow:auto;margin:8px 0 0}
+@keyframes au-fade{from{opacity:0}to{opacity:1}}@keyframes au-slide{from{transform:translateX(40px)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){.au-overlay,.au-drawer{animation:none}}
+body[data-vw-theme="dark"] .au-drawer{background:#16253b;color:#e6edf7}
+.audit-page .mu-table .au-who b,.audit-page .mu-table .au-who small,.audit-page .mu-table td.au-mono{white-space:nowrap}
+.audit-page .mu-head .mu-select select{max-width:190px}
+.audit-page .mu-table .au-mono{white-space:nowrap;word-break:normal}
+.audit-page .au-export{border-color:#0f7a2f;color:#0f7a2f}.audit-page .au-export:disabled{opacity:.55;cursor:not-allowed}
+
+.au-org{display:flex;align-items:center;gap:8px}

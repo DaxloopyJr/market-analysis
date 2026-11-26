@@ -1,0 +1,31 @@
+# Old backup
+/portal_backend_old/
+
+# Laravel
+/portal_backend/.env
+/portal_backend/.env.*
+!/portal_backend/.env.example
+/portal_backend/vendor/
+/portal_backend/node_modules/
+
+# React
+/portal_frontend/node_modules/
+/portal_frontend/dist/
+/portal_frontend/.env
+/portal_frontend/.env.*
+!/portal_frontend/.env.example
+
+# Logs
+*.log
+
+# Project documents and files
+/Protective_Vulnerability_Analysis_Penetration_Testing_Matrix.pdf
+/System_Structure_Matrix_Information_Sharing_Portal (1).pdf
+/Task_Based_Distribution_Matrix_Developers.pdf
+/Viwanda_Portal_SDD_v01.pdf
+/sw-1640950814-Final Institutional Data Dictionary Technical Standards and Guidelines-EDITED (1).pdf    
+/gitignore
+/tmp
+/CBE Ghala la Data.docx
+/FCC_Data_Requirements_for_Data_Warehouse.docx
+/TANTRADE DATA WAREHOUSE.docx

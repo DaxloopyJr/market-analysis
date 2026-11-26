@@ -1,0 +1,178 @@
+/* HOD APPROVAL UI • scoped to .hod-workspace, does not affect Dataset/DataEntry styles. */
+.hod-workspace {color:#153052;font-size:13.5px;}
+.hod-workspace .hod-breadcrumb {font-size:13px;color:#596e85;margin-bottom:10px;}
+.hod-workspace .hod-breadcrumb a {color:#0b61d6;text-decoration:none;}
+.hod-workspace .hod-page-title {display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+.hod-workspace .hod-page-title h1 {font-size:clamp(22px,2.3vw,29px);margin:0 0 5px;font-weight:800;color:#092646;}
+.hod-workspace .hod-page-title p {color:#647892;margin:0;font-size:13.5px;}
+.hod-workspace .hod-summary-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-bottom:18px;}
+.hod-workspace .hod-stat {background:white;border:1px solid #e0e9f4;border-radius:10px;padding:17px;display:grid;grid-template-columns:32px 1fr;column-gap:10px;row-gap:3px;align-items:center;box-shadow:0 2px 7px #182f5010;}
+.hod-workspace .hod-stat>svg {color:#0864df;grid-row:span 2;}
+.hod-workspace .hod-stat small {color:#596e88;font-size:13px;}
+.hod-workspace .hod-stat strong {font-size:25px;color:#0d294d;}
+.hod-workspace .hod-surface {border:1px solid #e1eaf5;background:#fff;border-radius:11px;box-shadow:0 3px 16px #0b254309;margin-bottom:14px;overflow:hidden;}
+.hod-workspace .hod-surface-head {display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px;border-bottom:1px solid #ebf0f7;}
+.hod-workspace .hod-surface-head h2 {font-size:16px;font-weight:760;margin:0;color:#152d4f;display:flex;align-items:center;gap:9px;}
+.hod-workspace .hod-surface-head p {margin:5px 0 0;color:#596e85;font-size:13px;}
+.hod-workspace .hod-scope {padding:6px 10px;border-radius:22px;background:#e8f2ff;color:#075ac1;font-size:12.5px;white-space:nowrap;font-weight:700;}
+.hod-workspace .hod-filter-row {display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 18px;}
+.hod-workspace .hod-search {border:1px solid #dbe5f2;border-radius:8px;display:flex;gap:8px;align-items:center;padding:9px 12px;color:#576e85;flex:1;min-width:210px;}
+.hod-workspace .hod-search input {width:100%;border:0;outline:0;background:transparent;min-width:0;font-size:13.5px;}
+.hod-workspace .hod-filter-row select {max-width:200px;min-height:40px;}
+.hod-workspace .hod-placeholder {padding:25px 19px;text-align:center;color:#596c82;line-height:1.6;}
+.hod-workspace .hod-table {margin:0;font-size:13px;}
+.hod-workspace .hod-table thead th {background:#f2f6fb;color:#56708c;font-weight:750;border-bottom:1px solid #e1e9f3;padding:12px;white-space:nowrap;}
+.hod-workspace .hod-table tbody td {padding:13px 12px;border-color:#edf2f8;vertical-align:middle;color:#29425e;}
+.hod-workspace .hod-table td small {display:block;margin-top:4px;color:#5e6e83;}
+.hod-workspace .hod-status {display:inline-block;border-radius:18px;padding:5px 10px;background:#fff1d5;color:#996400;font-size:12.5px;font-weight:700;vertical-align:middle;}
+.hod-workspace .hod-btn-primary {display:inline-flex;align-items:center;justify-content:center;gap:7px;background:#0860dc;color:white;border:1px solid #0860dc;border-radius:7px;font-size:13px;font-weight:700;padding:8px 13px;text-decoration:none;}
+.hod-workspace .hod-btn-primary:hover {background:#084eb6;color:#fff;}
+.hod-workspace .hod-btn-light {display:inline-flex;align-items:center;gap:7px;border:1px solid #d8e3ef;border-radius:7px;background:white;color:#235073;font-size:13px;padding:8px 12px;}
+.hod-workspace .hod-btn-danger {display:inline-flex;align-items:center;gap:7px;border:1px solid #f4c8d0;border-radius:7px;background:#fff0f2;color:#c02f42;font-size:13px;font-weight:700;padding:8px 12px;}
+.hod-workspace button:disabled {cursor:not-allowed;opacity:.53;}
+.hod-workspace .hod-review-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,265px);gap:14px;align-items:start;}
+.hod-workspace .hod-review-primary,.hod-workspace .hod-review-secondary {min-width:0;}
+.hod-workspace .hod-metadata {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:17px;}
+.hod-workspace .hod-metadata>div {display:flex;flex-direction:column;gap:5px;min-width:0;}
+.hod-workspace .hod-metadata small {color:#596e85;}
+.hod-workspace .hod-metadata strong {font-weight:700;word-break:break-word;}
+.hod-workspace .hod-indicators {padding:13px;display:grid;gap:10px;}
+.hod-workspace .hod-indicator {border:1px solid #dfe8f2;border-radius:9px;overflow:hidden;}
+.hod-workspace .hod-indicator-heading {width:100%;background:#f5f8fd;border:0;display:flex;align-items:center;gap:10px;text-align:left;padding:12px;color:#183555;}
+.hod-workspace .hod-index {display:grid;place-items:center;width:28px;height:28px;border-radius:7px;background:#e2edff;color:#0960d3;font-weight:800;flex-shrink:0;}
+.hod-workspace .hod-indicator-label {display:grid;gap:3px;flex:1;min-width:0;}
+.hod-workspace .hod-indicator-label strong {font-size:13.5px;}
+.hod-workspace .hod-indicator-label small {font-size:12.5px;color:#596f85;overflow-wrap:anywhere;}
+.hod-workspace .hod-small-tag {border-radius:6px;background:#e5f1ff;color:#0d5bc0;padding:5px 8px;font-size:11.5px;white-space:nowrap;}
+.hod-workspace .hod-small-tag.good {background:#dff7e8;color:#087644;}
+.hod-workspace .hod-small-tag.bad {background:#ffe4e7;color:#b12b3a;}
+.hod-workspace .hod-indicator-body {padding:16px;}
+.hod-workspace .hod-total-label {display:flex;align-items:center;gap:15px;font-weight:700;color:#16406c;margin-bottom:14px;}
+.hod-workspace .hod-total-label input {max-width:245px;}
+.hod-workspace .hod-category-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0;}
+.hod-workspace .hod-category {border:1px solid #e1eaf3;border-radius:8px;padding:12px;min-width:0;}
+.hod-workspace .hod-category-head {display:flex;justify-content:space-between;align-items:center;gap:5px;margin-bottom:10px;}
+.hod-workspace .hod-category-head strong {font-size:13px;}
+.hod-workspace .hod-option {display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:13px;padding:5px 0;border-bottom:1px solid #edf2f8;}
+.hod-workspace .hod-option input {max-width:110px;}
+.hod-workspace .hod-field-error {color:#bd2b3c;background:#fff1f3;padding:8px;border-radius:6px;margin-top:9px;}
+.hod-workspace .hod-field-ok {color:#067b49;margin-top:10px;display:flex;align-items:center;gap:5px;font-size:12.5px;}
+.hod-workspace .hod-remarks-label {font-weight:700;font-size:13px;color:#274a6e;display:block;margin-top:14px;}
+.hod-workspace .hod-remarks-label textarea {margin-top:7px;font-weight:400;}
+.hod-workspace .hod-review-actions {display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #edf1f6;padding:13px 16px;}
+.hod-workspace .hod-unsaved {color:#89650e;font-size:12.5px;}
+.hod-workspace .hod-unsaved small {display:block;color:#5c6d81;margin-top:4px;}
+.hod-workspace .hod-feedback>label {display:block;font-weight:700;margin:15px 18px 0;}
+.hod-workspace .hod-feedback textarea {margin-top:7px;font-weight:400;}
+.hod-workspace .hod-feedback-note {color:#5c6d82;font-size:12.5px;padding:8px 18px 13px;}
+.hod-workspace .hod-feedback .alert {margin-left:18px;margin-right:18px;display:flex;align-items:center;gap:8px;}
+.hod-workspace .hod-bottom-actions {display:flex;justify-content:flex-end;gap:10px;padding:14px 18px;border-top:1px solid #edf1f6;flex-wrap:wrap;}
+.hod-workspace .hod-side-panel dl {padding:16px;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 8px;}
+.hod-workspace .hod-side-panel dt {font-weight:500;color:#5c6e82;}
+.hod-workspace .hod-side-panel dd {font-weight:700;margin:0;text-align:right;overflow-wrap:anywhere;}
+.hod-workspace .hod-history {margin:0;padding:16px 17px 16px 32px;}
+.hod-workspace .hod-history li {padding:0 0 13px 8px;border-left:2px solid #a7c7f4;line-height:1.4;}
+.hod-workspace .hod-history li strong,.hod-workspace .hod-history li small,.hod-workspace .hod-history li span {display:block;}
+.hod-workspace .hod-history li small {color:#5b6d80;margin:5px 0;}
+.hod-workspace .hod-history li span {color:#5f7690;}
+@media(max-width:1060px){.hod-workspace .hod-review-layout {grid-template-columns:minmax(0,1fr);} .hod-workspace .hod-review-secondary {display:grid;grid-template-columns:1fr 1fr;gap:12px;}}
+@media(max-width:720px){.hod-workspace .hod-summary-grid {gap:7px;} .hod-workspace .hod-stat{padding:12px;display:block;} .hod-workspace .hod-stat strong{display:block;} .hod-workspace .hod-category-grid,.hod-workspace .hod-review-secondary {grid-template-columns:1fr;} .hod-workspace .hod-metadata{grid-template-columns:1fr;} .hod-workspace .hod-total-label{display:block;} .hod-workspace .hod-total-label input{margin-top:8px;} }
+/* 23 Oct 2026: approved HOD dashboard/review reference. Scoped only to HOD. */
+.hod-workspace .hod-inbox-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:20px}
+.hod-workspace .hod-inbox-stat{background:#fff;border:1px solid #e3eaf4;border-radius:10px;display:flex;align-items:center;gap:14px;padding:17px;min-width:0}
+.hod-workspace .hod-inbox-stat>div{min-width:0;display:flex;flex-direction:column;gap:3px}
+.hod-workspace .hod-inbox-stat strong{font-size:25px;line-height:1.1;color:#102c4f}
+.hod-workspace .hod-inbox-stat span:not(.hod-icon){font-size:13px;color:#1b3557}
+.hod-workspace .hod-inbox-stat small{font-size:12.5px;color:#5a6e85}
+.hod-workspace .hod-icon{border-radius:13px;width:44px;height:44px;display:grid;place-items:center;flex-shrink:0}
+.hod-workspace .hod-icon svg{width:21px;height:21px}
+.hod-workspace .hod-icon.blue{background:#e6f1ff;color:#0860df}.hod-workspace .hod-icon.green{background:#e2f7ed;color:#079759}.hod-workspace .hod-icon.orange{background:#fff0d4;color:#e99d03}.hod-workspace .hod-icon.red{background:#ffe6e8;color:#e64353}
+.hod-workspace .hod-inbox-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:14px;align-items:start}
+.hod-workspace .hod-inbox-table{min-width:0}.hod-workspace .hod-inbox-heading h2{font-size:18px}
+.hod-workspace .hod-inbox-aside{min-width:0}.hod-workspace .hod-inbox-table .hod-filter-row{padding:14px;gap:8px;flex-wrap:nowrap}
+.hod-workspace .hod-inbox-table .hod-search{min-width:140px}
+.hod-workspace .hod-inbox-table .hod-filter-row select{max-width:145px}
+.hod-workspace .hod-table td,.hod-workspace .hod-table th{font-size:12.5px;padding:11px 8px}
+.hod-workspace .hod-table tbody tr{cursor:pointer}
+.hod-workspace .hod-table tbody .hod-selected-row td{background:#eef5ff}
+.hod-workspace .hod-status-reviewed{background:#dff7ea;color:#0b7847}
+.hod-workspace .hod-inbox-footer{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 14px;color:#5b6e84;font-size:12.5px;border-top:1px solid #e7edf4}
+.hod-workspace .hod-inbox-footer>div{display:flex;gap:6px;align-items:center}
+.hod-workspace .hod-inbox-footer button{border:1px solid #dce6ef;background:#fff;color:#24506d;border-radius:6px;padding:6px 10px}
+.hod-workspace .hod-inbox-footer button:disabled{opacity:.35}
+.hod-workspace .hod-inbox-footer strong{background:#075fe5;color:#fff;padding:7px 11px;border-radius:6px}
+.hod-workspace .hod-inbox-action-links{display:grid;gap:9px;padding:14px}
+.hod-workspace .hod-inbox-action-links .btn{width:100%}
+.hod-workspace .hod-inbox-action-links span{font-size:12.5px;color:#5a6d82;line-height:1.5}
+.hod-workspace .hod-preview-history{padding:14px 18px;display:grid;gap:5px}
+.hod-workspace .hod-preview-history strong{font-size:13px;color:#193c66}
+.hod-workspace .hod-preview-history small{color:#586d84;margin-bottom:7px}
+.hod-workspace .hod-review-layout{grid-template-columns:minmax(0,1fr) minmax(230px,280px);gap:15px}
+.hod-workspace .hod-info-three{display:grid;grid-template-columns:1fr 1fr;padding:15px 17px;gap:16px}
+.hod-workspace .hod-info-three>div{display:grid;gap:12px;min-width:0}
+.hod-workspace .hod-info-three>div>div{display:grid;grid-template-columns:20px 90px minmax(0,1fr);align-items:center;gap:7px}
+.hod-workspace .hod-info-three svg{color:#4c6584}
+.hod-workspace .hod-info-three small{color:#586d82;font-size:11.5px}
+.hod-workspace .hod-info-three strong{font-size:12.5px;color:#142e52;overflow-wrap:anywhere}
+.hod-workspace .hod-indicator-heading{background:#fff;padding:12px 13px}
+.hod-workspace .hod-indicator-body{background:#fff;padding:12px 13px}
+.hod-workspace .hod-total-row{display:grid;grid-template-columns:155px minmax(100px,1fr) 140px;align-items:center;gap:12px;background:#fbfdff;border:1px solid #edf1f8;border-radius:8px;padding:10px;margin-bottom:12px}
+.hod-workspace .hod-total-row label{font-size:13px;color:#0754bf;font-weight:800}
+.hod-workspace .hod-total-row input{height:35px;font-weight:700}
+.hod-workspace .hod-total-row span{font-size:12.5px;color:#596c81}
+.hod-workspace .hod-category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 12px}
+.hod-workspace .hod-category{padding:10px;background:#fbfdff}
+.hod-workspace .hod-category-head{gap:6px;margin-bottom:9px}
+.hod-workspace .hod-break-head,.hod-workspace .hod-break-row,.hod-workspace .hod-break-foot{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(64px,.8fr) minmax(60px,.7fr);gap:7px;align-items:center;padding:7px 8px}
+.hod-workspace .hod-break-head{border-radius:5px;background:#f1f5fa;font-weight:700;font-size:11.5px;color:#5a6e85}
+.hod-workspace .hod-break-row{border-bottom:1px solid #eef1f6;font-size:12.5px;cursor:default}
+.hod-workspace .hod-break-row input{width:100%;max-width:none}
+.hod-workspace .hod-break-row span:last-child{font-size:11.5px;color:#536c8c;text-align:right}
+.hod-workspace .hod-break-foot{background:#eff4fa;font-weight:750;font-size:12.5px;border-radius:5px}
+.hod-workspace .hod-break-foot span:last-child{text-align:right}
+.hod-workspace .hod-remarks-label{margin:10px 0 0}
+.hod-workspace .hod-feedback-inner{padding:15px 17px 8px}
+.hod-workspace .hod-feedback-inner>label{font-weight:800;font-size:13px;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.hod-workspace .hod-feedback-under{display:flex;justify-content:space-between;font-size:11.5px;color:#5c6e81;margin-top:5px}
+.hod-workspace .hod-bottom-actions{align-items:center;gap:8px;padding:12px 17px}
+.hod-workspace .hod-bottom-actions>span{color:#e9a020;font-size:12.5px;margin-right:auto}
+.hod-workspace .hod-bottom-actions .hod-btn-danger{background:#e53347;color:#fff;border-color:#e53347}
+.hod-workspace .hod-bottom-actions .hod-btn-danger:hover{background:#bd1f33}
+.hod-workspace .hod-side-panel dl{gap:13px 9px}
+.hod-workspace .hod-side-panel dt{font-size:12.5px}
+.hod-workspace .hod-side-panel dd{font-size:12.5px}
+.hod-workspace .hod-journey{margin:0;padding:19px 15px 15px 44px;list-style:none}
+.hod-workspace .hod-journey>li{position:relative;padding:0 0 26px 0;border-left:2px solid #cbd8e8;padding-left:18px;min-height:92px}
+.hod-workspace .hod-journey>li:last-child{border-left-color:transparent;padding-bottom:0}
+.hod-workspace .hod-journey>li.done{border-left-color:#1aa463}
+.hod-workspace .hod-journey>li strong,.hod-workspace .hod-journey>li small{display:block;font-size:12.5px;margin-bottom:7px}
+.hod-workspace .hod-journey>li small{color:#596e86}
+.hod-workspace .hod-journey>li p{color:#5f7790;font-size:12.5px;margin:4px 0 8px}
+.hod-workspace .hod-journey>li>div{background:#f0f5fc;color:#5d7694;border-radius:6px;padding:9px;font-size:11.5px;line-height:1.5}
+.hod-workspace .hod-journey>li.current strong{color:#0864df}
+.hod-workspace .hod-journey-dot{position:absolute;left:-15px;top:-3px;width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #b9c8d8;color:#586f86;font-weight:800}
+.hod-workspace .hod-journey .done .hod-journey-dot{background:#10a85e;border-color:#10a85e;color:#fff}
+.hod-workspace .hod-journey .current .hod-journey-dot{background:#0865e8;border:4px solid #cae0ff;color:#fff}
+.hod-workspace .hod-audit-events{padding:0 16px 18px;font-size:12.5px;color:#5a6d84}
+.hod-workspace .hod-audit-events summary{color:#0864cf;cursor:pointer;font-weight:700}
+.hod-workspace .hod-audit-events p{border-top:1px solid #edf1f7;margin:8px 0;padding-top:8px}
+@media(max-width:1200px){.hod-workspace .hod-inbox-layout{grid-template-columns:minmax(0,1fr)}.hod-workspace .hod-inbox-aside{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.hod-workspace .hod-review-layout{grid-template-columns:minmax(0,1fr)}.hod-workspace .hod-review-secondary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+
+@media(max-width:900px){.hod-workspace .hod-inbox-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.hod-workspace .hod-review-secondary{grid-template-columns:1fr}}
+@media(max-width:700px){.hod-workspace .hod-info-three{grid-template-columns:1fr}.hod-workspace .hod-category-grid{grid-template-columns:1fr}.hod-workspace .hod-total-row{grid-template-columns:1fr}.hod-workspace .hod-inbox-table .hod-filter-row{flex-wrap:wrap}.hod-workspace .hod-inbox-table .hod-filter-row select{max-width:none;flex:1}.hod-workspace .hod-bottom-actions{justify-content:stretch}.hod-workspace .hod-bottom-actions button{flex:1}}
+
+/* Review values: visible feedback while the user types, not after a failed PATCH. */
+.hod-workspace .hod-total-row input[aria-invalid="true"] { border-color:#cf354b; box-shadow:0 0 0 1px rgba(207,53,75,.12); }
+.hod-workspace .hod-bottom-actions > span { color:#596b82; line-height:1.45; }
+.hod-workspace .hod-field-error {font-weight:600;line-height:1.5;}
+
+/* Confirmed action receipt is part of Review History, not a new menu/page. */
+.hod-workspace .hod-action-receipt{margin:0 0 14px;padding:13px 16px;border:1px solid #a8dec0;background:#f0fcf5;border-radius:9px;color:#154b34;display:grid;gap:7px}
+.hod-workspace .hod-action-receipt>div{display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px 15px}
+.hod-workspace .hod-action-receipt strong{font-size:13.5px}
+.hod-workspace .hod-action-receipt span,.hod-workspace .hod-action-receipt small{font-size:12.5px;color:#396e56}
+.hod-workspace .hod-action-receipt p{margin:0;overflow-wrap:anywhere;font-size:13px}
+.hod-workspace .hod-server-review-actions{border-top:1px solid #e6edf4;padding:11px 15px}
+.hod-workspace .hod-server-review-actions>strong{display:block;margin-bottom:8px;font-size:13px}
+.hod-workspace .hod-server-review-actions p{font-size:12.5px;line-height:1.55;margin:0 0 9px;color:#425d7d}
+.hod-workspace .hod-server-review-actions small{display:block;color:#5b6e83;white-space:normal;overflow-wrap:anywhere}

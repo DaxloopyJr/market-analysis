@@ -1,0 +1,638 @@
+/*
+ * PAGE STYLE: System/ICT Admin Dashboard ONLY.
+ * Imported by pages/Admin/AdminDashboard.jsx; all selectors use vad- prefix.
+ * No styling changes to the REV26 Login, Topbar, Sidebar or Footer.
+ */
+
+.vad-admin-dashboard {
+  --vad-ink: #11254a;
+  --vad-muted: #5c708e;
+  --vad-border: #dfe6f0;
+  --vad-blue: #176cdd;
+  color: var(--vad-ink);
+  width: 100%;
+  min-width: 0;
+  padding: 20px 22px 28px;
+  background: #f4f7fb;
+  font-family: inherit;
+}
+
+.vad-admin-dashboard * {
+  box-sizing: border-box;
+}
+
+.vad-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.vad-breadcrumb {
+  font-size: 13px;
+  color: #3876bd;
+  margin-bottom: 6px;
+}
+
+.vad-heading h1 {
+  margin: 0;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.25;
+  font-weight: 750;
+}
+
+.vad-heading p {
+  margin: 5px 0 0;
+  color: var(--vad-muted);
+  font-size: 13.5px;
+}
+
+.vad-demo-pill {
+  flex-shrink: 0;
+  background: #fff4d7;
+  color: #93630b;
+  border: 1px solid #f2da9b;
+  border-radius: 40px;
+  padding: 7px 11px;
+  font-size: 11.5px;
+  font-weight: 750;
+  letter-spacing: .025em;
+}
+
+.vad-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.vad-metric {
+  position: relative;
+  display: flex;
+  gap: 11px;
+  min-height: 118px;
+  width: 100%;
+  min-width: 0;
+  padding: 15px 12px;
+  border: 1px solid var(--vad-border);
+  border-radius: 7px;
+  text-align: left;
+  color: #10234a;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.vad-metric:hover,
+.vad-metric:focus-visible,
+.vad-quick-action:hover,
+.vad-row-click:hover {
+  box-shadow: 0 5px 18px #123d7913;
+  transform: translateY(-1px);
+}
+
+.vad-metric:focus-visible,
+.vad-quick-action:focus-visible,
+.vad-row-click:focus-visible,
+.vad-link:focus-visible {
+  outline: 2px solid #317ce6;
+  outline-offset: 2px;
+}
+
+.vad-tint-blue { background: linear-gradient(125deg, #f2f7ff, #fff); }
+.vad-tint-cyan { background: linear-gradient(125deg, #f0faff, #fff); }
+.vad-tint-mint { background: linear-gradient(125deg, #f1fcf7, #fff); }
+.vad-tint-sky { background: linear-gradient(125deg, #f4f9ff, #fff); }
+.vad-tint-purple { background: linear-gradient(125deg, #f9f5ff, #fff); }
+.vad-tint-lavender { background: linear-gradient(125deg, #f5f5ff, #fff); }
+
+.vad-metric-icon {
+  display: grid;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 10px;
+  color: #1f75e6;
+  background: #e1efff;
+}
+
+.vad-tint-mint .vad-metric-icon {
+  color: #0c9a73;
+  background: #dbf9ec;
+}
+
+.vad-tint-purple .vad-metric-icon,
+.vad-tint-lavender .vad-metric-icon {
+  color: #7b4ce5;
+  background: #eee5ff;
+}
+
+.vad-metric-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding-top: 1px;
+}
+
+.vad-metric-value {
+  font-size: 26px;
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+.vad-metric-label {
+  color: #415679;
+  font-size: 13px;
+  white-space: normal;
+}
+
+.vad-metric-change {
+  color: #078b53;
+  font-size: 13px;
+  font-weight: 750;
+  margin-top: 5px;
+}
+
+.vad-metric-copy small {
+  color: var(--vad-muted);
+  font-size: 11.5px;
+}
+
+.vad-card-arrow {
+  position: absolute;
+  top: 12px;
+  right: 6px;
+  color: #476d9b;
+  opacity: 0;
+}
+
+.vad-metric:hover .vad-card-arrow { opacity: 1; }
+
+.vad-primary-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.8fr) minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 13px;
+  margin-bottom: 13px;
+}
+
+.vad-secondary-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 13px;
+  margin-bottom: 13px;
+}
+
+.vad-panel {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--vad-border);
+  border-radius: 7px;
+  padding: 13px 14px;
+  box-shadow: 0 2px 9px #18395b08;
+}
+
+.vad-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.vad-panel h2 {
+  font-size: 14px;
+  font-weight: 750;
+  margin: 0;
+}
+
+.vad-link {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: #136cd7;
+  font-size: 12.5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.vad-chart-click {
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.vad-chart-height { min-width: 0; }
+
+.vad-service-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding: 5px 8px;
+  margin: -5px 0 7px auto;
+  background: #e4f8ec;
+  color: #06753e;
+  border-radius: 5px;
+  font-size: 11.5px;
+}
+
+.vad-running-dot {
+  display: inline-block;
+  flex: 0 0 7px;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: #0aa65c;
+}
+
+.vad-server-list {
+  border-top: 1px solid #ebeff5;
+}
+
+.vad-server-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) auto auto;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 3px;
+  border-bottom: 1px solid #ebeff5;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.vad-server-name { font-weight: 650; }
+
+.vad-service-status {
+  color: #087e4f;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vad-server-row small {
+  color: var(--vad-muted);
+  font-size: 11.5px;
+}
+
+.vad-storage-chart {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.vad-storage-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.vad-storage-center strong {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.vad-storage-center span {
+  color: var(--vad-muted);
+  font-size: 12.5px;
+}
+
+.vad-modal-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.vad-modal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  border-bottom: 1px solid #edf1f6;
+  padding: 9px 0;
+  color: #526584;
+  font-size: 13px;
+}
+
+.vad-modal-row strong {
+  color: #183050;
+  font-weight: 700;
+  text-align: right;
+}
+
+.vad-table-scroll {
+  overflow: auto;
+  max-width: 100%;
+}
+
+.vad-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.vad-table thead { background: #f1f5fa; }
+
+.vad-table th {
+  font-weight: 750;
+  text-align: left;
+  color: #2b4264;
+  padding: 9px 8px;
+  white-space: nowrap;
+}
+
+.vad-table td {
+  border-bottom: 1px solid #e9eef5;
+  padding: 9px 8px;
+  color: #304567;
+}
+
+.vad-table tbody tr {
+  cursor: pointer;
+}
+
+.vad-table tbody tr:hover { background: #f3f8ff; }
+
+.vad-table tbody tr:focus-visible {
+  outline: 2px solid #2f7fec;
+}
+
+.vad-level {
+  display: inline-flex;
+  font-size: 11.5px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-weight: 700;
+}
+
+.vad-info { color: #1176cc; background: #e3f1ff; }
+.vad-warning { color: #a86a00; background: #fff0d1; }
+.vad-error { color: #b42e40; background: #ffe7eb; }
+
+.vad-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.vad-quick-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 76px;
+  border: 1px solid var(--vad-border);
+  background: #f8fbff;
+  border-radius: 7px;
+  color: #205db3;
+  padding: 9px 5px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12.5px;
+  text-align: center;
+}
+
+.vad-quick-action span { color: #233959; }
+
+/* Only the dashboard modal uses these styles; it lives in document.body. */
+.vad-modal-root {
+  position: fixed;
+  z-index: 11000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  font-family: inherit;
+}
+
+.vad-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #0c1c34b5;
+}
+
+.vad-modal-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(790px, 100%);
+  max-height: min(92vh, 900px);
+  overflow: hidden;
+  border: 1px solid #d6e0ea;
+  border-radius: 12px;
+  background: #fff;
+  color: #132c50;
+  box-shadow: 0 22px 80px #081a3b77;
+}
+
+.vad-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px 22px 13px;
+  background: linear-gradient(110deg, #f7faff, #fff);
+}
+
+.vad-modal-eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  color: #2c70c9;
+  font-weight: 750;
+  letter-spacing: .08em;
+  font-size: 11.5px;
+}
+
+.vad-modal-header h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 760;
+}
+
+.vad-modal-header p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #5e7190;
+}
+
+.vad-modal-close {
+  flex: 0 0 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dce5f0;
+  border-radius: 8px;
+  background: #fff;
+  color: #254d7a;
+  cursor: pointer;
+}
+
+.vad-modal-tabs {
+  display: flex;
+  gap: 18px;
+  border-bottom: 1px solid #e2e8f1;
+  padding: 0 22px;
+}
+
+.vad-modal-tabs button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #59708e;
+  background: transparent;
+  font-size: 13px;
+  padding: 11px 2px;
+  cursor: pointer;
+}
+
+.vad-modal-tabs button.is-active {
+  color: #1766ca;
+  border-bottom-color: #1766ca;
+  font-weight: 750;
+}
+
+.vad-modal-content {
+  overflow-y: auto;
+  padding: 19px 22px;
+  min-height: 160px;
+  font-size: 13.5px;
+  color: #425676;
+}
+
+.vad-modal-content h3 {
+  color: #10294b;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.vad-modal-content p { line-height: 1.6; }
+
+.vad-modal-content code {
+  color: #145eaa;
+  overflow-wrap: anywhere;
+}
+
+.vad-modal-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 17px;
+  margin-bottom: 12px;
+  background: #f2f7ff;
+  border: 1px solid #deebff;
+  border-radius: 8px;
+}
+
+.vad-modal-highlight span {
+  font-size: 13px;
+  color: #58769c;
+}
+
+.vad-modal-highlight strong {
+  font-size: 31px;
+  color: #1766ca;
+}
+
+.vad-demo-note,
+.vad-read-only {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  margin-top: 12px;
+  background: #fff9e9;
+  border: 1px solid #f7e6b7;
+  border-radius: 7px;
+  color: #805d10;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.vad-read-only {
+  margin-top: 0;
+  background: #eff6ff;
+  border-color: #dbe9fa;
+  color: #2d5076;
+}
+
+.vad-demo-note svg,
+.vad-read-only svg { flex-shrink: 0; }
+
+.vad-storage-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 14px;
+}
+
+.vad-modal-footer {
+  border-top: 1px solid #e9eef5;
+  padding: 12px 22px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.vad-close-button {
+  border: 0;
+  border-radius: 6px;
+  background: #166ed8;
+  color: #fff;
+  padding: 9px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 1440px) {
+  .vad-metrics-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .vad-primary-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+  .vad-panel-storage { grid-column: 1 / -1; }
+  .vad-panel-storage .vad-chart-click { max-width: 300px; margin: 0 auto; }
+  .vad-quick-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 850px) {
+  .vad-admin-dashboard { padding: 15px 12px; }
+  .vad-heading { align-items: flex-start; flex-direction: column; }
+  .vad-primary-grid,
+  .vad-secondary-grid { grid-template-columns: 1fr; }
+  .vad-panel-storage { grid-column: auto; }
+}
+
+@media (max-width: 560px) {
+  .vad-metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vad-metric { padding: 12px 8px; gap: 7px; }
+  .vad-metric-icon { width: 32px; height: 32px; flex-basis: 32px; }
+  .vad-metric-value { font-size: 21px; }
+  .vad-metric-label { font-size: 12.5px; }
+  .vad-quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vad-storage-modal { grid-template-columns: 1fr; }
+  .vad-modal-header { padding: 15px 14px; }
+  .vad-modal-tabs { padding: 0 14px; }
+  .vad-modal-content { padding: 14px; }
+  .vad-modal-footer { padding: 10px 14px; }
+}
+
+/* Preserve the approved Admin charts and cards; enlarge charts and align key facts in existing details modal. */
+.vad-insight-split{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(230px,1fr);gap:20px;align-items:center;}
+.vad-insight-key{border-left:1px solid #e4ebf4;padding:14px 18px;background:#f8fafc;border-radius:8px;min-height:180px;}
+.vad-insight-key h3{margin:0 0 14px;}
+.vad-insight-stat{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.vad-insight-stat strong{font-size:clamp(50px,6vw,85px);color:#1766ca;line-height:1.1;}
+.vad-insight-stat span{color:#526681;margin-top:8px;}
+@media(max-width:690px){.vad-insight-split{grid-template-columns:1fr}.vad-insight-key{border-left:0;border-top:1px solid #e4ebf4;}}

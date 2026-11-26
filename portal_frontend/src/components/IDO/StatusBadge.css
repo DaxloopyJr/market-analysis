@@ -1,0 +1,10 @@
+.ido-status-badge { display:inline-flex; align-items:center; border-radius:20px; padding:5px 10px; font-size:12.5px; font-weight:700; white-space:nowrap; line-height:1.25; }
+.ido-status-draft { background:#eaf0f8; color:#536a8d; }
+.ido-status-submitted { background:#e7f1ff; color:#1864c0; }
+.ido-status-review { background:#fff0d8; color:#9c640d; }
+.ido-status-returned { background:#ffe8eb; color:#c9314c; }
+.ido-status-approved { background:#e4f8f0; color:#13835a; }
+.ido-status-published { background:#dff6ea; color:#087c4f; }
+
+/* REV16 readable badges */
+.ido-status-badge{font-size:13.5px;padding:7px 11px;}

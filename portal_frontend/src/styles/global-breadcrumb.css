@@ -1,0 +1,18 @@
+/* Sticky, independent breadcrumb across the entire authenticated dashboard. */
+.vw-global-breadcrumb{position:sticky;top:72px;z-index:35;width:100%;background:linear-gradient(110deg,#e8f2ff,#f6faff 55%,#e9f3ff);border-bottom:1px solid #cadcf3;box-shadow:0 2px 7px rgba(8,70,154,.07);isolation:isolate;min-height:39px;display:flex;align-items:center;overflow:hidden}
+.vw-global-breadcrumb::before{content:"";height:2px;position:absolute;left:0;right:0;top:0;pointer-events:none;background:linear-gradient(90deg,#135bb0,#41a0f1,#b8deff,#135bb0);background-size:220% 100%;animation:vw-breadcrumb-wave 10s linear infinite}
+@keyframes vw-breadcrumb-wave{to{background-position:220% 0}}
+.vw-global-breadcrumb-inner{padding:9px 26px;display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:13px;color:#235688;min-width:0}
+.vw-global-crumb{display:inline-flex;align-items:center;gap:6px;min-width:0}
+.vw-global-crumb svg{color:#3c6ea7;flex:none}
+.vw-global-crumb button{border:0;background:transparent;color:#215ca7;cursor:pointer;font-weight:600;padding:0}
+.vw-global-crumb button:hover{text-decoration:underline}
+.vw-global-crumb strong{color:#0b2e65;font-weight:750;overflow-wrap:anywhere}
+.vw-global-crumb .vw-crumb-text{font-weight:550}
+/* Breadcrumbs previously drawn inside pages are replaced by the shared bar. */
+.dashboard-content .mdo-breadcrumb,.dashboard-content .vim-breadcrumb,.dashboard-content .vrp-breadcrumb,.dashboard-content .vad-breadcrumb,.dashboard-content .hod-breadcrumb,.dashboard-content .ao-breadcrumb,.dashboard-content .vi-notifications-breadcrumb,.dashboard-content .vw-breadcrumb{display:none!important}
+@media(max-width:575px){.vw-global-breadcrumb-inner{padding:8px 12px;font-size:12.5px}}
+@media(prefers-reduced-motion:reduce){.vw-global-breadcrumb::before{animation:none}}
+
+/* One breadcrumb globally: hide legacy in-page breadcrumb strips on every dashboard page. */
+.dashboard-content .md-crumb,.dashboard-content .ihod-breadcrumb,.dashboard-content .ido-breadcrumb,.dashboard-content .vim-ac-v2-page-heading .vim-breadcrumb,.dashboard-content [class~="hod-breadcrumb"],.dashboard-content [class~="ao-breadcrumb"]{display:none!important}
